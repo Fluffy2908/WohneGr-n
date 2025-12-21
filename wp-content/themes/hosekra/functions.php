@@ -98,6 +98,16 @@ add_shortcode('icon', 'hosekra_icon_shortcode');
 require_once get_template_directory() . '/inc/acf-fields.php';
 
 /**
+ * Stub for get_field if ACF is not active
+ * Returns null so that fallbacks work correctly
+ */
+if (!function_exists('get_field')) {
+    function get_field($field_name, $post_id = false) {
+        return null;
+    }
+}
+
+/**
  * Helper function to get ACF field with fallback
  */
 function hosekra_get_field($field_name, $post_id = false, $default = '') {
