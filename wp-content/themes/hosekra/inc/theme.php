@@ -95,45 +95,11 @@ add_shortcode('icon', 'alpenhomes_icon_shortcode');
 function alpenhomes_get_field($field_name, $post_id = false, $default = '') {
     if (function_exists('get_field')) {
         $value = get_field($field_name, $post_id);
-        return $value ? $value : $default;
+        return ($value !== null && $value !== false && $value !== '') ? $value : $default;
     }
     return $default;
 }
 
-/**
- * Helper function to get ACF option field with fallback
- */
 function alpenhomes_get_option($field_name, $default = '') {
-    if (function_exists('get_field')) {
-        $value = get_field($field_name, 'option');
-        return $value ? $value : $default;
-    }
-    return $default;
-}
-
-/**
- * Stub for get_field if ACF is not active
- */
-if (!function_exists('get_field')) {
-    function get_field($field_name, $post_id = false) {
-        return null;
-    }
-}
-
-if (!function_exists('have_rows')) {
-    function have_rows($field_name, $post_id = false) {
-        return false;
-    }
-}
-
-if (!function_exists('the_row')) {
-    function the_row() {
-        return false;
-    }
-}
-
-if (!function_exists('get_sub_field')) {
-    function get_sub_field($field_name) {
-        return null;
-    }
+    return alpenhomes_get_field($field_name, 'option', $default);
 }

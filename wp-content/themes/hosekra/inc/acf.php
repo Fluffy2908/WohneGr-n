@@ -1298,23 +1298,21 @@ function alpenhomes_register_block_fields() {
 }
 add_action('acf/init', 'alpenhomes_register_block_fields');
 
-/* Dodajanje globalnih polj v adminu */
-if (function_exists('acf_add_options_page')) {
+/**
+ * Globalna Options Page (ACF)
+ * Vse ACF registracije naj tečejo na acf/init.
+ */
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_options_page')) {
+        return;
+    }
+
     acf_add_options_page([
         'page_title'  => 'Nastavitve strani',
         'menu_title'  => 'Nastavitve',
         'menu_slug'   => 'site-settings',
         'capability'  => 'edit_posts',
-        'redirect'    => false
+        'redirect'    => false,
     ]);
-}
-
-/**
- * Varnostna funkcija za globalna ACF polja (Options Page)
- */
-function alpenhomes_get_option($field_name, $default = '')
-{
-    return alpenhomes_get_field($field_name, 'option', $default);
-}
-
+});
 
