@@ -1,26 +1,24 @@
-name: 🚀 Deploy via SFTP (SSH key)
+name: 🚀 Deploy Hosekra Theme to cPanel via SFTP
 
 on:
   push:
     branches:
-      - main
+      - main  # ali 'master', če uporabljaš master
 
 jobs:
-  deploy:
+  sftp-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Deploy to SFTP
+      - name: Deploy with SSH key
         uses: easingthemes/ssh-deploy@v2.2.11
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.SFTP_SERVER }}
           REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
           TARGET: ${{ secrets.SFTP_REMOTE_PATH }}
           SOURCE: .
-          EXCLUDE: |
-            .git*
-            .github*
+          ARGS: "-avz --delete --exclude=.git* --exclude=.github"
