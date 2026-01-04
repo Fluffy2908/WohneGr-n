@@ -15,10 +15,9 @@ Text Domain: AlpenHomes
     --color-primary-h: 142;
     --color-primary-s: 52%;
     --color-primary-l: 36%;
-/*Sprememba barve */
-    --color-primary: hsl(205 100% 60%);
-    --color-primary-light: hsl(205 100% 60%);
-    --color-primary-dark: hsl(205 100% 60%);
+    --color-primary: hsl(142 52% 36%);
+    --color-primary-light: hsl(142 52% 50%);
+    --color-primary-dark: hsl(142 52% 20%);
     --color-primary-rgb: 45, 124, 66;
 
     --color-background: hsl(60, 20%, 98%);
