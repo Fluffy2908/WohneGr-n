@@ -1,0 +1,22 @@
+name: 🚀 Deploy Hosekra Theme to cPanel
+
+on:
+  push:
+    branches:
+      - main  # spremeni, če uporabljaš drug branch
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/alpenhomes/wp-content/themes/Hosekra-main/
