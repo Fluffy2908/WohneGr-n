@@ -22,4 +22,5 @@ jobs:
           pass: ${{ secrets.SFTP_PASSWORD }}
           localDir: '.'  # Deploy celotno vsebino repozitorija
           remoteDir: '/public_html/alpenhomes/wp-content/themes/Hosekra-main/'
-          options: '--exclude-glob .git* --exclude .github'
+          options: '--exclude-glob .git* --exclude .github --only-newer'
+
