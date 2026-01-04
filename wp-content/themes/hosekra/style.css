@@ -17,9 +17,9 @@ Text Domain: hosekra
     --color-primary-s: 52%;
     --color-primary-l: 36%;
 
-    --color-primary: hsl(142, 52%, 36%);
-    --color-primary-light: hsl(142, 52%, 45%);
-    --color-primary-dark: hsl(142, 52%, 28%);
+    --color-primary: hsl(59 100% 60%);
+    --color-primary-light: hsl(59 100% 60%);
+    --color-primary-dark: hsl(59 100% 60%);
     --color-primary-rgb: 45, 124, 66;
 
     --color-background: hsl(60, 20%, 98%);
