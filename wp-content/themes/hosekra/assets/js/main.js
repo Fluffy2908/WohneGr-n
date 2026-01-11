@@ -117,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gallery functionality
     initGallery();
+
+    // Archive filtering
+    initArchiveFilters();
 });
 
 /**
@@ -253,6 +256,100 @@ function initGallery() {
         } else if (e.key === 'ArrowRight') {
             showNext();
         }
+    });
+}
+
+/**
+ * Archive Filtering for Mobilhaus Models
+ */
+function initArchiveFilters() {
+    const sizeFilter = document.getElementById('filter-size');
+    const priceFilter = document.getElementById('filter-price');
+    const resetBtn = document.getElementById('filter-reset');
+    const modelCards = document.querySelectorAll('.model-card');
+
+    if (!sizeFilter || !priceFilter || !modelCards.length) return;
+
+    function filterModels() {
+        const sizeValue = sizeFilter.value;
+        const priceValue = priceFilter.value;
+
+        let visibleCount = 0;
+
+        modelCards.forEach(function(card) {
+            const cardSize = card.getAttribute('data-size');
+            const cardPrice = card.getAttribute('data-price');
+
+            const sizeMatch = sizeValue === 'alle' || cardSize === sizeValue;
+            const priceMatch = priceValue === 'alle' || cardPrice === priceValue;
+
+            if (sizeMatch && priceMatch) {
+                card.style.display = 'block';
+                // Add fade-in animation
+                setTimeout(function() {
+                    card.style.opacity = '1';
+                }, 10);
+                visibleCount++;
+            } else {
+                card.style.opacity = '0';
+                setTimeout(function() {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Show "no results" message if needed
+        showNoResultsMessage(visibleCount);
+    }
+
+    function showNoResultsMessage(visibleCount) {
+        let noResultsMsg = document.querySelector('.no-results-message');
+
+        if (visibleCount === 0) {
+            if (!noResultsMsg) {
+                noResultsMsg = document.createElement('div');
+                noResultsMsg.className = 'no-results-message';
+                noResultsMsg.innerHTML = '<p>Keine Modelle entsprechen Ihren Filterkriterien. Bitte versuchen Sie es mit anderen Filtern.</p>';
+
+                const modelsGrid = document.querySelector('.models-grid');
+                if (modelsGrid && modelsGrid.parentNode) {
+                    modelsGrid.parentNode.insertBefore(noResultsMsg, modelsGrid.nextSibling);
+                }
+            }
+            noResultsMsg.style.display = 'block';
+        } else {
+            if (noResultsMsg) {
+                noResultsMsg.style.display = 'none';
+            }
+        }
+    }
+
+    function resetFilters() {
+        sizeFilter.value = 'alle';
+        priceFilter.value = 'alle';
+        filterModels();
+    }
+
+    // Event listeners
+    if (sizeFilter) {
+        sizeFilter.addEventListener('change', filterModels);
+    }
+
+    if (priceFilter) {
+        priceFilter.addEventListener('change', filterModels);
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            resetFilters();
+        });
+    }
+
+    // Set initial card opacity for animations
+    modelCards.forEach(function(card) {
+        card.style.transition = 'opacity 0.3s ease';
+        card.style.opacity = '1';
     });
 }
 
