@@ -3,12 +3,12 @@
  * Block Template: Gallery
  */
 
-$title = get_field('gallery_title') ?: 'Galerija';
-$subtitle = get_field('gallery_subtitle') ?: 'Oglejte si nase mobilne hiske.';
+$title = get_field('gallery_title') ?: 'Galerie';
+$subtitle = get_field('gallery_subtitle') ?: 'Entdecken Sie unsere Mobilhäuser.';
 $show_filters = get_field('gallery_show_filters');
 $images = get_field('gallery_images');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'galerija';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'galerie';
 
 // Get unique categories
 $categories = array();
@@ -21,10 +21,10 @@ if ($images) {
 }
 
 $category_labels = array(
-    'zunanjost' => 'Zunanjost',
-    'notranjost' => 'Notranjost',
-    'terasa' => 'Terasa',
-    'detajli' => 'Detajli',
+    'außenbereich' => 'Außenbereich',
+    'innenbereich' => 'Innenbereich',
+    'terrasse' => 'Terrasse',
+    'details' => 'Details',
 );
 ?>
 
@@ -37,7 +37,7 @@ $category_labels = array(
 
         <?php if ($show_filters && !empty($categories)) : ?>
             <div class="gallery-filters">
-                <button class="gallery-filter-btn active" data-filter="Vse">Vse</button>
+                <button class="gallery-filter-btn active" data-filter="Alle">Alle</button>
                 <?php foreach ($categories as $cat) : ?>
                     <button class="gallery-filter-btn" data-filter="<?php echo esc_attr($cat); ?>">
                         <?php echo esc_html($category_labels[$cat] ?? $cat); ?>
@@ -61,10 +61,10 @@ $category_labels = array(
             <?php else : ?>
                 <!-- Placeholder images -->
                 <?php for ($i = 1; $i <= 6; $i++) : ?>
-                    <div class="gallery-item" data-category="zunanjost">
+                    <div class="gallery-item" data-category="außenbereich">
                         <div class="gallery-placeholder">
                             <?php echo alpenhomes_get_icon('home'); ?>
-                            <span>Slika <?php echo $i; ?></span>
+                            <span>Bild <?php echo $i; ?></span>
                         </div>
                     </div>
                 <?php endfor; ?>

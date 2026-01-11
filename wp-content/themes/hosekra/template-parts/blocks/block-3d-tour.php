@@ -3,15 +3,15 @@
  * Block Template: 3D Tour
  */
 
-$title = get_field('tour_title') ?: 'Virtualni ogled';
-$subtitle = get_field('tour_subtitle') ?: 'Oglejte si nase mobilne hiske v 360 stopinjah.';
+$title = get_field('tour_title') ?: 'Virtueller Rundgang';
+$subtitle = get_field('tour_subtitle') ?: 'Entdecken Sie unsere Mobilhäuser in 360 Grad.';
 $type = get_field('tour_type') ?: 'video';
 $video_url = get_field('tour_video_url');
 $iframe_code = get_field('tour_iframe');
 $preview_image = get_field('tour_preview_image');
 $features = get_field('tour_features');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : '3d-ogled';
+$block_id = isset($block['anchor']) ? $block['anchor'] : '3d-rundgang';
 
 // Parse video URL for embed
 $video_embed = '';
@@ -32,10 +32,10 @@ if ($video_url) {
 // Default features
 if (!$features) {
     $features = array(
-        array('icon' => 'cube', 'text' => '360 stopinjski ogled'),
-        array('icon' => 'expand', 'text' => 'Celozaslonski nacin'),
-        array('icon' => 'play', 'text' => 'Interaktivna navigacija'),
-        array('icon' => 'grid', 'text' => 'Ogled vseh prostorov'),
+        array('icon' => 'cube', 'text' => '360-Grad-Ansicht'),
+        array('icon' => 'expand', 'text' => 'Vollbildmodus'),
+        array('icon' => 'play', 'text' => 'Interaktive Navigation'),
+        array('icon' => 'grid', 'text' => 'Alle Räume ansehen'),
     );
 }
 ?>
@@ -70,7 +70,7 @@ if (!$features) {
                         <div class="tour-preview-overlay">
                             <button class="tour-play-btn" data-video="<?php echo esc_attr($video_url); ?>">
                                 <?php echo alpenhomes_get_icon('play'); ?>
-                                <span>Predvajaj ogled</span>
+                                <span>Rundgang abspielen</span>
                             </button>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ if (!$features) {
                     <div class="tour-placeholder">
                         <div class="tour-placeholder-content">
                             <?php echo alpenhomes_get_icon('cube'); ?>
-                            <p>3D ogled bo kmalu na voljo</p>
+                            <p>3D-Rundgang in Kürze verfügbar</p>
                         </div>
                     </div>
                 <?php endif; ?>

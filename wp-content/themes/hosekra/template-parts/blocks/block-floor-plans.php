@@ -3,35 +3,35 @@
  * Block Template: Floor Plans
  */
 
-$title = get_field('floor_title') ?: 'Tlorisi in postavitve';
-$subtitle = get_field('floor_subtitle') ?: 'Oglejte si razlicne moznosti razporeditve prostorov.';
+$title = get_field('floor_title') ?: 'Grundrisse und Layouts';
+$subtitle = get_field('floor_subtitle') ?: 'Entdecken Sie die verschiedenen Raumaufteilungsmöglichkeiten.';
 $floor_plans = get_field('floor_plans');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'tlorisi';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'grundrisse';
 
 // Default floor plans
 if (!$floor_plans) {
     $floor_plans = array(
         array(
             'name' => 'Kompakt 25',
-            'size' => '25 m2',
-            'rooms' => '1 soba',
-            'bathrooms' => '1 kopalnica',
-            'description' => 'Idealno za pare ali kot vikend hiska.',
+            'size' => '25 m²',
+            'rooms' => '1 Zimmer',
+            'bathrooms' => '1 Badezimmer',
+            'description' => 'Ideal für Paare oder als Wochenendhaus.',
         ),
         array(
             'name' => 'Comfort 45',
-            'size' => '45 m2',
-            'rooms' => '2 sobi',
-            'bathrooms' => '1 kopalnica',
-            'description' => 'Popolna druzinska razporeditev z odprtim dnevnim prostorom.',
+            'size' => '45 m²',
+            'rooms' => '2 Zimmer',
+            'bathrooms' => '1 Badezimmer',
+            'description' => 'Perfekte Familienaufteilung mit offenem Wohnbereich.',
         ),
         array(
             'name' => 'Premium 65',
-            'size' => '65 m2',
-            'rooms' => '3 sobe',
-            'bathrooms' => '2 kopalnici',
-            'description' => 'Prostorna zasnova s teraso in dodatno sobo.',
+            'size' => '65 m²',
+            'rooms' => '3 Zimmer',
+            'bathrooms' => '2 Badezimmer',
+            'description' => 'Geräumige Gestaltung mit Terrasse und zusätzlichem Zimmer.',
         ),
     );
 }
@@ -53,10 +53,10 @@ if (!$floor_plans) {
                         <?php else : ?>
                             <div class="floor-plan-placeholder">
                                 <?php echo alpenhomes_get_icon('grid'); ?>
-                                <span>Tloris</span>
+                                <span>Grundriss</span>
                             </div>
                         <?php endif; ?>
-                        <button class="floor-plan-zoom" title="Povecaj">
+                        <button class="floor-plan-zoom" title="Vergrößern">
                             <?php echo alpenhomes_get_icon('expand'); ?>
                         </button>
                     </div>

@@ -3,34 +3,34 @@
  * Block Template: Interiors
  */
 
-$title = get_field('interior_title') ?: 'Notranjost';
-$subtitle = get_field('interior_subtitle') ?: 'Oglejte si notranjost nasih mobilnih hisk.';
+$title = get_field('interior_title') ?: 'Innenausstattung';
+$subtitle = get_field('interior_subtitle') ?: 'Entdecken Sie die Innenausstattung unserer Mobilhäuser.';
 $rooms = get_field('interior_rooms');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'notranjost';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'innenausstattung';
 
 // Default rooms
 if (!$rooms) {
     $rooms = array(
         array(
-            'name' => 'Dnevna soba',
-            'description' => 'Svetel in odprt prostor za druzenje in sprostitev.',
-            'features' => "Velika okna za naravno svetlobo\nModerna oblazinjeno pohistvo\nPriklop za TV in multimedijo",
+            'name' => 'Wohnzimmer',
+            'description' => 'Heller und offener Raum zum Zusammensein und Entspannen.',
+            'features' => "Große Fenster für natürliches Licht\nModerne Polstermöbel\nAnschluss für TV und Multimedia",
         ),
         array(
-            'name' => 'Kuhinja',
-            'description' => 'Popolnoma opremljena kuhinja z modernimi aparati.',
-            'features' => "Vgradni aparati\nKuhinjski otok\nKakovostni materiali",
+            'name' => 'Küche',
+            'description' => 'Voll ausgestattete Küche mit modernen Geräten.',
+            'features' => "Einbaugeräte\nKücheninsel\nHochwertige Materialien",
         ),
         array(
-            'name' => 'Spalnica',
-            'description' => 'Udobna spalnica za miren spanec.',
-            'features' => "Velika postelja\nVgradne omare\nZatemnitvene zavese",
+            'name' => 'Schlafzimmer',
+            'description' => 'Komfortables Schlafzimmer für ruhigen Schlaf.',
+            'features' => "Großes Bett\nEinbauschränke\nVerdunklungsvorhänge",
         ),
         array(
-            'name' => 'Kopalnica',
-            'description' => 'Moderna kopalnica z vsem potrebnim.',
-            'features' => "Tus kabina\nDvojni umivalnik\nTalno ogrevanje",
+            'name' => 'Badezimmer',
+            'description' => 'Modernes Badezimmer mit allem Notwendigen.',
+            'features' => "Duschkabine\nDoppelwaschbecken\nFußbodenheizung",
         ),
     );
 }
