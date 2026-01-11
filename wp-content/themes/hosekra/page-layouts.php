@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Postavitve in Notranjost
+ * Template Name: Grundrisse & Innenausstattung
  * Template for displaying house layouts and interiors
  */
 
@@ -42,41 +42,41 @@ get_header();
                 <!-- Intro Section -->
                 <section class="layouts-intro">
                     <div class="container">
-                        <h2>Odkrijte nase postavitve</h2>
-                        <p>Vsaka mobilna hiska je zasnovana z mislijo na prakticnost in udobje. Oglejte si razlicne tlorise in notranjosti, ki jih ponujamo.</p>
+                        <h2>Entdecken Sie unsere Grundrisse</h2>
+                        <p>Jedes Mobilhaus ist mit Blick auf Praktikabilität und Komfort konzipiert. Entdecken Sie die verschiedenen Grundrisse und Innenausstattungen, die wir anbieten.</p>
                     </div>
                 </section>
 
                 <!-- Floor Plans -->
-                <section class="floor-plans-section section-padding" id="tlorisi">
+                <section class="floor-plans-section section-padding" id="grundrisse">
                     <div class="container">
                         <div class="section-header">
-                            <h2>Tlorisi</h2>
-                            <p>Razlicne velikosti in postavitve za razlicne potrebe.</p>
+                            <h2>Grundrisse</h2>
+                            <p>Verschiedene Größen und Layouts für unterschiedliche Bedürfnisse.</p>
                         </div>
                         <div class="floor-plans-grid">
                             <?php
                             $floor_plans = array(
                                 array(
                                     'name' => 'Kompakt 25',
-                                    'size' => '25 m2',
-                                    'rooms' => '1 soba',
-                                    'bathrooms' => '1 kopalnica',
-                                    'description' => 'Idealno za pare ali kot vikend hiska. Odprt dnevni prostor z kuhinjskim kotom.',
+                                    'size' => '25 m²',
+                                    'rooms' => '1 Zimmer',
+                                    'bathrooms' => '1 Badezimmer',
+                                    'description' => 'Ideal für Paare oder als Wochenendhaus. Offener Wohnbereich mit Küchenzeile.',
                                 ),
                                 array(
                                     'name' => 'Comfort 45',
-                                    'size' => '45 m2',
-                                    'rooms' => '2 sobi',
-                                    'bathrooms' => '1 kopalnica',
-                                    'description' => 'Popolna druzinska razporeditev z loceno spalnico in odprtim dnevnim prostorom.',
+                                    'size' => '45 m²',
+                                    'rooms' => '2 Zimmer',
+                                    'bathrooms' => '1 Badezimmer',
+                                    'description' => 'Perfekte Familienaufteilung mit separatem Schlafzimmer und offenem Wohnbereich.',
                                 ),
                                 array(
                                     'name' => 'Premium 65',
-                                    'size' => '65 m2',
-                                    'rooms' => '3 sobe',
-                                    'bathrooms' => '2 kopalnici',
-                                    'description' => 'Prostorna zasnova z veliko teraso, dodatno sobo in dvema kopalnicama.',
+                                    'size' => '65 m²',
+                                    'rooms' => '3 Zimmer',
+                                    'bathrooms' => '2 Badezimmer',
+                                    'description' => 'Geräumige Gestaltung mit großer Terrasse, zusätzlichem Zimmer und zwei Badezimmern.',
                                 ),
                             );
 
@@ -86,9 +86,9 @@ get_header();
                                     <div class="floor-plan-image">
                                         <div class="floor-plan-placeholder">
                                             <?php echo alpenhomes_get_icon('grid'); ?>
-                                            <span>Tloris</span>
+                                            <span>Grundriss</span>
                                         </div>
-                                        <button class="floor-plan-zoom" title="Povecaj">
+                                        <button class="floor-plan-zoom" title="Vergrößern">
                                             <?php echo alpenhomes_get_icon('expand'); ?>
                                         </button>
                                     </div>
@@ -117,49 +117,49 @@ get_header();
                 </section>
 
                 <!-- Interiors -->
-                <section class="interiors-section section-padding" id="notranjost">
+                <section class="interiors-section section-padding" id="innenausstattung">
                     <div class="container">
                         <div class="section-header">
-                            <h2>Notranjost</h2>
-                            <p>Oglejte si notranjost nasih mobilnih hisk.</p>
+                            <h2>Innenausstattung</h2>
+                            <p>Entdecken Sie die Innenausstattung unserer Mobilhäuser.</p>
                         </div>
                         <div class="interiors-grid">
                             <?php
                             $rooms = array(
                                 array(
-                                    'name' => 'Dnevna soba',
-                                    'description' => 'Svetel in odprt prostor za druzenje in sprostitev.',
+                                    'name' => 'Wohnzimmer',
+                                    'description' => 'Heller und offener Raum zum Zusammensein und Entspannen.',
                                     'features' => array(
-                                        'Velika okna za naravno svetlobo',
-                                        'Moderna oblazinjeno pohistvo',
-                                        'Priklop za TV in multimedijo',
+                                        'Große Fenster für natürliches Licht',
+                                        'Moderne Polstermöbel',
+                                        'Anschluss für TV und Multimedia',
                                     ),
                                 ),
                                 array(
-                                    'name' => 'Kuhinja',
-                                    'description' => 'Popolnoma opremljena kuhinja z modernimi aparati.',
+                                    'name' => 'Küche',
+                                    'description' => 'Voll ausgestattete Küche mit modernen Geräten.',
                                     'features' => array(
-                                        'Vgradni aparati',
-                                        'Kuhinjski otok',
-                                        'Kakovostni materiali',
+                                        'Einbaugeräte',
+                                        'Kücheninsel',
+                                        'Hochwertige Materialien',
                                     ),
                                 ),
                                 array(
-                                    'name' => 'Spalnica',
-                                    'description' => 'Udobna spalnica za miren spanec.',
+                                    'name' => 'Schlafzimmer',
+                                    'description' => 'Komfortables Schlafzimmer für ruhigen Schlaf.',
                                     'features' => array(
-                                        'Velika postelja',
-                                        'Vgradne omare',
-                                        'Zatemnitvene zavese',
+                                        'Großes Bett',
+                                        'Einbauschränke',
+                                        'Verdunklungsvorhänge',
                                     ),
                                 ),
                                 array(
-                                    'name' => 'Kopalnica',
-                                    'description' => 'Moderna kopalnica z vsem potrebnim.',
+                                    'name' => 'Badezimmer',
+                                    'description' => 'Modernes Badezimmer mit allem Notwendigen.',
                                     'features' => array(
-                                        'Tus kabina',
-                                        'Dvojni umivalnik',
-                                        'Talno ogrevanje',
+                                        'Duschkabine',
+                                        'Doppelwaschbecken',
+                                        'Fußbodenheizung',
                                     ),
                                 ),
                             );
@@ -191,17 +191,17 @@ get_header();
                 </section>
 
                 <!-- 3D Tour Section -->
-                <section class="tour-section section-padding" id="3d-ogled">
+                <section class="tour-section section-padding" id="3d-rundgang">
                     <div class="container">
                         <div class="section-header">
-                            <h2>Virtualni ogled</h2>
-                            <p>Oglejte si nase mobilne hiske v 360 stopinjah.</p>
+                            <h2>Virtueller Rundgang</h2>
+                            <p>Entdecken Sie unsere Mobilhäuser in 360 Grad.</p>
                         </div>
                         <div class="tour-wrapper">
                             <div class="tour-content">
                                 <div class="tour-placeholder">
                                     <?php echo alpenhomes_get_icon('cube'); ?>
-                                    <p>3D ogled bo kmalu na voljo</p>
+                                    <p>3D-Rundgang in Kürze verfügbar</p>
                                 </div>
                             </div>
                             <div class="tour-features">
@@ -209,25 +209,25 @@ get_header();
                                     <div class="tour-feature-icon">
                                         <?php echo alpenhomes_get_icon('cube'); ?>
                                     </div>
-                                    <span>360 stopinjski ogled</span>
+                                    <span>360-Grad-Ansicht</span>
                                 </div>
                                 <div class="tour-feature">
                                     <div class="tour-feature-icon">
                                         <?php echo alpenhomes_get_icon('expand'); ?>
                                     </div>
-                                    <span>Celozaslonski nacin</span>
+                                    <span>Vollbildmodus</span>
                                 </div>
                                 <div class="tour-feature">
                                     <div class="tour-feature-icon">
                                         <?php echo alpenhomes_get_icon('play'); ?>
                                     </div>
-                                    <span>Interaktivna navigacija</span>
+                                    <span>Interaktive Navigation</span>
                                 </div>
                                 <div class="tour-feature">
                                     <div class="tour-feature-icon">
                                         <?php echo alpenhomes_get_icon('grid'); ?>
                                     </div>
-                                    <span>Ogled vseh prostorov</span>
+                                    <span>Alle Räume ansehen</span>
                                 </div>
                             </div>
                         </div>
@@ -238,10 +238,10 @@ get_header();
                 <section class="cta-section cta-bg-primary">
                     <div class="container">
                         <div class="cta-content">
-                            <h2>Zelite izvedeti vec?</h2>
-                            <p>Kontaktirajte nas za brezplacno posvetovanje in ogled nasih mobilnih hisk.</p>
+                            <h2>Möchten Sie mehr erfahren?</h2>
+                            <p>Kontaktieren Sie uns für eine kostenlose Beratung und Besichtigung unserer Mobilhäuser.</p>
                             <a href="<?php echo esc_url(home_url('/#kontakt')); ?>" class="btn btn-white btn-lg">
-                                Kontaktirajte nas
+                                Kontaktieren Sie uns
                                 <?php echo alpenhomes_get_icon('arrow-right'); ?>
                             </a>
                         </div>
