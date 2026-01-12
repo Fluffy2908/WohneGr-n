@@ -3,7 +3,7 @@
  * Template Name: Gallery with Lightbox
  *
  * Full gallery page with categories, filtering, and lightbox
- * Inspired by Hosekra gallery functionality
+ * WohneGrün mobile homes gallery
  */
 
 get_header();

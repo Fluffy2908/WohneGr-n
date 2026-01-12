@@ -62,27 +62,27 @@ $hours = get_field('contact_hours') ?: 'Mo - Fr: 8:00 - 17:00';
             </div>
 
             <div class="contact-form-wrapper">
-                <h3>Posljite povprasevanje</h3>
+                <h3>Anfrage senden</h3>
                 <?php if ($form_shortcode) : ?>
                     <?php echo do_shortcode($form_shortcode); ?>
                 <?php else : ?>
                     <form class="contact-form" action="#" method="POST">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Vase ime" required>
+                            <input type="text" name="name" placeholder="Ihr Name" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="E-posta" required>
+                                <input type="email" name="email" placeholder="E-Mail" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" name="phone" placeholder="Telefonska stevilka">
+                                <input type="tel" name="phone" placeholder="Telefonnummer">
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" rows="4" placeholder="Vase sporocilo" required></textarea>
+                            <textarea name="message" rows="4" placeholder="Ihre Nachricht" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg">
-                            Poslji sporocilo
+                            Nachricht senden
                             <?php echo wohnegruen_get_icon('arrow-right'); ?>
                         </button>
                     </form>

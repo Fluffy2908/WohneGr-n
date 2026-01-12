@@ -4,19 +4,16 @@
  */
 
 // Get entire group field
-$hero = get_field('hero_block');
+$hero = get_field('hero_block') ?: array();
 
-if (!$hero) {
-    return; // If group is not set, don't display block
-}
-
+// Set defaults - will show even if no data is entered
 $hero_bg         = $hero['hero_background'] ?? null;
 $hero_badge      = $hero['hero_badge'] ?? 'Österreichweit verfügbar';
-$hero_title      = $hero['hero_title'] ?? 'Wir bauen Ihr Traumhaus';
-$hero_subtitle   = $hero['hero_subtitle'] ?? 'Hochwertige, maßgefertigte Fertighäuser';
-$hero_btn1_text  = $hero['hero_btn1_text'] ?? 'Modelle ansehen';
+$hero_title      = $hero['hero_title'] ?? 'Nachhaltige Mobilhäuser für modernes Leben';
+$hero_subtitle   = $hero['hero_subtitle'] ?? 'Hochwertige, maßgefertigte Mobilhäuser mit österreichischer Qualität. Flexibel, ökologisch und in kürzester Zeit bereit.';
+$hero_btn1_text  = $hero['hero_btn1_text'] ?? 'Modelle entdecken';
 $hero_btn1_link  = $hero['hero_btn1_link'] ?? '#modelle';
-$hero_btn2_text  = $hero['hero_btn2_text'] ?? 'Preisliste erhalten';
+$hero_btn2_text  = $hero['hero_btn2_text'] ?? 'Beratung anfragen';
 $hero_btn2_link  = $hero['hero_btn2_link'] ?? '#kontakt';
 $hero_stats      = $hero['hero_stats'] ?? [];
 

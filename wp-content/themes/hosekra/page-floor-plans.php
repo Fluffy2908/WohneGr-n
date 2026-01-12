@@ -2,7 +2,7 @@
 /**
  * Template Name: 3D Floor Plans
  *
- * Display floor plans/3D perspectives like Hosekra
+ * Display floor plans/3D perspectives for mobile homes
  * Shows different models with their layout variations
  */
 

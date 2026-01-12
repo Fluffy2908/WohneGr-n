@@ -42,5 +42,7 @@ add_action('after_setup_theme', 'wohnegruen_editor_styles');
  */
 function wohnegruen_block_editor_assets() {
     wp_enqueue_style('wohnegruen-editor', get_template_directory_uri() . '/assets/css/editor-style.css', array(), '1.0.1');
+    wp_enqueue_style('wohnegruen-blocks-editor', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.1');
+    wp_enqueue_style('wohnegruen-main-editor', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.1');
 }
 add_action('enqueue_block_editor_assets', 'wohnegruen_block_editor_assets');

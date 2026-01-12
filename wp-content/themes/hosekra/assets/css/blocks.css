@@ -1,5 +1,5 @@
 /**
- * Hosekra ACF Blocks Styles
+ * WohneGrün ACF Blocks Styles
  */
 
 /* ==========================================================================
@@ -566,10 +566,10 @@
    BLOCK EDITOR PREVIEW STYLES
    ========================================================================== */
 
-.is-root-container > [data-type^="acf/hosekra"] {
+.is-root-container > [data-type^="acf/wohnegruen"] {
     max-width: none !important;
 }
 
-[data-type="acf/hosekra-hero"] {
+[data-type="acf/wohnegruen-hero"] {
     margin-top: 0 !important;
 }

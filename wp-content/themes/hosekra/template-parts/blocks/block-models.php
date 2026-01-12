@@ -111,11 +111,11 @@ if (empty($models)) {
                             </div>
                             <div class="model-spec">
                                 <?php echo wohnegruen_get_icon('rooms'); ?>
-                                <span><?php echo esc_html($model['rooms']); ?> sob</span>
+                                <span><?php echo esc_html($model['rooms']); ?> Zimmer</span>
                             </div>
                             <div class="model-spec">
                                 <?php echo wohnegruen_get_icon('users'); ?>
-                                <span><?php echo esc_html($model['persons']); ?> oseb</span>
+                                <span><?php echo esc_html($model['persons']); ?> Personen</span>
                             </div>
                         </div>
                         <a href="<?php echo esc_url($model['link'] ?: '#'); ?>" class="btn btn-primary">

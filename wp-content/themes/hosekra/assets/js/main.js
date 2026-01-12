@@ -1,5 +1,5 @@
 ﻿/**
- * Hosekra Theme JavaScript
+ * WohneGrün Theme JavaScript
  */
 
 document.addEventListener('DOMContentLoaded', function() {
