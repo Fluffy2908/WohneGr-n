@@ -6,7 +6,7 @@ $footer_col2_title = wohnegruen_get_option('footer_col2_title', 'Schnelllinks');
 $footer_col2_links = wohnegruen_get_option('footer_col2_links');
 $footer_col3_title = wohnegruen_get_option('footer_col3_title', 'Modelle');
 $footer_col3_links = wohnegruen_get_option('footer_col3_links');
-$footer_copyright = wohnegruen_get_option('footer_copyright', 'wohnegruen. Alle Rechte vorbehalten.');
+$footer_copyright = wohnegruen_get_option('footer_copyright', 'WohneGrün. Alle Rechte vorbehalten.');
 $footer_legal_links = wohnegruen_get_option('footer_legal_links');
 
 // Contact info
@@ -25,8 +25,8 @@ $contact_address = wohnegruen_get_option('contact_address', 'Alpenstraße 1, 502
                     <?php if ($nav_logo_alt && isset($nav_logo_alt['url'])) : ?>
                         <img src="<?php echo esc_url($nav_logo_alt['url']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
                     <?php else : ?>
-                        <div class="logo-icon">H</div>
-                        <span class="logo-text">Hose<span>kra</span></span>
+                        <div class="logo-icon">W</div>
+                        <span class="logo-text">Wohne<span>Grün</span></span>
                     <?php endif; ?>
                 </div>
                 <p><?php echo esc_html($footer_description); ?></p>
@@ -59,9 +59,8 @@ $contact_address = wohnegruen_get_option('contact_address', 'Alpenstraße 1, 502
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                         <?php endforeach;
                     else : ?>
-                        <a href="#modelle">Alpin Kompakt</a>
-                        <a href="#modelle">Alpin Comfort</a>
-                        <a href="#modelle">Alpin Premium</a>
+                        <a href="#modelle">Nature</a>
+                        <a href="#modelle">Pure</a>
                         <a href="#kontakt">Sonderanfertigungen</a>
                     <?php endif; ?>
                 </div>

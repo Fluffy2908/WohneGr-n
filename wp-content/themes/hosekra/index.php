@@ -114,11 +114,11 @@
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('rooms'); ?>
-                            <span>4 sobe</span>
+                            <span>4 Zimmer</span>
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('users'); ?>
-                            <span>4-5 oseb</span>
+                            <span>4-5 Personen</span>
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
@@ -135,7 +135,7 @@
                 </div>
                 <div class="model-content">
                     <h2>Model Modern</h2>
-                    <p>Sodoben dizajn z ravno streho in velikimi steklenimi površinami.</p>
+                    <p>Modernes Design mit Flachdach und großen Glasflächen.</p>
                     <div class="model-specs">
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('size'); ?>
@@ -143,11 +143,11 @@
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('rooms'); ?>
-                            <span>5 sob</span>
+                            <span>5 Zimmer</span>
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('users'); ?>
-                            <span>5-6 oseb</span>
+                            <span>5-6 Personen</span>
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
@@ -164,7 +164,7 @@
                 </div>
                 <div class="model-content">
                     <h2>Model Family</h2>
-                    <p>Prostorna družinska hiša za večje družine.</p>
+                    <p>Geräumiges Familienhaus für größere Familien.</p>
                     <div class="model-specs">
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('size'); ?>
@@ -172,11 +172,11 @@
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('rooms'); ?>
-                            <span>6 sob</span>
+                            <span>6 Zimmer</span>
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('users'); ?>
-                            <span>6-7 oseb</span>
+                            <span>6-7 Personen</span>
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
@@ -193,7 +193,7 @@
                 </div>
                 <div class="model-content">
                     <h2>Model Premium</h2>
-                    <p>Luksuzna izvedba z vrhunskimi materiali in opremo.</p>
+                    <p>Luxusausführung mit hochwertigen Materialien und Ausstattung.</p>
                     <div class="model-specs">
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('size'); ?>
@@ -201,11 +201,11 @@
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('rooms'); ?>
-                            <span>7 sob</span>
+                            <span>7 Zimmer</span>
                         </div>
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('users'); ?>
-                            <span>6-8 oseb</span>
+                            <span>6-8 Personen</span>
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">

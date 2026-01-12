@@ -24,8 +24,8 @@ $contact_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
             <?php if ($nav_logo && isset($nav_logo['url'])) : ?>
                 <img src="<?php echo esc_url($nav_logo['url']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
             <?php else : ?>
-                <div class="logo-icon">H</div>
-                <span class="logo-text">Hose<span>kra</span></span>
+                <div class="logo-icon">W</div>
+                <span class="logo-text">Wohne<span>Grün</span></span>
             <?php endif; ?>
         </a>
 

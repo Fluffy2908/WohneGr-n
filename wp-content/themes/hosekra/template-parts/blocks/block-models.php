@@ -110,7 +110,7 @@ if (empty($models)) {
                             </div>
                         </div>
                         <a href="<?php echo esc_url($model['link'] ?: '#'); ?>" class="btn btn-primary">
-                            Podrobnosti
+                            Details ansehen
                             <?php echo wohnegruen_get_icon('arrow-right'); ?>
                         </a>
                     </div>
