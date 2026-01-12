@@ -146,26 +146,28 @@ function wohnegruen_create_required_pages() {
     $gallery_id = wp_insert_post(array(
         'post_title'    => 'Gallery',
         'post_name'     => 'gallery',
-        'post_content'  => '<!-- wp:acf/wohnegruen-gallery {"name":"acf/wohnegruen-gallery","mode":"preview"} /-->',
+        'post_content'  => '',
         'post_status'   => 'publish',
         'post_type'     => 'page',
     ));
 
     if ($gallery_id && !is_wp_error($gallery_id)) {
-        // No template needed - uses default with Gutenberg block
+        // Set custom template for gallery page
+        update_post_meta($gallery_id, '_wp_page_template', 'page-gallery-new.php');
     }
 
     // 3. Create 3D Perspective Page (Floor Plans)
     $layouts_id = wp_insert_post(array(
         'post_title'    => '3D Perspective',
         'post_name'     => '3d-perspective',
-        'post_content'  => '<!-- wp:acf/wohnegruen-floor-plans {"name":"acf/wohnegruen-floor-plans","mode":"preview"} /-->',
+        'post_content'  => '',
         'post_status'   => 'publish',
         'post_type'     => 'page',
     ));
 
     if ($layouts_id && !is_wp_error($layouts_id)) {
-        // Uses default template with Gutenberg block
+        // Set custom template for floor plans page
+        update_post_meta($layouts_id, '_wp_page_template', 'page-floor-plans.php');
     }
 
     // 4. Create Models Info Page (links to archive)

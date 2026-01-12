@@ -608,6 +608,465 @@ body.menu-open {
     }
 }
 
+/* ============================================
+   GALLERY PAGE - Full Gallery with Lightbox
+   ============================================ */
+
+.page-gallery-full {
+    background: var(--color-white);
+}
+
+.gallery-hero {
+    background: var(--color-light);
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--color-dark);
+}
+
+.gallery-intro {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Gallery Filters */
+.gallery-filters-section {
+    background: var(--color-white);
+    padding: 30px 0;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.gallery-filter-btn {
+    padding: 10px 24px;
+    border: 2px solid var(--color-primary);
+    background: var(--color-white);
+    color: var(--color-primary);
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* Gallery Grid */
+.gallery-grid-section {
+    padding: 60px 0;
+}
+
+.gallery-grid-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.gallery-item-full {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item-full:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item-inner {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* 1:1 aspect ratio */
+    overflow: hidden;
+}
+
+.gallery-item-inner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item-full:hover .gallery-item-inner img {
+    transform: scale(1.1);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item-full:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+.gallery-item-title {
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Gallery Pagination */
+.gallery-pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.gallery-load-more {
+    min-width: 200px;
+}
+
+/* Lightbox Full */
+.lightbox-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-full.active {
+    display: flex;
+}
+
+.lightbox-content-full {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+#lightbox-image-full {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+.lightbox-info-full {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-white);
+}
+
+#lightbox-title-full {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+#lightbox-counter-full {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    line-height: 1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-prev {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.lightbox-next {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ============================================
+   FLOOR PLANS PAGE - 3D Perspective
+   ============================================ */
+
+.page-floor-plans {
+    background: var(--color-white);
+}
+
+.floor-plans-hero {
+    background: var(--color-light);
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.floor-plans-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--color-dark);
+}
+
+.floor-plans-intro {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.floor-plans-content-section {
+    padding: 0 0 80px;
+}
+
+/* Floor Plan Model */
+.floor-plan-model {
+    margin-bottom: 80px;
+}
+
+.floor-plan-model-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.floor-plan-model-header h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.model-size {
+    color: var(--color-text);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.model-description {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Floor Plan Variations */
+.floor-plan-variations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.floor-plan-item {
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floor-plan-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.floor-plan-image {
+    position: relative;
+    background: var(--color-light);
+    overflow: hidden;
+}
+
+.floor-plan-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.floor-plan-item:hover .floor-plan-image img {
+    transform: scale(1.05);
+}
+
+.floor-plan-zoom {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.floor-plan-item:hover .floor-plan-zoom {
+    opacity: 1;
+}
+
+.floor-plan-zoom:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.05);
+}
+
+.floor-plan-zoom svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Floor Plan Details */
+.floor-plan-details {
+    padding: 25px;
+}
+
+.floor-plan-details h3 {
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.floor-plan-details p {
+    color: var(--color-text);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.floor-plan-specs {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+}
+
+.floor-plan-specs .spec {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.floor-plan-specs svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary);
+}
+
+/* Floor Plan Lightbox */
+.floor-plan-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.floor-plan-lightbox.active {
+    display: flex;
+}
+
+.floor-plan-lightbox .lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#floor-plan-lightbox-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* Responsive Design for New Templates */
+@media (max-width: 768px) {
+    .gallery-hero h1,
+    .floor-plans-hero h1 {
+        font-size: 2rem;
+    }
+
+    .gallery-grid-full {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .floor-plan-variations {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .floor-plan-item {
+        margin-bottom: 0;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        padding: 10px;
+    }
+
+    .lightbox-close {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
 /* Utility classes */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
