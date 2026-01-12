@@ -8,7 +8,8 @@
       "Bash(findstr:*)",
       "Bash(powershell -Command \"Get-ChildItem -Recurse -Include *.php,*.js,*.md | ForEach-Object { \\(Get-Content $_FullName -Raw\\) -replace ''alpenhomes'', ''wohnegruen'' -replace ''AlpenHomes'', ''WohneGrün'' | Set-Content $_FullName -NoNewline }\")",
       "Bash(powershell -ExecutionPolicy Bypass -File rebrand.ps1)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:www.hosekra.com)"
     ]
   }
 }

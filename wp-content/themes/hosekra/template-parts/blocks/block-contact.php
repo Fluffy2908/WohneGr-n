@@ -11,11 +11,11 @@ $form_shortcode = get_field('contact_form_shortcode');
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'kontakt';
 
-// Get contact info from options
-$phone = wohnegruen_get_option('contact_phone', '+386 1 234 5678');
-$email = wohnegruen_get_option('contact_email', 'info@hosekra.si');
-$address = wohnegruen_get_option('contact_address', 'Ulica 123, 1000 Ljubljana');
-$hours = wohnegruen_get_option('contact_hours', 'Pon - Pet: 8:00 - 17:00');
+// Get contact info from block fields or use defaults
+$phone = get_field('contact_phone') ?: '+43 123 456 789';
+$email = get_field('contact_email') ?: 'info@wohnegruen.at';
+$address = get_field('contact_address') ?: 'Musterstraße 123, 1010 Wien, Austria';
+$hours = get_field('contact_hours') ?: 'Mo - Fr: 8:00 - 17:00';
 ?>
 
 <section class="contact-section section-padding" id="<?php echo esc_attr($block_id); ?>">

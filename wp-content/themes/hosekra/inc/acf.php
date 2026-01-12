@@ -209,43 +209,7 @@ function wohnegruen_block_categories($categories) {
 }
 add_filter('block_categories_all', 'wohnegruen_block_categories', 10, 1);
 
-/**
- * Register ACF Options Pages
- */
-function wohnegruen_register_options_pages() {
-    if (!function_exists('acf_add_options_page')) {
-        return;
-    }
-
-    acf_add_options_page(array(
-        'page_title'    => 'wohnegruen Nastavitve',
-        'menu_title'    => 'wohnegruen',
-        'menu_slug'     => 'wohnegruen-settings',
-        'capability'    => 'edit_posts',
-        'redirect'      => false,
-        'icon_url'      => 'dashicons-admin-home',
-        'position'      => 2,
-    ));
-
-    acf_add_options_sub_page(array(
-        'page_title'    => 'Navigacija',
-        'menu_title'    => 'Navigacija',
-        'parent_slug'   => 'wohnegruen-settings',
-    ));
-
-    acf_add_options_sub_page(array(
-        'page_title'    => 'Footer',
-        'menu_title'    => 'Footer',
-        'parent_slug'   => 'wohnegruen-settings',
-    ));
-
-    acf_add_options_sub_page(array(
-        'page_title'    => 'Kontaktni podatki',
-        'menu_title'    => 'Kontakt',
-        'parent_slug'   => 'wohnegruen-settings',
-    ));
-}
-add_action('acf/init', 'wohnegruen_register_options_pages');
+// ACF Options Pages removed - all settings now managed through ACF Field Groups
 
 /**
  * Register ACF Field Groups for Blocks
@@ -1298,21 +1262,5 @@ function wohnegruen_register_block_fields() {
 }
 add_action('acf/init', 'wohnegruen_register_block_fields');
 
-/**
- * Global Options Page (ACF)
- * All ACF registrations should run on acf/init.
- */
-add_action('acf/init', function () {
-    if (!function_exists('acf_add_options_page')) {
-        return;
-    }
-
-    acf_add_options_page([
-        'page_title'  => 'Seiteneinstellungen',
-        'menu_title'  => 'Einstellungen',
-        'menu_slug'   => 'site-settings',
-        'capability'  => 'edit_posts',
-        'redirect'    => false,
-    ]);
-});
+// Global Options Page removed - settings managed through individual field groups
 

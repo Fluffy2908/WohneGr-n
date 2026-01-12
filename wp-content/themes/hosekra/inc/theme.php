@@ -115,8 +115,8 @@ function wohnegruen_create_required_pages() {
 
     // 1. Create Home Page with Gutenberg blocks
     $home_id = wp_insert_post(array(
-        'post_title'    => 'Startseite',
-        'post_name'     => 'startseite',
+        'post_title'    => 'Home',
+        'post_name'     => 'home',
         'post_content'  => '', // Will add blocks separately
         'post_status'   => 'publish',
         'post_type'     => 'page',
@@ -144,8 +144,8 @@ function wohnegruen_create_required_pages() {
 
     // 2. Create Gallery Page
     $gallery_id = wp_insert_post(array(
-        'post_title'    => 'Galerie',
-        'post_name'     => 'galerie',
+        'post_title'    => 'Gallery',
+        'post_name'     => 'gallery',
         'post_content'  => '<!-- wp:acf/wohnegruen-gallery {"name":"acf/wohnegruen-gallery","mode":"preview"} /-->',
         'post_status'   => 'publish',
         'post_type'     => 'page',
@@ -155,16 +155,17 @@ function wohnegruen_create_required_pages() {
         // No template needed - uses default with Gutenberg block
     }
 
-    // 3. Create Layouts Page
+    // 3. Create 3D Perspective Page (Floor Plans)
     $layouts_id = wp_insert_post(array(
-        'post_title'    => 'Grundrisse & Innenausstattung',
-        'post_name'     => 'grundrisse',
+        'post_title'    => '3D Perspective',
+        'post_name'     => '3d-perspective',
+        'post_content'  => '<!-- wp:acf/wohnegruen-floor-plans {"name":"acf/wohnegruen-floor-plans","mode":"preview"} /-->',
         'post_status'   => 'publish',
         'post_type'     => 'page',
     ));
 
     if ($layouts_id && !is_wp_error($layouts_id)) {
-        update_post_meta($layouts_id, '_wp_page_template', 'page-layouts.php');
+        // Uses default template with Gutenberg block
     }
 
     // 4. Create Models Info Page (links to archive)
@@ -208,40 +209,25 @@ function wohnegruen_create_navigation_menu() {
         // Menu items configuration
         $items = array(
             array(
-                'title' => 'Startseite',
+                'title' => 'Home',
                 'object_id' => isset($page_ids['home']) ? $page_ids['home'] : 0,
                 'type' => 'post_type',
                 'object' => 'page',
             ),
             array(
-                'title' => 'Modelle',
-                'url' => home_url('/#modelle'),
-                'type' => 'custom',
-            ),
-            array(
-                'title' => 'Vorteile',
-                'url' => home_url('/#vorteile'),
-                'type' => 'custom',
-            ),
-            array(
-                'title' => 'Über Uns',
-                'url' => home_url('/#uber-uns'),
-                'type' => 'custom',
-            ),
-            array(
-                'title' => 'Galerie',
+                'title' => 'Gallery',
                 'object_id' => isset($page_ids['gallery']) ? $page_ids['gallery'] : 0,
                 'type' => 'post_type',
                 'object' => 'page',
             ),
             array(
-                'title' => 'Grundrisse',
+                'title' => '3D Perspective',
                 'object_id' => isset($page_ids['layouts']) ? $page_ids['layouts'] : 0,
                 'type' => 'post_type',
                 'object' => 'page',
             ),
             array(
-                'title' => 'Kontakt',
+                'title' => 'Contact',
                 'url' => home_url('/#kontakt'),
                 'type' => 'custom',
             ),
