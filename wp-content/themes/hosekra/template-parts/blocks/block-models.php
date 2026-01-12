@@ -48,17 +48,8 @@ if ($source === 'cpt') {
 if (empty($models)) {
     $models = array(
         array(
-            'title' => 'Alpin Kompakt',
-            'description' => 'Perfekt für Paare oder als Ferienhaus.',
-            'size' => '25 m²',
-            'rooms' => '1',
-            'persons' => '2',
-            'price' => 'ab 39.900 EUR',
-            'link' => '#',
-        ),
-        array(
-            'title' => 'Alpin Comfort',
-            'description' => 'Unser beliebtestes Modell mit optimaler Raumaufteilung.',
+            'title' => 'Nature',
+            'description' => 'Leben im Einklang mit der Natur. Nachhaltiges Wohnen mit optionaler Terrasse.',
             'size' => '45 m²',
             'rooms' => '2',
             'persons' => '4',
@@ -66,12 +57,12 @@ if (empty($models)) {
             'link' => '#',
         ),
         array(
-            'title' => 'Alpin Premium',
-            'description' => 'Luxuriöses Wohnen mit großer Terrasse und Premium-Ausstattung.',
-            'size' => '65 m²',
-            'rooms' => '3',
-            'persons' => '6',
-            'price' => 'ab 89.900 EUR',
+            'title' => 'Pure',
+            'description' => 'Minimalistisches Design trifft maximale Funktionalität mit optionaler Terrasse.',
+            'size' => '35 m²',
+            'rooms' => '1',
+            'persons' => '2',
+            'price' => 'ab 49.900 EUR',
             'link' => '#',
         ),
     );

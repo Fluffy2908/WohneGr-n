@@ -14,3 +14,6 @@ require_once get_template_directory() . '/inc/cpt/cpt-mobilhaus.php';
 
 // ACF Blocks and Fields
 require_once get_template_directory() . '/inc/acf.php';
+
+// Sample Data (Mobilhaus posts)
+require_once get_template_directory() . '/inc/sample-data.php';
