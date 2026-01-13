@@ -3,8 +3,8 @@ name: 🚀 Deploy WohneGruen Theme to cPanel via SFTP
 on:
   push:
     branches:
-      - main
       - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -23,6 +23,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
 
           TARGET: "/home/wohneg79/public_html/wp-content/themes/WohneGruen"
-          SOURCE: "."
+          SOURCE: "./"
 
           ARGS: "-avz --delete --exclude=.git --exclude=.github --no-perms"
