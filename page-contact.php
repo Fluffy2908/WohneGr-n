@@ -10,7 +10,7 @@ get_header();
 <!-- Contact Hero Section -->
 <section class="hero-section hero-small" id="kontakt">
     <div class="hero-background">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg" alt="Kontakt WohneGrün">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-5.jpg" alt="Kontakt WohneGrün">
         <div class="hero-overlay"></div>
     </div>
     <div class="container">

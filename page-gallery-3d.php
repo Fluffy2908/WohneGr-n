@@ -10,7 +10,7 @@ get_header();
 <!-- Gallery Hero Section -->
 <section class="hero-section hero-small" id="gallery-hero">
     <div class="hero-background">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg" alt="Galerie WohneGrün">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-3.jpg" alt="Galerie WohneGrün">
         <div class="hero-overlay"></div>
     </div>
     <div class="container">
@@ -51,16 +51,24 @@ get_header();
         <!-- Image Grid -->
         <div class="gallery-grid">
             <?php
-            // Default gallery items (you can replace with ACF fields)
+            // Gallery images from Hosekra
             $default_images = array(
-                array('category' => 'exterior', 'title' => 'Mobilheim in alpiner Landschaft', 'url' => get_template_directory_uri() . '/assets/images/model-1.jpg'),
-                array('category' => 'interior', 'title' => 'Modernes Wohnzimmer', 'url' => get_template_directory_uri() . '/assets/images/about.jpg'),
-                array('category' => 'exterior', 'title' => 'Kompaktes Mobilheim', 'url' => get_template_directory_uri() . '/assets/images/model-2.jpg'),
-                array('category' => 'exterior', 'title' => 'Luxus Mobilheim mit Terrasse', 'url' => get_template_directory_uri() . '/assets/images/model-3.jpg'),
-                array('category' => 'interior', 'title' => 'Küche mit moderner Ausstattung', 'url' => get_template_directory_uri() . '/assets/images/about.jpg'),
-                array('category' => 'exterior', 'title' => 'Mobilheim im Sonnenuntergang', 'url' => get_template_directory_uri() . '/assets/images/hero-bg.jpg'),
-                array('category' => 'terrace', 'title' => 'Terrasse mit Bergblick', 'url' => get_template_directory_uri() . '/assets/images/model-1.jpg'),
-                array('category' => 'exterior', 'title' => 'Mobilheim im Grünen', 'url' => get_template_directory_uri() . '/assets/images/model-2.jpg'),
+                array('category' => 'exterior', 'title' => 'WohneGrün Mobilhaus Außenansicht', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-exterior-1.jpg'),
+                array('category' => 'exterior', 'title' => 'Modernes Mobilheim im Grünen', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-exterior-2.jpg'),
+                array('category' => 'exterior', 'title' => 'Mobilhaus mit Panoramafenster', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-exterior-3.jpg'),
+                array('category' => 'terrace', 'title' => 'Terrasse mit Gartenmöbeln', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-terrace-1.jpg'),
+                array('category' => 'terrace', 'title' => 'Outdoor Wohnbereich', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-terrace-2.jpg'),
+                array('category' => 'terrace', 'title' => 'Terrasse mit Bergblick', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-terrace-3.jpg'),
+                array('category' => 'interior', 'title' => 'Moderne Küche in heller Holzoptik', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-kitchen-1.jpg'),
+                array('category' => 'interior', 'title' => 'Küche in dunklem Design', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-kitchen-2.jpg'),
+                array('category' => 'interior', 'title' => 'Elegante Küchenausstattung', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-kitchen-3.jpg'),
+                array('category' => 'interior', 'title' => 'Helles Wohnzimmer', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-living-1.jpg'),
+                array('category' => 'interior', 'title' => 'Moderner Wohnbereich', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-living-2.jpg'),
+                array('category' => 'interior', 'title' => 'Gemütliches Schlafzimmer', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-bedroom-1.jpg'),
+                array('category' => 'interior', 'title' => 'Modernes Badezimmer', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-interior-bathroom-1.jpg'),
+                array('category' => 'exterior', 'title' => 'Mobilheim im Sonnenuntergang', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-exterior-4.jpg'),
+                array('category' => 'exterior', 'title' => 'Seitenansicht Mobilhaus', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-exterior-5.jpg'),
+                array('category' => 'exterior', 'title' => 'Eingangsbereich', 'url' => get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-exterior-6.jpg'),
             );
 
             foreach ($default_images as $index => $image) : ?>

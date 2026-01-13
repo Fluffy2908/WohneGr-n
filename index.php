@@ -3,7 +3,7 @@
 <!-- Hero Section -->
 <section class="hero-section" id="home">
     <div class="hero-background">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg" alt="WohneGrün Mobilhäuser">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-hero-bg.jpg" alt="WohneGrün Mobilhäuser">
         <div class="hero-overlay"></div>
     </div>
     <div class="container">
