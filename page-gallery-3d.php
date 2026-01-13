@@ -118,31 +118,45 @@ get_header();
                 $floor_plans = array(
                     array(
                         'name' => 'Nature - Layout 1',
-                        'size' => '45 m²',
-                        'rooms' => '2 Zimmer',
+                        'size' => '24 m²',
+                        'rooms' => '3 x 8 m',
                         'description' => 'Offener Wohnbereich mit separatem Schlafzimmer und Badezimmer.',
+                        'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03.jpg',
                     ),
                     array(
-                        'name' => 'Nature - Layout 2',
-                        'size' => '45 m²',
-                        'rooms' => '2 Zimmer',
+                        'name' => 'Nature - Layout 2 (Gespiegelt)',
+                        'size' => '24 m²',
+                        'rooms' => '3 x 8 m',
                         'description' => 'Alternative Aufteilung mit größerer Terrasse und kompaktem Wohnbereich.',
+                        'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03-mirrored.jpg',
                     ),
                     array(
-                        'name' => 'Pure - Layout 1',
-                        'size' => '35 m²',
+                        'name' => 'Pure - 3D Ansicht 1',
+                        'size' => '24 m²',
                         'rooms' => '1 Zimmer',
                         'description' => 'Minimalistischer offener Grundriss, ideal für Singles oder Paare.',
+                        'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03-3d-1.jpg',
+                    ),
+                    array(
+                        'name' => 'Pure - 3D Ansicht 2',
+                        'size' => '24 m²',
+                        'rooms' => '1 Zimmer',
+                        'description' => 'Minimalistischer offener Grundriss mit moderner Einrichtung.',
+                        'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03-3d-2.jpg',
                     ),
                 );
 
                 foreach ($floor_plans as $index => $plan) : ?>
                     <div class="floor-plan-card">
                         <div class="floor-plan-image">
-                            <div class="floor-plan-placeholder">
-                                <?php echo wohnegruen_get_icon('grid'); ?>
-                                <span>Grundriss</span>
-                            </div>
+                            <?php if (isset($plan['image'])) : ?>
+                                <img src="<?php echo esc_url($plan['image']); ?>" alt="<?php echo esc_attr($plan['name']); ?>">
+                            <?php else : ?>
+                                <div class="floor-plan-placeholder">
+                                    <?php echo wohnegruen_get_icon('grid'); ?>
+                                    <span>Grundriss</span>
+                                </div>
+                            <?php endif; ?>
                             <button class="floor-plan-zoom" title="Vergrößern" data-plan="<?php echo $index; ?>">
                                 <?php echo wohnegruen_get_icon('expand'); ?>
                             </button>
