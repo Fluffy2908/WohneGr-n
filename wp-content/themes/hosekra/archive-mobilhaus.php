@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Archive Template: Mobilhaus Models
  *

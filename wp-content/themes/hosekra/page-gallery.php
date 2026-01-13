@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template Name: Gallery
  * Gallery page template with category filtering and lightbox

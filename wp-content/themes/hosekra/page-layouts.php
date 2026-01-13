@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template Name: Grundrisse & Innenausstattung
  * Template for displaying house layouts and interiors

@@ -13,7 +13,8 @@
       "WebFetch(domain:xn--wohnegrn-d6a.at)",
       "Bash(powershell -Command:*)",
       "Bash(powershell -ExecutionPolicy Bypass -File fix-slovene.ps1:*)",
-      "Bash(del fix-slovene.ps1)"
+      "Bash(del fix-slovene.ps1)",
+      "Bash(powershell -ExecutionPolicy Bypass -File remove-bom.ps1)"
     ]
   }
 }

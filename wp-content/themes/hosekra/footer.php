@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Get footer ACF fields
 $nav_logo_alt = wohnegruen_get_option('nav_logo_alt');
 $footer_description = wohnegruen_get_option('footer_description', 'Ihr Partner für hochwertige Mobilhäuser in Österreich. Qualität, Nachhaltigkeit und modernes Design.');

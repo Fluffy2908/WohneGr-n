@@ -1,4 +1,4 @@
-﻿<?php get_header(); ?>
+<?php get_header(); ?>
 
 <!-- Hero Section -->
 <section class="hero-section" id="home">

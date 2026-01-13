@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block Template: 3D Tour
  */

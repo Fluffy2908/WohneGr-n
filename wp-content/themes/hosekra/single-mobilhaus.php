@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Single Mobilhaus Template
  * Template for displaying single mobilhaus/model posts

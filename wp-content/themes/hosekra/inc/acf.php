@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * ACF Pro Blocks Registration for Gutenberg
  *

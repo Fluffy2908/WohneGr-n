@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Front Page Template (Gutenberg Block-based)
  *
