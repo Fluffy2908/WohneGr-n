@@ -4,7 +4,7 @@ Ein modernes WordPress-Theme für Mobilhäuser mit ACF Gutenberg-Blöcken und de
 
 ## 📋 Übersicht
 
-WohneGrün ist ein vollständig anpassbares WordPress-Theme, das speziell für die Präsentation von Mobilhäusern entwickelt wurde. Das Theme nutzt Advanced Custom Fields (ACF) Pro für flexible Gutenberg-Blöcke und bietet eine intuitive Benutzeroberfläche für Content-Management.
+WohneGrün ist ein vollständig anpassbares WordPress-Theme das speziell für die Präsentation von Mobilhäusern entwickelt wurde. Das Theme nutzt Advanced Custom Fields (ACF) Pro für flexible Gutenberg-Blöcke und bietet eine intuitive Benutzeroberfläche für Content-Management.
 
 ## ✨ Hauptfunktionen
 
