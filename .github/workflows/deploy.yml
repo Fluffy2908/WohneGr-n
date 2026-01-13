@@ -20,9 +20,10 @@ jobs:
         with:
           REMOTE_HOST: ${{ secrets.SFTP_SERVER }}
           REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          REMOTE_PORT: 22
           SSH_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
 
-          TARGET: "/home/wohneg79/public_html/wp-content/themes/WohneGruen"
+          TARGET: "/home/wohneg79/public_html/wp-content/themes/WohneGruen/"
           SOURCE: "./"
 
           ARGS: "-avz --delete --exclude=.git --exclude=.github --no-perms"
