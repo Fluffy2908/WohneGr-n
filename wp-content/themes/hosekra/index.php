@@ -3,30 +3,30 @@
 <!-- Hero Section -->
 <section class="hero-section" id="home">
     <div class="hero-background">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg" alt="wohnegruen montažne hiše">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg" alt="WohneGrün Mobilhäuser">
         <div class="hero-overlay"></div>
     </div>
     <div class="container">
         <div class="hero-content">
-            <div class="hero-badge">Dobavljivo po celi Avstriji</div>
-            <h1>Gradimo vaš sanjski dom</h1>
-            <h2>Vrhunske montažne hiše, izdelane po meri vaših želja. Kakovost, trajnost in moderno oblikovanje v enem.</h2>
+            <div class="hero-badge">Österreichweit verfügbar</div>
+            <h1>Wir bauen Ihr Traumhaus</h1>
+            <h2>Hochwertige Mobilhäuser, nach Ihren Wünschen gefertigt. Qualität, Nachhaltigkeit und modernes Design in einem.</h2>
             <div class="hero-buttons">
-                <a href="#modeli" class="btn btn-primary">
-                    Oglejte si modele
+                <a href="#modelle" class="btn btn-primary">
+                    Modelle ansehen
                     <?php echo wohnegruen_get_icon('arrow-right'); ?>
                 </a>
-                <a href="#kontakt" class="btn btn-white">Pridobite cenik</a>
+                <a href="#kontakt" class="btn btn-white">Preisliste anfordern</a>
             </div>
             <span class="hero-divider"></span>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <span class="hero-stat-number">25+</span>
-                    <span class="hero-stat-label">Let garancije</span>
+                    <span class="hero-stat-label">Jahre Garantie</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-number">1500+</span>
-                    <span class="hero-stat-label">Zadovoljnih kupcev</span>
+                    <span class="hero-stat-label">Zufriedene Kunden</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-number">100%</span>
@@ -41,16 +41,16 @@
 <section class="features-section" id="prednosti">
     <div class="container">
         <div class="section-header">
-            <h2>Zakaj izbrati nas?</h2>
-            <p>Ponujamo celovite rešitve za vaš novi dom - od zasnove do ključa v roki.</p>
+            <h2>Warum WohneGrün wählen?</h2>
+            <p>Wir bieten komplette Lösungen für Ihr neues Zuhause - von der Planung bis zur Schlüsselübergabe.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
                     <?php echo wohnegruen_get_icon('shield'); ?>
                 </div>
-                <h3>25 let garancije</h3>
-                <p>Zaupajte v našo kakovost. Vsaka hiša ima 25-letno garancijo na konstrukcijo.</p>
+                <h3>25 Jahre Garantie</h3>
+                <p>Vertrauen Sie auf unsere Qualität. Jedes Haus hat 25 Jahre Garantie auf die Konstruktion.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -70,33 +70,33 @@
                 <div class="feature-icon">
                     <?php echo wohnegruen_get_icon('tools'); ?>
                 </div>
-                <h3>Ključ v roke</h3>
-                <p>Popolna storitev od načrtovanja do zadnjega detajla.</p>
+                <h3>Schlüsselfertig</h3>
+                <p>Kompletter Service von der Planung bis zum letzten Detail.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <?php echo wohnegruen_get_icon('leaf'); ?>
                 </div>
-                <h3>Ekološka gradnja</h3>
-                <p>Trajnostni materiali in energetsko učinkovita gradnja za zeleno prihodnost.</p>
+                <h3>Ökologisches Bauen</h3>
+                <p>Nachhaltige Materialien und energieeffiziente Bauweise für eine grüne Zukunft.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <?php echo wohnegruen_get_icon('home'); ?>
                 </div>
-                <h3>Po meri</h3>
-                <p>Prilagodimo vsak model vašim željam in potrebam.</p>
+                <h3>Maßgeschneidert</h3>
+                <p>Wir passen jedes Modell an Ihre Wünsche und Bedürfnisse an.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Section 2 - Models -->
-<section class="models-section" id="modeli">
+<section class="models-section" id="modelle">
     <div class="container">
         <div class="section-header">
-            <h2>Naši modeli</h2>
-            <p>Izbirajte med preverjenimi modeli ali pa skupaj ustvarimo dom po vaši meri.</p>
+            <h2>Unsere Modelle</h2>
+            <p>Wählen Sie aus bewährten Modellen oder lassen Sie uns gemeinsam Ihr individuelles Haus planen.</p>
         </div>
         <div class="models-grid">
             <!-- Model 1 -->
@@ -106,7 +106,7 @@
                 </div>
                 <div class="model-content">
                     <h2>Model Classic</h2>
-                    <p>Klasična enodružinska hiša z modernimi elementi.</p>
+                    <p>Klassisches Einfamilienhaus mit modernen Elementen.</p>
                     <div class="model-specs">
                         <div class="model-spec">
                             <?php echo wohnegruen_get_icon('size'); ?>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
-                        Oglejte si več
+                        Mehr erfahren
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </a>
                 </div>
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
-                        Oglejte si več
+                        Mehr erfahren
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </a>
                 </div>
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
-                        Oglejte si več
+                        Mehr erfahren
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </a>
                 </div>
@@ -209,7 +209,7 @@
                         </div>
                     </div>
                     <a href="#" class="btn-arrow">
-                        Oglejte si več
+                        Mehr erfahren
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </a>
                 </div>
@@ -217,7 +217,7 @@
         </div>
         <div class="models-cta">
             <a href="#" class="btn btn-primary">
-                Oglejte si vse modele
+                Alle Modelle ansehen
                 <?php echo wohnegruen_get_icon('arrow-right'); ?>
             </a>
         </div>
@@ -225,39 +225,39 @@
 </section>
 
 <!-- Section 3 - About -->
-<section class="about-section" id="o-nas">
+<section class="about-section" id="about">
     <div class="about-wrapper">
         <div class="about-image">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about.jpg" alt="O podjetju wohnegruen">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about.jpg" alt="Über WohneGrün">
             <div class="about-image-overlay">
-                <p>"Naša misija je ustvariti dom, ki presega pričakovanja in postane zatočišče za generacije."</p>
+                <p>"Unsere Mission ist es, ein Zuhause zu schaffen, das Erwartungen übertrifft und zur Zuflucht für Generationen wird."</p>
             </div>
         </div>
         <div class="about-content">
-            <h2>Več kot 20 let izkušenj v gradnji domov</h2>
-            <p>wohnegruen je družinsko podjetje, ki že od leta 2003 gradi kakovostne montažne hiše po vsej Avstriji. Naša ekipa izkušenih strokovnjakov
-                skrbi, da vsak projekt izpolni pričakovanja naših strank.</p>
-            <p>Zaupajte nam gradnjo vašega sanjskega doma in se prepričajte o naši kakovosti.</p>
+            <h2>Über 20 Jahre Erfahrung im Hausbau</h2>
+            <p>WohneGrün ist ein Familienunternehmen, das seit 2003 hochwertige Mobilhäuser in ganz Österreich baut. Unser Team erfahrener Fachleute
+                sorgt dafür, dass jedes Projekt die Erwartungen unserer Kunden erfüllt.</p>
+            <p>Vertrauen Sie uns den Bau Ihres Traumhauses an und überzeugen Sie sich von unserer Qualität.</p>
             <ul class="about-list">
                 <li>
                     <?php echo wohnegruen_get_icon('check'); ?>
-                    <span>Certificirani materiali evropskih proizvajalcev</span>
+                    <span>Zertifizierte Materialien europäischer Hersteller</span>
                 </li>
                 <li>
                     <?php echo wohnegruen_get_icon('check'); ?>
-                    <span>Lastna proizvodnja v Avstriji</span>
+                    <span>Eigene Produktion in Österreich</span>
                 </li>
                 <li>
                     <?php echo wohnegruen_get_icon('check'); ?>
-                    <span>Profesionalna ekipa z več kot 50 zaposlenimi</span>
+                    <span>Professionelles Team mit über 50 Mitarbeitern</span>
                 </li>
                 <li>
                     <?php echo wohnegruen_get_icon('check'); ?>
-                    <span>Individualno načrtovanje po vaših željah</span>
+                    <span>Individuelle Planung nach Ihren Wünschen</span>
                 </li>
                 <li>
                     <?php echo wohnegruen_get_icon('check'); ?>
-                    <span>Transparentne cene brez skritih stroškov</span>
+                    <span>Transparente Preise ohne versteckte Kosten</span>
                 </li>
             </ul>
         </div>
@@ -268,40 +268,40 @@
 <section class="contact-section" id="kontakt">
     <div class="container">
         <div class="section-header">
-            <h2>Kontaktirajte nas</h2>
-            <p>Imate vprašanja ali bi želeli pridobiti ponudbo? Pišite nam ali nas pokličite.</p>
+            <h2>Kontaktieren Sie uns</h2>
+            <p>Haben Sie Fragen oder möchten Sie ein Angebot erhalten? Schreiben Sie uns oder rufen Sie an.</p>
         </div>
 
         <div class="contact-info-bar">
-            <h3>Vedno smo vam na voljo</h3>
-            <p>Naša ekipa vam z veseljem pomaga pri vseh vprašanjih.</p>
+            <h3>Wir sind für Sie da</h3>
+            <p>Unser Team hilft Ihnen gerne bei allen Fragen weiter.</p>
             <div class="contact-info-grid">
                 <div class="contact-info-item">
                     <?php echo wohnegruen_get_icon('phone'); ?>
                     <div>
                         <p>Telefon</p>
-                        <p>+43 123 456 789</p>
+                        <p>+43 316 123 456</p>
                     </div>
                 </div>
                 <div class="contact-info-item">
                     <?php echo wohnegruen_get_icon('email'); ?>
                     <div>
-                        <p>E-pošta</p>
+                        <p>E-Mail</p>
                         <p>info@wohnegruen.at</p>
                     </div>
                 </div>
                 <div class="contact-info-item">
                     <?php echo wohnegruen_get_icon('location'); ?>
                     <div>
-                        <p>Naslov</p>
-                        <p>Musterstraße 123, 1010 Wien</p>
+                        <p>Adresse</p>
+                        <p>Grazer Str. 30, 8071 Hausmannstätten</p>
                     </div>
                 </div>
                 <div class="contact-info-item">
-                    <?php echo hwohnegruen_get_icon('clock'); ?>
+                    <?php echo wohnegruen_get_icon('clock'); ?>
                     <div>
-                        <p>Delovni čas</p>
-                        <p>Pon - Pet: 8:00 - 17:00</p>
+                        <p>Öffnungszeiten</p>
+                        <p>Mo - Fr: 8:00 - 17:00</p>
                     </div>
                 </div>
             </div>
@@ -310,11 +310,11 @@
         <div class="contact-form-wrapper">
             <form class="contact-form" action="#" method="POST">
                 <div class="form-group">
-                    <label for="name">Ime in priimek *</label>
+                    <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-pošta *</label>
+                    <label for="email">E-Mail *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
@@ -322,22 +322,22 @@
                     <input type="tel" id="phone" name="phone">
                 </div>
                 <div class="form-group">
-                    <label for="subject">Zadeva</label>
+                    <label for="subject">Betreff</label>
                     <select id="subject" name="subject">
-                        <option value="">Izberite temo</option>
-                        <option value="ponudba">Želim ponudbo</option>
-                        <option value="ogled">Želim ogled</option>
-                        <option value="vprasanje">Splošno vprašanje</option>
-                        <option value="drugo">Drugo</option>
+                        <option value="">Bitte wählen</option>
+                        <option value="angebot">Angebot anfragen</option>
+                        <option value="besichtigung">Besichtigung vereinbaren</option>
+                        <option value="frage">Allgemeine Frage</option>
+                        <option value="sonstiges">Sonstiges</option>
                     </select>
                 </div>
                 <div class="form-group full-width">
-                    <label for="message">Sporočilo *</label>
+                    <label for="message">Nachricht *</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
                 <div class="form-submit">
                     <button type="submit" class="btn btn-primary">
-                        Pošljite sporočilo
+                        Nachricht senden
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </button>
                 </div>

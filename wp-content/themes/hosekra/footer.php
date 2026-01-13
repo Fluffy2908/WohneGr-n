@@ -10,9 +10,9 @@ $footer_copyright = wohnegruen_get_option('footer_copyright', 'WohneGrün. Alle 
 $footer_legal_links = wohnegruen_get_option('footer_legal_links');
 
 // Contact info
-$contact_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
+$contact_phone = wohnegruen_get_option('contact_phone', '+43 316 123 456');
 $contact_email = wohnegruen_get_option('contact_email', 'info@wohnegruen.at');
-$contact_address = wohnegruen_get_option('contact_address', 'Alpenstraße 1, 5020 Salzburg');
+$contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 8071 Hausmannstätten, Austria');
 ?>
 
 <!-- Footer -->
