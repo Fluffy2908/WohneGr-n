@@ -1,0 +1,28 @@
+name: 🚀 Deploy WohneGruen Theme to cPanel via SFTP
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  sftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy WohneGruen theme to cPanel
+        uses: easingthemes/ssh-deploy@v2.2.11
+        with:
+          REMOTE_HOST: ${{ secrets.SFTP_SERVER }}
+          REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
+
+          TARGET: "/home/wohneg79/public_html/wp-content/themes/WohneGruen"
+          SOURCE: "."
+
+          ARGS: "-avz --delete --exclude=.git --exclude=.github --no-perms"
