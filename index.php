@@ -56,15 +56,15 @@
                 <div class="feature-icon">
                     <?php echo wohnegruen_get_icon('star'); ?>
                 </div>
-                <h3>Premium kakovost</h3>
-                <p>Uporabljamo samo najboljše materiale evropskih proizvajalcev.</p>
+                <h3>Premium Qualität</h3>
+                <p>Wir verwenden nur die besten Materialien europäischer Hersteller.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <?php echo wohnegruen_get_icon('truck'); ?>
                 </div>
-                <h3>Hitra dostava</h3>
-                <p>Montaža v roku 3-5 dni. Celoten projekt zaključen v 8-12 tednih.</p>
+                <h3>Schnelle Lieferung</h3>
+                <p>Montage in 3-5 Tagen. Gesamtes Projekt abgeschlossen in 8-12 Wochen.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">

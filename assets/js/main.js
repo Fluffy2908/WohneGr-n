@@ -144,7 +144,7 @@ function initGallery() {
 
     if (!filterButtons.length || !galleryItems.length) return;
 
-    let currentFilter = 'Alle';
+    let currentFilter = 'all';
     let currentIndex = 0;
     let filteredItems = [];
 
@@ -161,7 +161,7 @@ function initGallery() {
             // Filter items
             galleryItems.forEach(function(item) {
                 const category = item.getAttribute('data-category');
-                if (filter === 'Alle' || category === filter) {
+                if (filter === 'all' || category === filter) {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
