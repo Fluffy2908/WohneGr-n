@@ -10,7 +10,7 @@ get_header();
 <!-- About Hero Section -->
 <section class="hero-section hero-small" id="about-hero">
     <div class="hero-background">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-4.jpg" alt="Über WohneGrün">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-4.jpg" alt="WohneGruen Firmensitz - Über 20 Jahre Erfahrung im Mobilhausbau in Österreich" loading="eager">
         <div class="hero-overlay"></div>
     </div>
     <div class="container">
@@ -25,7 +25,7 @@ get_header();
 <section class="about-section section-padding">
     <div class="about-wrapper">
         <div class="about-image">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-2.jpg" alt="Über WohneGrün">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-2.jpg" alt="WohneGruen Mobilhaus im Grünen - Nachhaltige Bauweise mit zertifizierten Materialien" loading="lazy">
             <div class="about-image-overlay">
                 <p>"Unsere Mission ist es, ein Zuhause zu schaffen, das Erwartungen übertrifft und zur Zuflucht für Generationen wird."</p>
             </div>

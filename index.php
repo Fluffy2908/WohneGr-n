@@ -3,7 +3,7 @@
 <!-- Hero Section -->
 <section class="hero-section" id="home">
     <div class="hero-background">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-hero-bg.jpg" alt="WohneGrün Mobilhäuser">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-hero-bg.jpg" alt="Modernes WohneGruen Mobilhaus mit Terrasse in natürlicher Umgebung - Hochwertige Fertighäuser in Österreich" loading="eager">
         <div class="hero-overlay"></div>
     </div>
     <div class="container">
@@ -102,7 +102,7 @@
             <!-- Model 1 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-1.jpg" alt="Model Classic">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-1.jpg" alt="WohneGruen Model Classic - Klassisches Mobilhaus 120 m² mit 4 Zimmern für 4-5 Personen" loading="lazy">
                 </div>
                 <div class="model-content">
                     <h2>Model Classic</h2>
@@ -131,7 +131,7 @@
             <!-- Model 2 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-2.jpg" alt="Model Modern">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-2.jpg" alt="WohneGruen Model Modern - Modernes Mobilhaus 150 m² mit Flachdach und großen Glasflächen für 5-6 Personen" loading="lazy">
                 </div>
                 <div class="model-content">
                     <h2>Model Modern</h2>
@@ -160,7 +160,7 @@
             <!-- Model 3 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-3.jpg" alt="Model Family">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-3.jpg" alt="WohneGruen Model Family - Geräumiges Familien-Mobilhaus 180 m² mit 6 Zimmern für 6-7 Personen" loading="lazy">
                 </div>
                 <div class="model-content">
                     <h2>Model Family</h2>
@@ -189,7 +189,7 @@
             <!-- Model 4 -->
             <div class="model-card">
                 <div class="model-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-4.jpg" alt="Model Premium">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-4.jpg" alt="WohneGruen Model Premium - Luxus Mobilhaus 220 m² mit Premium-Ausstattung für 6-8 Personen" loading="lazy">
                 </div>
                 <div class="model-content">
                     <h2>Model Premium</h2>

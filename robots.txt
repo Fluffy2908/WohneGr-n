@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /wp-content/themes/WohneGruen/assets/
+Disallow: /cgi-bin/
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /comments/
+Disallow: */trackback/$
+Disallow: */feed/$
+Disallow: */comments/$
+Disallow: /*?*
+Disallow: /*?
+Allow: /wp-content/themes/WohneGruen/assets/images/
+Allow: /wp-content/uploads/
+
+# Sitemap location
+Sitemap: https://wohnegruen.at/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
