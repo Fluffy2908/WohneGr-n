@@ -99,15 +99,32 @@ get_header();
             <p>Entdecken Sie unsere Mobilhäuser in 360 Grad und sehen Sie die detaillierten 3D-Grundrisse.</p>
         </div>
 
-        <!-- 3D Tour Video/iFrame -->
-        <div class="tour-wrapper">
-            <div class="tour-content">
-                <div class="tour-placeholder">
-                    <?php echo wohnegruen_get_icon('cube'); ?>
-                    <p>3D-Rundgang in Kürze verfügbar</p>
-                    <span>Hier können Sie bald einen vollständigen virtuellen Rundgang durch unsere Mobilhäuser unternehmen.</span>
+        <!-- Tour Features -->
+        <div class="tour-features-top">
+            <button class="tour-feature-btn active" data-view="all">
+                <div class="tour-feature-icon">
+                    <?php echo wohnegruen_get_icon('grid'); ?>
                 </div>
-            </div>
+                <span>Alle Räume ansehen</span>
+            </button>
+            <button class="tour-feature-btn" data-view="360">
+                <div class="tour-feature-icon">
+                    <?php echo wohnegruen_get_icon('cube'); ?>
+                </div>
+                <span>360-Grad-Ansicht</span>
+            </button>
+            <button class="tour-feature-btn" data-view="floorplan">
+                <div class="tour-feature-icon">
+                    <?php echo wohnegruen_get_icon('home'); ?>
+                </div>
+                <span>Grundrisse</span>
+            </button>
+            <button class="tour-feature-btn" data-view="interior">
+                <div class="tour-feature-icon">
+                    <?php echo wohnegruen_get_icon('star'); ?>
+                </div>
+                <span>Innenausstattung</span>
+            </button>
         </div>
 
         <!-- Floor Plans -->
@@ -120,6 +137,7 @@ get_header();
                         'name' => 'Nature - Layout 1',
                         'size' => '24 m²',
                         'rooms' => '3 x 8 m',
+                        'type' => 'floorplan',
                         'description' => 'Offener Wohnbereich mit separatem Schlafzimmer und Badezimmer.',
                         'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03.jpg',
                     ),
@@ -127,6 +145,7 @@ get_header();
                         'name' => 'Nature - Layout 2 (Gespiegelt)',
                         'size' => '24 m²',
                         'rooms' => '3 x 8 m',
+                        'type' => 'floorplan',
                         'description' => 'Alternative Aufteilung mit größerer Terrasse und kompaktem Wohnbereich.',
                         'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03-mirrored.jpg',
                     ),
@@ -134,6 +153,7 @@ get_header();
                         'name' => 'Pure - 3D Ansicht 1',
                         'size' => '24 m²',
                         'rooms' => '1 Zimmer',
+                        'type' => '360',
                         'description' => 'Minimalistischer offener Grundriss, ideal für Singles oder Paare.',
                         'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03-3d-1.jpg',
                     ),
@@ -141,13 +161,30 @@ get_header();
                         'name' => 'Pure - 3D Ansicht 2',
                         'size' => '24 m²',
                         'rooms' => '1 Zimmer',
+                        'type' => '360',
                         'description' => 'Minimalistischer offener Grundriss mit moderner Einrichtung.',
                         'image' => get_template_directory_uri() . '/assets/images/floor-plan-eko-03-3d-2.jpg',
+                    ),
+                    array(
+                        'name' => 'Nature - DeLux Innenausstattung',
+                        'size' => '24 m²',
+                        'rooms' => 'Komplett ausgestattet',
+                        'type' => 'interior',
+                        'description' => 'Hochwertige Innenausstattung mit modernem Design und Premium-Materialien.',
+                        'image' => get_template_directory_uri() . '/assets/images/interior-eko-delux.jpg',
+                    ),
+                    array(
+                        'name' => 'Pure - Premium Innenausstattung',
+                        'size' => '24 m²',
+                        'rooms' => 'Voll ausgestattet',
+                        'type' => 'interior',
+                        'description' => 'Elegante Innenausstattung mit hochwertigen Oberflächen und moderner Küche.',
+                        'image' => get_template_directory_uri() . '/assets/images/interior-panorama-delux.jpg',
                     ),
                 );
 
                 foreach ($floor_plans as $index => $plan) : ?>
-                    <div class="floor-plan-card">
+                    <div class="floor-plan-card" data-type="<?php echo esc_attr($plan['type']); ?>">
                         <div class="floor-plan-image">
                             <?php if (isset($plan['image'])) : ?>
                                 <img src="<?php echo esc_url($plan['image']); ?>" alt="<?php echo esc_attr($plan['name']); ?>">
@@ -177,34 +214,6 @@ get_header();
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>
-        </div>
-
-        <!-- Tour Features -->
-        <div class="tour-features">
-            <div class="tour-feature">
-                <div class="tour-feature-icon">
-                    <?php echo wohnegruen_get_icon('cube'); ?>
-                </div>
-                <span>360-Grad-Ansicht</span>
-            </div>
-            <div class="tour-feature">
-                <div class="tour-feature-icon">
-                    <?php echo wohnegruen_get_icon('expand'); ?>
-                </div>
-                <span>Vollbildmodus</span>
-            </div>
-            <div class="tour-feature">
-                <div class="tour-feature-icon">
-                    <?php echo wohnegruen_get_icon('play'); ?>
-                </div>
-                <span>Interaktive Navigation</span>
-            </div>
-            <div class="tour-feature">
-                <div class="tour-feature-icon">
-                    <?php echo wohnegruen_get_icon('grid'); ?>
-                </div>
-                <span>Alle Räume ansehen</span>
             </div>
         </div>
     </div>
@@ -260,6 +269,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Floor plan filtering functionality
+    const tourBtns = document.querySelectorAll('.tour-feature-btn');
+    const floorPlanCards = document.querySelectorAll('.floor-plan-card');
+
+    if (tourBtns.length && floorPlanCards.length) {
+        tourBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const view = this.dataset.view;
+
+                // Update active button
+                tourBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Filter floor plans
+                floorPlanCards.forEach(card => {
+                    const cardType = card.dataset.type;
+                    if (view === 'all' || cardType === view) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
 });
 </script>
 

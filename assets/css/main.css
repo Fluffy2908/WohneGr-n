@@ -1634,3 +1634,97 @@ body.menu-open {
         position: static;
     }
 }
+
+/* ==========================================================================
+   TOUR FEATURES TOP (3D Rundgang Buttons)
+   ========================================================================== */
+
+.tour-features-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+    .tour-features-top {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+.tour-feature-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-muted-foreground);
+}
+
+.tour-feature-btn:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tour-feature-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+.tour-feature-btn .tour-feature-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: rgba(45, 124, 66, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tour-feature-btn.active .tour-feature-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tour-feature-btn .tour-feature-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+}
+
+.tour-feature-btn.active .tour-feature-icon svg {
+    color: #fff;
+}
+
+.tour-feature-btn span {
+    text-align: center;
+    line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+    .tour-feature-btn {
+        padding: 1rem 0.5rem;
+        font-size: 0.8125rem;
+    }
+
+    .tour-feature-btn .tour-feature-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .tour-feature-btn .tour-feature-icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 Not Found</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square150x150logo" content="https://www.neoserv.si/dist/static/server-templates/images/favicon/mstile-150x150.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.neoserv.si/dist/static/server-templates/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.neoserv.si/dist/static/server-templates/images/favicon/favicon-32x32.png">
+    <link rel="mask-icon" href="https://www.neoserv.si/dist/static/server-templates/images/favicon/safari-pinned-tab.svg">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://www.neoserv.si/dist/static/server-templates/images/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="https://www.neoserv.si/dist/static/server-templates/images/favicon/favicon.ico">
+    <link rel="stylesheet" href="https://www.neoserv.si/dist/static/server-templates/css/css.css">
+</head>
+<body>
+<div id="site" class="http-status-404 wrap">
+    <header>
+        <a class="logo" href="https://www.neoserv.si" target="_blank" rel="nofollow">
+            <img src="https://www.neoserv.si/dist/static/server-templates/images/identity/logo.svg" width="154" height="48" alt="NEOSERV">
+        </a>
+    </header>
+    <div class="tabset">
+        <input type="radio" name="tabset-lang" id="label-lang-sl_si" aria-controls="lang-sl_si" checked>
+        <label for="label-lang-sl_si">Slovensko</label>
+        <input type="radio" name="tabset-lang" id="label-lang-en_us" aria-controls="lang-en_us">
+        <label for="label-lang-en_us">English</label>
+        <div class="tab-panels">
+            <div id="lang-sl_si" class="tab-panel">
+
+                <section class="wrap">
+                    <div class="wrap-inner clearfix mb-48 ff-monospace header">
+                        <h1 class="c-blue scrawl-09"><code>404</code> <span class="fw-bold">Not found</span></h1>
+                        <p class="c-blue">Zahtevani <abbr title="Uniform Resource Identifier">URI</abbr> naslov ni bil najden</p>
+                    </div>
+                    <div class="wrap-inner clearfix">
+                        <div class="http-status-short mb-64">
+                            <img src="https://www.neoserv.si/dist/static/server-templates/images/neoserv/andy-404.png" alt="">
+                            <p>
+                                Pomeni, da spletni strežnik <strong>ni uspel najti</strong> zahtevane
+                                datoteke. Občasno pomeni tudi težave z <strong>mod_rewrite</strong> pravili <i class="c-gray">(oz.
+                                okvarjeno / manjkajočo &quot;.htaccess&quot; datoteko)</i>.
+                            </p>
+                        </div>
+                        <div class="contact-us align-center text-center">
+                            <p>
+                                Če menite, da je prišlo do napake, nas
+                                lahko <a href="https://www.neoserv.si/kontakt" rel="nofollow" target="_blank">kontaktirate</a> z
+                                ustreznimi informacijami <i class="c-gray">(npr. s posnetkom zaslona)</i>.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div id="lang-en_us" lang="en" class="tab-panel">
+
+                <section class="wrap">
+                    <div class="wrap-inner clearfix mb-48 ff-monospace header">
+                        <h1 class="c-blue scrawl-08"><code>404</code> <span class="fw-bold">Not Found</span></h1>
+                        <p class="c-blue">The requested <abbr title="Uniform Resource Identifier">URI</abbr> address was not found</p>
+                    </div>
+                    <div class="wrap-inner clearfix">
+                        <div class="http-status-short mb-64">
+                            <img src="https://www.neoserv.si/dist/static/server-templates/images/neoserv/andy-404.png" alt="">
+                            <p>
+                                It means the web server <strong>could not find</strong> the requested
+                                file. In some cases this also indicates an issue with <strong>mod_rewrite</strong>
+                                rules <i class="c-gray">(e.g. a corrupted / missing &quot;.htaccess&quot; file)</i>.
+                            </p>
+                        </div>
+                        <div class="contact-us align-center text-center">
+                            <p>
+                                If you believe this is an error please <a href="https://www.neoserv.si/kontakt" rel="nofollow" target="_blank">contact us</a> with
+                                the necessary details (<i class="c-gray">a screenshot is best</i>).
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+    <footer class="wrap">
+        <div class="wrap-inner pt-24 pb-48 clearfix">
+            <div class="footer-sign"></div>
+            <div class="about">
+                NEOSERV &copy; 2003-<script>document.write(/\d{4}/.exec(Date())[0]);</script>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
