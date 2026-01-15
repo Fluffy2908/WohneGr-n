@@ -265,3 +265,77 @@ function wohnegruen_create_navigation_menu() {
     }
 }
 add_action('after_switch_theme', 'wohnegruen_create_navigation_menu');
+
+/**
+ * Create legal pages automatically on theme activation
+ */
+function wohnegruen_create_legal_pages() {
+    // Check if already created
+    if (get_option('wohnegruen_legal_pages_created')) {
+        return;
+    }
+
+    // 1. Create Impressum page
+    $impressum_content = '<!-- wp:paragraph -->
+<p>Die Inhalte werden automatisch aus der Vorlage geladen.</p>
+<!-- /wp:paragraph -->';
+
+    $impressum_id = wp_insert_post(array(
+        'post_title'    => 'Impressum',
+        'post_name'     => 'impressum',
+        'post_content'  => $impressum_content,
+        'post_status'   => 'publish',
+        'post_type'     => 'page',
+        'post_author'   => 1,
+    ));
+
+    if ($impressum_id && !is_wp_error($impressum_id)) {
+        update_post_meta($impressum_id, '_wp_page_template', 'page-impressum.php');
+    }
+
+    // 2. Create Datenschutz page
+    $datenschutz_content = '<!-- wp:paragraph -->
+<p>Die Inhalte werden automatisch aus der Vorlage geladen.</p>
+<!-- /wp:paragraph -->';
+
+    $datenschutz_id = wp_insert_post(array(
+        'post_title'    => 'Datenschutzerklärung',
+        'post_name'     => 'datenschutz',
+        'post_content'  => $datenschutz_content,
+        'post_status'   => 'publish',
+        'post_type'     => 'page',
+        'post_author'   => 1,
+    ));
+
+    if ($datenschutz_id && !is_wp_error($datenschutz_id)) {
+        update_post_meta($datenschutz_id, '_wp_page_template', 'page-datenschutz.php');
+    }
+
+    // 3. Create AGB page
+    $agb_content = '<!-- wp:paragraph -->
+<p>Die Inhalte werden automatisch aus der Vorlage geladen.</p>
+<!-- /wp:paragraph -->';
+
+    $agb_id = wp_insert_post(array(
+        'post_title'    => 'Allgemeine Geschäftsbedingungen',
+        'post_name'     => 'agb',
+        'post_content'  => $agb_content,
+        'post_status'   => 'publish',
+        'post_type'     => 'page',
+        'post_author'   => 1,
+    ));
+
+    if ($agb_id && !is_wp_error($agb_id)) {
+        update_post_meta($agb_id, '_wp_page_template', 'page-agb.php');
+    }
+
+    // Store page IDs for reference
+    update_option('wohnegruen_legal_page_ids', array(
+        'impressum' => $impressum_id,
+        'datenschutz' => $datenschutz_id,
+        'agb' => $agb_id,
+    ));
+
+    update_option('wohnegruen_legal_pages_created', true);
+}
+add_action('after_switch_theme', 'wohnegruen_create_legal_pages');
