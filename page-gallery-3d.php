@@ -245,6 +245,18 @@ get_header();
     </div>
 </div>
 
+<!-- Floor Plan Lightbox -->
+<div class="gallery-lightbox" id="floor-plan-lightbox">
+    <button class="lightbox-close" aria-label="Schließen">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+    <div class="lightbox-content">
+        <img src="" alt="" id="floor-plan-lightbox-image">
+    </div>
+</div>
+
 <script>
 // Tab switching functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -293,6 +305,58 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             });
+        });
+    }
+
+    // Floor plan zoom lightbox functionality
+    const zoomButtons = document.querySelectorAll('.floor-plan-zoom');
+    const floorPlanLightbox = document.getElementById('floor-plan-lightbox');
+    const floorPlanLightboxImage = document.getElementById('floor-plan-lightbox-image');
+    const floorPlanLightboxClose = floorPlanLightbox ? floorPlanLightbox.querySelector('.lightbox-close') : null;
+
+    // Floor plan data from PHP
+    const floorPlansData = <?php echo json_encode($floor_plans); ?>;
+
+    if (zoomButtons.length && floorPlanLightbox) {
+        zoomButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const planIndex = this.getAttribute('data-plan');
+                const plan = floorPlansData[planIndex];
+
+                if (plan && plan.image) {
+                    floorPlanLightboxImage.src = plan.image;
+                    floorPlanLightboxImage.alt = plan.name;
+                    floorPlanLightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close lightbox
+        if (floorPlanLightboxClose) {
+            floorPlanLightboxClose.addEventListener('click', function() {
+                floorPlanLightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Close on background click
+        floorPlanLightbox.addEventListener('click', function(e) {
+            if (e.target === floorPlanLightbox || e.target === floorPlanLightbox.querySelector('.lightbox-content')) {
+                floorPlanLightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && floorPlanLightbox.classList.contains('active')) {
+                floorPlanLightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 });
