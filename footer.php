@@ -93,10 +93,21 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                     foreach ($footer_legal_links as $link) : ?>
                         <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                     <?php endforeach;
-                else : ?>
-                    <a href="<?php echo home_url('/impressum'); ?>">Impressum</a>
-                    <a href="<?php echo home_url('/datenschutz'); ?>">Datenschutz</a>
-                    <a href="<?php echo home_url('/agb'); ?>">AGB</a>
+                else :
+                    // Get legal page URLs
+                    $impressum_page = get_page_by_path('impressum');
+                    $datenschutz_page = get_page_by_path('datenschutz');
+                    $agb_page = get_page_by_path('agb');
+                    ?>
+                    <?php if ($impressum_page) : ?>
+                        <a href="<?php echo get_permalink($impressum_page); ?>">Impressum</a>
+                    <?php endif; ?>
+                    <?php if ($datenschutz_page) : ?>
+                        <a href="<?php echo get_permalink($datenschutz_page); ?>">Datenschutz</a>
+                    <?php endif; ?>
+                    <?php if ($agb_page) : ?>
+                        <a href="<?php echo get_permalink($agb_page); ?>">AGB</a>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
