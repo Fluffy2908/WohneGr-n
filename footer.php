@@ -94,9 +94,9 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                         <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                     <?php endforeach;
                 else : ?>
-                    <a href="#">Impressum</a>
-                    <a href="#">Datenschutz</a>
-                    <a href="#">AGB</a>
+                    <a href="<?php echo home_url('/impressum'); ?>">Impressum</a>
+                    <a href="<?php echo home_url('/datenschutz'); ?>">Datenschutz</a>
+                    <a href="<?php echo home_url('/agb'); ?>">AGB</a>
                 <?php endif; ?>
             </div>
         </div>

@@ -120,16 +120,16 @@ $contact_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
         </div>
 
         <!-- Hamburger Menu -->
-        <div class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Hauptmenü mobil">
     <div class="mobile-menu-items">
         <?php
         if (has_nav_menu('primary')) :

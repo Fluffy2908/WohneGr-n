@@ -2040,3 +2040,397 @@ body.menu-open {
         font-size: 1rem;
     }
 }
+
+/* ==========================================================================
+   ENHANCED STYLING & IMPROVEMENTS
+   ========================================================================== */
+
+/* Legal Pages Styling */
+.legal-section {
+    background: #fff;
+}
+
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.legal-content h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.legal-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-foreground);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-content h4 {
+    font-size: 1.125rem;
+    color: var(--color-foreground);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.legal-content p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.legal-content ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    line-height: 1.8;
+}
+
+.legal-content ul li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.legal-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.legal-content a:hover {
+    color: #1e5a38;
+}
+
+.legal-update {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+    color: #888;
+}
+
+/* Enhanced Focus States for Accessibility */
+*:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+button:focus-visible,
+.btn:focus-visible,
+a.btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--color-primary);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 0;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(45, 124, 66, 0.1);
+}
+
+/* Enhanced Button Styles */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    box-shadow: 0 4px 12px rgba(45, 124, 66, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 124, 66, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Enhanced Card Styles */
+.feature-card,
+.model-card,
+.value-card,
+.floor-plan-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.feature-card::after,
+.model-card::after,
+.value-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(45, 124, 66, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.feature-card:hover::after,
+.model-card:hover::after,
+.value-card:hover::after {
+    opacity: 1;
+}
+
+/* Enhanced Hero Section */
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.hero-badge {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e5a38 100%);
+    box-shadow: 0 4px 12px rgba(45, 124, 66, 0.3);
+    animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Enhanced Form Styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    transition: all 0.3s ease;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+    border-color: var(--color-primary);
+}
+
+/* Enhanced Gallery Items */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item-overlay {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+}
+
+.gallery-item img {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Enhanced Navigation */
+.site-navigation {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.nav-menu a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* Enhanced Footer */
+.site-footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.footer-legal a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.footer-legal a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.footer-legal a:hover::after {
+    width: 100%;
+}
+
+/* Improved Section Headers */
+.section-header {
+    position: relative;
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #1e5a38 100%);
+    border-radius: 2px;
+}
+
+/* Enhanced Stats */
+.hero-stat {
+    transition: transform 0.3s ease;
+}
+
+.hero-stat:hover {
+    transform: translateY(-5px);
+}
+
+.hero-stat-number {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e5a38 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Improved Contact Info Bar */
+.contact-info-bar {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e5a38 100%);
+    box-shadow: 0 4px 20px rgba(45, 124, 66, 0.2);
+}
+
+.contact-info-item {
+    transition: transform 0.3s ease;
+}
+
+.contact-info-item:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced Lightbox */
+.gallery-lightbox {
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-close,
+.lightbox-nav {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Improved Hamburger Menu */
+.hamburger span {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 768px) {
+    .legal-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .legal-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .legal-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .section-header::after {
+        width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .legal-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Accessibility: Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
