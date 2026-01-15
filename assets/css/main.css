@@ -1728,3 +1728,299 @@ body.menu-open {
         height: 1.25rem;
     }
 }
+
+/* ==========================================================================
+   CONTACT FORM NOTIFICATIONS
+   ========================================================================== */
+
+.form-notification {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    transition: opacity 0.3s ease;
+}
+
+.form-notification-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.form-notification-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* ==========================================================================
+   MOBILE IMPROVEMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Improved hero section on mobile */
+    .hero-section {
+        min-height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content h2,
+    .hero-content .hero-text {
+        font-size: 1rem;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: space-around;
+    }
+
+    .hero-stat {
+        flex: 0 0 auto;
+    }
+
+    .hero-stat-number {
+        font-size: 1.5rem;
+    }
+
+    /* Better navigation on mobile */
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+
+    .site-logo .logo-text {
+        font-size: 1.125rem;
+    }
+
+    .site-logo .logo-icon {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    /* Feature cards stack better */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .feature-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    /* Model cards on mobile */
+    .models-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .model-card {
+        max-width: 100%;
+    }
+
+    .model-image {
+        height: 200px;
+    }
+
+    /* Contact form on mobile */
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-info-item {
+        font-size: 0.9375rem;
+    }
+
+    .contact-form {
+        gap: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .contact-map {
+        margin-top: 2rem;
+    }
+
+    /* Gallery on mobile */
+    .gallery-filters {
+        gap: 0.5rem;
+    }
+
+    .gallery-filter-btn {
+        font-size: 0.8125rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .gallery-grid {
+        gap: 0.75rem;
+    }
+
+    /* Gallery tabs on mobile */
+    .gallery-tabs {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .gallery-tab {
+        flex: 1;
+        max-width: 100%;
+        padding: 1rem;
+        font-size: 0.9375rem;
+    }
+
+    .gallery-tab svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    /* Floor plans on mobile */
+    .floor-plans-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .floor-plan-card {
+        max-width: 100%;
+    }
+
+    .floor-plan-image {
+        height: 220px;
+    }
+
+    .floor-plan-content {
+        padding: 1.25rem;
+    }
+
+    .floor-plan-specs {
+        gap: 1rem;
+    }
+
+    /* Values section on mobile */
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .value-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    /* About section on mobile */
+    .about-wrapper {
+        gap: 2rem;
+    }
+
+    .about-image img {
+        height: 18rem;
+    }
+
+    .about-content {
+        padding: 2rem 1rem;
+    }
+
+    .about-list li {
+        font-size: 0.9375rem;
+    }
+
+    /* Footer on mobile */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .footer-contact-item {
+        justify-content: center;
+    }
+
+    /* Section headers on mobile */
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    /* Buttons on mobile */
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .models-cta {
+        margin-top: 2rem;
+    }
+
+    /* Tour features top on mobile */
+    .tour-features-top {
+        gap: 0.5rem;
+    }
+
+    .tour-feature-btn {
+        padding: 1rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    .tour-feature-btn .tour-feature-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .tour-feature-btn .tour-feature-icon svg {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 375px) {
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .feature-card {
+        padding: 1.25rem;
+    }
+
+    .gallery-filter-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .tour-feature-btn {
+        padding: 0.875rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .floor-plan-content h3 {
+        font-size: 1rem;
+    }
+}

@@ -582,3 +582,76 @@ document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}
 window.addEventListener('resize', function() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 });
+
+/**
+ * Contact Form Handler
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    
+    if (contactForm && typeof wohnegruenContact !== 'undefined') {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Wird gesendet...';
+            
+            // Prepare form data
+            const formData = new FormData(contactForm);
+            formData.append('action', 'wohnegruen_contact_form');
+            formData.append('nonce', wohnegruenContact.nonce);
+            
+            // Send AJAX request
+            fetch(wohnegruenContact.ajaxUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show message
+                showNotification(data.data.message, data.success ? 'success' : 'error');
+                
+                // Reset form if successful
+                if (data.success) {
+                    contactForm.reset();
+                }
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            })
+            .catch(error => {
+                showNotification('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
+        });
+    }
+    
+    // Notification function
+    function showNotification(message, type) {
+        // Remove existing notification
+        const existingNotification = document.querySelector('.form-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification
+        const notification = document.createElement('div');
+        notification.className = 'form-notification form-notification-' + type;
+        notification.textContent = message;
+        
+        // Insert after form
+        contactForm.parentNode.insertBefore(notification, contactForm.nextSibling);
+        
+        // Auto remove after 10 seconds
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            setTimeout(() => notification.remove(), 300);
+        }, 10000);
+    }
+});

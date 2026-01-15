@@ -20,3 +20,6 @@ require_once get_template_directory() . '/inc/sample-data.php';
 
 // SEO Optimization
 require_once get_template_directory() . '/inc/seo.php';
+
+// Contact Form Handler
+require_once get_template_directory() . '/inc/contact-handler.php';
