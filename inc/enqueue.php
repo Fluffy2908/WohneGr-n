@@ -13,14 +13,14 @@ function wohnegruen_scripts() {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap', array(), null);
 
     // Main stylesheet
-    wp_enqueue_style('wohnegruen-style', get_stylesheet_uri(), array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-main', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-blocks', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-model-pages', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-models-tabs', get_template_directory_uri() . '/assets/css/models-tabs.css', array(), '1.0.3');
+    wp_enqueue_style('wohnegruen-style', get_stylesheet_uri(), array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-main', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-blocks', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-model-pages', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-models-tabs', get_template_directory_uri() . '/assets/css/models-tabs.css', array(), '1.0.4');
 
     // Main JavaScript
-    wp_enqueue_script('wohnegruen-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.3', true);
+    wp_enqueue_script('wohnegruen-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.4', true);
 
     // Localize script with theme data
     wp_localize_script('wohnegruen-main', 'wohnegruenData', array(
@@ -43,10 +43,10 @@ add_action('after_setup_theme', 'wohnegruen_editor_styles');
  * Enqueue block editor assets
  */
 function wohnegruen_block_editor_assets() {
-    wp_enqueue_style('wohnegruen-editor', get_template_directory_uri() . '/assets/css/editor-style.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-blocks-editor', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-main-editor', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-model-pages-editor', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.3');
-    wp_enqueue_style('wohnegruen-models-tabs-editor', get_template_directory_uri() . '/assets/css/models-tabs.css', array(), '1.0.3');
+    wp_enqueue_style('wohnegruen-editor', get_template_directory_uri() . '/assets/css/editor-style.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-blocks-editor', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-main-editor', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-model-pages-editor', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-models-tabs-editor', get_template_directory_uri() . '/assets/css/models-tabs.css', array(), '1.0.4');
 }
 add_action('enqueue_block_editor_assets', 'wohnegruen_block_editor_assets');

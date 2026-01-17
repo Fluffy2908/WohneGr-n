@@ -41,11 +41,10 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                         <?php endforeach;
                     else : ?>
-                        <a href="#home">Startseite</a>
-                        <a href="#modelle">Modelle</a>
-                        <a href="#vorteile">Vorteile</a>
-                        <a href="#about">Über Uns</a>
-                        <a href="#kontakt">Kontakt</a>
+                        <a href="<?php echo home_url('/'); ?>">Startseite</a>
+                        <a href="<?php echo home_url('/modelle'); ?>">Modelle</a>
+                        <a href="<?php echo home_url('/galerie'); ?>">Galerie</a>
+                        <a href="<?php echo home_url('/#kontakt'); ?>">Kontakt</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -59,9 +58,8 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                         <?php endforeach;
                     else : ?>
-                        <a href="#modelle">Nature</a>
-                        <a href="#modelle">Pure</a>
-                        <a href="#kontakt">Sonderanfertigungen</a>
+                        <a href="<?php echo home_url('/modelle'); ?>">Nature</a>
+                        <a href="<?php echo home_url('/modelle'); ?>">Pure</a>
                     <?php endif; ?>
                 </div>
             </div>

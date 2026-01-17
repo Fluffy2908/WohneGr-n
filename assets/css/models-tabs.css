@@ -1,5 +1,5 @@
 /**
- * Models Page - Tabbed Interface & Color Slider Styles
+ * Models Page - Simple Display Styles
  */
 
 /* ============================================
@@ -627,5 +627,243 @@
 
     .models-cta-section h3 {
         font-size: 2rem;
+    }
+}
+
+/* ============================================
+   SIMPLE MODEL DISPLAY CARDS
+   ============================================ */
+.models-display-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+}
+
+.model-display-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 4rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.model-display-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.model-display-image {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.model-display-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.model-display-card:hover .model-display-image img {
+    transform: scale(1.05);
+}
+
+.model-display-content {
+    padding: 3rem;
+}
+
+.model-header h2 {
+    font-size: 2.5rem;
+    color: #2d7c42;
+    margin-bottom: 0.5rem;
+}
+
+.model-tagline {
+    font-size: 1.3rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.model-description {
+    margin-bottom: 2rem;
+}
+
+.model-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #495057;
+}
+
+.model-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.model-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.model-spec-item svg {
+    width: 32px;
+    height: 32px;
+    color: #2d7c42;
+    flex-shrink: 0;
+}
+
+.model-spec-item > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.model-spec-item .spec-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.model-spec-item .spec-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d7c42;
+}
+
+.model-features {
+    margin: 2rem 0;
+}
+
+.model-features h3 {
+    font-size: 1.5rem;
+    color: #2d7c42;
+    margin-bottom: 1rem;
+}
+
+.model-features ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.model-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+    color: #495057;
+}
+
+.model-features li svg {
+    width: 20px;
+    height: 20px;
+    color: #2d7c42;
+    flex-shrink: 0;
+}
+
+.model-gallery-preview {
+    margin-top: 3rem;
+}
+
+.model-gallery-preview h3 {
+    font-size: 1.5rem;
+    color: #2d7c42;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.gallery-preview-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-preview-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-preview-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-preview-item span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.models-divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, #2d7c42, transparent);
+    margin: 4rem 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .model-specs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .model-features ul {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .model-display-image {
+        height: 300px;
+    }
+
+    .model-display-content {
+        padding: 2rem;
+    }
+
+    .model-header h2 {
+        font-size: 2rem;
+    }
+
+    .model-tagline {
+        font-size: 1.1rem;
+    }
+
+    .model-specs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .gallery-preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-preview-item img {
+        height: 200px;
     }
 }
