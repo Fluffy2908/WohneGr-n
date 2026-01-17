@@ -108,6 +108,12 @@ function wohnegruen_create_sample_mobilhaus_posts() {
     );
 
     foreach ($sample_posts as $post_data) {
+        // Check if post already exists to prevent duplicates
+        $existing = get_page_by_path($post_data['slug'], OBJECT, 'mobilhaus');
+        if ($existing) {
+            continue; // Skip this post, it already exists
+        }
+
         // Create post
         $post_id = wp_insert_post(array(
             'post_title'    => $post_data['title'],

@@ -204,12 +204,27 @@ function wohnegruen_create_required_pages() {
         update_post_meta($contact_id, '_wp_page_template', 'page-contact.php');
     }
 
+    // 5. Create Modelle Page
+    $modelle_id = wp_insert_post(array(
+        'post_title'    => 'Modelle',
+        'post_name'     => 'modelle',
+        'post_content'  => '',
+        'post_status'   => 'publish',
+        'post_type'     => 'page',
+    ));
+
+    if ($modelle_id && !is_wp_error($modelle_id)) {
+        // Set Modelle page template
+        update_post_meta($modelle_id, '_wp_page_template', 'page-models.php');
+    }
+
     // Store page IDs for reference
     update_option('wohnegruen_page_ids', array(
         'home' => $home_id,
         'gallery' => $gallery_id,
         'about' => $about_id,
         'contact' => $contact_id,
+        'modelle' => $modelle_id,
     ));
 
     update_option('wohnegruen_pages_created', true);
@@ -238,6 +253,12 @@ function wohnegruen_create_navigation_menu() {
             array(
                 'title' => 'Home',
                 'object_id' => isset($page_ids['home']) ? $page_ids['home'] : 0,
+                'type' => 'post_type',
+                'object' => 'page',
+            ),
+            array(
+                'title' => 'Modelle',
+                'object_id' => isset($page_ids['modelle']) ? $page_ids['modelle'] : 0,
                 'type' => 'post_type',
                 'object' => 'page',
             ),
