@@ -1,0 +1,113 @@
+HITRO UREJANJE DOMAČE STRANI - ALTERNATIVE METODE
+=================================================
+
+Če setup-homepage.php še vedno ne deluje, uporabite eno od teh alternativnih metod:
+
+═══════════════════════════════════════════════════════════════════
+METODA 1: Preko WordPress Admina (NAJLAŽJE)
+═══════════════════════════════════════════════════════════════════
+
+1. Pojdite na: https://xn--wohnegrn-d6a.at/wp-admin
+2. V levem meniju kliknite "Strani" (Pages)
+3. Poiščite stran "Startseite" ali "Home" in kliknite "Uredi" (Edit)
+
+4. V urejevalniku boste videli bloke. ODSTRANITE ta blok:
+   - Kliknite na "Kontakt" ali "Kontaktieren Sie uns" blok
+   - Kliknite na tri pikice (⋮) v orodni vrstici bloka
+   - Izberite "Odstrani blok" (Remove Block)
+
+5. DODAJTE nov blok:
+   - Kliknite med "Hero" in "Vorteile" blok
+   - Kliknite na gumb "+ (Plus)"
+   - V iskanje vtipkajte: "Über uns" ali "wohnegruen-about"
+   - Kliknite na blok da ga dodate
+
+6. Kliknite "Posodobi" (Update) zgoraj desno
+
+✅ KONČANO!
+
+═══════════════════════════════════════════════════════════════════
+METODA 2: SQL Poizvedba (ČE STE NAPREDNI UPORABNIK)
+═══════════════════════════════════════════════════════════════════
+
+1. Pojdite v cPanel → phpMyAdmin
+2. Izberite vašo WordPress bazo
+3. Kliknite zavihek "SQL"
+4. Vnesite to poizvedbo:
+
+UPDATE wp_posts
+SET post_content = '<!-- wp:acf/wohnegruen-hero {"name":"acf/wohnegruen-hero","mode":"preview"} /-->
+
+<!-- wp:acf/wohnegruen-about {"name":"acf/wohnegruen-about","data":{"about_title":"Ihr Partner für modernes Wohnen","about_badge_number":"20+","about_badge_text":"Jahre Erfahrung"},"mode":"preview"} /-->
+
+<!-- wp:acf/wohnegruen-features {"name":"acf/wohnegruen-features","mode":"preview"} /-->
+
+<!-- wp:acf/wohnegruen-models {"name":"acf/wohnegruen-models","mode":"preview"} /-->'
+WHERE ID = (SELECT option_value FROM wp_options WHERE option_name = 'page_on_front');
+
+5. Kliknite "Pojdi" (Go)
+
+✅ KONČANO!
+
+⚠️ OPOZORILO: To bo zamenjalo celotno vsebino domače strani!
+
+═══════════════════════════════════════════════════════════════════
+METODA 3: Ročno Dodajanje Kode Bloka
+═══════════════════════════════════════════════════════════════════
+
+1. Pojdite v WordPress Admin → Strani → Startseite → Uredi
+2. Preklopite na "Code editor" (tri pikice zgoraj desno → Code editor)
+3. Poiščite kodo za kontakt blok in jo IZBRIŠITE:
+   <!-- wp:acf/wohnegruen-contact ... /-->
+
+4. Nad blok "features" dodajte TO kodo:
+
+<!-- wp:acf/wohnegruen-about {"name":"acf/wohnegruen-about","data":{"about_title":"Ihr Partner für modernes Wohnen","about_badge_number":"20+","about_badge_text":"Jahre Erfahrung"},"mode":"preview"} /-->
+
+5. Preklopite nazaj na vizualni način (Visual editor)
+6. Kliknite "Posodobi" (Update)
+
+✅ KONČANO!
+
+═══════════════════════════════════════════════════════════════════
+ČE SETUP SKRIPTA ŠE VEDNO NE DELUJE
+═══════════════════════════════════════════════════════════════════
+
+Če setup-homepage.php še vedno javi Error 500:
+
+1. Preverite pot do wp-load.php v vaši namestitvi:
+   - Standardna pot: /public_html/wp-load.php
+   - Če je WordPress v podmapi: /public_html/wp/wp-load.php
+
+2. Preverite napake v error_log:
+   - cPanel → File Manager → public_html → error_log
+   - Ali: cPanel → Metrics → Errors
+
+3. Pogledam napako lahko preverim pravilno pot za vašo namestitev.
+
+═══════════════════════════════════════════════════════════════════
+PRIPOROČAM: METODA 1 (WordPress Admin)
+═══════════════════════════════════════════════════════════════════
+
+Najbolj varno in enostavno je uporabiti Metodo 1 - urejanje preko
+WordPress admina. Traja samo 2 minuti!
+
+═══════════════════════════════════════════════════════════════════
+KONČNI REZULTAT
+═══════════════════════════════════════════════════════════════════
+
+Po urejanju bo vaša domača stran imela te bloke po vrsti:
+
+1. Hero-Bereich - "Wir bauen Ihr Traumhaus"
+2. Über uns - "Ihr Partner für modernes Wohnen" ← NOVO!
+3. Vorteile - "Warum WohneGrün wählen?"
+4. Modelle - "Unsere Modelle"
+
+(Kontakt blok je odstranjen)
+
+═══════════════════════════════════════════════════════════════════
+
+Če potrebujete pomoč, mi povejte:
+1. Katero metodo ste izbrali
+2. Kakšno napako dobite (če jo dobite)
+3. Naredim screenshots ali video vodič če potrebujete
