@@ -1262,5 +1262,46 @@ function wohnegruen_register_block_fields() {
 }
 add_action('acf/init', 'wohnegruen_register_block_fields');
 
-// Global Options Page removed - settings managed through individual field groups
+/**
+ * Register ACF Options Pages
+ */
+function wohnegruen_register_acf_options_pages() {
+    if (!function_exists('acf_add_options_page')) {
+        return;
+    }
+
+    // Navigation Options Page
+    acf_add_options_page(array(
+        'page_title' => 'Navigation',
+        'menu_title' => 'Navigation',
+        'menu_slug' => 'acf-options-navigacija',
+        'capability' => 'edit_posts',
+        'parent_slug' => 'themes.php',
+        'position' => false,
+        'icon_url' => false,
+    ));
+
+    // Contact Info Options Page
+    acf_add_options_page(array(
+        'page_title' => 'Kontaktdaten',
+        'menu_title' => 'Kontaktdaten',
+        'menu_slug' => 'acf-options-kontakt',
+        'capability' => 'edit_posts',
+        'parent_slug' => 'themes.php',
+        'position' => false,
+        'icon_url' => false,
+    ));
+
+    // Footer Options Page
+    acf_add_options_page(array(
+        'page_title' => 'Footer',
+        'menu_title' => 'Footer',
+        'menu_slug' => 'acf-options-footer',
+        'capability' => 'edit_posts',
+        'parent_slug' => 'themes.php',
+        'position' => false,
+        'icon_url' => false,
+    ));
+}
+add_action('acf/init', 'wohnegruen_register_acf_options_pages');
 
