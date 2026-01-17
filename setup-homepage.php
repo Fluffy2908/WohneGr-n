@@ -14,8 +14,8 @@
  * 4. DELETE THIS FILE after use for security!
  */
 
-// Load WordPress
-require_once('wp-load.php');
+// Load WordPress from theme directory
+require_once('../../../wp-load.php');
 
 // Security check
 if (!is_user_logged_in() || !current_user_can('edit_pages')) {
