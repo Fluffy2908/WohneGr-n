@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-17 16:45:00
+Deployment triggered at: 2026-01-17 17:00:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: COMPLETE REDESIGN - Simplified Modelle page (no tabs), cleaned footer, added comprehensive image upload guide. Version 1.0.4.
+Last deployment: ACF DIAGNOSTIC - Added acf-diagnostic.php to troubleshoot missing ACF blocks issue.
