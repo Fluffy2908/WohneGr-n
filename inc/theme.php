@@ -36,6 +36,26 @@ function wohnegruen_setup() {
 add_action('after_setup_theme', 'wohnegruen_setup');
 
 /**
+ * Register Custom Block Category for ACF Blocks
+ */
+function wohnegruen_register_block_category($categories) {
+    // Check if category already exists
+    $category_slugs = array_column($categories, 'slug');
+
+    if (!in_array('wohnegruen', $category_slugs)) {
+        // Add WohneGrün category at the beginning
+        array_unshift($categories, array(
+            'slug'  => 'wohnegruen',
+            'title' => __('WohneGrün', 'wohnegruen'),
+            'icon'  => 'admin-home',
+        ));
+    }
+
+    return $categories;
+}
+add_filter('block_categories_all', 'wohnegruen_register_block_category', 10, 1);
+
+/**
  * Custom Menu Walker for Navigation
  */
 class wohnegruen_Nav_Walker extends Walker_Nav_Menu {

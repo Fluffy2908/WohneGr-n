@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-17 17:00:00
+Deployment triggered at: 2026-01-17 17:15:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: ACF DIAGNOSTIC - Added acf-diagnostic.php to troubleshoot missing ACF blocks issue.
+Last deployment: CRITICAL FIX - Added missing block category registration to fix ACF blocks not showing.
