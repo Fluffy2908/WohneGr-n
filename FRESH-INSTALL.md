@@ -1,56 +1,126 @@
-# 🆕 WohneGrün Fresh WordPress Installation Guide
+# 🚀 WohneGrün Fresh WordPress Installation Guide
 
-## Step 1: Fresh WordPress Install
+## ⚡ Quick Start (3 Steps!)
 
+### Step 1: Fresh WordPress Install
 1. Delete everything in your WordPress installation
 2. Install fresh WordPress 6.4+
 3. Complete the 5-minute installation
 4. Login to WordPress Admin
 
----
-
-## Step 2: Install Required Plugins
-
-### Install ACF PRO (Required!)
+### Step 2: Install ACF PRO (Required!)
 1. Go to: **Plugins → Add New**
 2. Search for **"Advanced Custom Fields PRO"**
 3. Install and Activate
-4. Enter your ACF PRO license key
+4. **Important:** Enter your ACF PRO license key
 
----
-
-## Step 3: Upload WohneGrün Theme
-
-### Via FTP/cPanel:
-1. Upload the `WohneGruen` folder to: `/wp-content/themes/`
-2. Go to WordPress Admin → **Appearance → Themes**
+### Step 3: Upload & Activate Theme
+**Via cPanel/FTP:**
+1. Upload `WohneGruen` folder to `/wp-content/themes/`
+2. WordPress Admin → **Appearance → Themes**
 3. Click **Activate** on WohneGrün
 
-### Via WordPress Admin:
+**OR via WordPress:**
 1. Zip the `WohneGruen` folder
-2. Go to: **Appearance → Themes → Add New → Upload Theme**
-3. Upload the zip file
-4. Click **Activate**
+2. **Appearance → Themes → Add New → Upload Theme**
+3. Upload zip and click **Activate**
 
 ---
 
-## Step 4: Run Auto-Setup Script
+## 🎯 ONE-CLICK COMPLETE SETUP!
 
-Visit this URL (wait 30 seconds after theme activation):
+After activating the theme, visit this URL:
 ```
-https://xn--wohnegrn-d6a.at/wp-content/themes/WohneGruen/auto-setup.php?key=setup2026
+https://your-site.at/wp-content/themes/WohneGruen/complete-setup.php?key=setup2026
 ```
 
-This will automatically:
-- ✅ Create all ACF field groups (with GROUP structure)
-- ✅ Create Home page with 5 blocks
-- ✅ Create Gallery, About, Contact pages
-- ✅ Create Modelle page
-- ✅ Create navigation menu
-- ✅ Upload all images to Media Library
-- ✅ Create Nature and Pure model data
+**This ONE script does EVERYTHING:**
+- ✅ Uploads ALL 40+ images to Media Library
+- ✅ Creates Home page with 5 ACF blocks (Hero, Features, Models, About, Contact)
+- ✅ Creates Modelle, Gallery, Über uns, Kontakt pages
+- ✅ Creates Impressum, Datenschutz, AGB pages
+- ✅ Creates navigation menu with all links
+- ✅ Creates Nature & Pure model posts
+- ✅ Sets homepage as front page
 
-**Time:** ~2-3 minutes
+**Time:** 2-3 minutes with live progress bar!
+
+---
+
+## ✅ After Setup Completes
+
+1. **View your homepage** - Should show all sections working
+2. **Edit pages** - Go to Pages → Edit Home to customize content
+3. **Test links** - Navigation, Pure/Nature buttons, all working
+4. **DELETE** `complete-setup.php` from server (security)
+
+---
+
+## 🎨 Customize Your Site
+
+### Edit Homepage Content:
+1. Pages → Edit Home
+2. Click on any block to edit
+3. All fields are in GROUP structure for easy editing
+
+### Edit Modelle Page:
+1. Pages → Edit Modelle
+2. Template: "Modelle" already set
+3. Customize text and descriptions
+
+### Change Colors:
+- Appearance → Customize → Additional CSS
+- Or edit `assets/css/main.css`
+
+---
+
+## 🐛 Troubleshooting
+
+### Blocks Not Showing?
+- Make sure **ACF PRO** (not FREE) is active
+- Run the setup script again
+- Clear browser cache (Ctrl + Shift + Delete)
+
+### Images Not Loading?
+- Check file permissions (should be 644)
+- Run setup script again
+- Clear WordPress cache
+
+### Critical Errors?
+- Enable WP debug mode
+- Check PHP version (need 7.4+)
+- Check error logs in cPanel
+
+---
+
+## 📦 What Gets Created Automatically
+
+**Pages (7 total):**
+- Home (with 5 ACF blocks)
+- Modelle
+- Galerie & 3D
+- Über uns
+- Kontakt
+- Impressum
+- Datenschutzerklärung
+- AGB
+
+**Navigation Menu:**
+- Hauptmenü with all page links
+- Assigned to primary location
+
+**Model Posts:**
+- Nature (with full description)
+- Pure (with full description)
+
+**Images (~40 files):**
+- All Nature color schemes (8 images)
+- All Pure color schemes (8 images)
+- Hero backgrounds
+- About images
+- Gallery images
+
+---
 
 ---
 

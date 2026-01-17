@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-17 19:00:00
+Deployment triggered at: 2026-01-17 19:30:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: Preparing for fresh WordPress install - added FRESH-INSTALL.md guide and auto-setup.php script.
+Last deployment: COMPLETE ONE-CLICK SETUP - Added complete-setup.php that does EVERYTHING automatically!
