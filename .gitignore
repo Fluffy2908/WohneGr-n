@@ -1,8 +1,74 @@
-# Theme files
+# WohneGrün Theme - Git Ignore File
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
 Thumbs.db
-.idea/
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE and Editor files
 .vscode/
-*.log
-node_modules/
+.idea/
 .claude/
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (if you add npm later)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# PHP
+composer.lock
+vendor/
+
+# Deployment triggers
+.deployment-trigger
+
+# Cleanup and debug scripts
+CLEANUP-PLAN.md
+debug.php
+test.php
+*.backup.php
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+build/
+*.min.js.map
+*.min.css.map
+
+# Compressed files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Keep important files (negated patterns)
+!screenshot.png
+!README.md
+!style.css
