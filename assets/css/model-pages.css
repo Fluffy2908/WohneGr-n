@@ -1,0 +1,781 @@
+/* ============================================================================
+   MODEL PAGES STYLES
+   ============================================================================ */
+
+/* Model Hero Section */
+.model-hero-section {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+.model-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.model-hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.model-hero-section .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(45, 124, 66, 0.85) 0%, rgba(30, 90, 56, 0.9) 100%);
+    z-index: 2;
+}
+
+.model-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 900px;
+    padding: 3rem 1.5rem;
+}
+
+.model-hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.8s ease 0.3s both;
+}
+
+.model-hero-badge.model-badge-premium {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(191, 161, 69, 0.4) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.6);
+}
+
+.model-hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+.model-hero-tagline {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 0.8s ease 0.7s both;
+}
+
+.model-hero-specs {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.9s both;
+}
+
+.hero-spec {
+    text-align: center;
+}
+
+.hero-spec .spec-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-spec .spec-label {
+    display: block;
+    font-size: 0.875rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Model Description Section */
+.model-description-section {
+    background: #fff;
+}
+
+.model-description-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.model-description-content h2 {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.model-description-content p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.model-features-list {
+    margin-top: 2.5rem;
+}
+
+.model-features-list h3 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.model-features-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.model-features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.model-features-list li svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+    margin-top: 2px;
+}
+
+.model-description-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.model-description-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.model-description-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Featured Models Grid (Homepage) */
+.featured-models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.featured-model-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.featured-model-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.featured-model-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.featured-model-card:hover .featured-model-image img {
+    transform: scale(1.1);
+}
+
+.model-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 50px;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.model-badge-premium {
+    background: linear-gradient(135deg, #D4AF37 0%, #BFA145 100%);
+}
+
+.featured-model-content {
+    padding: 2rem;
+}
+
+.featured-model-content h3 {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+}
+
+.model-tagline {
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.model-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.model-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.model-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.model-highlight svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.model-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.model-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.model-spec-item svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.model-spec-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.spec-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spec-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Color Schemes Section */
+.color-schemes-section {
+    background: #f8f9fa;
+}
+
+.color-schemes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.color-scheme-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.color-scheme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.color-scheme-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.color-scheme-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.color-scheme-card:hover .color-scheme-image img {
+    transform: scale(1.08);
+}
+
+.color-scheme-content {
+    padding: 1.5rem;
+}
+
+.color-scheme-content h3 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+}
+
+.color-scheme-content p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.color-palette {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.color-swatch {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.color-schemes-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-style: italic;
+    color: #777;
+}
+
+/* Room Layouts Section */
+.room-layouts-section {
+    background: #fff;
+}
+
+.room-layouts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.room-layout-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-layout-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.room-layout-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.room-layout-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.room-layout-card:hover .room-layout-image img {
+    transform: scale(1.08);
+}
+
+.room-layout-content {
+    padding: 2rem;
+}
+
+.room-layout-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.room-layout-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.room-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.room-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.room-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Size Options Section */
+.size-options-section {
+    background: #f8f9fa;
+}
+
+.size-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.size-option-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.size-option-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.size-option-featured {
+    border: 3px solid var(--color-primary);
+}
+
+.size-option-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+}
+
+.size-option-card h3 {
+    font-size: 1.75rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.size-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.size-area {
+    font-size: 1.125rem;
+    color: #777;
+    margin-bottom: 2rem;
+}
+
+.size-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    text-align: left;
+}
+
+.size-features li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.size-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Models Intro Section */
+.models-intro-section {
+    background: #fff;
+}
+
+.models-intro-content {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.models-intro-content h2 {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Comparison Table */
+.model-comparison-section {
+    background: #f8f9fa;
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+    margin-top: 3rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table thead {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.comparison-table th {
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.comparison-table td:first-child {
+    font-weight: 500;
+}
+
+/* Hero Section for Models Archive Page */
+.hero-small {
+    min-height: 50vh;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .featured-models-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .model-description-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .color-schemes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .model-hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .model-hero-tagline {
+        font-size: 1.125rem;
+    }
+
+    .model-hero-specs {
+        gap: 2rem;
+    }
+
+    .hero-spec .spec-value {
+        font-size: 2rem;
+    }
+
+    .model-description-content h2 {
+        font-size: 2rem;
+    }
+
+    .model-description-content p {
+        font-size: 1rem;
+    }
+
+    .featured-model-content {
+        padding: 1.5rem;
+    }
+
+    .featured-model-content h3 {
+        font-size: 1.75rem;
+    }
+
+    .model-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .model-specs-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .color-schemes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .room-layouts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .size-options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-table {
+        font-size: 0.875rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .model-hero-section {
+        min-height: 50vh;
+    }
+
+    .model-hero-content {
+        padding: 2rem 1rem;
+    }
+
+    .model-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .model-hero-tagline {
+        font-size: 1rem;
+    }
+
+    .model-hero-specs {
+        gap: 1.5rem;
+        flex-direction: column;
+    }
+
+    .hero-spec .spec-value {
+        font-size: 1.75rem;
+    }
+
+    .featured-model-image {
+        height: 220px;
+    }
+
+    .model-description-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .models-intro-content h2 {
+        font-size: 2rem;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+    }
+}

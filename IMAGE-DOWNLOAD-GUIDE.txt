@@ -1,0 +1,374 @@
+================================================================================
+WOHNEGRÜN MODELS - IMAGE DOWNLOAD GUIDE
+================================================================================
+
+TOTAL IMAGES NEEDED: 32 images
+
+UPLOAD LOCATION: wp-content/themes/wohnegruen/assets/images/
+
+================================================================================
+SECTION 1: MODELS OVERVIEW PAGE (2 images)
+================================================================================
+
+These images appear on the /modelle overview page showing both models.
+
+1. model-nature-exterior.jpg
+   - Source: https://www.hosekra.com/homes/galerija/zunanjost-eko/
+   - Use: Any exterior shot of the EKO model
+   - Recommended: Wide shot showing full house exterior
+   - Size: 1920×1080 or similar landscape
+
+2. model-pure-exterior.jpg
+   - Source: https://www.hosekra.com/homes/galerija/zunanjost-panorama/
+   - Use: Any exterior shot of the PANORAMA model
+   - Recommended: Wide shot showing full house exterior
+   - Size: 1920×1080 or similar landscape
+
+================================================================================
+SECTION 2: NATURE MODEL PAGE (15 images)
+================================================================================
+
+SOURCE: https://www.hosekra.com/homes/galerija/notranjost-eko/
+
+--- HERO & DESCRIPTION (2 images) ---
+
+3. model-nature-hero.jpg
+   - Source: Any beautiful exterior or interior shot from EKO gallery
+   - Use: Hero background image (first thing visitors see)
+   - Recommended: Dramatic wide shot
+   - Size: 1920×1080 or larger
+
+4. model-nature-interior-living.jpg
+   - Source: Living room image from EKO gallery
+   - Use: Description section showing living area
+   - Size: 1200×800 or similar
+
+--- COLOR SCHEMES (8 images) ---
+
+Download one image for each color scheme from the EKO gallery:
+
+5. nature-wood-black.jpg
+   - Description: Wood walls with black kitchen cabinets
+   - Look for: Wooden wall paneling + dark/black kitchen
+
+6. nature-wood-white.jpg
+   - Description: Wood walls with white kitchen cabinets
+   - Look for: Light wood + white kitchen elements
+
+7. nature-concrete-black.jpg
+   - Description: Concrete-look walls with black surfaces
+   - Look for: Gray concrete texture + black kitchen
+
+8. nature-concrete-white.jpg
+   - Description: Concrete-look walls with white surfaces
+   - Look for: Light gray concrete + white kitchen
+
+9. nature-marble-white-black.jpg
+   - Description: White marble walls with black kitchen
+   - Look for: White marble texture + dark cabinets
+
+10. nature-marble-white-white.jpg
+    - Description: White marble with white kitchen
+    - Look for: Light marble + white surfaces
+
+11. nature-marble-black-black.jpg
+    - Description: Dark marble with black kitchen
+    - Look for: Dark/black marble + black cabinets
+
+12. nature-marble-black-white.jpg
+    - Description: Dark marble with white kitchen
+    - Look for: Dark marble + white/light kitchen
+
+--- ROOM LAYOUTS (4 images) ---
+
+13. nature-kitchen.jpg
+    - Source: Kitchen image from EKO gallery
+    - Look for: Clear shot of kitchen area with cabinets and appliances
+    - Size: 1200×900
+
+14. nature-bedroom.jpg
+    - Source: Bedroom image from EKO gallery
+    - Look for: Bedroom with bed, shelving, storage
+    - Size: 1200×900
+
+15. nature-bathroom.jpg
+    - Source: Bathroom image from EKO gallery
+    - Look for: Bathroom with shower, sink, fixtures
+    - Size: 1200×900
+
+16. nature-living.jpg
+    - Source: Living room image from EKO gallery
+    - Look for: Living area with seating, open layout
+    - Size: 1200×900
+
+--- OPTIONAL/ALTERNATE IMAGES ---
+
+If you can't find exact matches for all 8 color schemes in the gallery,
+you can use the same image for similar variants and the text descriptions
+will differentiate them.
+
+================================================================================
+SECTION 3: PURE MODEL PAGE (15 images)
+================================================================================
+
+SOURCE: https://www.hosekra.com/homes/galerija/notranjost-panorama/
+
+--- HERO & DESCRIPTION (2 images) ---
+
+17. model-pure-hero.jpg
+    - Source: Any beautiful exterior or interior shot from PANORAMA gallery
+    - Use: Hero background image
+    - Recommended: Modern, minimalist shot
+    - Size: 1920×1080 or larger
+
+18. model-pure-interior-living.jpg
+    - Source: Living room image from PANORAMA gallery
+    - Use: Description section showing living area
+    - Size: 1200×800 or similar
+
+--- COLOR SCHEMES (8 images) ---
+
+Download one image for each color scheme from the PANORAMA gallery:
+
+19. pure-wood-black.jpg
+    - Description: Wood elements with black kitchen
+    - Look for: Dark wood + black modern surfaces
+
+20. pure-wood-white.jpg
+    - Description: Wood elements with white kitchen
+    - Look for: Warm wood + white minimalist kitchen
+
+21. pure-concrete-black.jpg
+    - Description: Concrete texture with black surfaces
+    - Look for: Industrial concrete + black accents
+
+22. pure-concrete-white.jpg
+    - Description: Concrete texture with white surfaces
+    - Look for: Light concrete + white minimalist design
+
+23. pure-marble-white-black.jpg
+    - Description: White marble with black kitchen
+    - Look for: Elegant white/cream marble + dark cabinets
+
+24. pure-marble-white-white.jpg
+    - Description: White marble with white kitchen
+    - Look for: Bright marble + white modern surfaces
+
+25. pure-marble-black-black.jpg
+    - Description: Dark marble with black kitchen
+    - Look for: Black/dark marble + black premium finishes
+
+26. pure-marble-black-white.jpg
+    - Description: Dark marble with white kitchen
+    - Look for: Dramatic dark marble + white contrast
+
+--- ROOM LAYOUTS (4 images) ---
+
+27. pure-kitchen.jpg
+    - Source: Kitchen image from PANORAMA gallery
+    - Look for: Modern kitchen with premium finishes
+    - Size: 1200×900
+
+28. pure-bedroom.jpg
+    - Source: Bedroom image from PANORAMA gallery
+    - Look for: Minimalist bedroom design
+    - Size: 1200×900
+
+29. pure-bathroom.jpg
+    - Source: Bathroom image from PANORAMA gallery
+    - Look for: Spa-like bathroom with quality fixtures
+    - Size: 1200×900
+
+30. pure-living.jpg
+    - Source: Living room image from PANORAMA gallery
+    - Look for: Open living space with panoramic feel
+    - Size: 1200×900
+
+================================================================================
+SECTION 4: PLACEHOLDER IMAGE (Optional)
+================================================================================
+
+31. model-placeholder.jpg
+    - Use: Fallback image if specific model images aren't available
+    - Source: Any generic mobile home exterior
+    - Size: 800×600
+
+================================================================================
+HOW TO DOWNLOAD IMAGES FROM HOSEKRA
+================================================================================
+
+METHOD 1: Right-Click Download (Easiest)
+
+1. Go to the gallery page (notranjost-eko or notranjost-panorama)
+2. Right-click on any image you want
+3. Select "Save Image As..." or "Save Picture As..."
+4. Choose download location on your computer
+5. Rename the file according to the list above
+
+METHOD 2: Browser Developer Tools (For Higher Quality)
+
+1. Go to the gallery page
+2. Press F12 to open Developer Tools
+3. Click on the image you want
+4. In the Elements tab, look for <img src="...">
+5. Right-click the image URL and "Open in new tab"
+6. This often gives you the full-size version
+7. Right-click → Save As
+8. Rename according to list
+
+METHOD 3: Use Image Download Extension
+
+1. Install a browser extension like "Image Downloader" or "Download All Images"
+2. Open the Hosekra gallery page
+3. Activate the extension
+4. Select all images or choose specific ones
+5. Download them all at once
+6. Rename files according to the list
+
+================================================================================
+IMAGE OPTIMIZATION (IMPORTANT!)
+================================================================================
+
+Before uploading, optimize all images:
+
+OPTION 1: Online Tools
+- TinyPNG.com (recommended, free)
+- Squoosh.app (Google's tool)
+- Compressor.io
+
+OPTION 2: Desktop Software
+- Adobe Photoshop (Export for Web)
+- GIMP (Export As → adjust quality to 80-85%)
+- ImageOptim (Mac)
+
+RECOMMENDED SETTINGS:
+- Format: JPG
+- Quality: 80-85%
+- Max width: 1920px for hero images, 1200px for others
+- Remove metadata
+
+This will reduce file sizes significantly and improve page load speed.
+
+================================================================================
+HOW TO UPLOAD IMAGES
+================================================================================
+
+METHOD 1: cPanel File Manager
+
+1. Log into your hosting cPanel
+2. Navigate to: File Manager
+3. Go to: public_html/wp-content/themes/wohnegruen/assets/images/
+4. Click "Upload"
+5. Select all 32 images
+6. Wait for upload to complete
+7. Verify all files are there
+
+METHOD 2: FTP Client (FileZilla, Cyberduck, etc.)
+
+1. Connect to your server via FTP
+2. Navigate to: /public_html/wp-content/themes/wohnegruen/assets/images/
+3. Drag and drop all 32 images from your computer
+4. Wait for transfer to complete
+
+METHOD 3: WordPress Media Library (NOT RECOMMENDED)
+
+This method is NOT recommended because the images need to be in the specific
+theme folder, not the WordPress Media Library.
+
+================================================================================
+VERIFICATION CHECKLIST
+================================================================================
+
+After uploading, verify all images:
+
+[ ] All 32 image files uploaded
+[ ] Files named exactly as specified (case-sensitive!)
+[ ] Files are in: wp-content/themes/wohnegruen/assets/images/
+[ ] File permissions set to 644 (should be automatic)
+[ ] Images optimized (file sizes reasonable)
+[ ] Test by visiting the model pages and checking if images load
+
+You can also check via FTP/cPanel to ensure all files are present.
+
+================================================================================
+FILE NAMING - CRITICAL!
+================================================================================
+
+⚠️ IMPORTANT: File names are CASE-SENSITIVE and must match EXACTLY!
+
+Correct: model-nature-hero.jpg
+Wrong: Model-Nature-Hero.jpg
+Wrong: model_nature_hero.jpg
+Wrong: model-nature-hero.JPG
+
+All file names use:
+- Lowercase letters
+- Hyphens (not underscores)
+- .jpg extension (lowercase)
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Q: Images not showing on the website?
+A:
+1. Check file names match exactly (case-sensitive)
+2. Clear browser cache (Ctrl+Shift+Delete)
+3. Clear WordPress cache if using a caching plugin
+4. Verify files are in correct directory
+5. Check file permissions (should be 644)
+
+Q: Can't find exact color scheme matches in Hosekra gallery?
+A:
+Use the closest match available. The text descriptions and color swatches
+will help users understand the differences. You can use the same image
+for similar variants if needed.
+
+Q: Images are too large / page loads slowly?
+A:
+Optimize images using TinyPNG or similar tool. Aim for:
+- Hero images: 200-400 KB
+- Color scheme images: 100-200 KB
+- Room layouts: 150-250 KB
+
+Q: Need different aspect ratios?
+A:
+You can crop images using free tools like:
+- Photopea.com (online Photoshop alternative)
+- Canva.com (free account)
+- GIMP (free desktop software)
+
+================================================================================
+QUICK REFERENCE: Image Count by Section
+================================================================================
+
+Models Overview:           2 images
+Nature Hero/Description:   2 images
+Nature Color Schemes:      8 images
+Nature Room Layouts:       4 images
+Pure Hero/Description:     2 images
+Pure Color Schemes:        8 images
+Pure Room Layouts:         4 images
+Placeholder (optional):    1 image
+
+TOTAL:                    31-32 images
+
+================================================================================
+COMPLETION
+================================================================================
+
+Once all images are uploaded:
+
+1. Visit: https://xn--wohnegrn-d6a.at/modelle
+2. Click on "Nature" model
+3. Scroll through and verify all images load
+4. Go back and click "Pure" model
+5. Verify all Pure images load
+6. Test on mobile device
+7. If all images load correctly: ✓ COMPLETE!
+
+================================================================================
+
+Need help? Check the main MODELS-SETUP-GUIDE.md for more detailed instructions.
+
+Good luck! 🏡📸

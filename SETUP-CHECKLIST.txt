@@ -1,0 +1,265 @@
+================================================================================
+WOHNEGRÜN MODELS SYSTEM - SETUP CHECKLIST
+================================================================================
+
+Complete these tasks in order:
+
+PHASE 1: CREATE PAGES (5 minutes)
+================================================================================
+
+[ ] 1. Upload setup-models.php to theme directory
+       Location: wp-content/themes/wohnegruen/setup-models.php
+
+[ ] 2. Access the setup script in browser
+       URL: https://xn--wohnegrn-d6a.at/wp-content/themes/wohnegruen/setup-models.php
+
+[ ] 3. Click "Setup Models Now" button
+
+[ ] 4. Verify success message appears
+
+[ ] 5. Delete setup-models.php file (IMPORTANT for security!)
+
+[ ] 6. Verify pages were created:
+       - Go to WordPress Admin → Pages
+       - Check for: Modelle, Nature, Pure
+
+[ ] 7. Verify "Modelle" appears in navigation menu
+       - Visit your website
+       - Check main menu for "Modelle" link
+
+
+PHASE 2: DOWNLOAD IMAGES (20-30 minutes)
+================================================================================
+
+[ ] 8. Read IMAGE-DOWNLOAD-GUIDE.txt
+
+[ ] 9. Go to Hosekra EKO gallery:
+       https://www.hosekra.com/homes/galerija/notranjost-eko/
+
+[ ] 10. Download 15 images for Nature model:
+        [ ] model-nature-hero.jpg
+        [ ] model-nature-interior-living.jpg
+        [ ] nature-wood-black.jpg
+        [ ] nature-wood-white.jpg
+        [ ] nature-concrete-black.jpg
+        [ ] nature-concrete-white.jpg
+        [ ] nature-marble-white-black.jpg
+        [ ] nature-marble-white-white.jpg
+        [ ] nature-marble-black-black.jpg
+        [ ] nature-marble-black-white.jpg
+        [ ] nature-kitchen.jpg
+        [ ] nature-bedroom.jpg
+        [ ] nature-bathroom.jpg
+        [ ] nature-living.jpg
+
+[ ] 11. Go to Hosekra PANORAMA gallery:
+        https://www.hosekra.com/homes/galerija/notranjost-panorama/
+
+[ ] 12. Download 15 images for Pure model:
+        [ ] model-pure-hero.jpg
+        [ ] model-pure-interior-living.jpg
+        [ ] pure-wood-black.jpg
+        [ ] pure-wood-white.jpg
+        [ ] pure-concrete-black.jpg
+        [ ] pure-concrete-white.jpg
+        [ ] pure-marble-white-black.jpg
+        [ ] pure-marble-white-white.jpg
+        [ ] pure-marble-black-black.jpg
+        [ ] pure-marble-black-white.jpg
+        [ ] pure-kitchen.jpg
+        [ ] pure-bedroom.jpg
+        [ ] pure-bathroom.jpg
+        [ ] pure-living.jpg
+
+[ ] 13. Go to Hosekra exterior galleries for overview images:
+        EKO exterior: https://www.hosekra.com/homes/galerija/zunanjost-eko/
+        PANORAMA exterior: https://www.hosekra.com/homes/galerija/zunanjost-panorama/
+
+[ ] 14. Download 2 overview images:
+        [ ] model-nature-exterior.jpg (from EKO exterior gallery)
+        [ ] model-pure-exterior.jpg (from PANORAMA exterior gallery)
+
+[ ] 15. Rename all downloaded images according to the guide
+        (Check IMAGE-DOWNLOAD-GUIDE.txt for exact names)
+
+
+PHASE 3: OPTIMIZE IMAGES (10-15 minutes)
+================================================================================
+
+[ ] 16. Go to TinyPNG.com or Squoosh.app
+
+[ ] 17. Upload and optimize all 32 images
+        Target: Reduce file size by 50-70% while keeping quality
+
+[ ] 18. Download optimized images
+
+[ ] 19. Verify all files have correct names (lowercase, hyphens, .jpg)
+
+
+PHASE 4: UPLOAD IMAGES (5-10 minutes)
+================================================================================
+
+[ ] 20. Connect to server via cPanel File Manager or FTP
+
+[ ] 21. Navigate to: wp-content/themes/wohnegruen/assets/images/
+
+[ ] 22. Upload all 32 optimized images
+
+[ ] 23. Verify all files uploaded successfully
+
+[ ] 24. Check file count: Should be 32 new image files
+
+
+PHASE 5: TESTING (10 minutes)
+================================================================================
+
+[ ] 25. Test Homepage:
+        [ ] Visit homepage
+        [ ] Scroll to "Modelle" section
+        [ ] Verify Nature and Pure cards display
+        [ ] Check badges show (Beliebt/Premium)
+        [ ] Click "Nature entdecken" → should go to Nature page
+        [ ] Click "Pure entdecken" → should go to Pure page
+
+[ ] 26. Test Models Overview Page:
+        [ ] Visit /modelle
+        [ ] Verify hero section displays
+        [ ] Check both model cards appear
+        [ ] Verify comparison table displays
+        [ ] Click "Nature entdecken"
+        [ ] Click "Pure entdecken"
+
+[ ] 27. Test Nature Model Page:
+        [ ] Visit /modelle/nature or /nature
+        [ ] Check hero image loads
+        [ ] Verify description section image loads
+        [ ] Scroll through 8 color schemes - all images load?
+        [ ] Check color swatches display
+        [ ] Verify 4 room layout images load
+        [ ] Check size option cards display
+
+[ ] 28. Test Pure Model Page:
+        [ ] Visit /modelle/pure or /pure
+        [ ] Check hero image loads
+        [ ] Verify description section image loads
+        [ ] Scroll through 8 color schemes - all images load?
+        [ ] Check color swatches display
+        [ ] Verify 4 room layout images load
+        [ ] Check size option cards display
+
+[ ] 29. Test Navigation:
+        [ ] Click "Modelle" in main menu
+        [ ] Should go to /modelle page
+        [ ] Navigation menu visible and working
+
+[ ] 30. Test Mobile:
+        [ ] Open site on mobile device OR
+        [ ] Use browser DevTools (F12) → Toggle device toolbar
+        [ ] Test at 375px width (iPhone)
+        [ ] Test at 768px width (Tablet)
+        [ ] Verify all images load on mobile
+        [ ] Check layout is responsive
+        [ ] Test hamburger menu works
+
+
+PHASE 6: BROWSER TESTING (5 minutes)
+================================================================================
+
+[ ] 31. Test in Chrome
+
+[ ] 32. Test in Firefox
+
+[ ] 33. Test in Safari (if on Mac)
+
+[ ] 34. Test in Edge
+
+
+PHASE 7: FINAL CHECKS (5 minutes)
+================================================================================
+
+[ ] 35. Clear all caches:
+        [ ] Browser cache (Ctrl+Shift+Delete)
+        [ ] WordPress cache (if using caching plugin)
+        [ ] Server cache (if applicable)
+
+[ ] 36. Test from different device/network
+
+[ ] 37. Check browser console for errors:
+        [ ] Press F12 → Console tab
+        [ ] Should be no red errors
+
+[ ] 38. Verify page load speed:
+        [ ] Pages load in under 3 seconds?
+        [ ] Images load smoothly?
+
+[ ] 39. Check all links work:
+        [ ] "Beratung anfragen" buttons
+        [ ] "Zur Galerie" links
+        [ ] Footer links
+        [ ] Navigation menu links
+
+[ ] 40. Verify SEO basics:
+        [ ] Page titles display correctly in browser tab
+        [ ] Meta descriptions set (if using SEO plugin)
+        [ ] Images have alt text (built into templates)
+
+
+COMPLETION
+================================================================================
+
+[ ] 41. ✨ ALL TESTS PASSED
+
+[ ] 42. Document any issues found
+
+[ ] 43. Take screenshots for reference
+
+[ ] 44. Backup website (recommended)
+
+
+OPTIONAL ENHANCEMENTS
+================================================================================
+
+[ ] Add Google Analytics tracking to model pages
+
+[ ] Set up conversion tracking for "Beratung anfragen" buttons
+
+[ ] Create social media posts announcing new model pages
+
+[ ] Update Google Business Profile with model information
+
+[ ] Add model pages to XML sitemap
+
+[ ] Submit to Google Search Console for indexing
+
+
+================================================================================
+TROUBLESHOOTING QUICK REFERENCE
+================================================================================
+
+Issue: Pages don't show templates
+Fix: Go to Settings → Permalinks → Save Changes (refresh permalinks)
+
+Issue: Images don't load
+Fix: Check file names (case-sensitive!), verify upload location, clear cache
+
+Issue: Menu doesn't show "Modelle"
+Fix: Go to Appearance → Menus → Add "Modelle" page manually
+
+Issue: 404 error on model pages
+Fix: Settings → Permalinks → Save Changes
+
+Issue: Styles not applied
+Fix: Hard refresh browser (Ctrl+Shift+R), check CSS file is loaded
+
+Issue: Mobile layout broken
+Fix: Clear cache, verify viewport meta tag in header.php
+
+================================================================================
+
+Progress: _____ / 44 tasks completed
+
+Estimated total time: 60-80 minutes
+
+Last updated: 2026-01-17
+
+================================================================================
