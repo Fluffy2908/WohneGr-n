@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Archive filtering
     initArchiveFilters();
+
+    // Model tabs and color sliders
+    initModelTabs();
+    initColorSliders();
 });
 
 /**
@@ -626,3 +630,200 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10000);
     }
 });
+
+/**
+ * Model Tabs - Switch between Nature and Pure
+ */
+function initModelTabs() {
+    const tabButtons = document.querySelectorAll('.model-tab-btn');
+    const modelContents = document.querySelectorAll('.model-content');
+
+    if (!tabButtons.length || !modelContents.length) return;
+
+    tabButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const targetModel = this.getAttribute('data-model');
+
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            modelContents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            // Show corresponding model content
+            const targetContent = document.getElementById(targetModel + '-content');
+            if (targetContent) {
+                targetContent.classList.add('active');
+
+                // Scroll to top of content smoothly
+                const navHeight = document.querySelector('.site-navigation') ?
+                    document.querySelector('.site-navigation').offsetHeight : 0;
+                const targetPosition = targetContent.getBoundingClientRect().top +
+                    window.pageYOffset - navHeight - 20;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/**
+ * Color Sliders - Gallery carousel for color schemes
+ */
+function initColorSliders() {
+    const sliders = document.querySelectorAll('.color-slider');
+
+    if (!sliders.length) return;
+
+    sliders.forEach(function(slider) {
+        const sliderId = slider.id;
+        const slides = slider.querySelectorAll('.color-slide');
+        const prevBtn = document.querySelector('.slider-nav.prev[data-slider="' + sliderId.replace('-slider', '') + '"]');
+        const nextBtn = document.querySelector('.slider-nav.next[data-slider="' + sliderId.replace('-slider', '') + '"]');
+        const dotsContainer = document.getElementById(sliderId.replace('-slider', '-dots'));
+
+        if (!slides.length) return;
+
+        let currentSlide = 0;
+
+        // Create dots
+        if (dotsContainer) {
+            slides.forEach(function(slide, index) {
+                const dot = document.createElement('span');
+                dot.classList.add('slider-dot');
+                if (index === 0) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', function() {
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.slider-dot') : [];
+
+        // Show initial slide
+        showSlide(currentSlide);
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(function(slide) {
+                slide.classList.remove('active');
+            });
+
+            // Remove active from all dots
+            dots.forEach(function(dot) {
+                dot.classList.remove('active');
+            });
+
+            // Show current slide
+            if (slides[index]) {
+                slides[index].classList.add('active');
+            }
+
+            // Activate current dot
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+
+            currentSlide = index;
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
+
+        // Event listeners for navigation buttons
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevSlide();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextSlide();
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Only respond if this slider's parent tab is active
+            const parentContent = slider.closest('.model-content');
+            if (!parentContent || !parentContent.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+            }
+        }
+
+        // Optional: Auto-advance (commented out by default)
+        /*
+        let autoAdvance = setInterval(function() {
+            nextSlide();
+        }, 5000);
+
+        // Pause auto-advance on hover
+        slider.addEventListener('mouseenter', function() {
+            clearInterval(autoAdvance);
+        });
+
+        slider.addEventListener('mouseleave', function() {
+            autoAdvance = setInterval(function() {
+                nextSlide();
+            }, 5000);
+        });
+        */
+    });
+}

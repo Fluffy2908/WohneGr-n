@@ -16,7 +16,7 @@ get_header();
 </section>
 
 <!-- Model Tabs Navigation -->
-<section class="models-tabs-container">
+<section class="model-tabs-section">
     <div class="container">
         <div class="model-tabs-nav">
             <button class="model-tab-btn active" data-model="nature">
@@ -63,17 +63,17 @@ get_header();
     </section>
 
     <!-- Nature Description -->
-    <section class="model-description-section">
+    <section class="model-description section-padding">
         <div class="container">
             <div class="model-description-grid">
-                <div class="model-description-text">
+                <div class="model-description-content">
                     <h3>Ein Zuhause, das die Natur umarmt</h3>
                     <p>Das Nature Modell verbindet zeitloses Design mit natürlichen Materialien und schafft so eine warme, einladende Atmosphäre. Mit seiner durchdachten Raumaufteilung und funktionalen Gestaltung bietet es alles, was Sie für komfortables Wohnen benötigen.</p>
-                    <ul class="model-features-list">
-                        <li>Natürliche Holzverkleidung</li>
-                        <li>Offene Küchen-Wohnraum-Konzeption</li>
-                        <li>Getrennte Schlafbereiche</li>
-                        <li>Funktionales Badezimmer</li>
+                    <ul class="model-features">
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Natürliche Holzverkleidung</li>
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Offene Küchen-Wohnraum-Konzeption</li>
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Getrennte Schlafbereiche</li>
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Funktionales Badezimmer</li>
                     </ul>
                 </div>
                 <div class="model-description-image">
@@ -84,7 +84,7 @@ get_header();
     </section>
 
     <!-- Nature Color Schemes Slider -->
-    <section class="color-schemes-section">
+    <section class="color-schemes-slider section-padding bg-light">
         <div class="container">
             <h3>Farbschemata für Ihr Nature Mobilhaus</h3>
             <p class="section-subtitle">Wählen Sie aus 8 sorgfältig kuratierten Farbkombinationen</p>
@@ -93,7 +93,7 @@ get_header();
                 <button class="slider-nav prev" data-slider="nature">‹</button>
                 <div class="color-slider" id="nature-slider">
 
-                    <div class="color-slide active">
+                    <div class="color-slide">
                         <div class="color-slide-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/nature-wood-black.jpg" alt="Holz - Schwarz" loading="lazy">
                         </div>
@@ -222,28 +222,28 @@ get_header();
     </section>
 
     <!-- Nature Size Options -->
-    <section class="size-options-section">
+    <section class="size-options-section section-padding">
         <div class="container">
             <h3>Größenoptionen</h3>
             <div class="size-options-grid">
                 <div class="size-option-card">
+                    <div class="size-option-badge">Standard</div>
                     <h4>Nature</h4>
-                    <p class="size-subtitle">Standard</p>
-                    <div class="size-value">24 m²</div>
-                    <ul class="size-specs">
-                        <li>3 × 8 m Grundfläche</li>
+                    <div class="size-value">3 × 8 m</div>
+                    <div class="size-area">24 m² Wohnfläche</div>
+                    <ul class="size-features">
                         <li>Ideal für 2-3 Personen</li>
                         <li>Kompakte Raumnutzung</li>
                         <li>Alle Grundfunktionen</li>
                     </ul>
                 </div>
 
-                <div class="size-option-card">
+                <div class="size-option-card size-option-featured">
+                    <div class="size-option-badge">Empfohlen</div>
                     <h4>Nature MAX</h4>
-                    <p class="size-subtitle">Empfohlen</p>
-                    <div class="size-value">32 m²</div>
-                    <ul class="size-specs">
-                        <li>4 × 8 m Grundfläche</li>
+                    <div class="size-value">4 × 8 m</div>
+                    <div class="size-area">32 m² Wohnfläche</div>
+                    <ul class="size-features">
                         <li>Ideal für 3-4 Personen</li>
                         <li>Erweiterte Raumaufteilung</li>
                         <li>Mehr Stauraum</li>
@@ -285,17 +285,17 @@ get_header();
     </section>
 
     <!-- Pure Description -->
-    <section class="model-description-section">
+    <section class="model-description section-padding">
         <div class="container">
             <div class="model-description-grid">
-                <div class="model-description-text">
+                <div class="model-description-content">
                     <h3>Zeitgenössisches Design trifft auf Funktionalität</h3>
                     <p>Das Pure Modell steht für klare Linien, moderne Ästhetik und luxuriöses Wohngefühl. Mit edlen Materialien wie Marmor, Beton und hochwertigen Oberflächen bietet es ein anspruchsvolles Wohnambiente.</p>
-                    <ul class="model-features-list">
-                        <li>Elegante Marmor- und Betonoberflächen</li>
-                        <li>Panoramafenster für maximales Tageslicht</li>
-                        <li>Offenes Raumkonzept</li>
-                        <li>Hochwertige Sanitäranlagen</li>
+                    <ul class="model-features">
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Elegante Marmor- und Betonoberflächen</li>
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Panoramafenster für maximales Tageslicht</li>
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Offenes Raumkonzept</li>
+                        <li><?php echo wohnegruen_get_icon('check'); ?> Hochwertige Sanitäranlagen</li>
                     </ul>
                 </div>
                 <div class="model-description-image">
@@ -306,7 +306,7 @@ get_header();
     </section>
 
     <!-- Pure Color Schemes Slider -->
-    <section class="color-schemes-section">
+    <section class="color-schemes-slider section-padding bg-light">
         <div class="container">
             <h3>Exklusive Farbschemata für Ihr Pure Mobilhaus</h3>
             <p class="section-subtitle">Wählen Sie aus 8 elegant gestalteten Farbkombinationen</p>
@@ -315,7 +315,7 @@ get_header();
                 <button class="slider-nav prev" data-slider="pure">‹</button>
                 <div class="color-slider" id="pure-slider">
 
-                    <div class="color-slide active">
+                    <div class="color-slide">
                         <div class="color-slide-image">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pure-wood-black.jpg" alt="Holz - Schwarz" loading="lazy">
                         </div>
@@ -444,28 +444,28 @@ get_header();
     </section>
 
     <!-- Pure Size Options -->
-    <section class="size-options-section">
+    <section class="size-options-section section-padding">
         <div class="container">
             <h3>Größenoptionen</h3>
             <div class="size-options-grid">
                 <div class="size-option-card">
+                    <div class="size-option-badge">Standard</div>
                     <h4>Pure</h4>
-                    <p class="size-subtitle">Standard</p>
-                    <div class="size-value">24 m²</div>
-                    <ul class="size-specs">
-                        <li>3 × 8 m Grundfläche</li>
+                    <div class="size-value">3 × 8 m</div>
+                    <div class="size-area">24 m² Wohnfläche</div>
+                    <ul class="size-features">
                         <li>Ideal für 2-3 Personen</li>
                         <li>Kompakte Luxusausstattung</li>
                         <li>Alle Premium-Funktionen</li>
                     </ul>
                 </div>
 
-                <div class="size-option-card">
+                <div class="size-option-card size-option-featured">
+                    <div class="size-option-badge">Empfohlen</div>
                     <h4>Pure MAX</h4>
-                    <p class="size-subtitle">Empfohlen</p>
-                    <div class="size-value">32 m²</div>
-                    <ul class="size-specs">
-                        <li>4 × 8 m Grundfläche</li>
+                    <div class="size-value">4 × 8 m</div>
+                    <div class="size-area">32 m² Wohnfläche</div>
+                    <ul class="size-features">
                         <li>Ideal für 3-4 Personen</li>
                         <li>Großzügige Raumaufteilung</li>
                         <li>Maximaler Wohnkomfort</li>
@@ -478,18 +478,20 @@ get_header();
 </div>
 
 <!-- CTA Section -->
-<section class="models-cta-section">
+<section class="cta-section cta-bg-primary">
     <div class="container">
-        <h3>Bereit für Ihr Traumhaus?</h3>
-        <p>Vereinbaren Sie einen Beratungstermin oder besuchen Sie unsere Ausstellung</p>
-        <div class="cta-buttons">
-            <a href="<?php echo home_url('/#kontakt'); ?>" class="btn btn-white btn-lg">
-                Beratung anfragen
-                <?php echo wohnegruen_get_icon('arrow-right'); ?>
-            </a>
-            <a href="<?php echo home_url('/galerie'); ?>" class="btn btn-white-outline btn-lg">
-                Galerie ansehen
-            </a>
+        <div class="cta-content">
+            <h2>Bereit für Ihr Traumhaus?</h2>
+            <p>Vereinbaren Sie einen Beratungstermin oder besuchen Sie unsere Ausstellung</p>
+            <div class="cta-buttons">
+                <a href="<?php echo home_url('/kontakt'); ?>" class="btn btn-white btn-lg">
+                    Beratung anfragen
+                    <?php echo wohnegruen_get_icon('arrow-right'); ?>
+                </a>
+                <a href="<?php echo home_url('/galerie'); ?>" class="btn btn-white-outline btn-lg">
+                    Galerie ansehen
+                </a>
+            </div>
         </div>
     </div>
 </section>
