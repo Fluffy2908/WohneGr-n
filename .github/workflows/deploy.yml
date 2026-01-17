@@ -18,12 +18,24 @@ jobs:
       - name: Deploy WohneGruen theme to cPanel
         uses: easingthemes/ssh-deploy@v2.2.11
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
+          # ✅ POPRAVEK: pravilno ime secreta
+          SSH_PRIVATE_KEY: ${{ secrets.SFTP_KEY }}
+
           REMOTE_HOST: ${{ secrets.SFTP_SERVER }}
           REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          REMOTE_PORT: 22
 
-          # 🔴 KLJUČNO
+          # ✅ OSTANE TVOJA LOGIKA
           SOURCE: "./"
           TARGET: "/home/wohneg79/public_html/wp-content/themes/WohneGruen"
 
-          ARGS: "-rlgoDzv --delete --exclude=.git --exclude=.github --no-perms"
+          # ✅ POPRAVLJENI ARGUMENTI (cPanel safe)
+          ARGS: >
+            -rlgoDzv
+            --delete
+            --no-perms
+            --no-times
+            --exclude=.git
+            --exclude=.github
+            --exclude=node_modules
+            --exclude=.env
