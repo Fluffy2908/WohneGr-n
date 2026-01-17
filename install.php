@@ -797,7 +797,13 @@ function configure_wordpress_settings($pages) {
 
     // Set permalinks to post name
     update_option('permalink_structure', '/%postname%/');
-    flush_rewrite_rules();
+
+    // Force flush rewrite rules multiple times to ensure it works
+    flush_rewrite_rules(true);
+    delete_option('rewrite_rules');
+    flush_rewrite_rules(true);
+
+    log_message('Permalinks flushed - pages should work now', 'info');
 }
 
 /**

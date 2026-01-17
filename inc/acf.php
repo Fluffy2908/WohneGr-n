@@ -195,19 +195,7 @@ add_action('acf/init', 'wohnegruen_register_acf_blocks');
 /**
  * Register custom block category
  */
-function wohnegruen_block_categories($categories) {
-    return array_merge(
-        array(
-            array(
-                'slug'  => 'wohnegruen',
-                'title' => __('wohnegruen', 'wohnegruen'),
-                'icon'  => 'admin-home',
-            ),
-        ),
-        $categories
-    );
-}
-add_filter('block_categories_all', 'wohnegruen_block_categories', 10, 1);
+// Block category registration moved to inc/theme.php to avoid duplicates
 
 // ACF Options Pages removed - all settings now managed through ACF Field Groups
 
