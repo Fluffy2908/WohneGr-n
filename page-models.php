@@ -92,7 +92,7 @@ get_header();
                         </div>
                     </div>
 
-                    <a href="<?php echo home_url('/models/nature'); ?>" class="btn btn-primary btn-block">
+                    <a href="<?php echo home_url('/modelle/nature'); ?>" class="btn btn-primary btn-block">
                         Nature entdecken
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </a>
@@ -157,7 +157,7 @@ get_header();
                         </div>
                     </div>
 
-                    <a href="<?php echo home_url('/models/pure'); ?>" class="btn btn-primary btn-block">
+                    <a href="<?php echo home_url('/modelle/pure'); ?>" class="btn btn-primary btn-block">
                         Pure entdecken
                         <?php echo wohnegruen_get_icon('arrow-right'); ?>
                     </a>

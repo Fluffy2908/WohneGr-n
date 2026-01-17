@@ -56,7 +56,7 @@ if (empty($models)) {
             'size' => '24-32 m²',
             'type' => 'Kompakt & Funktional',
             'persons' => '2-4',
-            'link' => home_url('/models/nature'),
+            'link' => home_url('/modelle/nature'),
             'image' => get_template_directory_uri() . '/assets/images/model-nature-exterior.jpg',
             'highlights' => array(
                 '8 Farbschemata verfügbar',
@@ -74,7 +74,7 @@ if (empty($models)) {
             'size' => '24-32 m²',
             'type' => 'Premium & Modern',
             'persons' => '2-4',
-            'link' => home_url('/models/pure'),
+            'link' => home_url('/modelle/pure'),
             'image' => get_template_directory_uri() . '/assets/images/model-pure-exterior.jpg',
             'highlights' => array(
                 '8 exklusive Farbschemata',
