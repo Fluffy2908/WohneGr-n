@@ -86,7 +86,7 @@ The following has been successfully created:
 
 **IMPORTANT:** The following images need to be placed in the theme directory:
 
-📁 **Location:** `wp-content/themes/wohnegruen/assets/images/`
+📁 **Location:** `wp-content/themes/WohneGruen/assets/images/`
 
 #### Models Overview Page Images:
 ```
@@ -141,7 +141,7 @@ pure-living.jpg                        (Room layout - Living area)
 2. Optionally edit them slightly (crop, adjust colors, add filters) to avoid exact copies
 3. Optimize for web (resize to max 1920px width, compress quality to 80-85%)
 4. Rename according to the list above
-5. Upload to `wp-content/themes/wohnegruen/assets/images/` via FTP or cPanel File Manager
+5. Upload to `wp-content/themes/WohneGruen/assets/images/` via FTP or cPanel File Manager
 
 ---
 
@@ -227,7 +227,7 @@ These can be adjusted in the template files if you want different colors.
 
 If you want to customize the model cards on the homepage:
 
-1. **Edit:** `wp-content/themes/wohnegruen/template-parts/blocks/block-models.php`
+1. **Edit:** `wp-content/themes/WohneGruen/template-parts/blocks/block-models.php`
 
 2. **Find lines 48-69** (fallback models array)
 
@@ -286,7 +286,7 @@ Consider adding:
 ## 🆘 Troubleshooting
 
 ### Images Not Displaying:
-- Verify images are in `/wp-content/themes/wohnegruen/assets/images/`
+- Verify images are in `/wp-content/themes/WohneGruen/assets/images/`
 - Check file names match exactly (case-sensitive)
 - Clear browser cache and WordPress cache
 - Check file permissions (should be 644)

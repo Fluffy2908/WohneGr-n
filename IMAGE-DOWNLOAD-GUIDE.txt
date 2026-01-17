@@ -4,7 +4,7 @@ WOHNEGRÜN MODELS - IMAGE DOWNLOAD GUIDE
 
 TOTAL IMAGES NEEDED: 32 images
 
-UPLOAD LOCATION: wp-content/themes/wohnegruen/assets/images/
+UPLOAD LOCATION: wp-content/themes/WohneGruen/assets/images/
 
 ================================================================================
 SECTION 1: MODELS OVERVIEW PAGE (2 images)
@@ -257,7 +257,7 @@ METHOD 1: cPanel File Manager
 
 1. Log into your hosting cPanel
 2. Navigate to: File Manager
-3. Go to: public_html/wp-content/themes/wohnegruen/assets/images/
+3. Go to: public_html/wp-content/themes/WohneGruen/assets/images/
 4. Click "Upload"
 5. Select all 32 images
 6. Wait for upload to complete
@@ -266,7 +266,7 @@ METHOD 1: cPanel File Manager
 METHOD 2: FTP Client (FileZilla, Cyberduck, etc.)
 
 1. Connect to your server via FTP
-2. Navigate to: /public_html/wp-content/themes/wohnegruen/assets/images/
+2. Navigate to: /public_html/wp-content/themes/WohneGruen/assets/images/
 3. Drag and drop all 32 images from your computer
 4. Wait for transfer to complete
 
@@ -283,7 +283,7 @@ After uploading, verify all images:
 
 [ ] All 32 image files uploaded
 [ ] Files named exactly as specified (case-sensitive!)
-[ ] Files are in: wp-content/themes/wohnegruen/assets/images/
+[ ] Files are in: wp-content/themes/WohneGruen/assets/images/
 [ ] File permissions set to 644 (should be automatic)
 [ ] Images optimized (file sizes reasonable)
 [ ] Test by visiting the model pages and checking if images load

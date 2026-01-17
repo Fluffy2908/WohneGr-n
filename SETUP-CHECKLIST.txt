@@ -8,10 +8,10 @@ PHASE 1: CREATE PAGES (5 minutes)
 ================================================================================
 
 [ ] 1. Upload setup-models.php to theme directory
-       Location: wp-content/themes/wohnegruen/setup-models.php
+       Location: wp-content/themes/WohneGruen/setup-models.php
 
 [ ] 2. Access the setup script in browser
-       URL: https://xn--wohnegrn-d6a.at/wp-content/themes/wohnegruen/setup-models.php
+       URL: https://xn--wohnegrn-d6a.at/wp-content/themes/WohneGruen/setup-models.php
 
 [ ] 3. Click "Setup Models Now" button
 
@@ -101,7 +101,7 @@ PHASE 4: UPLOAD IMAGES (5-10 minutes)
 
 [ ] 20. Connect to server via cPanel File Manager or FTP
 
-[ ] 21. Navigate to: wp-content/themes/wohnegruen/assets/images/
+[ ] 21. Navigate to: wp-content/themes/WohneGruen/assets/images/
 
 [ ] 22. Upload all 32 optimized images
 

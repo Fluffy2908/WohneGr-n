@@ -10,8 +10,8 @@
  * 5. Adds "Modelle" to navigation menu
  *
  * INSTRUCTIONS:
- * 1. Upload this file to your WordPress theme directory (wp-content/themes/wohnegruen/)
- * 2. Access: https://xn--wohnegrn-d6a.at/wp-content/themes/wohnegruen/setup-models.php
+ * 1. Upload this file to your WordPress theme directory (wp-content/themes/WohneGruen/)
+ * 2. Access: https://xn--wohnegrn-d6a.at/wp-content/themes/WohneGruen/setup-models.php
  * 3. Click "Setup Models Now"
  * 4. DELETE THIS FILE after use for security!
  */
@@ -298,7 +298,7 @@ if (!is_user_logged_in() || !current_user_can('edit_pages')) {
                 echo '<div class="info-box">';
                 echo '<h3>📸 Next Step: Upload Images</h3>';
                 echo '<p>You need to upload <strong>32 images</strong> to:</p>';
-                echo '<code>wp-content/themes/wohnegruen/assets/images/</code>';
+                echo '<code>wp-content/themes/WohneGruen/assets/images/</code>';
                 echo '<p style="margin-top: 15px;">See <strong>IMAGE-DOWNLOAD-GUIDE.txt</strong> for the complete list of images needed.</p>';
                 echo '</div>';
 
@@ -307,7 +307,7 @@ if (!is_user_logged_in() || !current_user_can('edit_pages')) {
                 echo '<p>For security reasons, delete <code>setup-models.php</code> from your server immediately.</p>';
                 echo '<p><strong>Delete via:</strong></p>';
                 echo '<ul>';
-                echo '<li>cPanel File Manager: Navigate to wp-content/themes/wohnegruen/ and delete setup-models.php</li>';
+                echo '<li>cPanel File Manager: Navigate to wp-content/themes/WohneGruen/ and delete setup-models.php</li>';
                 echo '<li>Or FTP: Delete the file from the theme directory</li>';
                 echo '</ul>';
                 echo '</div>';

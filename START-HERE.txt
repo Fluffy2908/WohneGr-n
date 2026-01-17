@@ -14,7 +14,7 @@ I've created an automatic setup script for you.
 
 2. Open your browser and go to:
 
-   https://xn--wohnegrn-d6a.at/wp-content/themes/wohnegruen/setup-models.php
+   https://xn--wohnegrn-d6a.at/wp-content/themes/WohneGruen/setup-models.php
 
 3. Click the green button "Setup Models Now"
 
@@ -47,7 +47,7 @@ Quick version:
 
 3. Optimize images at TinyPNG.com (reduces file size)
 
-4. Upload to: wp-content/themes/wohnegruen/assets/images/
+4. Upload to: wp-content/themes/WohneGruen/assets/images/
 
 That's it!
 
@@ -183,7 +183,7 @@ NEXT STEPS
 1. ☑️ Read this file (you're done!)
 
 2. ☑️ Run setup-models.php:
-   https://xn--wohnegrn-d6a.at/wp-content/themes/wohnegruen/setup-models.php
+   https://xn--wohnegrn-d6a.at/wp-content/themes/WohneGruen/setup-models.php
 
 3. ☑️ Read IMAGE-DOWNLOAD-GUIDE.txt
 
@@ -219,7 +219,7 @@ IMPORTANT NOTES
 
 ⚠️ File names are case-sensitive (use lowercase with hyphens)
 
-⚠️ Images must be in: wp-content/themes/wohnegruen/assets/images/
+⚠️ Images must be in: wp-content/themes/WohneGruen/assets/images/
 
 ⚠️ Clear browser cache if changes don't appear
 
