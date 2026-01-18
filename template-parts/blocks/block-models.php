@@ -27,7 +27,19 @@ if ($source === 'cpt') {
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            $highlights_raw = get_field('model_highlights');
+
+            // Try block fields first, fall back to old meta box fields for backward compatibility
+            $tagline = get_field('block_model_tagline') ?: get_field('model_tagline') ?: '';
+            $badge = get_field('block_model_badge') ?: get_field('model_badge') ?: '';
+            $badge_class = get_field('block_model_badge_class') ?: get_field('model_badge_class') ?: '';
+            $type = get_field('block_model_type') ?: get_field('model_type') ?: 'Mobilhaus';
+            $size = get_field('block_model_size') ?: get_field('model_size') ?: '45 m²';
+            $rooms = get_field('block_model_rooms') ?: get_field('model_rooms') ?: '2';
+            $persons = get_field('block_model_persons') ?: get_field('model_persons') ?: '2-4';
+            $price = get_field('block_model_price') ?: get_field('model_price') ?: '';
+
+            // Handle highlights from both sources
+            $highlights_raw = get_field('block_model_highlights') ?: get_field('model_highlights');
             $highlights = array();
             if ($highlights_raw && is_array($highlights_raw)) {
                 foreach ($highlights_raw as $h) {
@@ -40,14 +52,14 @@ if ($source === 'cpt') {
                 'link' => get_permalink(),
                 'image' => get_post_thumbnail_id() ? wp_get_attachment_image_src(get_post_thumbnail_id(), 'large') : null,
                 'description' => get_the_excerpt(),
-                'tagline' => get_field('model_tagline') ?: '',
-                'badge' => get_field('model_badge') ?: '',
-                'badge_class' => get_field('model_badge_class') ?: '',
-                'type' => get_field('model_type') ?: 'Mobilhaus',
-                'size' => get_field('model_size') ?: '45 m²',
-                'rooms' => get_field('model_rooms') ?: '2',
-                'persons' => get_field('model_persons') ?: '2-4',
-                'price' => get_field('model_price') ?: '',
+                'tagline' => $tagline,
+                'badge' => $badge,
+                'badge_class' => $badge_class,
+                'type' => $type,
+                'size' => $size,
+                'rooms' => $rooms,
+                'persons' => $persons,
+                'price' => $price,
                 'highlights' => $highlights,
             );
         }
