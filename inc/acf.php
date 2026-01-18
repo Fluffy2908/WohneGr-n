@@ -12,9 +12,13 @@ if (!defined('ABSPATH')) exit;
  * Register ACF Blocks
  */
 function wohnegruen_register_acf_blocks() {
+    // Check if ACF function exists
     if (!function_exists('acf_register_block_type')) {
+        error_log('WohneGrün: acf_register_block_type function not found!');
         return;
     }
+
+    error_log('WohneGrün: Registering ACF blocks...');
 
     // Block Category
     $category = 'wohnegruen';
@@ -35,6 +39,7 @@ function wohnegruen_register_acf_blocks() {
         ),
         'mode'              => 'preview',
         'post_types'        => array('page'),
+        'enqueue_assets'    => function() {},
     ));
 
     // Features Block
@@ -189,8 +194,10 @@ function wohnegruen_register_acf_blocks() {
         'mode'              => 'preview',
         'post_types'        => array('page'),
     ));
+    error_log('WohneGrün: Successfully registered ' . (10) . ' ACF blocks');
 }
-add_action('acf/init', 'wohnegruen_register_acf_blocks');
+add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
+add_action('init', 'wohnegruen_register_acf_blocks', 20);
 
 /**
  * Register custom block category
