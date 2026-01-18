@@ -314,7 +314,24 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('mobilhaus'),
     ));
 
-    error_log('WohneGrün: Successfully registered ' . (18) . ' ACF blocks');
+    // 3D Floor Plans Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-3d-floorplans',
+        'title'             => __('3D Grundrisse', 'wohnegruen'),
+        'description'       => __('3D Grundrisse mit verschiedenen Konfigurationen.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-3d-floorplans.php',
+        'category'          => $category,
+        'icon'              => 'layout',
+        'keywords'          => array('3d', 'grundriss', 'floor plan', 'tloris'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page', 'mobilhaus'),
+    ));
+
+    error_log('WohneGrün: Successfully registered ' . (19) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);
