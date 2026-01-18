@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-18 12:00:00
+Deployment triggered at: 2026-01-18 12:30:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: Migration to Gutenberg - All pages now editable, ACF field groups visible in admin
+Last deployment: Complete migration script with all 13 ACF field groups - Full definitions matching code
