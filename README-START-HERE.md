@@ -2,28 +2,20 @@
 
 ## 🎯 HOW TO COMPLETE YOUR WEBSITE
 
-### Step 1: Run Setup Script (2 minutes)
+### Step 1: Run Complete Setup Script (2 minutes)
 
 Open this URL in your browser:
 ```
-https://wohnegruen.at/wp-content/themes/WohneGruen/SETUP-AND-GUIDE.php
+https://wohnegruen.at/wp-content/themes/WohneGruen/RUN-THIS-ONCE.php
 ```
 
 This will automatically:
+- ✅ Create ACF field groups
 - ✅ Remove custom templates
 - ✅ Clean up diagnostic files
 - ✅ Show you the complete guide
 
-### Step 2: Create ACF Field Groups (1 minute)
-
-Run this script:
-```
-https://wohnegruen.at/wp-content/themes/WohneGruen/create-new-acf-field-groups.php
-```
-
-Click the button to create all field groups automatically.
-
-### Step 3: Add Blocks to Pages (30-40 minutes)
+### Step 2: Add Blocks to Pages (30-40 minutes)
 
 The setup script shows you EXACT instructions for each page.
 
@@ -66,7 +58,7 @@ The setup script shows you EXACT instructions for each page.
 
 Everything is in the setup guide at:
 ```
-https://wohnegruen.at/wp-content/themes/WohneGruen/SETUP-AND-GUIDE.php
+https://wohnegruen.at/wp-content/themes/WohneGruen/RUN-THIS-ONCE.php
 ```
 
 Just follow the instructions step by step!
@@ -146,7 +138,7 @@ assets/
 
 Go to:
 ```
-https://wohnegruen.at/wp-content/themes/WohneGruen/SETUP-AND-GUIDE.php
+https://wohnegruen.at/wp-content/themes/WohneGruen/RUN-THIS-ONCE.php
 ```
 
 Follow the guide and your professional site will be complete!
