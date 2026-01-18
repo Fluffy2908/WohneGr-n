@@ -14,18 +14,23 @@ WohneGrün ist ein vollständig anpassbares WordPress-Theme das speziell für di
 - Feature-Listen und technische Spezifikationen
 - Galerie-Unterstützung für Modellbilder
 
-### 🧩 10 ACF Gutenberg-Blöcke
+### 🧩 15 ACF Gutenberg-Blöcke
 
-1. **Hero Block** - Große Hero-Sektion mit Hintergrundbild, Badge, CTA-Buttons und Statistiken
-2. **Features Block** - Raster mit 6 Feature-Karten (Icons, Titel, Beschreibung)
-3. **Models Block** - Showcase für Mobilhaus-Modelle (manuell oder aus CPT)
-4. **About Block** - Über-uns-Sektion mit Bild, Text und Checkmarks
-5. **Contact Block** - Kontaktformular mit Info-Bar (Telefon, E-Mail, Adresse, Öffnungszeiten)
-6. **Gallery Block** - Bildergalerie mit Kategoriefiltern und Lightbox
-7. **3D Tour Block** - Video/iframe-Einbettung für virtuelle Rundgänge
-8. **Floor Plans Block** - Grundrisse mit Zoom-Funktion
-9. **Interiors Block** - Innenausstattungs-Karten mit Features
-10. **CTA Block** - Call-to-Action-Sektion mit konfigurierbarem Hintergrund
+1. **Hero-Bereich** - Große Hero-Sektion mit Hintergrundbild, Badge, CTA-Buttons und Statistiken
+2. **Vorteile** - Raster mit 6 Feature-Karten (Icons, Titel, Beschreibung)
+3. **Modelle** - Showcase für Mobilhaus-Modelle (manuell oder aus CPT)
+4. **Über uns** - Über-uns-Sektion mit Bild, Text und Checkmarks
+5. **Kontakt** - Kontaktbereich mit Info-Bar
+6. **Galerie** - Bildergalerie mit Kategoriefiltern und Lightbox
+7. **3D Rundgang** - Video/iframe-Einbettung für virtuelle Rundgänge
+8. **Grundrisse** - Grundrisse mit Zoom-Funktion
+9. **Innenausstattung** - Innenausstattungs-Karten mit Features (unterstützt Farbslider)
+10. **CTA-Bereich** - Call-to-Action-Sektion mit konfigurierbarem Hintergrund
+11. **Modell-Tabs** ✨ - Tabs für Nature/Pure Modelle mit Farbslider und Größenoptionen
+12. **Galerie mit Tabs** ✨ - Galerie mit Kategoriefiltern und 3D-Tour Tab
+13. **Werte-Raster** ✨ - Unternehmenswerte-Grid mit Icons
+14. **Kontaktformular** ✨ - Kontaktformular mit Info-Leiste und Google Maps
+15. **+ Standard WordPress-Blöcke** - Alle Standard-Gutenberg-Blöcke verfügbar
 
 ### 📄 Spezielle Seitenvorlagen
 
@@ -39,23 +44,53 @@ WohneGrün ist ein vollständig anpassbares WordPress-Theme das speziell für di
 
 ```
 WohneGrün/
+├── acf-json/                 # ⚠️ ACF Field Groups (14 JSON-Dateien)
+│   ├── group_block_hero.json
+│   ├── group_block_features.json
+│   ├── group_block_models.json
+│   ├── group_block_about.json
+│   ├── group_block_contact.json
+│   ├── group_block_gallery.json
+│   ├── group_block_3d_tour.json
+│   ├── group_block_floor_plans.json
+│   ├── group_block_interiors.json
+│   ├── group_block_cta.json
+│   ├── group_block_model_tabs.json ✨ NEU
+│   ├── group_block_gallery_tabs.json ✨ NEU
+│   ├── group_block_values_grid.json ✨ NEU
+│   └── group_block_contact_form.json ✨ NEU
 ├── assets/
 │   ├── css/
 │   │   ├── main.css          # Haupt-Styles
 │   │   ├── blocks.css        # Block-spezifische Styles
-│   │   └── editor-style.css  # WordPress-Editor-Styles
+│   │   └── responsive.css    # Mobile-Responsive Styles
 │   ├── js/
 │   │   └── main.js           # JavaScript (Navigation, Lightbox, Filter)
 │   └── images/               # Theme-Bilder
 ├── inc/
-│   ├── acf.php               # ACF Block-Registrierungen & Field Groups
+│   ├── acf.php               # ACF Block-Registrierungen
 │   ├── theme.php             # Theme-Setup & Helper-Funktionen
 │   ├── enqueue.php           # CSS/JS-Laden
-│   ├── sample-data.php       # Beispiel-Mobilhaus-Posts
+│   ├── contact-handler.php   # Kontaktformular-Handler
+│   ├── seo.php               # SEO-Funktionen
 │   └── cpt/
 │       └── cpt-mobilhaus.php # Custom Post Type Definition
 ├── template-parts/
-│   └── blocks/               # ACF Block-Templates (10 Blocks)
+│   └── blocks/               # ACF Block-Templates (14 Blocks)
+│       ├── block-hero.php
+│       ├── block-features.php
+│       ├── block-models.php
+│       ├── block-about.php
+│       ├── block-contact.php
+│       ├── block-gallery.php
+│       ├── block-3d-tour.php
+│       ├── block-floor-plans.php
+│       ├── block-interiors.php
+│       ├── block-cta.php
+│       ├── block-model-tabs.php ✨ NEU
+│       ├── block-gallery-tabs.php ✨ NEU
+│       ├── block-values-grid.php ✨ NEU
+│       └── block-contact-form.php ✨ NEU
 ├── *.php                     # Haupt-Template-Dateien
 ├── style.css                 # Theme-Header & Basis-Styles
 └── functions.php             # Lädt alle inc/-Dateien
@@ -82,13 +117,21 @@ WohneGrün/
    - Installiere und aktiviere ACF Pro Plugin
    - Die Blöcke werden automatisch registriert
 
-4. **Seiten erstellen** (automatisch bei Theme-Aktivierung)
-   - Home (mit Gutenberg-Blöcken)
-   - Gallery
-   - 3D Perspective
-   - Unsere Modelle
+4. **ACF Field Groups synchronisieren** ⚠️ WICHTIG
+   - Gehe zu Custom Fields (ACF-Menü)
+   - Klicke auf **Field Groups**
+   - Die 14 Field Groups werden automatisch aus den JSON-Dateien im `acf-json/`-Ordner geladen
+   - Wenn sie nicht erscheinen, klicke auf **Sync** um sie zu importieren
+   - Du solltest jetzt alle 14 Field Groups sehen
 
-5. **Menü einrichten**
+5. **Seiten mit Blöcken füllen**
+   - Alle Seiten sind vorhanden, aber leer
+   - Bearbeite jede Seite und füge die entsprechenden ACF-Blöcke hinzu
+   - Klicke auf das **+** Symbol und suche nach "WohneGrün" oder wähle aus der WohneGrün-Kategorie
+   - Fülle die Felder in der rechten Seitenleiste aus
+   - Klicke auf **Aktualisieren** zum Speichern
+
+6. **Menü einrichten**
    - Gehe zu Design → Menüs
    - Das Hauptmenü wurde automatisch erstellt
    - Weise es dem "Primary Menu"-Standort zu
@@ -235,6 +278,15 @@ Austria
 Dieses Theme wurde für WohneGrün entwickelt. Alle Rechte vorbehalten.
 
 ## 🔄 Changelog
+
+### Version 1.1.0 (Januar 2026)
+- ✨ 4 neue ACF-Blöcke hinzugefügt (Modell-Tabs, Galerie mit Tabs, Werte-Raster, Kontaktformular)
+- 🗂️ ACF Field Groups als JSON-Dateien exportiert (14 Dateien in `acf-json/`)
+- 🧹 Alle hardcodierten Inhalte entfernt - 100% durch ACF verwaltbar
+- 🧹 Alle Diagnose- und Setup-Skripte entfernt (40+ Dateien)
+- 🧹 Alte Custom Page Templates entfernt
+- 📝 Vollständig aktualisierte Dokumentation
+- ⚡ Vereinfachter Setup-Prozess
 
 ### Version 1.0.0 (Januar 2026)
 - ✨ Initiale Veröffentlichung

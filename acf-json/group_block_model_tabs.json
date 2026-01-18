@@ -1,0 +1,257 @@
+{
+    "key": "group_block_model_tabs",
+    "title": "Modell-Tabs Block",
+    "fields": [
+        {
+            "key": "field_model_tabs_models",
+            "label": "Modelle",
+            "name": "models",
+            "type": "repeater",
+            "min": 1,
+            "max": 2,
+            "layout": "block",
+            "button_label": "Modell hinzuf\u00fcgen",
+            "sub_fields": [
+                {
+                    "key": "field_model_slug",
+                    "label": "Modell-ID",
+                    "name": "model_slug",
+                    "type": "text",
+                    "instructions": "Eindeutiger Bezeichner (z.B. nature, pure)",
+                    "required": 1
+                },
+                {
+                    "key": "field_model_icon",
+                    "label": "Icon",
+                    "name": "model_icon",
+                    "type": "text",
+                    "instructions": "Emoji-Icon (z.B. \ud83c\udf3f oder \u2728)",
+                    "default_value": "\ud83c\udf3f"
+                },
+                {
+                    "key": "field_model_name",
+                    "label": "Modellname",
+                    "name": "model_name",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_model_tagline",
+                    "label": "Tagline",
+                    "name": "model_tagline",
+                    "type": "text",
+                    "instructions": "Kurze Beschreibung (z.B. Nat\u00fcrlich & Gem\u00fctlich)"
+                },
+                {
+                    "key": "field_model_badge",
+                    "label": "Badge-Text",
+                    "name": "model_badge",
+                    "type": "text",
+                    "placeholder": "z.B. Bestseller"
+                },
+                {
+                    "key": "field_model_hero_image",
+                    "label": "Hero-Hintergrundbild",
+                    "name": "hero_image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "large"
+                },
+                {
+                    "key": "field_model_description_text",
+                    "label": "Beschreibung",
+                    "name": "model_description",
+                    "type": "textarea",
+                    "rows": 2
+                },
+                {
+                    "key": "field_model_specs",
+                    "label": "Spezifikationen",
+                    "name": "specs",
+                    "type": "repeater",
+                    "min": 0,
+                    "max": 4,
+                    "layout": "table",
+                    "button_label": "Spezifikation hinzuf\u00fcgen",
+                    "sub_fields": [
+                        {
+                            "key": "field_spec_value",
+                            "label": "Wert",
+                            "name": "value",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_spec_label",
+                            "label": "Bezeichnung",
+                            "name": "label",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_model_description_title",
+                    "label": "Beschreibungs-Titel",
+                    "name": "description_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_model_description_full_text",
+                    "label": "Detaillierte Beschreibung",
+                    "name": "description_text",
+                    "type": "textarea",
+                    "rows": 5
+                },
+                {
+                    "key": "field_model_description_image",
+                    "label": "Beschreibungsbild",
+                    "name": "description_image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_model_description_features",
+                    "label": "Beschreibung - Merkmale",
+                    "name": "description_features",
+                    "type": "repeater",
+                    "min": 0,
+                    "max": 10,
+                    "layout": "table",
+                    "button_label": "Merkmal hinzuf\u00fcgen",
+                    "sub_fields": [
+                        {
+                            "key": "field_feature_text",
+                            "label": "Merkmal",
+                            "name": "feature_text",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_model_color_schemes",
+                    "label": "Farbvarianten",
+                    "name": "color_schemes",
+                    "type": "repeater",
+                    "min": 1,
+                    "max": 12,
+                    "layout": "block",
+                    "button_label": "Farbvariante hinzuf\u00fcgen",
+                    "sub_fields": [
+                        {
+                            "key": "field_color_scheme_image",
+                            "label": "Bild",
+                            "name": "image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "required": 1
+                        },
+                        {
+                            "key": "field_color_scheme_name",
+                            "label": "Name",
+                            "name": "name",
+                            "type": "text",
+                            "required": 1
+                        },
+                        {
+                            "key": "field_color_scheme_exterior",
+                            "label": "Au\u00dfenfarbe",
+                            "name": "exterior_color",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_color_scheme_trim",
+                            "label": "Zierleisten-Farbe",
+                            "name": "trim_color",
+                            "type": "text"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_model_size_options",
+                    "label": "Gr\u00f6\u00dfenoptionen",
+                    "name": "size_options",
+                    "type": "repeater",
+                    "min": 1,
+                    "max": 4,
+                    "layout": "block",
+                    "button_label": "Gr\u00f6\u00dfenoption hinzuf\u00fcgen",
+                    "sub_fields": [
+                        {
+                            "key": "field_size_name",
+                            "label": "Name",
+                            "name": "name",
+                            "type": "text",
+                            "required": 1
+                        },
+                        {
+                            "key": "field_size_badge",
+                            "label": "Badge",
+                            "name": "badge",
+                            "type": "text",
+                            "placeholder": "z.B. Beliebt"
+                        },
+                        {
+                            "key": "field_size_dimensions",
+                            "label": "Ma\u00dfe",
+                            "name": "dimensions",
+                            "type": "text",
+                            "placeholder": "z.B. 6m x 9m"
+                        },
+                        {
+                            "key": "field_size_area",
+                            "label": "Wohnfl\u00e4che",
+                            "name": "area",
+                            "type": "text",
+                            "placeholder": "z.B. 54 m\u00b2"
+                        },
+                        {
+                            "key": "field_size_featured",
+                            "label": "Hervorgehoben",
+                            "name": "featured",
+                            "type": "true_false",
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_size_features",
+                            "label": "Merkmale",
+                            "name": "features",
+                            "type": "repeater",
+                            "min": 0,
+                            "max": 10,
+                            "layout": "table",
+                            "button_label": "Merkmal hinzuf\u00fcgen",
+                            "sub_fields": [
+                                {
+                                    "key": "field_size_feature_text",
+                                    "label": "Merkmal",
+                                    "name": "feature",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-model-tabs"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

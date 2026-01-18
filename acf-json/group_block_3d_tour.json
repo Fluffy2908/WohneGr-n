@@ -1,0 +1,244 @@
+{
+    "key": "group_block_3d_tour",
+    "title": "3D Rundgang-Block",
+    "fields": [
+        {
+            "key": "field_block_3d_title",
+            "label": "Titel",
+            "name": "tour_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Virtueller Rundgang",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_block_3d_subtitle",
+            "label": "Untertitel",
+            "name": "tour_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_block_3d_type",
+            "label": "Inhaltstyp",
+            "name": "tour_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "video": "Video (YouTube\/Vimeo)",
+                "iframe": "Iframe (3D-Rundgang)",
+                "image": "Bild mit Vorschau"
+            },
+            "default_value": "video",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_block_3d_video_url",
+            "label": "Video URL",
+            "name": "tour_video_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "YouTube oder Vimeo Link",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_block_3d_type",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_block_3d_iframe",
+            "label": "Iframe-Code",
+            "name": "tour_iframe",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Embed-Code f\u00fcr 3D-Rundgang eingeben (Matterport, etc.)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_block_3d_type",
+                        "operator": "==",
+                        "value": "iframe"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_block_3d_preview_image",
+            "label": "Vorschaubild",
+            "name": "tour_preview_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "large"
+        },
+        {
+            "key": "field_block_3d_features",
+            "label": "Merkmale",
+            "name": "tour_features",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 4,
+            "collapsed": "",
+            "button_label": "Merkmal hinzuf\u00fcgen",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_block_3d_feature_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "cube": "3D-W\u00fcrfel",
+                        "expand": "Erweitern",
+                        "play": "Abspielen",
+                        "grid": "Raster"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_block_3d_features"
+                },
+                {
+                    "key": "field_block_3d_feature_text",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_block_3d_features"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-3d-tour"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1737199080
+}
