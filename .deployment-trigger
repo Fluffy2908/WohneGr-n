@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-17 19:25:00
+Deployment triggered at: 2026-01-17 19:35:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: Added complete-reset.php - nuclear option to fix everything at once
+Last deployment: ACF debugging - added logging and test script to diagnose ACF issues
