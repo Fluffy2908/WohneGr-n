@@ -18,6 +18,7 @@ function wohnegruen_scripts() {
     wp_enqueue_style('wohnegruen-blocks', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.4');
     wp_enqueue_style('wohnegruen-model-pages', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.4');
     wp_enqueue_style('wohnegruen-models-tabs', get_template_directory_uri() . '/assets/css/models-tabs.css', array(), '1.0.4');
+    wp_enqueue_style('wohnegruen-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), '1.0.5');
 
     // Main JavaScript
     wp_enqueue_script('wohnegruen-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.4', true);
