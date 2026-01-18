@@ -1,7 +1,11 @@
 # ✅ SEO-Optimized Image Names - Complete Guide
 
-All 89 Hosekra images have been renamed to SEO-friendly names in:
+All 159 Hosekra images have been renamed to SEO-friendly names in:
 `C:\Users\Uporabnik\Documents\Hosekra slike\`
+
+This includes:
+- **Nature Model** (Eko): 79 images
+- **Pure Model** (Panorama): 80 images
 
 ---
 
@@ -148,7 +152,7 @@ All 89 Hosekra images have been renamed to SEO-friendly names in:
 
 ---
 
-### 7. COLOR REFERENCE SWATCHES (8 files)
+### 7. COLOR REFERENCE SWATCHES - Nature (8 files)
 
 These show the color palette/materials:
 - `nature-farbpalette-holz-schwarz-referenz.jpg`
@@ -159,6 +163,82 @@ These show the color palette/materials:
 - `nature-farbpalette-marmor-weiss-weiss-referenz.jpg`
 - `nature-farbpalette-marmor-schwarz-schwarz-referenz.jpg`
 - `nature-farbpalette-marmor-schwarz-weiss-referenz.jpg`
+
+---
+
+### 8. INTERIOR PHOTOS - Pure Model BY COLOR VARIANT (56 files)
+
+#### 🟤 Holz Schwarz (Wood Black) - 7 files
+- `pure-holz-schwarz-innenraum-1.jpg`
+- `pure-holz-schwarz-innenraum-2.jpg`
+- `pure-holz-schwarz-innenraum-3.jpg`
+- `pure-holz-schwarz-innenraum-4.jpg`
+- `pure-holz-schwarz-innenraum-5.jpg`
+- `pure-holz-schwarz-kueche-1.jpg`
+- `pure-holz-schwarz-kueche-2.jpg`
+
+#### ⚪ Holz Weiß (Wood White) - 7 files
+- `pure-holz-weiss-innenraum-1.jpg`
+- `pure-holz-weiss-innenraum-2.jpg`
+- `pure-holz-weiss-innenraum-3.jpg`
+- `pure-holz-weiss-innenraum-4.jpg`
+- `pure-holz-weiss-innenraum-5.jpg`
+- `pure-holz-weiss-kueche-1.jpg`
+- `pure-holz-weiss-kueche-2.jpg`
+
+#### ⚫ Beton Schwarz (Concrete Black) - 7 files
+- `pure-beton-schwarz-innenraum-1.jpg`
+- `pure-beton-schwarz-innenraum-2.jpg`
+- `pure-beton-schwarz-innenraum-3.jpg`
+- `pure-beton-schwarz-innenraum-4.jpg`
+- `pure-beton-schwarz-innenraum-5.jpg`
+- `pure-beton-schwarz-kueche-1.jpg`
+- `pure-beton-schwarz-kueche-2.jpg`
+
+#### ⚪ Beton Weiß (Concrete White) - 7 files
+- `pure-beton-weiss-innenraum-1.jpg`
+- `pure-beton-weiss-innenraum-2.jpg`
+- `pure-beton-weiss-innenraum-3.jpg`
+- `pure-beton-weiss-innenraum-4.jpg`
+- `pure-beton-weiss-innenraum-5.jpg`
+- `pure-beton-weiss-kueche-1.jpg`
+- `pure-beton-weiss-kueche-2.jpg`
+
+#### 💎 Marmor Weiß Schwarz (White Marble Black) - 7 files
+- `pure-marmor-weiss-schwarz-innenraum-1.jpg`
+- `pure-marmor-weiss-schwarz-innenraum-2.jpg`
+- `pure-marmor-weiss-schwarz-innenraum-3.jpg`
+- `pure-marmor-weiss-schwarz-innenraum-4.jpg`
+- `pure-marmor-weiss-schwarz-innenraum-5.jpg`
+- `pure-marmor-weiss-schwarz-kueche-1.jpg`
+- `pure-marmor-weiss-schwarz-kueche-2.jpg`
+
+#### 💎 Marmor Weiß Weiß (White Marble White) - 7 files
+- `pure-marmor-weiss-weiss-innenraum-1.jpg`
+- `pure-marmor-weiss-weiss-innenraum-2.jpg`
+- `pure-marmor-weiss-weiss-innenraum-3.jpg`
+- `pure-marmor-weiss-weiss-innenraum-4.jpg`
+- `pure-marmor-weiss-weiss-innenraum-5.jpg`
+- `pure-marmor-weiss-weiss-kueche-1.jpg`
+- `pure-marmor-weiss-weiss-kueche-2.jpg`
+
+#### ⚫ Marmor Schwarz Schwarz (Black Marble Black) - 7 files
+- `pure-marmor-schwarz-schwarz-innenraum-1.jpg`
+- `pure-marmor-schwarz-schwarz-innenraum-2.jpg`
+- `pure-marmor-schwarz-schwarz-innenraum-3.jpg`
+- `pure-marmor-schwarz-schwarz-innenraum-4.jpg`
+- `pure-marmor-schwarz-schwarz-innenraum-5.jpg`
+- `pure-marmor-schwarz-schwarz-kueche-1.jpg`
+- `pure-marmor-schwarz-schwarz-kueche-2.jpg`
+
+#### 💎 Marmor Schwarz Weiß (Black Marble White) - 7 files
+- `pure-marmor-schwarz-weiss-innenraum-1.jpg`
+- `pure-marmor-schwarz-weiss-innenraum-2.jpg`
+- `pure-marmor-schwarz-weiss-innenraum-3.jpg`
+- `pure-marmor-schwarz-weiss-innenraum-4.jpg`
+- `pure-marmor-schwarz-weiss-innenraum-5.jpg`
+- `pure-marmor-schwarz-weiss-kueche-1.jpg`
+- `pure-marmor-schwarz-weiss-kueche-2.jpg`
 
 ---
 
@@ -237,6 +317,95 @@ These show the color palette/materials:
 
 ---
 
+### For "Modell-Showcase" Block (Pure Post)
+
+#### Hero Section:
+**Hero-Hintergrundbild:** Upload `pure-mobilhaus-aussenansicht-hauptfoto.jpg`
+
+#### Farbvarianten (Color Variants):
+
+**Variant 1: Holz - Schwarz**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-holz-schwarz-innenraum-1.jpg`
+  2. `pure-holz-schwarz-innenraum-2.jpg`
+  3. `pure-holz-schwarz-innenraum-3.jpg`
+  4. `pure-holz-schwarz-innenraum-4.jpg`
+  5. `pure-holz-schwarz-innenraum-5.jpg`
+  6. `pure-holz-schwarz-kueche-1.jpg`
+  7. `pure-holz-schwarz-kueche-2.jpg`
+
+**Variant 2: Holz - Weiß**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-holz-weiss-innenraum-1.jpg`
+  2. `pure-holz-weiss-innenraum-2.jpg`
+  3. `pure-holz-weiss-innenraum-3.jpg`
+  4. `pure-holz-weiss-innenraum-4.jpg`
+  5. `pure-holz-weiss-innenraum-5.jpg`
+  6. `pure-holz-weiss-kueche-1.jpg`
+  7. `pure-holz-weiss-kueche-2.jpg`
+
+**Variant 3: Beton - Schwarz**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-beton-schwarz-innenraum-1.jpg`
+  2. `pure-beton-schwarz-innenraum-2.jpg`
+  3. `pure-beton-schwarz-innenraum-3.jpg`
+  4. `pure-beton-schwarz-innenraum-4.jpg`
+  5. `pure-beton-schwarz-innenraum-5.jpg`
+  6. `pure-beton-schwarz-kueche-1.jpg`
+  7. `pure-beton-schwarz-kueche-2.jpg`
+
+**Variant 4: Beton - Weiß**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-beton-weiss-innenraum-1.jpg`
+  2. `pure-beton-weiss-innenraum-2.jpg`
+  3. `pure-beton-weiss-innenraum-3.jpg`
+  4. `pure-beton-weiss-innenraum-4.jpg`
+  5. `pure-beton-weiss-innenraum-5.jpg`
+  6. `pure-beton-weiss-kueche-1.jpg`
+  7. `pure-beton-weiss-kueche-2.jpg`
+
+**Variant 5: Marmor Weiß - Schwarz**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-marmor-weiss-schwarz-innenraum-1.jpg`
+  2. `pure-marmor-weiss-schwarz-innenraum-2.jpg`
+  3. `pure-marmor-weiss-schwarz-innenraum-3.jpg`
+  4. `pure-marmor-weiss-schwarz-innenraum-4.jpg`
+  5. `pure-marmor-weiss-schwarz-innenraum-5.jpg`
+  6. `pure-marmor-weiss-schwarz-kueche-1.jpg`
+  7. `pure-marmor-weiss-schwarz-kueche-2.jpg`
+
+**Variant 6: Marmor Weiß - Weiß**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-marmor-weiss-weiss-innenraum-1.jpg`
+  2. `pure-marmor-weiss-weiss-innenraum-2.jpg`
+  3. `pure-marmor-weiss-weiss-innenraum-3.jpg`
+  4. `pure-marmor-weiss-weiss-innenraum-4.jpg`
+  5. `pure-marmor-weiss-weiss-innenraum-5.jpg`
+  6. `pure-marmor-weiss-weiss-kueche-1.jpg`
+  7. `pure-marmor-weiss-weiss-kueche-2.jpg`
+
+**Variant 7: Marmor Schwarz - Schwarz**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-marmor-schwarz-schwarz-innenraum-1.jpg`
+  2. `pure-marmor-schwarz-schwarz-innenraum-2.jpg`
+  3. `pure-marmor-schwarz-schwarz-innenraum-3.jpg`
+  4. `pure-marmor-schwarz-schwarz-innenraum-4.jpg`
+  5. `pure-marmor-schwarz-schwarz-innenraum-5.jpg`
+  6. `pure-marmor-schwarz-schwarz-kueche-1.jpg`
+  7. `pure-marmor-schwarz-schwarz-kueche-2.jpg`
+
+**Variant 8: Marmor Schwarz - Weiß**
+- Bildergalerie: Upload these 7 images:
+  1. `pure-marmor-schwarz-weiss-innenraum-1.jpg`
+  2. `pure-marmor-schwarz-weiss-innenraum-2.jpg`
+  3. `pure-marmor-schwarz-weiss-innenraum-3.jpg`
+  4. `pure-marmor-schwarz-weiss-innenraum-4.jpg`
+  5. `pure-marmor-schwarz-weiss-innenraum-5.jpg`
+  6. `pure-marmor-schwarz-weiss-kueche-1.jpg`
+  7. `pure-marmor-schwarz-weiss-kueche-2.jpg`
+
+---
+
 ### For "3D Grundrisse" Block
 
 #### Configuration 1: Nature 3×8m (24 m²)
@@ -305,10 +474,24 @@ These image names will help with:
 
 ## 📊 Summary
 
-- ✅ **69 Nature model images** renamed
-- ✅ **18 Pure model images** renamed
-- ✅ **2 misc images** renamed
-- ✅ **89 total files** processed
+### Nature Model:
+- ✅ **4 floor plans (2D)** renamed
+- ✅ **16 floor plans (3D views)** renamed
+- ✅ **9 exterior photos** renamed
+- ✅ **3 terrace photos** renamed
+- ✅ **39 interior photos (8 color variants)** renamed
+- ✅ **8 color reference swatches** renamed
+- **Total Nature: 79 images**
+
+### Pure Model:
+- ✅ **2 floor plans (2D)** renamed
+- ✅ **12 floor plans (3D views)** renamed
+- ✅ **10 exterior photos** renamed
+- ✅ **56 interior photos (8 color variants)** renamed
+- **Total Pure: 80 images**
+
+### Grand Total:
+- ✅ **159 total images** renamed and optimized
 - ✅ **100% SEO-optimized** naming convention
 - ✅ **Ready for WordPress upload**
 
