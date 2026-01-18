@@ -1,21 +1,19 @@
 <?php
 /**
- * Block Template: Hero (with Group Field)
+ * Block Template: Hero (supports both group field and direct fields)
  */
 
-// Get entire group field
-$hero = get_field('hero_block') ?: array();
-
-// Set defaults - will show even if no data is entered
-$hero_bg         = $hero['hero_background'] ?? null;
-$hero_badge      = $hero['hero_badge'] ?? 'Österreichweit verfügbar';
-$hero_title      = $hero['hero_title'] ?? 'Nachhaltige Mobilhäuser für modernes Leben';
-$hero_subtitle   = $hero['hero_subtitle'] ?? 'Hochwertige, maßgefertigte Mobilhäuser mit österreichischer Qualität. Flexibel, ökologisch und in kürzester Zeit bereit.';
-$hero_btn1_text  = $hero['hero_btn1_text'] ?? 'Modelle entdecken';
-$hero_btn1_link  = $hero['hero_btn1_link'] ?? '#modelle';
-$hero_btn2_text  = $hero['hero_btn2_text'] ?? 'Beratung anfragen';
-$hero_btn2_link  = $hero['hero_btn2_link'] ?? '#kontakt';
-$hero_stats      = $hero['hero_stats'] ?? [];
+// Try to get direct fields first (for Gutenberg blocks)
+// Fall back to group field (for backward compatibility)
+$hero_bg         = get_field('hero_background') ?: (get_field('hero_block')['hero_background'] ?? null);
+$hero_badge      = get_field('hero_badge') ?: (get_field('hero_block')['hero_badge'] ?? 'Österreichweit verfügbar');
+$hero_title      = get_field('hero_title') ?: (get_field('hero_block')['hero_title'] ?? 'Nachhaltige Mobilhäuser für modernes Leben');
+$hero_subtitle   = get_field('hero_subtitle') ?: (get_field('hero_block')['hero_subtitle'] ?? 'Hochwertige, maßgefertigte Mobilhäuser mit österreichischer Qualität. Flexibel, ökologisch und in kürzester Zeit bereit.');
+$hero_btn1_text  = get_field('hero_btn1_text') ?: (get_field('hero_block')['hero_btn1_text'] ?? 'Modelle entdecken');
+$hero_btn1_link  = get_field('hero_btn1_link') ?: (get_field('hero_block')['hero_btn1_link'] ?? '#modelle');
+$hero_btn2_text  = get_field('hero_btn2_text') ?: (get_field('hero_block')['hero_btn2_text'] ?? 'Beratung anfragen');
+$hero_btn2_link  = get_field('hero_btn2_link') ?: (get_field('hero_block')['hero_btn2_link'] ?? '#kontakt');
+$hero_stats      = get_field('hero_stats') ?: (get_field('hero_block')['hero_stats'] ?? []);
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'home';
 ?>

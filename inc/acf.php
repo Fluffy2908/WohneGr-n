@@ -738,24 +738,203 @@ function wohnegruen_register_block_fields() {
         ),
     ));
 
-    // Interiors Block Fields
+    // Interiors Block Fields (supports both legacy rooms mode and model showcase with color slider)
     acf_add_local_field_group(array(
         'key' => 'group_block_interiors',
         'title' => 'Innenausstattung-Block',
         'fields' => array(
+            // Mode selector
             array(
-                'key' => 'field_block_interior_title',
+                'key' => 'field_block_interiors_mode_tab',
+                'label' => 'Anzeigemodus',
+                'name' => '',
+                'type' => 'tab',
+            ),
+            array(
+                'key' => 'field_block_interiors_title',
                 'label' => 'Titel',
-                'name' => 'interior_title',
+                'name' => 'interiors_title',
                 'type' => 'text',
                 'default_value' => 'Innenausstattung',
             ),
             array(
-                'key' => 'field_block_interior_subtitle',
+                'key' => 'field_block_interiors_subtitle',
                 'label' => 'Untertitel',
-                'name' => 'interior_subtitle',
+                'name' => 'interiors_subtitle',
                 'type' => 'textarea',
                 'rows' => 2,
+            ),
+            array(
+                'key' => 'field_block_interiors_model',
+                'label' => 'Modell (für Farbslider)',
+                'name' => 'interiors_model',
+                'type' => 'select',
+                'choices' => array(
+                    '' => 'Kein Modell (normale Ansicht)',
+                    'nature' => 'Nature Modell',
+                    'pure' => 'Pure Modell',
+                ),
+                'default_value' => '',
+                'allow_null' => 1,
+                'instructions' => 'Wählen Sie ein Modell, um den Farbslider zu aktivieren',
+            ),
+
+            // Model showcase fields
+            array(
+                'key' => 'field_block_interiors_model_tab',
+                'label' => 'Modell Showcase (mit Farbslider)',
+                'name' => '',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '!=',
+                            'value' => '',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_block_interiors_image',
+                'label' => 'Hauptbild',
+                'name' => 'interiors_image',
+                'type' => 'image',
+                'return_format' => 'id',
+                'preview_size' => 'medium',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '!=',
+                            'value' => '',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_block_interiors_description',
+                'label' => 'Beschreibung',
+                'name' => 'interiors_description',
+                'type' => 'textarea',
+                'rows' => 4,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '!=',
+                            'value' => '',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_block_interiors_features',
+                'label' => 'Merkmale',
+                'name' => 'interiors_features',
+                'type' => 'repeater',
+                'min' => 0,
+                'max' => 10,
+                'layout' => 'table',
+                'button_label' => 'Merkmal hinzufügen',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_block_interiors_feature_text',
+                        'label' => 'Text',
+                        'name' => 'text',
+                        'type' => 'text',
+                    ),
+                ),
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '!=',
+                            'value' => '',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_block_interiors_color_slider',
+                'label' => 'Farbslider aktivieren',
+                'name' => 'interiors_color_slider',
+                'type' => 'true_false',
+                'default_value' => 1,
+                'ui' => 1,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '!=',
+                            'value' => '',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_block_interiors_colors',
+                'label' => 'Farbkombinationen',
+                'name' => 'interiors_colors',
+                'type' => 'repeater',
+                'min' => 1,
+                'max' => 12,
+                'layout' => 'block',
+                'button_label' => 'Farbkombination hinzufügen',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_block_interiors_color_image',
+                        'label' => 'Bild',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'id',
+                        'preview_size' => 'medium',
+                    ),
+                    array(
+                        'key' => 'field_block_interiors_color_title',
+                        'label' => 'Titel',
+                        'name' => 'title',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'key' => 'field_block_interiors_color_description',
+                        'label' => 'Beschreibung',
+                        'name' => 'description',
+                        'type' => 'textarea',
+                        'rows' => 2,
+                    ),
+                ),
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '!=',
+                            'value' => '',
+                        ),
+                        array(
+                            'field' => 'field_block_interiors_color_slider',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+            ),
+
+            // Legacy rooms mode
+            array(
+                'key' => 'field_block_interiors_rooms_tab',
+                'label' => 'Räume Ansicht (Legacy)',
+                'name' => '',
+                'type' => 'tab',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '==',
+                            'value' => '',
+                        ),
+                    ),
+                ),
             ),
             array(
                 'key' => 'field_block_interior_rooms',
@@ -795,6 +974,15 @@ function wohnegruen_register_block_fields() {
                         'type' => 'textarea',
                         'rows' => 3,
                         'instructions' => 'Jedes Merkmal in einer neuen Zeile',
+                    ),
+                ),
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_block_interiors_model',
+                            'operator' => '==',
+                            'value' => '',
+                        ),
                     ),
                 ),
             ),

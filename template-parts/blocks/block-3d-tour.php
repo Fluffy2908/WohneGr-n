@@ -5,6 +5,10 @@
 
 $title = get_field('tour_title') ?: 'Virtueller Rundgang';
 $subtitle = get_field('tour_subtitle') ?: 'Entdecken Sie unsere Mobilhäuser in 360 Grad.';
+$description = get_field('tour_description');
+$button_text = get_field('tour_button_text');
+$button_link = get_field('tour_button_link');
+$video_placeholder = get_field('tour_video_placeholder');
 $type = get_field('tour_type') ?: 'video';
 $video_url = get_field('tour_video_url');
 $iframe_code = get_field('tour_iframe');
@@ -78,7 +82,16 @@ if (!$features) {
                     <div class="tour-placeholder">
                         <div class="tour-placeholder-content">
                             <?php echo wohnegruen_get_icon('cube'); ?>
-                            <p>3D-Rundgang in Kürze verfügbar</p>
+                            <?php if ($description) : ?>
+                                <p><?php echo esc_html($description); ?></p>
+                            <?php else : ?>
+                                <p>3D-Rundgang in Kürze verfügbar</p>
+                            <?php endif; ?>
+                            <?php if ($button_text && $button_link) : ?>
+                                <a href="<?php echo esc_url($button_link); ?>" class="btn btn-primary">
+                                    <?php echo esc_html($button_text); ?>
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endif; ?>
