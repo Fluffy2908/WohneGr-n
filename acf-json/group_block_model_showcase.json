@@ -1,0 +1,152 @@
+{
+    "key": "group_block_model_showcase",
+    "title": "Modell-Showcase Block",
+    "fields": [
+        {
+            "key": "field_showcase_hero_image",
+            "label": "Hero-Hintergrundbild",
+            "name": "showcase_hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "large",
+            "instructions": "Großes Bild als Hintergrund (empfohlen: 1920x800px)",
+            "required": 0
+        },
+        {
+            "key": "field_showcase_tagline",
+            "label": "Tagline",
+            "name": "showcase_tagline",
+            "type": "text",
+            "instructions": "Kurze Beschreibung unter dem Titel",
+            "required": 0,
+            "placeholder": "z.B. 'Natürliches Wohnen im Einklang mit der Natur'"
+        },
+        {
+            "key": "field_showcase_badge",
+            "label": "Badge",
+            "name": "showcase_badge",
+            "type": "text",
+            "instructions": "z.B. 'Beliebt', 'Premium', 'Neu'",
+            "required": 0
+        },
+        {
+            "key": "field_showcase_specs",
+            "label": "Spezifikationen",
+            "name": "showcase_specs",
+            "type": "repeater",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Spezifikation hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_showcase_spec_value",
+                    "label": "Wert",
+                    "name": "value",
+                    "type": "text",
+                    "placeholder": "z.B. 45 m²"
+                },
+                {
+                    "key": "field_showcase_spec_label",
+                    "label": "Bezeichnung",
+                    "name": "label",
+                    "type": "text",
+                    "placeholder": "z.B. Wohnfläche"
+                }
+            ]
+        },
+        {
+            "key": "field_showcase_colors_title",
+            "label": "Farboptionen Titel",
+            "name": "showcase_colors_title",
+            "type": "text",
+            "default_value": "Farboptionen",
+            "required": 0
+        },
+        {
+            "key": "field_showcase_colors_subtitle",
+            "label": "Farboptionen Untertitel",
+            "name": "showcase_colors_subtitle",
+            "type": "text",
+            "placeholder": "Wählen Sie Ihre Lieblingsfarbe",
+            "required": 0
+        },
+        {
+            "key": "field_showcase_colors_items",
+            "label": "Farboptionen",
+            "name": "showcase_colors_items",
+            "type": "repeater",
+            "min": 1,
+            "max": 12,
+            "layout": "block",
+            "button_label": "Farboption hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_showcase_color_image",
+                    "label": "Bild",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "instructions": "Foto des Modells in dieser Farbe",
+                    "required": 1
+                },
+                {
+                    "key": "field_showcase_color_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "z.B. 'Klassik Grau', 'Natur Braun'",
+                    "required": 1
+                },
+                {
+                    "key": "field_showcase_color_exterior",
+                    "label": "Außenfarbe",
+                    "name": "exterior_color",
+                    "type": "text",
+                    "placeholder": "z.B. Anthrazit",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_showcase_color_interior",
+                    "label": "Innenfarbe",
+                    "name": "interior_color",
+                    "type": "text",
+                    "placeholder": "z.B. Weiß",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_showcase_color_description",
+                    "label": "Beschreibung",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "Optional: Kurze Beschreibung dieser Farboption",
+                    "required": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-model-showcase"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Kombinierter Hero + Farboptionen Block für Modell-Seiten"
+}

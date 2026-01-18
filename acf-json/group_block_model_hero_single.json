@@ -69,6 +69,6 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true,
-    "description": "Hero-Bereich für einzelne Modell-Seiten"
+    "active": false,
+    "description": "DEPRECATED - Use Modell-Showcase block instead"
 }

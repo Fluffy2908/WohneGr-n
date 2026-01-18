@@ -94,6 +94,6 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true,
-    "description": "Farboptionen und Innenausstattung für Modelle"
+    "active": false,
+    "description": "DEPRECATED - Use Modell-Showcase block instead"
 }

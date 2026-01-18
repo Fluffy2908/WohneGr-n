@@ -331,7 +331,24 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('mobilhaus'),
     ));
 
-    error_log('WohneGrün: Successfully registered ' . (19) . ' ACF blocks');
+    // Model Showcase Block (Combined Hero + Color Options)
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-model-showcase',
+        'title'             => __('Modell-Showcase', 'wohnegruen'),
+        'description'       => __('Kombinierter Hero + Farboptionen Block für Modell-Seiten.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-model-showcase.php',
+        'category'          => $category,
+        'icon'              => 'images-alt2',
+        'keywords'          => array('showcase', 'hero', 'colors', 'farben', 'modell'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('mobilhaus'),
+    ));
+
+    error_log('WohneGrün: Successfully registered ' . (20) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);
