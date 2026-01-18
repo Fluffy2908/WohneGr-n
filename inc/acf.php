@@ -194,7 +194,76 @@ function wohnegruen_register_acf_blocks() {
         'mode'              => 'preview',
         'post_types'        => array('page'),
     ));
-    error_log('WohneGrün: Successfully registered ' . (10) . ' ACF blocks');
+
+    // Model Tabs Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-model-tabs',
+        'title'             => __('Modell-Tabs', 'wohnegruen'),
+        'description'       => __('Modell-Tabs mit Farbauswahl und Größenoptionen (Nature/Pure).', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-model-tabs.php',
+        'category'          => $category,
+        'icon'              => 'admin-home',
+        'keywords'          => array('models', 'tabs', 'color', 'modelle'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    // Gallery Tabs Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-gallery-tabs',
+        'title'             => __('Galerie mit Tabs', 'wohnegruen'),
+        'description'       => __('Bildergalerie mit Filter und 3D-Tour Tabs.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-gallery-tabs.php',
+        'category'          => $category,
+        'icon'              => 'format-gallery',
+        'keywords'          => array('gallery', 'galerie', '3d', 'tabs'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    // Values Grid Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-values-grid',
+        'title'             => __('Werte-Raster', 'wohnegruen'),
+        'description'       => __('Raster von Unternehmenswerten mit Icons.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-values-grid.php',
+        'category'          => $category,
+        'icon'              => 'star-filled',
+        'keywords'          => array('values', 'werte', 'icons'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    // Contact Form Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-contact-form',
+        'title'             => __('Kontaktformular', 'wohnegruen'),
+        'description'       => __('Kontaktformular mit Info und Karte.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-contact-form.php',
+        'category'          => $category,
+        'icon'              => 'email-alt',
+        'keywords'          => array('contact', 'kontakt', 'form', 'map'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    error_log('WohneGrün: Successfully registered ' . (15) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);
