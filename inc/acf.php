@@ -263,7 +263,24 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('page'),
     ));
 
-    error_log('WohneGrün: Successfully registered ' . (15) . ' ACF blocks');
+    // Page Hero Block (Simple hero for inner pages)
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-page-hero',
+        'title'             => __('Seiten-Hero', 'wohnegruen'),
+        'description'       => __('Einfacher Hero-Bereich für Unterseiten mit Hintergrund und Titel.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-page-hero.php',
+        'category'          => $category,
+        'icon'              => 'cover-image',
+        'keywords'          => array('hero', 'header', 'page', 'title', 'simple'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    error_log('WohneGrün: Successfully registered ' . (16) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);
