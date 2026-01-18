@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-18 14:00:00
+Deployment triggered at: 2026-01-18 15:00:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: Complete website diagnostic and auto-patch system - Fix blank pages and import images
+Last deployment: CRITICAL FIX - Re-enable working field groups, delete broken database groups
