@@ -1255,7 +1255,10 @@ function wohnegruen_register_block_fields() {
         ),
     ));
 }
-add_action('acf/init', 'wohnegruen_register_block_fields');
+// DISABLED: Using database field groups with corrected location rules instead
+// Database field groups are visible in ACF admin AND work with blocks
+// Local field groups would create duplicates
+// add_action('acf/init', 'wohnegruen_register_block_fields');
 
 /**
  * Register ACF Options Pages
