@@ -1,3 +1,3 @@
-Deployment triggered at: 2026-01-18 15:30:00
+Deployment triggered at: 2026-01-18 16:00:00
 This file triggers the GitHub Actions workflow to deploy the theme to cPanel.
-Last deployment: PROPER FIX - Correct database field group location rules for visibility + functionality
+Last deployment: REAL FIX - Restore Friday's working custom page templates
