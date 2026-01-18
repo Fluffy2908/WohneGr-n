@@ -1,0 +1,99 @@
+{
+    "key": "group_block_model_colors",
+    "title": "Farboptionen Block",
+    "fields": [
+        {
+            "key": "field_model_colors_title",
+            "label": "Titel",
+            "name": "model_colors_title",
+            "type": "text",
+            "default_value": "Farboptionen",
+            "required": 0
+        },
+        {
+            "key": "field_model_colors_subtitle",
+            "label": "Untertitel",
+            "name": "model_colors_subtitle",
+            "type": "text",
+            "placeholder": "Wählen Sie Ihre Lieblingsfarbe",
+            "required": 0
+        },
+        {
+            "key": "field_model_colors_items",
+            "label": "Farboptionen",
+            "name": "model_colors_items",
+            "type": "repeater",
+            "min": 1,
+            "max": 12,
+            "layout": "block",
+            "button_label": "Farboption hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_model_color_image",
+                    "label": "Bild",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "instructions": "Foto des Modells in dieser Farbe",
+                    "required": 1
+                },
+                {
+                    "key": "field_model_color_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "z.B. 'Klassik Grau', 'Natur Braun'",
+                    "required": 1
+                },
+                {
+                    "key": "field_model_color_exterior",
+                    "label": "Außenfarbe",
+                    "name": "exterior_color",
+                    "type": "text",
+                    "placeholder": "z.B. Anthrazit",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_model_color_interior",
+                    "label": "Innenfarbe",
+                    "name": "interior_color",
+                    "type": "text",
+                    "placeholder": "z.B. Weiß",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_model_color_description",
+                    "label": "Beschreibung",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "Optional: Kurze Beschreibung dieser Farboption",
+                    "required": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-model-colors"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Farboptionen und Innenausstattung für Modelle"
+}

@@ -1,0 +1,74 @@
+{
+    "key": "group_block_model_hero_single",
+    "title": "Modell-Hero Block",
+    "fields": [
+        {
+            "key": "field_single_model_hero_image",
+            "label": "Hero-Hintergrundbild",
+            "name": "single_model_hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "large",
+            "instructions": "Großes Bild als Hintergrund (empfohlen: 1920x800px)",
+            "required": 0
+        },
+        {
+            "key": "field_single_model_tagline",
+            "label": "Tagline",
+            "name": "single_model_tagline",
+            "type": "text",
+            "instructions": "Kurze Beschreibung unter dem Titel",
+            "required": 0
+        },
+        {
+            "key": "field_single_model_badge",
+            "label": "Badge",
+            "name": "single_model_badge",
+            "type": "text",
+            "instructions": "z.B. 'Beliebt', 'Premium', 'Neu'",
+            "required": 0
+        },
+        {
+            "key": "field_single_model_specs",
+            "label": "Spezifikationen",
+            "name": "single_model_specs",
+            "type": "repeater",
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Spezifikation hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_spec_value_single",
+                    "label": "Wert",
+                    "name": "value",
+                    "type": "text",
+                    "placeholder": "z.B. 45 m²"
+                },
+                {
+                    "key": "field_spec_label_single",
+                    "label": "Bezeichnung",
+                    "name": "label",
+                    "type": "text",
+                    "placeholder": "z.B. Wohnfläche"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-model-hero-single"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Hero-Bereich für einzelne Modell-Seiten"
+}
