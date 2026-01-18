@@ -2288,6 +2288,29 @@ select:focus-visible {
     width: 100%;
 }
 
+/* Active/Current Menu Item Styling */
+.nav-menu .current-menu-item > a,
+.nav-menu .current_page_item > a,
+.nav-menu .current-menu-ancestor > a,
+.nav-menu .current_page_ancestor > a {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nav-menu .current-menu-item > a::after,
+.nav-menu .current_page_item > a::after,
+.nav-menu .current-menu-ancestor > a::after,
+.nav-menu .current_page_ancestor > a::after {
+    width: 100%;
+}
+
+/* Mobile Menu Active Item */
+.mobile-menu-items .current-menu-item > a,
+.mobile-menu-items .current_page_item > a {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
 /* Enhanced Footer */
 .site-footer {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
