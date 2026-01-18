@@ -1255,7 +1255,10 @@ function wohnegruen_register_block_fields() {
         ),
     ));
 }
-add_action('acf/init', 'wohnegruen_register_block_fields');
+// DISABLED: Field groups are now registered in the database (not as local/code-based groups)
+// This allows them to be visible and editable in the ACF admin menu
+// Run migrate-to-gutenberg.php to create field groups in the database
+// add_action('acf/init', 'wohnegruen_register_block_fields');
 
 /**
  * Register ACF Options Pages
