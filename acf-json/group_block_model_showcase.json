@@ -56,79 +56,106 @@
             ]
         },
         {
-            "key": "field_showcase_colors_title",
-            "label": "Farboptionen Titel",
-            "name": "showcase_colors_title",
+            "key": "field_showcase_gallery_title",
+            "label": "Galerie Titel",
+            "name": "showcase_gallery_title",
             "type": "text",
-            "default_value": "Farboptionen",
+            "default_value": "Farboptionen & Innenausstattung",
             "required": 0
         },
         {
-            "key": "field_showcase_colors_subtitle",
-            "label": "Farboptionen Untertitel",
-            "name": "showcase_colors_subtitle",
+            "key": "field_showcase_gallery_subtitle",
+            "label": "Galerie Untertitel",
+            "name": "showcase_gallery_subtitle",
             "type": "text",
-            "placeholder": "Wählen Sie Ihre Lieblingsfarbe",
+            "placeholder": "Wählen Sie Ihre Lieblingsfarbe und entdecken Sie die Möglichkeiten",
             "required": 0
         },
         {
-            "key": "field_showcase_colors_items",
-            "label": "Farboptionen",
-            "name": "showcase_colors_items",
+            "key": "field_showcase_color_variants",
+            "label": "Farbvarianten",
+            "name": "showcase_color_variants",
             "type": "repeater",
             "min": 1,
             "max": 12,
             "layout": "block",
-            "button_label": "Farboption hinzufügen",
+            "button_label": "Farbvariante hinzufügen",
+            "instructions": "Jede Variante wird als Tab angezeigt mit eigener Bildergalerie",
             "sub_fields": [
                 {
-                    "key": "field_showcase_color_image",
-                    "label": "Bild",
-                    "name": "image",
-                    "type": "image",
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "instructions": "Foto des Modells in dieser Farbe",
+                    "key": "field_variant_name",
+                    "label": "Varianten-Name",
+                    "name": "variant_name",
+                    "type": "text",
+                    "instructions": "z.B. 'Holz - Schwarz', 'Beton - Weiß', 'Marmor - Hell'",
                     "required": 1
                 },
                 {
-                    "key": "field_showcase_color_name",
-                    "label": "Name",
-                    "name": "name",
-                    "type": "text",
-                    "instructions": "z.B. 'Klassik Grau', 'Natur Braun'",
-                    "required": 1
-                },
-                {
-                    "key": "field_showcase_color_exterior",
-                    "label": "Außenfarbe",
-                    "name": "exterior_color",
-                    "type": "text",
-                    "placeholder": "z.B. Anthrazit",
-                    "required": 0,
-                    "wrapper": {
-                        "width": "50"
-                    }
-                },
-                {
-                    "key": "field_showcase_color_interior",
-                    "label": "Innenfarbe",
-                    "name": "interior_color",
-                    "type": "text",
-                    "placeholder": "z.B. Weiß",
-                    "required": 0,
-                    "wrapper": {
-                        "width": "50"
-                    }
-                },
-                {
-                    "key": "field_showcase_color_description",
+                    "key": "field_variant_description",
                     "label": "Beschreibung",
                     "name": "description",
                     "type": "textarea",
-                    "rows": 2,
-                    "placeholder": "Optional: Kurze Beschreibung dieser Farboption",
+                    "rows": 3,
+                    "placeholder": "Optional: Kurze Beschreibung dieser Farbvariante",
                     "required": 0
+                },
+                {
+                    "key": "field_variant_exterior_name",
+                    "label": "Außen - Bezeichnung",
+                    "name": "exterior_name",
+                    "type": "text",
+                    "placeholder": "z.B. 'Anthrazit', 'Naturholz'",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_variant_exterior_color",
+                    "label": "Außen - Farbcode",
+                    "name": "exterior_color",
+                    "type": "color_picker",
+                    "instructions": "Farbe für Tab-Icon und Swatch",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_variant_interior_name",
+                    "label": "Innen - Bezeichnung",
+                    "name": "interior_name",
+                    "type": "text",
+                    "placeholder": "z.B. 'Weiß', 'Grau'",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_variant_interior_color",
+                    "label": "Innen - Farbcode",
+                    "name": "interior_color",
+                    "type": "color_picker",
+                    "instructions": "Farbe für Tab-Icon und Swatch",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_variant_gallery",
+                    "label": "Bildergalerie",
+                    "name": "gallery",
+                    "type": "gallery",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "insert": "append",
+                    "library": "all",
+                    "min": 1,
+                    "max": 20,
+                    "instructions": "Fügen Sie Bilder dieser Farbvariante hinzu (Innen- und Außenansichten)",
+                    "required": 1
                 }
             ]
         }
@@ -148,5 +175,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "description": "Kombinierter Hero + Farboptionen Block für Modell-Seiten"
+    "description": "Hero + Interaktive Farbgalerie (ähnlich wie Hosekra)"
 }

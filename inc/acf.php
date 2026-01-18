@@ -280,40 +280,6 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('page'),
     ));
 
-    // Model Hero Block (For single model posts)
-    acf_register_block_type(array(
-        'name'              => 'wohnegruen-model-hero-single',
-        'title'             => __('Modell-Hero', 'wohnegruen'),
-        'description'       => __('Hero-Bereich für einzelne Modell-Seiten.', 'wohnegruen'),
-        'render_template'   => 'template-parts/blocks/block-model-hero-single.php',
-        'category'          => $category,
-        'icon'              => 'format-image',
-        'keywords'          => array('model', 'hero', 'modell'),
-        'supports'          => array(
-            'align' => array('full', 'wide'),
-            'anchor' => true,
-        ),
-        'mode'              => 'preview',
-        'post_types'        => array('mobilhaus'),
-    ));
-
-    // Model Colors Block (For single model posts)
-    acf_register_block_type(array(
-        'name'              => 'wohnegruen-model-colors',
-        'title'             => __('Farboptionen', 'wohnegruen'),
-        'description'       => __('Farboptionen und Innenausstattung für Modelle.', 'wohnegruen'),
-        'render_template'   => 'template-parts/blocks/block-model-colors.php',
-        'category'          => $category,
-        'icon'              => 'art',
-        'keywords'          => array('color', 'farbe', 'interior', 'innen'),
-        'supports'          => array(
-            'align' => array('full', 'wide'),
-            'anchor' => true,
-        ),
-        'mode'              => 'preview',
-        'post_types'        => array('mobilhaus'),
-    ));
-
     // Model Details Block (For single model posts - stores homepage card data)
     acf_register_block_type(array(
         'name'              => 'wohnegruen-model-details',
@@ -348,7 +314,7 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('mobilhaus'),
     ));
 
-    error_log('WohneGrün: Successfully registered ' . (20) . ' ACF blocks');
+    error_log('WohneGrün: Successfully registered ' . (18) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);
