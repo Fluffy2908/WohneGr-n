@@ -126,7 +126,7 @@ if (empty($models)) {
                                 <?php foreach ($model['highlights'] as $highlight) : ?>
                                     <div class="model-highlight">
                                         <?php echo wohnegruen_get_icon('check'); ?>
-                                        <span><?php echo esc_html($highlight); ?></span>
+                                        <span><?php echo esc_html(is_array($highlight) && isset($highlight['text']) ? $highlight['text'] : $highlight); ?></span>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

@@ -194,6 +194,27 @@
                     "parent_repeater": "field_block_models_items"
                 },
                 {
+                    "key": "field_block_model_tagline",
+                    "label": "Tagline",
+                    "name": "tagline",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Kurze Überschrift unter dem Modellnamen",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_block_models_items"
+                },
+                {
                     "key": "field_block_model_description",
                     "label": "Beschreibung",
                     "name": "description",
@@ -209,10 +230,119 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "rows": 2,
+                    "rows": 3,
                     "placeholder": "",
                     "new_lines": "",
                     "parent_repeater": "field_block_models_items"
+                },
+                {
+                    "key": "field_block_model_badge",
+                    "label": "Badge",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "z.B. 'Beliebt', 'Premium', 'Neu'",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_block_models_items"
+                },
+                {
+                    "key": "field_block_model_badge_class",
+                    "label": "Badge CSS-Klasse",
+                    "name": "badge_class",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional: z.B. 'model-badge-premium'",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_block_models_items"
+                },
+                {
+                    "key": "field_block_model_type",
+                    "label": "Typ",
+                    "name": "type",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "z.B. 'Kompakt & Funktional', 'Premium & Modern'",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_block_models_items"
+                },
+                {
+                    "key": "field_block_model_highlights",
+                    "label": "Highlights",
+                    "name": "highlights",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Aufzählungspunkte mit Häkchen",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 6,
+                    "collapsed": "",
+                    "button_label": "Highlight hinzufügen",
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_block_models_items",
+                    "sub_fields": [
+                        {
+                            "key": "field_block_model_highlight_text",
+                            "label": "Text",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_block_model_highlights"
+                        }
+                    ]
                 },
                 {
                     "key": "field_block_model_size",
