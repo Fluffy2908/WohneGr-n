@@ -118,6 +118,6 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
-    "description": "Zusätzliche Felder für Mobilhaus-Posts"
+    "active": false,
+    "description": "DEPRECATED - Use Modell-Details block instead"
 }
