@@ -27,15 +27,28 @@ if ($source === 'cpt') {
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
+            $highlights_raw = get_field('model_highlights');
+            $highlights = array();
+            if ($highlights_raw && is_array($highlights_raw)) {
+                foreach ($highlights_raw as $h) {
+                    $highlights[] = is_array($h) && isset($h['text']) ? $h['text'] : $h;
+                }
+            }
+
             $models[] = array(
                 'title' => get_the_title(),
                 'link' => get_permalink(),
                 'image' => get_post_thumbnail_id() ? wp_get_attachment_image_src(get_post_thumbnail_id(), 'large') : null,
                 'description' => get_the_excerpt(),
-                'size' => get_field('model_size') ?: '45 m2',
+                'tagline' => get_field('model_tagline') ?: '',
+                'badge' => get_field('model_badge') ?: '',
+                'badge_class' => get_field('model_badge_class') ?: '',
+                'type' => get_field('model_type') ?: 'Mobilhaus',
+                'size' => get_field('model_size') ?: '45 m²',
                 'rooms' => get_field('model_rooms') ?: '2',
-                'persons' => get_field('model_persons') ?: '4',
+                'persons' => get_field('model_persons') ?: '2-4',
                 'price' => get_field('model_price') ?: '',
+                'highlights' => $highlights,
             );
         }
         wp_reset_postdata();
