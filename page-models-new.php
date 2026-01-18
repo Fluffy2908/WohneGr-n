@@ -496,4 +496,18 @@ get_header();
     </div>
 </section>
 
+<?php
+// Display ACF blocks from Gutenberg editor
+while (have_posts()) {
+    the_post();
+    if (trim(get_the_content())) {
+        ?>
+        <div class="acf-blocks-container">
+            <?php the_content(); ?>
+        </div>
+        <?php
+    }
+}
+?>
+
 <?php get_footer(); ?>

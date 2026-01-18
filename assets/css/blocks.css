@@ -573,3 +573,30 @@
 [data-type="acf/wohnegruen-hero"] {
     margin-top: 0 !important;
 }
+
+/* ==========================================================================
+   ACF BLOCKS CONTAINER (FOR CUSTOM TEMPLATES)
+   ========================================================================== */
+
+/* Container for ACF blocks added via Gutenberg editor on custom template pages */
+.acf-blocks-container {
+    width: 100%;
+    background: transparent;
+}
+
+/* Ensure blocks display full-width without container constraints */
+.acf-blocks-container > * {
+    max-width: 100%;
+}
+
+/* Match section spacing from main site */
+.acf-blocks-container .section-padding {
+    padding: 8rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .acf-blocks-container .section-padding {
+        padding: 3rem 0;
+    }
+}
