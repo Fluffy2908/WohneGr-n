@@ -82,7 +82,7 @@ if (empty($models)) {
             'type' => 'Kompakt & Funktional',
             'persons' => '2-4',
             'link' => home_url('/modelle/nature'),
-            'image' => get_template_directory_uri() . '/assets/images/model-nature-exterior.jpg',
+            'image' => get_template_directory_uri() . '/assets/images/nature-mobilhaus-aussenansicht-hauptfoto.jpg',
             'highlights' => array(
                 '8 Farbschemata verfügbar',
                 '3×8m oder 4×8m Konfiguration',
@@ -100,7 +100,7 @@ if (empty($models)) {
             'type' => 'Premium & Modern',
             'persons' => '2-4',
             'link' => home_url('/modelle/pure'),
-            'image' => get_template_directory_uri() . '/assets/images/model-pure-exterior.jpg',
+            'image' => get_template_directory_uri() . '/assets/images/pure-mobilhaus-aussenansicht-hauptfoto.jpg',
             'highlights' => array(
                 '8 exklusive Farbschemata',
                 '3×8m oder 4×8m Premium',

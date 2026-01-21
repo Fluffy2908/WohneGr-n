@@ -76,21 +76,19 @@ WohneGrün/
 │   └── cpt/
 │       └── cpt-mobilhaus.php # Custom Post Type Definition
 ├── template-parts/
-│   └── blocks/               # ACF Block-Templates (14 Blocks)
+│   └── blocks/               # ACF Block-Templates (12 Blocks)
 │       ├── block-hero.php
 │       ├── block-features.php
 │       ├── block-models.php
 │       ├── block-about.php
 │       ├── block-contact.php
-│       ├── block-gallery.php
-│       ├── block-3d-tour.php
-│       ├── block-floor-plans.php
-│       ├── block-interiors.php
+│       ├── block-contact-form.php
 │       ├── block-cta.php
-│       ├── block-model-tabs.php ✨ NEU
-│       ├── block-gallery-tabs.php ✨ NEU
-│       ├── block-values-grid.php ✨ NEU
-│       └── block-contact-form.php ✨ NEU
+│       ├── block-values-grid.php
+│       ├── block-page-hero.php
+│       ├── block-model-details.php
+│       ├── block-model-showcase.php ✨ NEU
+│       └── block-3d-floorplans.php ✨ NEU
 ├── *.php                     # Haupt-Template-Dateien
 ├── style.css                 # Theme-Header & Basis-Styles
 └── functions.php             # Lädt alle inc/-Dateien

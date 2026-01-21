@@ -36,23 +36,6 @@
         font-size: 1.1rem;
     }
 
-    /* Model tabs on tablet */
-    .model-tabs-nav {
-        gap: 1rem;
-    }
-
-    .model-tab-btn {
-        padding: 1.5rem 2rem;
-    }
-
-    .tab-icon {
-        font-size: 2rem;
-    }
-
-    .tab-title {
-        font-size: 1.5rem;
-    }
-
     /* Color slider on tablet */
     .color-slider {
         gap: 1.5rem;
@@ -97,7 +80,7 @@
 
     /* Hero on mobile */
     .hero-section {
-        min-height: 50vh;
+        min-height: 60vh;
     }
 
     .hero-content {
@@ -131,30 +114,6 @@
 
     .hamburger {
         display: flex !important;
-    }
-
-    /* Model Tabs - Stack vertically on mobile */
-    .model-tabs-nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .model-tab-btn {
-        width: 100%;
-        padding: 1.5rem;
-        text-align: left;
-    }
-
-    .tab-icon {
-        font-size: 1.8rem;
-    }
-
-    .tab-title {
-        font-size: 1.3rem;
-    }
-
-    .tab-subtitle {
-        font-size: 0.85rem;
     }
 
     /* Model Hero on mobile */
@@ -240,18 +199,6 @@
         height: 250px;
     }
 
-    /* Gallery Tabs on mobile */
-    .gallery-tabs {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .gallery-tab {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem;
-    }
-
     /* Floor Plans on mobile */
     .floor-plans-grid {
         grid-template-columns: 1fr;
@@ -260,22 +207,6 @@
 
     .floor-plan-card {
         max-width: 100%;
-    }
-
-    .tour-features-top {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
-    }
-
-    .tour-feature-btn {
-        flex-direction: column;
-        padding: 1rem;
-        font-size: 13px;
-    }
-
-    .tour-feature-icon {
-        width: 40px;
-        height: 40px;
     }
 
     /* About Section on mobile */
@@ -370,15 +301,6 @@
         font-size: 16px;
     }
 
-    /* Model tabs even more compact */
-    .model-tab-btn {
-        padding: 1rem;
-    }
-
-    .tab-title {
-        font-size: 1.1rem;
-    }
-
     /* Color slide extra small */
     .color-slide {
         min-width: 260px;
@@ -396,11 +318,6 @@
     .gallery-item {
         height: 220px;
     }
-
-    /* Tour features stack */
-    .tour-features-top {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* ====================
@@ -414,17 +331,6 @@
 
     .model-hero {
         min-height: 60vh;
-    }
-
-    .model-tabs-nav {
-        flex-direction: row;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .model-tab-btn {
-        min-width: 200px;
-        flex-shrink: 0;
     }
 }
 
@@ -454,14 +360,12 @@
     }
 
     /* Remove hover states on touch */
-    .model-tab-btn:hover,
     .btn:hover,
     .gallery-filter-btn:hover {
         transform: none;
     }
 
     /* Add active states for touch */
-    .model-tab-btn:active,
     .btn:active,
     .gallery-filter-btn:active {
         transform: scale(0.97);

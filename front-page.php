@@ -11,11 +11,13 @@
  * - Modelle (wohnegruen-models)
  * - Über uns (wohnegruen-about)
  * - Kontakt (wohnegruen-contact)
- * - Galerie (wohnegruen-gallery)
- * - 3D Rundgang (wohnegruen-3d-tour)
- * - Grundrisse (wohnegruen-floor-plans)
- * - Innenausstattung (wohnegruen-interiors)
+ * - Kontaktformular (wohnegruen-contact-form)
  * - CTA-Bereich (wohnegruen-cta)
+ * - Werte-Raster (wohnegruen-values-grid)
+ * - Seiten-Hero (wohnegruen-page-hero)
+ * - Modell-Details (wohnegruen-model-details)
+ * - Modell-Showcase (wohnegruen-model-showcase)
+ * - 3D Grundrisse (wohnegruen-3d-floorplans)
  */
 
 get_header();
