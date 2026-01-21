@@ -229,7 +229,58 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('page', 'mobilhaus'),
     ));
 
-    error_log('WohneGrün: Successfully registered ' . (19) . ' ACF blocks');
+    // Exterior Color Selector Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-exterior-colors',
+        'title'             => __('Außenfarben', 'wohnegruen'),
+        'description'       => __('Außenfarben-Auswahl mit Anthrazit und Weiß.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-exterior-colors.php',
+        'category'          => $category,
+        'icon'              => 'admin-appearance',
+        'keywords'          => array('color', 'exterior', 'außenfarbe', 'farbe'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    // Interactive Floor Plans Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-floor-plans-interactive',
+        'title'             => __('Grundrisse Interaktiv', 'wohnegruen'),
+        'description'       => __('Interaktive Grundrisse mit Größenauswahl und Spiegelfunktion.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-floor-plans-interactive.php',
+        'category'          => $category,
+        'icon'              => 'desktop',
+        'keywords'          => array('floor plan', 'grundriss', 'interactive', 'spiegeln'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    // Interior Color Showcase Block
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-interior-colors',
+        'title'             => __('Innenfarben Showcase', 'wohnegruen'),
+        'description'       => __('Interaktiver Slider für Innenfarbschemata mit Bildergalerien.', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-interior-colors.php',
+        'category'          => $category,
+        'icon'              => 'images-alt2',
+        'keywords'          => array('interior', 'colors', 'innenfarben', 'slider'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('page'),
+    ));
+
+    error_log('WohneGrün: Successfully registered ' . (22) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);

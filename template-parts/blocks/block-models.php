@@ -74,48 +74,6 @@ if ($source === 'cpt') {
 } elseif ($manual_models) {
     $models = $manual_models;
 }
-
-// Fallback models
-if (empty($models)) {
-    $models = array(
-        array(
-            'title' => 'Nature',
-            'tagline' => 'Natürliches Wohnen im Einklang mit der Natur',
-            'description' => 'Das Nature Modell verbindet zeitloses Design mit natürlichen Materialien. Warme Holztöne und organische Texturen schaffen eine gemütliche Atmosphäre, die perfekt für Familien und Naturliebhaber ist.',
-            'badge' => 'Beliebt',
-            'badge_class' => '',
-            'size' => '24-32 m²',
-            'type' => 'Kompakt & Funktional',
-            'persons' => '2-4',
-            'link' => home_url('/modelle/nature'),
-            'image' => get_template_directory_uri() . '/assets/images/nature-mobilhaus-aussenansicht-hauptfoto.jpg',
-            'highlights' => array(
-                '8 Farbschemata verfügbar',
-                '3×8m oder 4×8m Konfiguration',
-                'Natürliche Materialien',
-                'Funktionales Design',
-            ),
-        ),
-        array(
-            'title' => 'Pure',
-            'tagline' => 'Minimalistisches Design mit maximalem Komfort',
-            'description' => 'Das Pure Modell steht für zeitgenössisches Design und klare Linien. Mit elegantem Marmor, Beton und modernen Oberflächen bietet es ein luxuriöses Wohngefühl für anspruchsvolle Kunden.',
-            'badge' => 'Premium',
-            'badge_class' => 'model-badge-premium',
-            'size' => '24-32 m²',
-            'type' => 'Premium & Modern',
-            'persons' => '2-4',
-            'link' => home_url('/modelle/pure'),
-            'image' => get_template_directory_uri() . '/assets/images/pure-mobilhaus-aussenansicht-hauptfoto.jpg',
-            'highlights' => array(
-                '8 exklusive Farbschemata',
-                '3×8m oder 4×8m Premium',
-                'Marmor & Beton Optionen',
-                'Panorama-Fenster',
-            ),
-        ),
-    );
-}
 ?>
 
 <section class="models-section section-padding" id="<?php echo esc_attr($block_id); ?>">
