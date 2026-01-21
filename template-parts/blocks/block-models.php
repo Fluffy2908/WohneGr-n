@@ -38,6 +38,12 @@ if ($source === 'cpt') {
             $persons = get_field('block_model_persons') ?: get_field('model_persons') ?: '2-4';
             $price = get_field('block_model_price') ?: get_field('model_price') ?: '';
 
+            // Get card image - try block field first, then featured image
+            $card_image = get_field('block_model_card_image') ?: get_field('model_card_image');
+            if (!$card_image && get_post_thumbnail_id()) {
+                $card_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+            }
+
             // Handle highlights from both sources
             $highlights_raw = get_field('block_model_highlights') ?: get_field('model_highlights');
             $highlights = array();
@@ -50,7 +56,7 @@ if ($source === 'cpt') {
             $models[] = array(
                 'title' => get_the_title(),
                 'link' => get_permalink(),
-                'image' => get_post_thumbnail_id() ? wp_get_attachment_image_src(get_post_thumbnail_id(), 'large') : null,
+                'image' => $card_image,
                 'description' => get_the_excerpt(),
                 'tagline' => $tagline,
                 'badge' => $badge,
