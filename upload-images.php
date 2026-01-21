@@ -16,9 +16,8 @@ if (!is_user_logged_in() || !current_user_can('upload_files')) {
     wp_die('You do not have permission to upload files.');
 }
 
-// Source directories
+// Source directory - only theme assets (properly renamed images)
 $source_dirs = array(
-    'Hosekra Images' => 'C:\Users\Uporabnik\Documents\Hosekra slike',
     'Theme Assets' => get_template_directory() . '/assets/images'
 );
 
