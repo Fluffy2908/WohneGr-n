@@ -189,6 +189,13 @@
     margin-top: 3rem;
 }
 
+/* Models CTA Button */
+.models-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
 .featured-model-card {
     background: #fff;
     border-radius: 12px;
