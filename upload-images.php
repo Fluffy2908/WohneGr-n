@@ -22,13 +22,13 @@ echo '<h1>🖼️ Bulk Image Upload to WordPress</h1>';
 $wp_load_path = dirname(dirname(dirname(__DIR__))) . '/wp-load.php';
 
 if (!file_exists($wp_load_path)) {
-    echo '<p class="error">❌ ERROR: Cannot find wp-load.php at: ' . esc_html($wp_load_path) . '</p>';
+    echo '<p class="error">❌ ERROR: Cannot find wp-load.php at: ' . htmlspecialchars($wp_load_path) . '</p>';
     echo '<p class="warning">Make sure this file is in: wp-content/themes/wohnegruen/</p>';
     echo '</body></html>';
     exit;
 }
 
-echo '<p class="info">Loading WordPress from: ' . esc_html($wp_load_path) . '</p>';
+echo '<p class="info">Loading WordPress from: ' . htmlspecialchars($wp_load_path) . '</p>';
 
 require_once($wp_load_path);
 
