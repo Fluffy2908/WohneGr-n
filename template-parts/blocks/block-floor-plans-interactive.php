@@ -37,9 +37,9 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'floor-plans-' . uniqid
                     <div class="floor-plan-viewer">
                         <div class="floor-plan-image-wrapper">
                             <img class="floor-plan-image"
-                                 src="<?php echo esc_url($plan['floor_plan_image']['sizes']['large']); ?>"
-                                 data-normal="<?php echo esc_url($plan['floor_plan_image']['sizes']['large']); ?>"
-                                 data-mirrored="<?php echo esc_url($plan['mirrored_floor_plan_image']['sizes']['large']); ?>"
+                                 src="<?php echo esc_url($plan['floor_plan_image']['url']); ?>"
+                                 data-normal="<?php echo esc_url($plan['floor_plan_image']['url']); ?>"
+                                 data-mirrored="<?php echo esc_url($plan['mirrored_floor_plan_image']['url']); ?>"
                                  alt="<?php echo esc_attr($plan['size_label']); ?> Grundriss"
                                  loading="lazy">
                         </div>

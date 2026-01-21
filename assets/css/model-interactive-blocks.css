@@ -4,11 +4,84 @@
  */
 
 /* ====================
+   MODEL PAGE INTRO TEXT
+   ==================== */
+
+.model-page-intro {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #555;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.model-page-intro p {
+    margin: 0;
+}
+
+/* Style for paragraph blocks after hero on model pages */
+.page-template-default .wp-block-paragraph.has-text-align-center.has-large-font-size {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 3rem 2rem;
+    font-size: 1.25rem !important;
+    line-height: 1.8;
+    color: #555;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Alternative: Add a custom class option */
+.intro-section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #555;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ====================
+   MODEL PAGE LAYOUT - SIDE BY SIDE
+   ==================== */
+
+.model-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin: 4rem 0;
+}
+
+@media (min-width: 1200px) {
+    .model-content-wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .model-content-wrapper .floor-plans-interactive-section,
+    .model-content-wrapper .interior-colors-section {
+        margin: 0;
+        padding: 3rem 0;
+    }
+}
+
+/* ====================
    EXTERIOR COLORS BLOCK
    ==================== */
 
 .exterior-colors-section {
-    background: #f8f9fa;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 6rem 0;
 }
 
 .exterior-color-toggle {
@@ -67,15 +140,19 @@
 }
 
 .exterior-main-image {
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     margin-bottom: 2rem;
+    background: #f8f9fa;
+    max-height: 700px;
 }
 
 .exterior-main-image img {
     width: 100%;
     height: auto;
+    max-height: 700px;
+    object-fit: cover;
     display: block;
     transition: opacity 0.3s ease;
 }
@@ -121,13 +198,14 @@
    ==================== */
 
 .floor-plans-interactive-section {
-    background: white;
+    background: #f8f9fa;
+    padding: 6rem 0;
 }
 
 .floor-plan-tabs {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin: 3rem 0;
     flex-wrap: wrap;
 }
@@ -257,7 +335,8 @@
    ==================== */
 
 .interior-colors-section {
-    background: white;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 6rem 0;
 }
 
 .interior-intro {
@@ -429,15 +508,18 @@
 }
 
 .scheme-main-image {
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     background: #f8f9fa;
+    max-height: 600px;
 }
 
 .scheme-main-image img {
     width: 100%;
     height: auto;
+    max-height: 600px;
+    object-fit: cover;
     display: block;
     transition: opacity 0.3s ease;
 }
@@ -486,7 +568,19 @@
    RESPONSIVE STYLES
    ==================== */
 
+@media (max-width: 1199px) {
+    .model-content-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 1024px) {
+    .model-page-intro {
+        padding: 2rem 1.5rem;
+        font-size: 1.125rem;
+        margin-bottom: 3rem;
+    }
+
     .floor-plan-content.active {
         grid-template-columns: 1fr;
     }
@@ -501,6 +595,22 @@
 
     .scheme-gallery {
         order: 1;
+    }
+
+    .exterior-main-image {
+        max-height: 500px;
+    }
+
+    .exterior-main-image img {
+        max-height: 500px;
+    }
+
+    .scheme-main-image {
+        max-height: 450px;
+    }
+
+    .scheme-main-image img {
+        max-height: 450px;
     }
 }
 

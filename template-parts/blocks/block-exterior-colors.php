@@ -41,12 +41,12 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . un
             <?php if ($anthrazit_images) : ?>
                 <div class="exterior-gallery active" data-color-gallery="anthrazit">
                     <div class="exterior-main-image">
-                        <img src="<?php echo esc_url($anthrazit_images[0]['sizes']['large']); ?>" alt="Anthrazit Außenansicht" loading="lazy">
+                        <img src="<?php echo esc_url($anthrazit_images[0]['url']); ?>" alt="Anthrazit Außenansicht" loading="lazy">
                     </div>
                     <?php if (count($anthrazit_images) > 1) : ?>
                         <div class="exterior-thumbnails">
                             <?php foreach ($anthrazit_images as $index => $image) : ?>
-                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['sizes']['large']); ?>">
+                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>">
                                     <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Ansicht <?php echo $index + 1; ?>">
                                 </button>
                             <?php endforeach; ?>
@@ -58,12 +58,12 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . un
             <?php if ($weiss_images) : ?>
                 <div class="exterior-gallery" data-color-gallery="weiss">
                     <div class="exterior-main-image">
-                        <img src="<?php echo esc_url($weiss_images[0]['sizes']['large']); ?>" alt="Weiß Außenansicht" loading="lazy">
+                        <img src="<?php echo esc_url($weiss_images[0]['url']); ?>" alt="Weiß Außenansicht" loading="lazy">
                     </div>
                     <?php if (count($weiss_images) > 1) : ?>
                         <div class="exterior-thumbnails">
                             <?php foreach ($weiss_images as $index => $image) : ?>
-                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['sizes']['large']); ?>">
+                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>">
                                     <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Ansicht <?php echo $index + 1; ?>">
                                 </button>
                             <?php endforeach; ?>

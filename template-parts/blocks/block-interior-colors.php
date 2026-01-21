@@ -84,7 +84,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'interior-colors-' . un
                             <div class="scheme-gallery">
                                 <!-- Main Image Display -->
                                 <div class="scheme-main-image">
-                                    <img src="<?php echo esc_url($scheme['interior_gallery'][0]['sizes']['large']); ?>"
+                                    <img src="<?php echo esc_url($scheme['interior_gallery'][0]['url']); ?>"
                                          alt="<?php echo esc_attr($scheme['scheme_name']); ?> Innenansicht"
                                          loading="lazy">
                                 </div>
@@ -94,7 +94,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'interior-colors-' . un
                                     <div class="scheme-thumbnails">
                                         <?php foreach ($scheme['interior_gallery'] as $img_index => $image) : ?>
                                             <button class="scheme-thumb <?php echo $img_index === 0 ? 'active' : ''; ?>"
-                                                    data-image="<?php echo esc_url($image['sizes']['large']); ?>">
+                                                    data-image="<?php echo esc_url($image['url']); ?>">
                                                 <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>"
                                                      alt="Ansicht <?php echo $img_index + 1; ?>">
                                             </button>
