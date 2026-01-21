@@ -56,11 +56,6 @@
         gap: 1.5rem;
     }
 
-    /* Floor plans grid */
-    .floor-plans-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
 }
 
 /* ====================
@@ -197,16 +192,6 @@
 
     .gallery-item {
         height: 250px;
-    }
-
-    /* Floor Plans on mobile */
-    .floor-plans-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .floor-plan-card {
-        max-width: 100%;
     }
 
     /* About Section on mobile */
