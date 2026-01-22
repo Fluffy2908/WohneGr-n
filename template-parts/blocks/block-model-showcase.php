@@ -156,20 +156,20 @@ $block_id = 'showcase-' . uniqid();
 </section>
 
 <!-- Lightbox -->
-<div id="lightbox-<?php echo esc_attr($block_id); ?>" class="gallery-lightbox" onclick="closeLightbox('<?php echo esc_attr($block_id); ?>')">
-    <span class="lightbox-close">&times;</span>
-    <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox('<?php echo esc_attr($block_id); ?>', -1)">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+<div id="lightbox-<?php echo esc_attr($block_id); ?>" class="gallery-lightbox" onclick="closeLightbox('<?php echo esc_attr($block_id); ?>')" role="dialog" aria-modal="true" aria-label="Bildergalerie Vollansicht">
+    <button class="lightbox-close" onclick="closeLightbox('<?php echo esc_attr($block_id); ?>')" aria-label="Galerie schließen">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox('<?php echo esc_attr($block_id); ?>', -1)" aria-label="Vorheriges Bild">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
     </button>
     <img class="lightbox-content" id="lightbox-img-<?php echo esc_attr($block_id); ?>" src="" alt="">
-    <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox('<?php echo esc_attr($block_id); ?>', 1)">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+    <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox('<?php echo esc_attr($block_id); ?>', 1)" aria-label="Nächstes Bild">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true">
             <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
     </button>
-    <div class="lightbox-counter" id="lightbox-counter-<?php echo esc_attr($block_id); ?>"></div>
+    <div class="lightbox-counter" id="lightbox-counter-<?php echo esc_attr($block_id); ?>" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <script>

@@ -1979,8 +1979,12 @@ select:focus-visible {
 .nav-menu .current_page_item > a,
 .nav-menu .current-menu-ancestor > a,
 .nav-menu .current_page_ancestor > a {
-    color: var(--color-primary);
+    color: #2d5016;
     font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #1f3810;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
 }
 
 .nav-menu .current-menu-item > a::after,
@@ -1988,13 +1992,19 @@ select:focus-visible {
 .nav-menu .current-menu-ancestor > a::after,
 .nav-menu .current_page_ancestor > a::after {
     width: 100%;
+    background: #1f3810;
+    height: 3px;
 }
 
 /* Mobile Menu Active Item */
 .mobile-menu-items .current-menu-item > a,
 .mobile-menu-items .current_page_item > a {
-    color: var(--color-primary);
+    color: #2d5016;
     font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #1f3810;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
 }
 
 /* Enhanced Footer */

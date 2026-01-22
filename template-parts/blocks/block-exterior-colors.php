@@ -25,13 +25,13 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . un
         </div>
 
         <!-- Color Toggle Buttons -->
-        <div class="exterior-color-toggle">
-            <button class="color-toggle-btn active" data-color="anthrazit">
-                <span class="color-swatch" style="background: #3A3A3A;"></span>
+        <div class="exterior-color-toggle" role="tablist" aria-label="Farbauswahl Außenansicht">
+            <button class="color-toggle-btn active" data-color="anthrazit" role="tab" aria-selected="true" aria-controls="anthrazit-gallery" aria-label="Zeige Mobilhaus in Anthrazit">
+                <span class="color-swatch" style="background: #3A3A3A;" aria-hidden="true"></span>
                 Anthrazit
             </button>
-            <button class="color-toggle-btn" data-color="weiss">
-                <span class="color-swatch" style="background: #FFFFFF; border: 1px solid #ddd;"></span>
+            <button class="color-toggle-btn" data-color="weiss" role="tab" aria-selected="false" aria-controls="weiss-gallery" aria-label="Zeige Mobilhaus in Weiß">
+                <span class="color-swatch" style="background: #FFFFFF; border: 1px solid #ddd;" aria-hidden="true"></span>
                 Weiß
             </button>
         </div>
@@ -39,15 +39,15 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . un
         <!-- Exterior Images Display -->
         <div class="exterior-images-container">
             <?php if ($anthrazit_images) : ?>
-                <div class="exterior-gallery active" data-color-gallery="anthrazit">
+                <div class="exterior-gallery active" data-color-gallery="anthrazit" id="anthrazit-gallery" role="tabpanel" aria-labelledby="anthrazit-tab">
                     <div class="exterior-main-image">
-                        <img src="<?php echo esc_url($anthrazit_images[0]['url']); ?>" alt="Anthrazit Außenansicht" loading="lazy">
+                        <img src="<?php echo esc_url($anthrazit_images[0]['url']); ?>" alt="WohneGrün Mobilhaus Außenansicht in Anthrazit - Moderne Fassade" loading="lazy">
                     </div>
                     <?php if (count($anthrazit_images) > 1) : ?>
-                        <div class="exterior-thumbnails">
+                        <div class="exterior-thumbnails" role="group" aria-label="Miniaturansichten Anthrazit">
                             <?php foreach ($anthrazit_images as $index => $image) : ?>
-                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>">
-                                    <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Ansicht <?php echo $index + 1; ?>">
+                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>" aria-label="Zeige Anthrazit Ansicht <?php echo $index + 1; ?>">
+                                    <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Anthrazit Miniatur <?php echo $index + 1; ?>" aria-hidden="true">
                                 </button>
                             <?php endforeach; ?>
                         </div>
@@ -56,15 +56,15 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . un
             <?php endif; ?>
 
             <?php if ($weiss_images) : ?>
-                <div class="exterior-gallery" data-color-gallery="weiss">
+                <div class="exterior-gallery" data-color-gallery="weiss" id="weiss-gallery" role="tabpanel" aria-labelledby="weiss-tab" aria-hidden="true">
                     <div class="exterior-main-image">
-                        <img src="<?php echo esc_url($weiss_images[0]['url']); ?>" alt="Weiß Außenansicht" loading="lazy">
+                        <img src="<?php echo esc_url($weiss_images[0]['url']); ?>" alt="WohneGrün Mobilhaus Außenansicht in Weiß - Elegante Fassade" loading="lazy">
                     </div>
                     <?php if (count($weiss_images) > 1) : ?>
-                        <div class="exterior-thumbnails">
+                        <div class="exterior-thumbnails" role="group" aria-label="Miniaturansichten Weiß">
                             <?php foreach ($weiss_images as $index => $image) : ?>
-                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>">
-                                    <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Ansicht <?php echo $index + 1; ?>">
+                                <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>" aria-label="Zeige Weiß Ansicht <?php echo $index + 1; ?>">
+                                    <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Weiß Miniatur <?php echo $index + 1; ?>" aria-hidden="true">
                                 </button>
                             <?php endforeach; ?>
                         </div>
@@ -85,16 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const color = this.dataset.color;
 
-            // Update active button
-            toggleBtns.forEach(b => b.classList.remove('active'));
+            // Update active button and ARIA attributes
+            toggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
             this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
 
-            // Show corresponding gallery
+            // Show corresponding gallery with ARIA
             galleries.forEach(gallery => {
                 if (gallery.dataset.colorGallery === color) {
                     gallery.classList.add('active');
+                    gallery.setAttribute('aria-hidden', 'false');
                 } else {
                     gallery.classList.remove('active');
+                    gallery.setAttribute('aria-hidden', 'true');
                 }
             });
         });

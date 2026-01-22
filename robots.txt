@@ -18,7 +18,7 @@ Allow: /wp-content/themes/WohneGruen/assets/images/
 Allow: /wp-content/uploads/
 
 # Sitemap location
-Sitemap: https://wohnegruen.at/sitemap.xml
+Sitemap: https://xn--wohnegrn-d6a.at/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 10
+# Crawl-delay (1-2 seconds is optimal for good indexing)
+Crawl-delay: 2

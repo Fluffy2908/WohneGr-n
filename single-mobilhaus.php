@@ -20,8 +20,84 @@ $model_specifications = get_field('model_specifications');
 
 // Contact info
 $contact_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
-$contact_email = wohnegruen_get_option('contact_email', 'info@wohnegruen.at');
+$contact_email = wohnegruen_get_option('contact_email', 'info@wohnegrün.at');
+
+// Extract numeric price for schema (remove "ab €" and thousands separator)
+$numeric_price = preg_replace('/[^0-9]/', '', $model_price);
 ?>
+
+<!-- Structured Data - Product Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "<?php echo esc_js($model_name); ?>",
+  "description": "<?php echo esc_js(wp_strip_all_tags($model_description)); ?>",
+  "image": "<?php echo esc_url($model_image ?: get_template_directory_uri() . '/assets/images/hero-bg.jpg'); ?>",
+  "brand": {
+    "@type": "Brand",
+    "name": "WohneGrün"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "<?php echo esc_url(get_permalink()); ?>",
+    "priceCurrency": "EUR",
+    "price": "<?php echo esc_js($numeric_price ?: '45000'); ?>",
+    "priceValidUntil": "<?php echo date('Y-12-31'); ?>",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "WohneGrün"
+    }
+  },
+  "category": "Mobilhaus",
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Wohnfläche",
+      "value": "<?php echo esc_js($model_size); ?>"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Schlafzimmer",
+      "value": "<?php echo esc_js($model_beds); ?>"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Kapazität",
+      "value": "<?php echo esc_js($model_persons); ?> Personen"
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data - BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "<?php echo esc_url(home_url('/')); ?>"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Modelle",
+      "item": "<?php echo esc_url(home_url('/#modelle')); ?>"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "<?php echo esc_js($model_name); ?>",
+      "item": "<?php echo esc_url(get_permalink()); ?>"
+    }
+  ]
+}
+</script>
 
 <!-- Model Hero Section -->
 <section class="model-hero">

@@ -7,9 +7,20 @@
     <?php
     // SEO Meta Tags
     $page_title = is_front_page() ? 'WohneGruen - Hochwertige Mobilhäuser in Österreich | Made in Austria' : wp_get_document_title();
-    $meta_description = is_front_page()
-        ? 'WohneGruen bietet hochwertige Mobilhäuser in Österreich. 25 Jahre Garantie, nachhaltige Materialien, schlüsselfertige Lösungen. Made in Austria.'
-        : get_the_excerpt();
+
+    // Custom meta descriptions for specific pages
+    if (is_page('impressum')) {
+        $meta_description = 'Impressum von WohneGrün - Kontaktinformationen, Firmenangaben und rechtliche Hinweise zu unserem Mobilhaus-Angebot in Österreich.';
+    } elseif (is_page('datenschutz')) {
+        $meta_description = 'Datenschutzerklärung von WohneGrün - Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei unserem Mobilhaus-Service.';
+    } elseif (is_page('agb')) {
+        $meta_description = 'Allgemeine Geschäftsbedingungen (AGB) von WohneGrün - Vertragsbedingungen für den Kauf und die Lieferung von Mobilhäusern in Österreich.';
+    } elseif (is_front_page()) {
+        $meta_description = 'WohneGruen bietet hochwertige Mobilhäuser in Österreich. 25 Jahre Garantie, nachhaltige Materialien, schlüsselfertige Lösungen. Made in Austria.';
+    } else {
+        $meta_description = get_the_excerpt();
+    }
+
     $canonical_url = is_front_page() ? home_url('/') : get_permalink();
     $site_name = 'WohneGruen';
     ?>
@@ -25,7 +36,17 @@
     <meta property="og:url" content="<?php echo esc_url($canonical_url); ?>">
     <meta property="og:title" content="<?php echo esc_attr($page_title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($meta_description); ?>">
-    <meta property="og:image" content="<?php echo esc_url(get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-hero-bg.jpg'); ?>">
+    <?php
+    // Get OG image
+    $og_image = get_template_directory_uri() . '/assets/images/hero-bg.jpg';
+    if (has_post_thumbnail() && !is_front_page()) {
+        $og_image = get_the_post_thumbnail_url(null, 'large');
+    }
+    ?>
+    <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="WohneGrün Mobilhaus Österreich">
     <meta property="og:site_name" content="<?php echo esc_attr($site_name); ?>">
     <meta property="og:locale" content="de_AT">
 
@@ -34,32 +55,60 @@
     <meta name="twitter:url" content="<?php echo esc_url($canonical_url); ?>">
     <meta name="twitter:title" content="<?php echo esc_attr($page_title); ?>">
     <meta name="twitter:description" content="<?php echo esc_attr($meta_description); ?>">
-    <meta name="twitter:image" content="<?php echo esc_url(get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-hero-bg.jpg'); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($og_image); ?>">
+    <meta name="twitter:image:alt" content="WohneGrün Mobilhaus Österreich">
 
     <!-- Structured Data - Organization -->
+    <?php
+    $schema_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
+    $schema_email = wohnegruen_get_option('contact_email', 'info@wohnegrün.at');
+    $schema_address = wohnegruen_get_option('contact_address', '');
+    ?>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "WohneGruen",
+      "name": "WohneGrün",
+      "alternateName": "Wohne Grün",
       "url": "<?php echo esc_url(home_url('/')); ?>",
-      "logo": "<?php echo esc_url(get_template_directory_uri() . '/assets/images/wohnegruen-mobilhaus-hero-bg.jpg'); ?>",
-      "description": "Hochwertige Mobilhäuser in Österreich mit 25 Jahren Garantie",
+      "logo": "<?php echo esc_url($og_image); ?>",
+      "description": "Hochwertige Mobilhäuser in Österreich mit 25 Jahren Garantie. Nachhaltige Modulhäuser, Tiny Houses und Fertighäuser - Made in Austria.",
+      <?php if ($schema_address): ?>
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Grazer Str. 30",
-        "addressLocality": "Hausmannstätten",
-        "postalCode": "8071",
+        "addressLocality": "Österreich",
         "addressCountry": "AT"
       },
+      <?php endif; ?>
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+43-316-123-456",
+        "telephone": "<?php echo esc_js($schema_phone); ?>",
+        "email": "<?php echo esc_js($schema_email); ?>",
         "contactType": "customer service",
         "areaServed": "AT",
-        "availableLanguage": "de"
+        "availableLanguage": ["de", "de-AT"]
       },
-      "sameAs": []
+      "sameAs": [
+        <?php
+        $social = array();
+        if ($fb = wohnegruen_get_option('social_facebook')) $social[] = '"' . esc_url($fb) . '"';
+        if ($ig = wohnegruen_get_option('social_instagram')) $social[] = '"' . esc_url($ig) . '"';
+        if ($li = wohnegruen_get_option('social_linkedin')) $social[] = '"' . esc_url($li) . '"';
+        echo implode(',', $social);
+        ?>
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - Website -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "WohneGrün",
+      "url": "<?php echo esc_url(home_url('/')); ?>",
+      "description": "Mobilhäuser und Fertighäuser in Österreich",
+      "inLanguage": "de-AT"
     }
     </script>
 

@@ -97,7 +97,7 @@ get_header();
                 WohneGrün<br>
                 Grazer Str. 30, 8071 Hausmannstätten<br>
                 Telefon: +43 316 123 456<br>
-                E-Mail: info@wohnegruen.at
+                E-Mail: info@wohnegrün.at
             </p>
 
             <p class="legal-update">

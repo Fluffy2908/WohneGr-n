@@ -38,7 +38,7 @@ get_header();
             <h3>Kontakt</h3>
             <p>
                 Telefon: +43 316 123 456<br>
-                E-Mail: info@wohnegruen.at<br>
+                E-Mail: info@wohnegrün.at<br>
                 Website: <a href="<?php echo home_url(); ?>"><?php echo home_url(); ?></a>
             </p>
 

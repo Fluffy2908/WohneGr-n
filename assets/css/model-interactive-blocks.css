@@ -146,6 +146,10 @@
     margin-bottom: 2rem;
     background: #f8f9fa;
     max-height: 700px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .exterior-main-image img {
@@ -517,6 +521,10 @@
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     background: #f8f9fa;
     max-height: 600px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .scheme-main-image img {

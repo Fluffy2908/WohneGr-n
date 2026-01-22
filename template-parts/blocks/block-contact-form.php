@@ -52,35 +52,40 @@ $map_embed = get_field('map_embed_code');
         <!-- Contact Form -->
         <?php if ($show_form): ?>
             <div class="contact-form-wrapper">
-                <form class="contact-form" action="#" method="POST">
+                <form class="contact-form" action="#" method="POST" aria-label="Kontaktformular">
                     <div class="form-group">
                         <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+                        <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
                         <label for="email">E-Mail *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+                        <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" aria-describedby="phone-hint">
+                        <span id="phone-hint" class="form-hint">Optional: Ihre Telefonnummer für Rückfragen</span>
                     </div>
                     <div class="form-group">
                         <label for="subject">Betreff</label>
-                        <select id="subject" name="subject">
+                        <select id="subject" name="subject" aria-describedby="subject-hint">
                             <option value="">Bitte wählen</option>
                             <option value="angebot">Angebot anfragen</option>
                             <option value="besichtigung">Besichtigung vereinbaren</option>
                             <option value="frage">Allgemeine Frage</option>
                             <option value="sonstiges">Sonstiges</option>
                         </select>
+                        <span id="subject-hint" class="form-hint">Optional: Wählen Sie den Grund Ihrer Anfrage</span>
                     </div>
                     <div class="form-group full-width">
                         <label for="message">Nachricht *</label>
-                        <textarea id="message" name="message" rows="6" required></textarea>
+                        <textarea id="message" name="message" rows="6" required aria-required="true" aria-describedby="message-error"></textarea>
+                        <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" aria-label="Kontaktformular absenden">
                             Nachricht senden
                             <?php echo wohnegruen_get_icon('arrow-right'); ?>
                         </button>

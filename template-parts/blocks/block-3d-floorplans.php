@@ -168,10 +168,10 @@ $block_id = 'floorplans-' . uniqid();
 </section>
 
 <!-- Lightbox -->
-<div id="floorplan-lightbox-<?php echo esc_attr($block_id); ?>" class="floorplan-lightbox" onclick="closeFloorplanLightbox('<?php echo esc_attr($block_id); ?>')">
-    <span class="lightbox-close">&times;</span>
+<div id="floorplan-lightbox-<?php echo esc_attr($block_id); ?>" class="floorplan-lightbox" onclick="closeFloorplanLightbox('<?php echo esc_attr($block_id); ?>')" role="dialog" aria-modal="true" aria-label="Grundriss Vollansicht">
+    <button class="lightbox-close" onclick="closeFloorplanLightbox('<?php echo esc_attr($block_id); ?>')" aria-label="Grundriss-Ansicht schließen">&times;</button>
     <img class="lightbox-content" id="floorplan-lightbox-img-<?php echo esc_attr($block_id); ?>" src="" alt="">
-    <div class="lightbox-caption" id="floorplan-lightbox-caption-<?php echo esc_attr($block_id); ?>"></div>
+    <div class="lightbox-caption" id="floorplan-lightbox-caption-<?php echo esc_attr($block_id); ?>" aria-live="polite"></div>
 </div>
 
 <script>

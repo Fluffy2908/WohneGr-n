@@ -1,0 +1,83 @@
+{
+    "key": "group_theme_options",
+    "title": "Theme Einstellungen",
+    "fields": [
+        {
+            "key": "field_contact_email_option",
+            "label": "Kontakt E-Mail",
+            "name": "contact_email",
+            "type": "email",
+            "instructions": "Hauptkontakt E-Mail-Adresse (z.B. info@wohnegrün.at)",
+            "required": 1,
+            "default_value": "info@wohnegrün.at",
+            "placeholder": "info@wohnegrün.at"
+        },
+        {
+            "key": "field_contact_phone_option",
+            "label": "Kontakt Telefon",
+            "name": "contact_phone",
+            "type": "text",
+            "instructions": "Haupttelefonnummer",
+            "required": 0,
+            "placeholder": "+43 123 456 789"
+        },
+        {
+            "key": "field_contact_address_option",
+            "label": "Adresse",
+            "name": "contact_address",
+            "type": "textarea",
+            "instructions": "Vollständige Firmenadresse",
+            "required": 0,
+            "rows": 3
+        },
+        {
+            "key": "field_contact_hours_option",
+            "label": "Öffnungszeiten",
+            "name": "contact_hours",
+            "type": "text",
+            "instructions": "Geschäftszeiten",
+            "required": 0,
+            "default_value": "Mo - Fr: 8:00 - 17:00"
+        },
+        {
+            "key": "field_social_facebook",
+            "label": "Facebook URL",
+            "name": "social_facebook",
+            "type": "url",
+            "instructions": "Vollständige Facebook-Seiten-URL",
+            "required": 0
+        },
+        {
+            "key": "field_social_instagram",
+            "label": "Instagram URL",
+            "name": "social_instagram",
+            "type": "url",
+            "instructions": "Vollständige Instagram-Profil-URL",
+            "required": 0
+        },
+        {
+            "key": "field_social_linkedin",
+            "label": "LinkedIn URL",
+            "name": "social_linkedin",
+            "type": "url",
+            "instructions": "Vollständige LinkedIn-Unternehmens-URL",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-kontakt"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Globale Theme-Einstellungen für Kontaktinformationen"
+}

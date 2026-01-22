@@ -43,7 +43,11 @@ function wohnegruen_handle_contact_form() {
     }
 
     // Prepare email
-    $to = get_option('admin_email'); // Send to WordPress admin email
+    // Use ACF contact email option, fallback to info@wohnegrün.at
+    $to = function_exists('get_field') ? get_field('contact_email', 'option') : '';
+    if (empty($to)) {
+        $to = 'info@wohnegrün.at';
+    }
     $subject_labels = array(
         'angebot' => 'Angebot anfragen',
         'besichtigung' => 'Besichtigung vereinbaren',
