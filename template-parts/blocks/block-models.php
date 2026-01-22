@@ -21,6 +21,8 @@ if ($source === 'cpt') {
         'post_type' => 'mobilhaus',
         'posts_per_page' => $count,
         'post_status' => 'publish',
+        'orderby' => 'menu_order title',
+        'order' => 'ASC',
     );
     $query = new WP_Query($args);
 
