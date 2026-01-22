@@ -3,19 +3,19 @@
  * Block Template: Contact
  */
 
-$title = get_field('contact_title') ?: 'Kontaktieren Sie uns';
-$subtitle = get_field('contact_subtitle') ?: 'Haben Sie Fragen oder möchten Sie eine Beratung? Wir freuen uns auf Ihre Anfrage.';
-$bar_title = get_field('contact_bar_title') ?: 'Sprechen Sie mit uns';
-$bar_text = get_field('contact_bar_text') ?: 'Unser Team steht Ihnen für alle Fragen zu Mobilhäusern zur Verfügung.';
+$title = get_field('contact_title') ?: '';
+$subtitle = get_field('contact_subtitle') ?: '';
+$bar_title = get_field('contact_bar_title') ?: '';
+$bar_text = get_field('contact_bar_text') ?: '';
 $form_shortcode = get_field('contact_form_shortcode');
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'kontakt';
 
-// Get contact info from block fields or use defaults
-$phone = get_field('contact_phone') ?: '+43 123 456 789';
-$email = get_field('contact_email') ?: 'info@wohnegruen.at';
-$address = get_field('contact_address') ?: 'Musterstraße 123, 1010 Wien, Austria';
-$hours = get_field('contact_hours') ?: 'Mo - Fr: 8:00 - 17:00';
+// Get contact info from block fields
+$phone = get_field('contact_phone') ?: '';
+$email = get_field('contact_email') ?: '';
+$address = get_field('contact_address') ?: '';
+$hours = get_field('contact_hours') ?: '';
 ?>
 
 <section class="contact-section section-padding" id="<?php echo esc_attr($block_id); ?>">

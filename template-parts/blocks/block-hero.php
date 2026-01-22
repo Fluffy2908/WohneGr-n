@@ -6,13 +6,13 @@
 // Try to get direct fields first (for Gutenberg blocks)
 // Fall back to group field (for backward compatibility)
 $hero_bg         = get_field('hero_background') ?: (get_field('hero_block')['hero_background'] ?? null);
-$hero_badge      = get_field('hero_badge') ?: (get_field('hero_block')['hero_badge'] ?? 'Österreichweit verfügbar');
-$hero_title      = get_field('hero_title') ?: (get_field('hero_block')['hero_title'] ?? 'Nachhaltige Mobilhäuser für modernes Leben');
-$hero_subtitle   = get_field('hero_subtitle') ?: (get_field('hero_block')['hero_subtitle'] ?? 'Hochwertige, maßgefertigte Mobilhäuser mit österreichischer Qualität. Flexibel, ökologisch und in kürzester Zeit bereit.');
-$hero_btn1_text  = get_field('hero_btn1_text') ?: (get_field('hero_block')['hero_btn1_text'] ?? 'Modelle entdecken');
-$hero_btn1_link  = get_field('hero_btn1_link') ?: (get_field('hero_block')['hero_btn1_link'] ?? '#modelle');
-$hero_btn2_text  = get_field('hero_btn2_text') ?: (get_field('hero_block')['hero_btn2_text'] ?? 'Beratung anfragen');
-$hero_btn2_link  = get_field('hero_btn2_link') ?: (get_field('hero_block')['hero_btn2_link'] ?? '#kontakt');
+$hero_badge      = get_field('hero_badge') ?: (get_field('hero_block')['hero_badge'] ?? '');
+$hero_title      = get_field('hero_title') ?: (get_field('hero_block')['hero_title'] ?? '');
+$hero_subtitle   = get_field('hero_subtitle') ?: (get_field('hero_block')['hero_subtitle'] ?? '');
+$hero_btn1_text  = get_field('hero_btn1_text') ?: (get_field('hero_block')['hero_btn1_text'] ?? '');
+$hero_btn1_link  = get_field('hero_btn1_link') ?: (get_field('hero_block')['hero_btn1_link'] ?? '');
+$hero_btn2_text  = get_field('hero_btn2_text') ?: (get_field('hero_block')['hero_btn2_text'] ?? '');
+$hero_btn2_link  = get_field('hero_btn2_link') ?: (get_field('hero_block')['hero_btn2_link'] ?? '');
 $hero_stats      = get_field('hero_stats') ?: (get_field('hero_block')['hero_stats'] ?? []);
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'home';
@@ -61,23 +61,6 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'home';
                         </div>
                         <?php $first = false; ?>
                     <?php endforeach; ?>
-                </div>
-            <?php else : ?>
-                <div class="hero-stats animate-fade-in">
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">15+</span>
-                        <span class="hero-stat-label">Jahre Garantie</span>
-                    </div>
-                    <div class="hero-stat-divider"></div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">500+</span>
-                        <span class="hero-stat-label">Zufriedene Kunden</span>
-                    </div>
-                    <div class="hero-stat-divider"></div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-number">100%</span>
-                        <span class="hero-stat-label">Made in EU</span>
-                    </div>
                 </div>
             <?php endif; ?>
         </div>

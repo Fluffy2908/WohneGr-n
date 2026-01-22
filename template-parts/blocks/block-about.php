@@ -4,25 +4,14 @@
  */
 
 $image = get_field('about_image');
-$badge_number = get_field('about_badge_number') ?: '15+';
-$badge_text = get_field('about_badge_text') ?: 'Jahre Erfahrung';
-$title = get_field('about_title') ?: 'Ihr Partner für modernes Wohnen';
-$text1 = get_field('about_text1') ?: 'WohneGrün ist Ihr zuverlässiger Partner für hochwertige Mobilhäuser. Mit langjähriger Erfahrung und Leidenschaft für qualitatives Wohnen begleiten wir Sie von der ersten Beratung bis zur schlüsselfertigen Übergabe.';
-$text2 = get_field('about_text2') ?: 'Unsere Mobilhäuser vereinen modernes Design mit traditionellem Handwerk und bieten Ihnen ein nachhaltiges Zuhause im Einklang mit der Natur.';
+$badge_number = get_field('about_badge_number') ?: '';
+$badge_text = get_field('about_badge_text') ?: '';
+$title = get_field('about_title') ?: '';
+$text1 = get_field('about_text1') ?: '';
+$text2 = get_field('about_text2') ?: '';
 $list = get_field('about_list');
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'uber-uns';
-
-// Default list
-if (!$list) {
-    $list = array(
-        array('text' => 'Hochwertige Materialien aus europäischer Produktion'),
-        array('text' => 'Energieeffiziente Bauweise mit optimaler Isolierung'),
-        array('text' => 'Schlüsselfertige Lieferung und Aufstellung'),
-        array('text' => 'Persönliche Beratung und individuelle Planung'),
-        array('text' => 'Langfristige Wartung und Service'),
-    );
-}
 ?>
 
 <section class="about-section section-padding" id="<?php echo esc_attr($block_id); ?>">

@@ -3,10 +3,10 @@
  * Block Template: CTA
  */
 
-$title = get_field('cta_title') ?: 'Bereit für Ihr neues Zuhause?';
-$text = get_field('cta_text') ?: 'Kontaktieren Sie uns für eine kostenlose Beratung und erhalten Sie ein Angebot für Ihr Traum-Mobilhaus.';
-$btn_text = get_field('cta_btn_text') ?: 'Kontaktieren Sie uns';
-$btn_link = get_field('cta_btn_link') ?: '#kontakt';
+$title = get_field('cta_title') ?: '';
+$text = get_field('cta_text') ?: '';
+$btn_text = get_field('cta_btn_text') ?: '';
+$btn_link = get_field('cta_btn_link') ?: '';
 $background = get_field('cta_background') ?: 'primary';
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : '';
