@@ -68,6 +68,13 @@ build/
 *.tar.gz
 *.rar
 
+# User content images (should be in wp-content/uploads, not theme)
+assets/images/*nggid*.jpg
+assets/images/*nggid*.png
+assets/images/*hiska*.jpg
+assets/images/*hisica*.jpg
+assets/images/e-mail-banner.png
+
 # Keep important files (negated patterns)
 !screenshot.png
 !README.md
