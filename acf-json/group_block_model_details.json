@@ -89,6 +89,17 @@
             "placeholder": "89.000"
         },
         {
+            "key": "field_block_model_card_image",
+            "label": "Karten-Bild",
+            "name": "block_model_card_image",
+            "type": "image",
+            "instructions": "Optional: Bild für die Homepage-Karte (falls anders als das Hauptbild)",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
             "key": "field_block_model_highlights",
             "label": "Highlights",
             "name": "block_model_highlights",

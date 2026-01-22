@@ -34,10 +34,10 @@ if ($source === 'cpt') {
             $tagline = get_field('block_model_tagline') ?: get_field('model_tagline') ?: '';
             $badge = get_field('block_model_badge') ?: get_field('model_badge') ?: '';
             $badge_class = get_field('block_model_badge_class') ?: get_field('model_badge_class') ?: '';
-            $type = get_field('block_model_type') ?: get_field('model_type') ?: 'Mobilhaus';
-            $size = get_field('block_model_size') ?: get_field('model_size') ?: '45 m²';
-            $rooms = get_field('block_model_rooms') ?: get_field('model_rooms') ?: '2';
-            $persons = get_field('block_model_persons') ?: get_field('model_persons') ?: '2-4';
+            $type = get_field('block_model_type') ?: get_field('model_type') ?: '';
+            $size = get_field('block_model_size') ?: get_field('model_size') ?: '';
+            $rooms = get_field('block_model_rooms') ?: get_field('model_rooms') ?: '';
+            $persons = get_field('block_model_persons') ?: get_field('model_persons') ?: '';
             $price = get_field('block_model_price') ?: get_field('model_price') ?: '';
 
             // Get card image - try block field first, then featured image
