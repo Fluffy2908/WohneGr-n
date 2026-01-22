@@ -243,7 +243,7 @@ function wohnegruen_register_acf_blocks() {
             'anchor' => true,
         ),
         'mode'              => 'preview',
-        'post_types'        => array('page'),
+        'post_types'        => array('page', 'mobilhaus'),
     ));
 
     // Interactive Floor Plans Block
@@ -260,7 +260,7 @@ function wohnegruen_register_acf_blocks() {
             'anchor' => true,
         ),
         'mode'              => 'preview',
-        'post_types'        => array('page'),
+        'post_types'        => array('page', 'mobilhaus'),
     ));
 
     // Interior Color Showcase Block
@@ -277,7 +277,7 @@ function wohnegruen_register_acf_blocks() {
             'anchor' => true,
         ),
         'mode'              => 'preview',
-        'post_types'        => array('page'),
+        'post_types'        => array('page', 'mobilhaus'),
     ));
 
     error_log('WohneGrün: Successfully registered ' . (22) . ' ACF blocks');
