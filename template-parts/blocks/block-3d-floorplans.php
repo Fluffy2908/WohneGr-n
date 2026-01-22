@@ -5,7 +5,7 @@
  * Interactive floor plan viewer with different configurations
  */
 
-$title = get_field('floorplans_title') ?: '3D Grundrisse';
+$title = get_field('floorplans_title');
 $subtitle = get_field('floorplans_subtitle');
 $configurations = get_field('floor_configurations');
 

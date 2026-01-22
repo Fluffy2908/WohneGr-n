@@ -4,8 +4,8 @@
  * Allows users to toggle between Anthrazit and Weiß exterior colors
  */
 
-$title = get_field('exterior_title') ?: 'Außenfarbe wählen';
-$subtitle = get_field('exterior_subtitle') ?: 'Wählen Sie zwischen zwei eleganten Außenfarben';
+$title = get_field('exterior_title');
+$subtitle = get_field('exterior_subtitle');
 
 // Anthrazit option
 $anthrazit_images = get_field('anthrazit_images'); // Gallery field

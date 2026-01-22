@@ -291,7 +291,7 @@ body.menu-open {
 .archive-hero-background img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .archive-hero-background::after {
@@ -407,7 +407,7 @@ body.menu-open {
 .model-card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
 }
 
@@ -704,7 +704,7 @@ body.menu-open {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
 }
 
@@ -1000,7 +1000,7 @@ body.menu-open {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
 }
 

@@ -4,8 +4,8 @@
  * Interactive slider for interior color schemes with image galleries
  */
 
-$title = get_field('interior_title') ?: 'Innenausstattung';
-$subtitle = get_field('interior_subtitle') ?: 'Wählen Sie aus 8 exklusiven Farbschemata';
+$title = get_field('interior_title');
+$subtitle = get_field('interior_subtitle');
 $intro_text = get_field('interior_intro_text');
 $color_schemes = get_field('interior_color_schemes'); // Repeater
 

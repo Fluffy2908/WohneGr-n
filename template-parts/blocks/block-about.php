@@ -18,13 +18,11 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'uber-uns';
     <div class="container">
         <div class="about-wrapper">
             <div class="about-image-wrapper">
-                <div class="about-image">
-                    <?php if ($image) : ?>
+                <?php if ($image) : ?>
+                    <div class="about-image">
                         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?: 'Über uns'); ?>">
-                    <?php else : ?>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about.jpg" alt="Über uns">
-                    <?php endif; ?>
-                </div>
+                    </div>
+                <?php endif; ?>
                 <div class="about-badge">
                     <span><?php echo esc_html($badge_number); ?></span>
                     <span><?php echo esc_html($badge_text); ?></span>

@@ -19,13 +19,11 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'home';
 ?>
 
 <section class="hero-section" id="<?php echo esc_attr($block_id); ?>">
-    <div class="hero-background">
-        <?php if (!empty($hero_bg)) : ?>
+    <?php if (!empty($hero_bg)) : ?>
+        <div class="hero-background">
             <img src="<?php echo esc_url($hero_bg['url']); ?>" alt="<?php echo esc_attr($hero_bg['alt'] ?? 'Hero-Hintergrund'); ?>">
-        <?php else : ?>
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-bg.jpg" alt="Hero-Hintergrund">
-        <?php endif; ?>
-    </div>
+        </div>
+    <?php endif; ?>
     <div class="container">
         <div class="hero-content">
             <div class="hero-badge animate-fade-in">

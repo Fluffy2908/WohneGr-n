@@ -3,13 +3,13 @@
  * Block Template: Models
  */
 
-$title = get_field('models_title') ?: 'Unsere Modelle';
-$subtitle = get_field('models_subtitle') ?: 'Wählen Sie zwischen verschiedenen Größen und Ausstattungen.';
+$title = get_field('models_title');
+$subtitle = get_field('models_subtitle');
 $source = get_field('models_source') ?: 'cpt';
-$count = get_field('models_count') ?: 3;
+$count = get_field('models_count') ?: -1;
 $manual_models = get_field('models_items');
-$cta_text = get_field('models_cta_text') ?: 'Alle Modelle ansehen';
-$cta_link = get_field('models_cta_link') ?: '/modelle/';
+$cta_text = get_field('models_cta_text');
+$cta_link = get_field('models_cta_link');
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'modelle';
 
@@ -96,8 +96,6 @@ if ($source === 'cpt') {
                             <?php elseif (is_string($model['image'])) : ?>
                                 <img src="<?php echo esc_url($model['image']); ?>" alt="WohneGrün <?php echo esc_attr($model['title']); ?> Model" loading="lazy">
                             <?php endif; ?>
-                        <?php else : ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/model-placeholder.jpg" alt="<?php echo esc_attr($model['title']); ?>" loading="lazy">
                         <?php endif; ?>
                         <?php if (!empty($model['badge'])) : ?>
                             <div class="model-badge <?php echo !empty($model['badge_class']) ? esc_attr($model['badge_class']) : ''; ?>"><?php echo esc_html($model['badge']); ?></div>

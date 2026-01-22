@@ -4,8 +4,8 @@
  * Shows floor plans with size selection and mirror function
  */
 
-$title = get_field('floor_plans_title') ?: 'Grundrisse';
-$subtitle = get_field('floor_plans_subtitle') ?: 'Wählen Sie zwischen verschiedenen Größen und Konfigurationen';
+$title = get_field('floor_plans_title');
+$subtitle = get_field('floor_plans_subtitle');
 $floor_plans = get_field('floor_plan_variants'); // Repeater
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'floor-plans-' . uniqid();
