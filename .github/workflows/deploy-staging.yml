@@ -1,0 +1,39 @@
+name: 🚀 Deploy to Staging (staging.wohnegruen.at)
+
+on:
+  push:
+    branches:
+      - staging
+  workflow_dispatch:
+
+jobs:
+  sftp-deploy-staging:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy WohneGruen theme to Staging
+        uses: easingthemes/ssh-deploy@v2.2.11
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SFTP_KEY }}
+          REMOTE_HOST: ${{ secrets.SFTP_SERVER }}
+          REMOTE_USER: ${{ secrets.SFTP_USERNAME }}
+          REMOTE_PORT: 22
+
+          SOURCE: "./"
+          TARGET: "/home/wohneg79/public_html/staging/wp-content/themes/WohneGruen"
+
+          ARGS: >
+            -rlgoDzv
+            --delete
+            --no-perms
+            --no-times
+            --exclude=.git
+            --exclude=.github
+            --exclude=node_modules
+            --exclude=.env
+            --exclude=.backups
+            --exclude=STAGING-ENVIRONMENT-GUIDE.md
+            --exclude=CLEANUP-SUMMARY-2026-01-23.md
