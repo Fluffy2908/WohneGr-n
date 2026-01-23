@@ -4,7 +4,8 @@ Disallow: /wp-admin/
 Disallow: /wp-includes/
 Disallow: /wp-content/plugins/
 Disallow: /wp-content/cache/
-Disallow: /wp-content/themes/WohneGruen/assets/
+Allow: /wp-content/themes/WohneGruen/assets/css/
+Allow: /wp-content/themes/WohneGruen/assets/js/
 Disallow: /cgi-bin/
 Disallow: /trackback/
 Disallow: /feed/

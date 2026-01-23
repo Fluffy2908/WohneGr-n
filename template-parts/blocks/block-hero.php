@@ -19,7 +19,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'hero-' . $block['id'];
 ?>
 
 <section class="hero-section" id="<?php echo esc_attr($block_id); ?>">
-    <?php if (!empty($hero_bg)) : ?>
+    <?php if (!empty($hero_bg) && isset($hero_bg['url'])) : ?>
         <div class="hero-background">
             <img src="<?php echo esc_url($hero_bg['url']); ?>" alt="<?php echo esc_attr($hero_bg['alt'] ?? 'Hero-Hintergrund'); ?>">
         </div>
@@ -54,8 +54,8 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'hero-' . $block['id'];
                     <?php $first = true; foreach ($hero_stats as $stat) : ?>
                         <?php if (!$first) : ?><div class="hero-stat-divider"></div><?php endif; ?>
                         <div class="hero-stat">
-                            <span class="hero-stat-number"><?php echo esc_html($stat['number']); ?></span>
-                            <span class="hero-stat-label"><?php echo esc_html($stat['label']); ?></span>
+                            <span class="hero-stat-number"><?php echo isset($stat['number']) ? esc_html($stat['number']) : ''; ?></span>
+                            <span class="hero-stat-label"><?php echo isset($stat['label']) ? esc_html($stat['label']) : ''; ?></span>
                         </div>
                         <?php $first = false; ?>
                     <?php endforeach; ?>

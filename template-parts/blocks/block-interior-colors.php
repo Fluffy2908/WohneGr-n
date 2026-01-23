@@ -80,7 +80,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'interior-colors-' . $b
                             <?php endif; ?>
                         </div>
 
-                        <?php if ($scheme['interior_gallery']) : ?>
+                        <?php if (!empty($scheme['interior_gallery']) && is_array($scheme['interior_gallery']) && isset($scheme['interior_gallery'][0]['url'])) : ?>
                             <div class="scheme-gallery">
                                 <!-- Main Image Display -->
                                 <div class="scheme-main-image">
@@ -93,11 +93,13 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'interior-colors-' . $b
                                 <?php if (count($scheme['interior_gallery']) > 1) : ?>
                                     <div class="scheme-thumbnails">
                                         <?php foreach ($scheme['interior_gallery'] as $img_index => $image) : ?>
+                                            <?php if (isset($image['url'])) : ?>
                                             <button class="scheme-thumb <?php echo $img_index === 0 ? 'active' : ''; ?>"
                                                     data-image="<?php echo esc_url($image['url']); ?>">
-                                                <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>"
+                                                <img src="<?php echo esc_url($image['sizes']['thumbnail'] ?? $image['url']); ?>"
                                                      alt="Ansicht <?php echo $img_index + 1; ?>">
                                             </button>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
                                     </div>
                                 <?php endif; ?>

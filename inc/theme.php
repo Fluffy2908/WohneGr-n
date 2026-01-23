@@ -29,8 +29,8 @@ function wohnegruen_setup() {
     add_theme_support('responsive-embeds');
 
     register_nav_menus(array(
-        'primary' => __('Primary Menu', 'wohnegruen'),
-        'footer'  => __('Footer Menu', 'wohnegruen'),
+        'primary' => __('Hauptmenü', 'wohnegruen'),
+        'footer'  => __('Fußmenü', 'wohnegruen'),
     ));
 }
 add_action('after_setup_theme', 'wohnegruen_setup');

@@ -76,7 +76,7 @@
       <?php if ($schema_address): ?>
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Österreich",
+        "streetAddress": "<?php echo esc_js($schema_address); ?>",
         "addressCountry": "AT"
       },
       <?php endif; ?>

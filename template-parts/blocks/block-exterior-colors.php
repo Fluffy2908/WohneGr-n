@@ -38,7 +38,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . $b
 
         <!-- Exterior Images Display -->
         <div class="exterior-images-container">
-            <?php if ($anthrazit_images) : ?>
+            <?php if ($anthrazit_images && is_array($anthrazit_images) && isset($anthrazit_images[0]['url'])) : ?>
                 <div class="exterior-gallery active" data-color-gallery="anthrazit" id="anthrazit-gallery" role="tabpanel" aria-labelledby="anthrazit-tab">
                     <div class="exterior-main-image">
                         <img src="<?php echo esc_url($anthrazit_images[0]['url']); ?>" alt="WohneGrün Mobilhaus Außenansicht in Anthrazit - Moderne Fassade" loading="lazy">
@@ -46,16 +46,18 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . $b
                     <?php if (count($anthrazit_images) > 1) : ?>
                         <div class="exterior-thumbnails" role="group" aria-label="Miniaturansichten Anthrazit">
                             <?php foreach ($anthrazit_images as $index => $image) : ?>
+                                <?php if (isset($image['url'])) : ?>
                                 <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>" aria-label="Zeige Anthrazit Ansicht <?php echo $index + 1; ?>">
-                                    <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Anthrazit Miniatur <?php echo $index + 1; ?>" aria-hidden="true">
+                                    <img src="<?php echo esc_url($image['sizes']['thumbnail'] ?? $image['url']); ?>" alt="Anthrazit Miniatur <?php echo $index + 1; ?>" aria-hidden="true">
                                 </button>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
 
-            <?php if ($weiss_images) : ?>
+            <?php if ($weiss_images && is_array($weiss_images) && isset($weiss_images[0]['url'])) : ?>
                 <div class="exterior-gallery" data-color-gallery="weiss" id="weiss-gallery" role="tabpanel" aria-labelledby="weiss-tab" aria-hidden="true">
                     <div class="exterior-main-image">
                         <img src="<?php echo esc_url($weiss_images[0]['url']); ?>" alt="WohneGrün Mobilhaus Außenansicht in Weiß - Elegante Fassade" loading="lazy">
@@ -63,9 +65,11 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . $b
                     <?php if (count($weiss_images) > 1) : ?>
                         <div class="exterior-thumbnails" role="group" aria-label="Miniaturansichten Weiß">
                             <?php foreach ($weiss_images as $index => $image) : ?>
+                                <?php if (isset($image['url'])) : ?>
                                 <button class="exterior-thumb <?php echo $index === 0 ? 'active' : ''; ?>" data-image="<?php echo esc_url($image['url']); ?>" aria-label="Zeige Weiß Ansicht <?php echo $index + 1; ?>">
-                                    <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="Weiß Miniatur <?php echo $index + 1; ?>" aria-hidden="true">
+                                    <img src="<?php echo esc_url($image['sizes']['thumbnail'] ?? $image['url']); ?>" alt="Weiß Miniatur <?php echo $index + 1; ?>" aria-hidden="true">
                                 </button>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>

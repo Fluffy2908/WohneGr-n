@@ -9,7 +9,8 @@ if (!defined('ABSPATH')) exit;
  * Generate dynamic XML sitemap
  */
 function wohnegruen_generate_sitemap() {
-    if (isset($_GET['sitemap']) || strpos($_SERVER['REQUEST_URI'], 'sitemap.xml') !== false) {
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? sanitize_text_field($_SERVER['REQUEST_URI']) : '';
+    if (isset($_GET['sitemap']) || ($request_uri && strpos($request_uri, 'sitemap.xml') !== false)) {
         header('Content-Type: application/xml; charset=utf-8');
 
         $sitemap = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -144,9 +145,16 @@ add_filter('pre_get_document_title', 'wohnegruen_custom_title');
  * Add hreflang tags for language targeting
  */
 function wohnegruen_add_hreflang() {
-    $current_url = (is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    echo '<link rel="alternate" hreflang="de-at" href="' . esc_url($current_url) . '" />';
-    echo '<link rel="alternate" hreflang="de" href="' . esc_url($current_url) . '" />';
+    $http_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field($_SERVER['HTTP_HOST']) : '';
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? esc_url_raw($_SERVER['REQUEST_URI']) : '';
+
+    if ($http_host && $request_uri) {
+        $current_url = (is_ssl() ? 'https://' : 'http://') . $http_host . $request_uri;
+        echo '<link rel="alternate" hreflang="de-at" href="' . esc_url($current_url) . '" />';
+        echo '<link rel="alternate" hreflang="de-de" href="' . esc_url($current_url) . '" />';
+        echo '<link rel="alternate" hreflang="de-ch" href="' . esc_url($current_url) . '" />';
+        echo '<link rel="alternate" hreflang="de" href="' . esc_url($current_url) . '" />';
+    }
 }
 add_action('wp_head', 'wohnegruen_add_hreflang');
 
@@ -159,7 +167,7 @@ function wohnegruen_breadcrumb_schema() {
             array(
                 '@type' => 'ListItem',
                 'position' => 1,
-                'name' => 'Home',
+                'name' => 'Startseite',
                 'item' => home_url('/')
             )
         );

@@ -82,6 +82,8 @@ function wohnegruen_handle_contact_form() {
             'message' => 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns in Kürze bei Ihnen melden.'
         ));
     } else {
+        // Log error for debugging
+        error_log('WohneGruen Contact Form: Email failed to send to ' . $to);
         wp_send_json_error(array(
             'message' => 'Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns telefonisch.'
         ));
@@ -98,8 +100,8 @@ function wohnegruen_add_contact_nonce() {
         ?>
         <script>
         var wohnegruenContact = {
-            ajaxUrl: '<?php echo admin_url('admin-ajax.php'); ?>',
-            nonce: '<?php echo wp_create_nonce('wohnegruen_contact_form'); ?>'
+            ajaxUrl: '<?php echo esc_url(admin_url('admin-ajax.php')); ?>',
+            nonce: '<?php echo esc_attr(wp_create_nonce('wohnegruen_contact_form')); ?>'
         };
         </script>
         <?php

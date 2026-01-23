@@ -92,14 +92,14 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'floorplans-' . $block[
                 </div>
 
                 <!-- 2D Floor Plan -->
-                <?php if (!empty($config['floorplan_2d'])): ?>
+                <?php if (!empty($config['floorplan_2d']) && isset($config['floorplan_2d']['url'])): ?>
                     <div class="floorplan-2d-section">
                         <h4>Grundriss 2D</h4>
                         <div class="floorplan-2d-wrapper">
                             <img src="<?php echo esc_url($config['floorplan_2d']['url']); ?>"
                                  alt="Grundriss 2D - <?php echo esc_attr($config['config_name']); ?>"
                                  onclick="openFloorplanLightbox('<?php echo esc_attr($block_id); ?>', '<?php echo esc_url($config['floorplan_2d']['url']); ?>', '2D Grundriss - <?php echo esc_js($config['config_name']); ?>')">
-                            <?php if (!empty($config['pdf_download'])): ?>
+                            <?php if (!empty($config['pdf_download']) && isset($config['pdf_download']['url'])): ?>
                                 <a href="<?php echo esc_url($config['pdf_download']['url']); ?>"
                                    class="pdf-download-btn"
                                    download>

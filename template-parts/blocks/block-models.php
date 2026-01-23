@@ -43,7 +43,10 @@ if ($source === 'cpt') {
             // Get card image - try block field first, then featured image
             $card_image = get_field('block_model_card_image') ?: get_field('model_card_image');
             if (!$card_image && get_post_thumbnail_id()) {
-                $card_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+                $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'large');
+                if ($thumbnail && is_array($thumbnail)) {
+                    $card_image = $thumbnail;
+                }
             }
 
             // Handle highlights from both sources

@@ -32,15 +32,22 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'floor-plans-' . uniqid
             </div>
 
             <!-- Floor Plan Content -->
-            <?php foreach ($floor_plans as $index => $plan) : ?>
+            <?php foreach ($floor_plans as $index => $plan) :
+                $fp_image = isset($plan['floor_plan_image']) && is_array($plan['floor_plan_image']) ? $plan['floor_plan_image'] : null;
+                $mirror_image = isset($plan['mirrored_floor_plan_image']) && is_array($plan['mirrored_floor_plan_image']) ? $plan['mirrored_floor_plan_image'] : null;
+
+                if (!$fp_image || !isset($fp_image['url']) || !$mirror_image || !isset($mirror_image['url'])) {
+                    continue; // Skip this plan if images are missing
+                }
+            ?>
                 <div class="floor-plan-content <?php echo $index === 0 ? 'active' : ''; ?>" data-plan-content="plan-<?php echo $index; ?>">
                     <div class="floor-plan-viewer">
                         <div class="floor-plan-image-wrapper">
                             <img class="floor-plan-image"
-                                 src="<?php echo esc_url($plan['floor_plan_image']['url']); ?>"
-                                 data-normal="<?php echo esc_url($plan['floor_plan_image']['url']); ?>"
-                                 data-mirrored="<?php echo esc_url($plan['mirrored_floor_plan_image']['url']); ?>"
-                                 alt="<?php echo esc_attr($plan['size_label']); ?> Grundriss"
+                                 src="<?php echo esc_url($fp_image['url']); ?>"
+                                 data-normal="<?php echo esc_url($fp_image['url']); ?>"
+                                 data-mirrored="<?php echo esc_url($mirror_image['url']); ?>"
+                                 alt="<?php echo esc_attr($plan['size_label'] ?? ''); ?> Grundriss"
                                  loading="lazy">
                         </div>
 
@@ -50,7 +57,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'floor-plans-' . uniqid
                                 Grundriss spiegeln
                             </button>
 
-                            <?php if ($plan['download_pdf']) : ?>
+                            <?php if (isset($plan['download_pdf']) && is_array($plan['download_pdf']) && isset($plan['download_pdf']['url'])) : ?>
                                 <a href="<?php echo esc_url($plan['download_pdf']['url']); ?>" class="btn btn-secondary" download>
                                     <?php echo wohnegruen_get_icon('download'); ?>
                                     PDF herunterladen

@@ -136,9 +136,11 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'showcase-' . $block['i
                     <div class="variant-gallery-grid">
                         <?php foreach ($variant['gallery'] as $img_index => $image): ?>
                             <div class="gallery-item" onclick="openLightbox('<?php echo esc_attr($block_id); ?>', <?php echo $index; ?>, <?php echo $img_index; ?>)">
+                                <?php if (isset($image['url'])) : ?>
                                 <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
                                      alt="<?php echo esc_attr($variant['variant_name']); ?> - <?php echo esc_attr($image['alt'] ?? 'Gallery image'); ?>"
                                      loading="lazy">
+                                <?php endif; ?>
                                 <div class="gallery-overlay">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                                         <circle cx="11" cy="11" r="8"></circle>
@@ -178,7 +180,7 @@ window.showcaseGalleries = window.showcaseGalleries || {};
 window.showcaseGalleries['<?php echo esc_js($block_id); ?>'] = {
     variants: <?php echo json_encode(array_map(function($variant) {
         return array_map(function($img) {
-            return $img['url'];
+            return isset($img['url']) ? $img['url'] : '';
         }, $variant['gallery'] ?? []);
     }, $color_variants)); ?>,
     currentVariant: 0,

@@ -54,7 +54,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'model-details-' . $blo
             <strong>Highlights:</strong>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <?php foreach ($highlights as $highlight): ?>
-                    <li><?php echo esc_html($highlight['text']); ?></li>
+                    <li><?php echo esc_html(is_array($highlight) && isset($highlight['text']) ? $highlight['text'] : $highlight); ?></li>
                 <?php endforeach; ?>
             </ul>
         </div>
