@@ -280,7 +280,27 @@ function wohnegruen_register_acf_blocks() {
         'post_types'        => array('page', 'mobilhaus'),
     ));
 
-    error_log('WohneGrün: Successfully registered ' . (22) . ' ACF blocks');
+    // Mobilhaus Complete Block (NEW - All-in-One for Mobilhaus Posts)
+    acf_register_block_type(array(
+        'name'              => 'wohnegruen-mobilhaus-complete',
+        'title'             => __('Mobilhaus Komplett', 'wohnegruen'),
+        'description'       => __('Alles-in-einem Block für Mobilhaus-Seiten: Hero, Farbauswahl, Beschreibung, Grundriss, Innenausstattung (Hosekra-Stil).', 'wohnegruen'),
+        'render_template'   => 'template-parts/blocks/block-mobilhaus-complete.php',
+        'category'          => $category,
+        'icon'              => 'admin-home',
+        'keywords'          => array('mobilhaus', 'komplett', 'hosekra', 'modell', 'complete'),
+        'supports'          => array(
+            'align' => array('full', 'wide'),
+            'anchor' => true,
+            'mode' => false,
+        ),
+        'mode'              => 'preview',
+        'post_types'        => array('mobilhaus'),
+        'enqueue_style'     => false,
+        'enqueue_assets'    => function() {},
+    ));
+
+    error_log('WohneGrün: Successfully registered ' . (23) . ' ACF blocks');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);
