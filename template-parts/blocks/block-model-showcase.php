@@ -21,11 +21,11 @@ if (!empty($hero_image)) {
     $hero_bg_url = is_array($hero_image) ? $hero_image['url'] : $hero_image;
 }
 
-$block_id = 'showcase-' . uniqid();
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'showcase-' . $block['id'];
 ?>
 
 <!-- Hero Section -->
-<section class="model-showcase-hero" <?php if ($hero_bg_url): ?>style="background-image: url('<?php echo esc_url($hero_bg_url); ?>');"<?php endif; ?>>
+<section class="model-showcase-hero" id="model-hero-<?php echo esc_attr($block_id); ?>" <?php if ($hero_bg_url): ?>data-bg-image="<?php echo esc_attr(esc_url($hero_bg_url)); ?>"<?php endif; ?>>
     <div class="model-showcase-overlay"></div>
     <div class="container">
         <div class="model-showcase-content">
@@ -691,4 +691,14 @@ document.addEventListener('keydown', function(e) {
     }
 }
 </style>
+
+<script>
+// Apply hero background image from data attribute (safer than inline style)
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSection = document.querySelector('#model-hero-<?php echo esc_js($block_id); ?>');
+    if (heroSection && heroSection.dataset.bgImage) {
+        heroSection.style.backgroundImage = 'url(' + heroSection.dataset.bgImage + ')';
+    }
+});
+</script>
 <?php endif; ?>

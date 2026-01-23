@@ -9,7 +9,7 @@ $bar_title = get_field('contact_bar_title') ?: '';
 $bar_text = get_field('contact_bar_text') ?: '';
 $form_shortcode = get_field('contact_form_shortcode');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'kontakt';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'contact-' . $block['id'];
 
 // Get contact info from block fields
 $phone = get_field('contact_phone') ?: '';

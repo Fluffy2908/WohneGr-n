@@ -11,7 +11,7 @@ $manual_models = get_field('models_items');
 $cta_text = get_field('models_cta_text');
 $cta_link = get_field('models_cta_link');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'modelle';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'models-' . $block['id'];
 
 // Get models from CPT or manual
 $models = array();

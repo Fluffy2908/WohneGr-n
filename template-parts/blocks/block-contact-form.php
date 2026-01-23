@@ -15,9 +15,10 @@ $show_map = get_field('show_map');
 $map_title = get_field('map_title');
 $map_embed = get_field('map_embed_code');
 
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'contact-form-' . $block['id'];
 ?>
 
-<section class="contact-section section-padding">
+<section class="contact-section section-padding" id="<?php echo esc_attr($block_id); ?>">
     <div class="container">
 
         <!-- Contact Info Bar -->
@@ -101,7 +102,7 @@ $map_embed = get_field('map_embed_code');
                     <h3><?php echo esc_html($map_title); ?></h3>
                 <?php endif; ?>
                 <div class="map-wrapper">
-                    <?php echo $map_embed; ?>
+                    <?php echo wp_kses_post($map_embed); ?>
                 </div>
             </div>
         <?php endif; ?>

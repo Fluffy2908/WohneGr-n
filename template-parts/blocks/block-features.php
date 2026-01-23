@@ -7,7 +7,7 @@ $title = get_field('features_title') ?: '';
 $subtitle = get_field('features_subtitle') ?: '';
 $features = get_field('features_items');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'vorteile';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'features-' . $block['id'];
 ?>
 
 <section class="features-section section-padding" id="<?php echo esc_attr($block_id); ?>">

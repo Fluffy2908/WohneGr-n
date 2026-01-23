@@ -15,11 +15,13 @@ $persons = get_field('block_model_persons');
 $price = get_field('block_model_price');
 $highlights = get_field('block_model_highlights');
 
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'model-details-' . $block['id'];
+
 // This block doesn't display on the page itself
 // It just stores data that's used on the homepage model card
 ?>
 
-<div class="model-details-block-info" style="background: #f0f9ff; border: 2px solid #0891b2; border-radius: 8px; padding: 20px; margin: 20px 0;">
+<div class="model-details-block-info" id="<?php echo esc_attr($block_id); ?>" style="background: #f0f9ff; border: 2px solid #0891b2; border-radius: 8px; padding: 20px; margin: 20px 0;">
     <h3 style="margin: 0 0 15px 0; color: #0891b2;">📋 Modell-Informationen (für Homepage-Karte)</h3>
     <p style="margin: 0 0 10px 0; color: #666;">Diese Informationen werden auf der Homepage-Modellkarte angezeigt.</p>
 

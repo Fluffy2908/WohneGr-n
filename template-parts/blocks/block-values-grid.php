@@ -11,11 +11,12 @@ $subtitle = get_field('values_subtitle');
 $values = get_field('values_items');
 $background = get_field('values_background');
 
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'values-' . $block['id'];
 $bg_class = $background === 'light' ? 'bg-light' : '';
 
 ?>
 
-<section class="values-section section-padding <?php echo $bg_class; ?>">
+<section class="values-section section-padding <?php echo $bg_class; ?>" id="<?php echo esc_attr($block_id); ?>">
     <div class="container">
         <?php if (!empty($title) || !empty($subtitle)): ?>
             <div class="section-header">

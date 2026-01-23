@@ -9,11 +9,11 @@ $btn_text = get_field('cta_btn_text') ?: '';
 $btn_link = get_field('cta_btn_link') ?: '';
 $background = get_field('cta_background') ?: 'primary';
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : '';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'cta-' . $block['id'];
 $bg_class = 'cta-bg-' . $background;
 ?>
 
-<section class="cta-section <?php echo esc_attr($bg_class); ?>" <?php echo $block_id ? 'id="' . esc_attr($block_id) . '"' : ''; ?>>
+<section class="cta-section <?php echo esc_attr($bg_class); ?>" id="<?php echo esc_attr($block_id); ?>">
     <div class="container">
         <div class="cta-content">
             <h2><?php echo esc_html($title); ?></h2>

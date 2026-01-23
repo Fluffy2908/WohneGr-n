@@ -11,7 +11,7 @@ $text1 = get_field('about_text1') ?: '';
 $text2 = get_field('about_text2') ?: '';
 $list = get_field('about_list');
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'uber-uns';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'about-' . $block['id'];
 ?>
 
 <section class="about-section section-padding" id="<?php echo esc_attr($block_id); ?>">

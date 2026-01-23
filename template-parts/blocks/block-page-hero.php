@@ -15,9 +15,10 @@ if (empty($title)) {
 }
 
 $bg_url = !empty($background_image) ? esc_url($background_image['url']) : '';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'page-hero-' . uniqid();
 ?>
 
-<section class="page-hero-section" <?php if ($bg_url): ?>style="background-image: url('<?php echo $bg_url; ?>');"<?php endif; ?>>
+<section class="page-hero-section" id="<?php echo esc_attr($block_id); ?>" <?php if ($bg_url): ?>data-bg-image="<?php echo esc_attr($bg_url); ?>"<?php endif; ?>>
     <div class="page-hero-overlay"></div>
     <div class="container">
         <div class="page-hero-content">
@@ -109,3 +110,13 @@ $bg_url = !empty($background_image) ? esc_url($background_image['url']) : '';
     }
 }
 </style>
+
+<script>
+// Apply background image from data attribute (safer than inline style)
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSection = document.querySelector('#<?php echo esc_js($block_id); ?>');
+    if (heroSection && heroSection.dataset.bgImage) {
+        heroSection.style.backgroundImage = 'url(' + heroSection.dataset.bgImage + ')';
+    }
+});
+</script>

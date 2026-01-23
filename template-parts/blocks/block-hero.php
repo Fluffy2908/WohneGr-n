@@ -15,7 +15,7 @@ $hero_btn2_text  = get_field('hero_btn2_text') ?: (get_field('hero_block')['hero
 $hero_btn2_link  = get_field('hero_btn2_link') ?: (get_field('hero_block')['hero_btn2_link'] ?? '');
 $hero_stats      = get_field('hero_stats') ?: (get_field('hero_block')['hero_stats'] ?? []);
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'home';
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'hero-' . $block['id'];
 ?>
 
 <section class="hero-section" id="<?php echo esc_attr($block_id); ?>">

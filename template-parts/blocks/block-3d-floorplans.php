@@ -14,7 +14,7 @@ if (empty($configurations)) {
     return;
 }
 
-$block_id = 'floorplans-' . uniqid();
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'floorplans-' . $block['id'];
 ?>
 
 <section class="floorplans-3d-section section-padding" id="<?php echo esc_attr($block_id); ?>">

@@ -9,7 +9,7 @@ $subtitle = get_field('interior_subtitle');
 $intro_text = get_field('interior_intro_text');
 $color_schemes = get_field('interior_color_schemes'); // Repeater
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'interior-colors-' . uniqid();
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'interior-colors-' . $block['id'];
 ?>
 
 <section class="interior-colors-section section-padding" id="<?php echo esc_attr($block_id); ?>">

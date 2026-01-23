@@ -12,7 +12,7 @@ $anthrazit_images = get_field('anthrazit_images'); // Gallery field
 // Weiß option
 $weiss_images = get_field('weiss_images'); // Gallery field
 
-$block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . uniqid();
+$block_id = isset($block['anchor']) ? $block['anchor'] : 'exterior-colors-' . $block['id'];
 ?>
 
 <section class="exterior-colors-section section-padding" id="<?php echo esc_attr($block_id); ?>">
