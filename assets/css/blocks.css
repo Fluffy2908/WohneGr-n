@@ -595,7 +595,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .acf-blocks-container .section-padding {
         padding: 3rem 0;
     }

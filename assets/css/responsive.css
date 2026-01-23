@@ -62,7 +62,7 @@
    MOBILE (max 767px)
    ==================== */
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     /* Container on mobile */
     .container {
         padding: 0 1rem;
@@ -309,7 +309,7 @@
    LANDSCAPE MOBILE (max 767px in landscape)
    ==================== */
 
-@media (max-width: 767px) and (orientation: landscape) {
+@media (max-width: 768px) and (orientation: landscape) {
     .hero-section {
         min-height: 70vh;
     }
@@ -375,7 +375,7 @@
     body {
         font-size: 12pt;
         line-height: 1.5;
-        color: #000;
+        color: var(--color-black);
     }
 
     .container {

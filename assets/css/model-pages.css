@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    color: #fff;
+    color: var(--color-white);
 }
 
 .model-hero-background {
@@ -109,7 +109,7 @@
 
 /* Model Description Section */
 .model-description-section {
-    background: #fff;
+    background: var(--color-white);
 }
 
 .model-description-grid {
@@ -128,7 +128,7 @@
 .model-description-content p {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: #555;
+    color: var(--color-text-light);
     margin-bottom: 1.5rem;
 }
 
@@ -153,7 +153,7 @@
     gap: 1rem;
     margin-bottom: 1rem;
     font-size: 1rem;
-    color: #555;
+    color: var(--color-text-light);
 }
 
 .model-features-list li svg {
@@ -197,7 +197,7 @@
 }
 
 .featured-model-card {
-    background: #fff;
+    background: var(--color-white);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -232,7 +232,7 @@
     right: 1.5rem;
     padding: 0.5rem 1.25rem;
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-white);
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: 50px;
@@ -265,7 +265,7 @@
 .model-description {
     font-size: 1rem;
     line-height: 1.7;
-    color: #555;
+    color: var(--color-text-light);
     margin-bottom: 1.5rem;
 }
 
@@ -281,7 +281,7 @@
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
-    color: #555;
+    color: var(--color-text-light);
 }
 
 .model-highlight svg {
@@ -297,7 +297,7 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--color-background);
     border-radius: 8px;
 }
 
@@ -334,7 +334,7 @@
 
 /* Color Schemes Section */
 .color-schemes-section {
-    background: #f8f9fa;
+    background: var(--color-background);
 }
 
 .color-schemes-grid {
@@ -345,7 +345,7 @@
 }
 
 .color-scheme-card {
-    background: #fff;
+    background: var(--color-white);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -385,7 +385,7 @@
 
 .color-scheme-content p {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--color-text-secondary);
     line-height: 1.6;
     margin-bottom: 1.25rem;
 }
@@ -400,7 +400,7 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid var(--color-white);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -419,7 +419,7 @@
 
 /* Room Layouts Section */
 .room-layouts-section {
-    background: #fff;
+    background: var(--color-white);
 }
 
 .room-layouts-grid {
@@ -430,7 +430,7 @@
 }
 
 .room-layout-card {
-    background: #fff;
+    background: var(--color-white);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -471,7 +471,7 @@
 .room-layout-content p {
     font-size: 1rem;
     line-height: 1.7;
-    color: #555;
+    color: var(--color-text-light);
     margin-bottom: 1.5rem;
 }
 
@@ -486,7 +486,7 @@
     padding-left: 1.5rem;
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
-    color: #666;
+    color: var(--color-text-secondary);
 }
 
 .room-features li::before {
@@ -499,7 +499,7 @@
 
 /* Size Options Section */
 .size-options-section {
-    background: #f8f9fa;
+    background: var(--color-background);
 }
 
 .size-options-grid {
@@ -513,7 +513,7 @@
 }
 
 .size-option-card {
-    background: #fff;
+    background: var(--color-white);
     border-radius: 12px;
     padding: 2.5rem 2rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -535,7 +535,7 @@
     display: inline-block;
     padding: 0.4rem 1.2rem;
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-white);
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -575,7 +575,7 @@
     padding-left: 1.75rem;
     margin-bottom: 1rem;
     font-size: 1rem;
-    color: #555;
+    color: var(--color-text-light);
 }
 
 .size-features li::before {
@@ -589,7 +589,7 @@
 
 /* Models Intro Section */
 .models-intro-section {
-    background: #fff;
+    background: var(--color-white);
 }
 
 .models-intro-content {
@@ -607,12 +607,12 @@
 .intro-text {
     font-size: 1.125rem;
     line-height: 1.8;
-    color: #555;
+    color: var(--color-text-light);
 }
 
 /* Comparison Table */
 .model-comparison-section {
-    background: #f8f9fa;
+    background: var(--color-background);
 }
 
 .comparison-table-wrapper {
@@ -623,7 +623,7 @@
 .comparison-table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
+    background: var(--color-white);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -631,7 +631,7 @@
 
 .comparison-table thead {
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-white);
 }
 
 .comparison-table th,
@@ -651,7 +651,7 @@
 }
 
 .comparison-table tbody tr:hover {
-    background: #f8f9fa;
+    background: var(--color-background);
 }
 
 .comparison-table td:first-child {

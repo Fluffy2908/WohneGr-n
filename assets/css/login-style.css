@@ -5,10 +5,10 @@
 
 /* Body and Background */
 body.login {
-    background: linear-gradient(135deg, #2d5016 0%, #1f3810 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     background-attachment: fixed;
     position: relative;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-system);
 }
 
 /* Subtle pattern overlay */
@@ -70,7 +70,7 @@ body.login::before {
 
 /* Input Labels */
 .login label {
-    color: #333;
+    color: var(--color-text-primary);
     font-size: 0.95rem;
     font-weight: 500;
     margin-bottom: 8px;
@@ -80,12 +80,12 @@ body.login::before {
 .login input[type="text"],
 .login input[type="password"],
 .login input[type="email"] {
-    background: #f8f9fa;
-    border: 2px solid #e0e0e0;
+    background: var(--color-background);
+    border: 2px solid var(--color-border);
     border-radius: 8px;
     padding: 12px 15px;
     font-size: 1rem;
-    color: #333;
+    color: var(--color-text-primary);
     transition: all 0.3s ease;
     box-shadow: none;
 }
@@ -94,9 +94,9 @@ body.login::before {
 .login input[type="password"]:focus,
 .login input[type="email"]:focus {
     background: white;
-    border-color: #2d5016;
+    border-color: var(--color-primary);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
 }
 
 /* Remember Me Checkbox */
@@ -105,21 +105,21 @@ body.login::before {
 }
 
 .login input[type="checkbox"] {
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-border);
     border-radius: 4px;
 }
 
 .login input[type="checkbox"]:checked {
-    background: #2d5016;
-    border-color: #2d5016;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 /* Submit Button */
 .login .button-primary {
-    background: #2d5016;
+    background: var(--color-primary);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
     text-shadow: none;
     padding: 12px 30px;
     font-size: 1rem;
@@ -132,8 +132,8 @@ body.login::before {
 
 .login .button-primary:hover,
 .login .button-primary:focus {
-    background: #1f3810;
-    box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+    background: var(--color-primary-dark);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.4);
     transform: translateY(-2px);
 }
 
@@ -160,7 +160,7 @@ body.login::before {
 
 #nav a:hover,
 #backtoblog a:hover {
-    color: #b8d4a8;
+    color: var(--color-secondary);
     text-decoration: underline;
 }
 
@@ -208,7 +208,7 @@ body.login::before {
 }
 
 .privacy-policy-page-link a:hover {
-    color: #b8d4a8;
+    color: var(--color-secondary);
     text-decoration: underline;
 }
 
@@ -239,7 +239,7 @@ body.login::before {
 }
 
 .login-footer-links a:hover {
-    color: #b8d4a8;
+    color: var(--color-secondary);
     text-decoration: underline;
 }
 
@@ -297,7 +297,7 @@ body.login::before {
 
 /* Admin Email Confirmation */
 .admin-email__heading {
-    color: #2d5016;
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -320,11 +320,11 @@ body.login::before {
 
     .login form {
         background: #1e1e1e;
-        color: #e0e0e0;
+        color: var(--color-border);
     }
 
     .login label {
-        color: #e0e0e0;
+        color: var(--color-border);
     }
 
     .login input[type="text"],
@@ -332,13 +332,13 @@ body.login::before {
     .login input[type="email"] {
         background: #2a2a2a;
         border-color: #404040;
-        color: #e0e0e0;
+        color: var(--color-border);
     }
 
     .login input[type="text"]:focus,
     .login input[type="password"]:focus,
     .login input[type="email"]:focus {
-        background: #333;
+        background: var(--color-text-primary);
         border-color: #4a7028;
     }
 
