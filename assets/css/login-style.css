@@ -1,0 +1,348 @@
+/**
+ * WordPress Login Page Custom Styles
+ * Branded login experience for WohneGrün
+ */
+
+/* Body and Background */
+body.login {
+    background: linear-gradient(135deg, #2d5016 0%, #1f3810 100%);
+    background-attachment: fixed;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Subtle pattern overlay */
+body.login::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Login Container */
+#login {
+    padding: 5% 0 0;
+}
+
+/* Logo */
+#login h1 a,
+.login h1 a {
+    background-image: none;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 30px;
+    position: relative;
+    text-indent: 0;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+#login h1 a::before {
+    content: 'WohneGrün';
+    display: block;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Login Form Container */
+.login form {
+    background: white;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Input Labels */
+.login label {
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Input Fields */
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="email"] {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: none;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus,
+.login input[type="email"]:focus {
+    background: white;
+    border-color: #2d5016;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+}
+
+/* Remember Me Checkbox */
+.login .forgetmenot {
+    margin-bottom: 20px;
+}
+
+.login input[type="checkbox"] {
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.login input[type="checkbox"]:checked {
+    background: #2d5016;
+    border-color: #2d5016;
+}
+
+/* Submit Button */
+.login .button-primary {
+    background: #2d5016;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+    text-shadow: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    height: auto;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.login .button-primary:hover,
+.login .button-primary:focus {
+    background: #1f3810;
+    box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+    transform: translateY(-2px);
+}
+
+.login .button-primary:active {
+    transform: translateY(0);
+}
+
+/* Links Below Form */
+#nav,
+#backtoblog {
+    text-align: center;
+    margin: 0;
+    padding: 15px 0;
+}
+
+#nav a,
+#backtoblog a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#nav a:hover,
+#backtoblog a:hover {
+    color: #b8d4a8;
+    text-decoration: underline;
+}
+
+/* Lost Password and Back to Blog spacing */
+#nav {
+    margin-bottom: 10px;
+}
+
+/* Messages */
+.login .message,
+.login .success,
+.login #login_error {
+    border: none;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login .message,
+.login .success {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.login #login_error {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+/* Privacy Policy Link */
+.privacy-policy-page-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.privacy-policy-page-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.privacy-policy-page-link a:hover {
+    color: #b8d4a8;
+    text-decoration: underline;
+}
+
+/* Language Switcher (if installed) */
+.language-switcher {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Custom Footer */
+.custom-login-footer {
+    text-align: center;
+    color: white;
+    padding: 30px 20px;
+    margin-top: 30px;
+}
+
+.custom-login-footer p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.login-footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.login-footer-links a:hover {
+    color: #b8d4a8;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    #login {
+        padding: 20px;
+    }
+
+    #login h1 a::before {
+        font-size: 2rem;
+    }
+
+    .login form {
+        padding: 30px 25px;
+    }
+
+    .login input[type="text"],
+    .login input[type="password"],
+    .login input[type="email"] {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #login h1 a {
+        height: 80px;
+    }
+
+    #login h1 a::before {
+        font-size: 1.8rem;
+    }
+
+    .login form {
+        padding: 25px 20px;
+    }
+}
+
+/* Loading Animation */
+.login .button-primary.disabled,
+.login .button-primary:disabled,
+.login .button-primary[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Interim Login */
+.interim-login #login {
+    padding-top: 3%;
+}
+
+.interim-login.login h1 a {
+    width: 100%;
+}
+
+/* Admin Email Confirmation */
+.admin-email__heading {
+    color: #2d5016;
+    font-weight: 600;
+}
+
+.admin-email__details {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Two Factor Authentication (if plugin installed) */
+.backup-methods-wrap,
+.create-new-backup-codes {
+    margin-top: 20px;
+}
+
+/* Dark mode support (respects system preferences) */
+@media (prefers-color-scheme: dark) {
+    body.login {
+        background: linear-gradient(135deg, #1a2d0f 0%, #0f1a08 100%);
+    }
+
+    .login form {
+        background: #1e1e1e;
+        color: #e0e0e0;
+    }
+
+    .login label {
+        color: #e0e0e0;
+    }
+
+    .login input[type="text"],
+    .login input[type="password"],
+    .login input[type="email"] {
+        background: #2a2a2a;
+        border-color: #404040;
+        color: #e0e0e0;
+    }
+
+    .login input[type="text"]:focus,
+    .login input[type="password"]:focus,
+    .login input[type="email"]:focus {
+        background: #333;
+        border-color: #4a7028;
+    }
+
+    .login input[type="checkbox"] {
+        border-color: #404040;
+    }
+}

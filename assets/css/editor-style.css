@@ -1,101 +1,168 @@
 /**
- * WohneGrün Editor Styles
- * Styles for Gutenberg block editor
+ * Gutenberg Editor Styles
+ * Makes the editor look like the front-end for better WYSIWYG experience
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
-
-:root {
-    --color-primary: hsl(142, 52%, 36%);
-    --color-primary-light: hsl(142, 52%, 45%);
-    --color-primary-dark: hsl(142, 52%, 28%);
-    --color-background: hsl(60, 20%, 98%);
-    --color-foreground: hsl(150, 10%, 15%);
-    --color-card: hsl(0, 0%, 100%);
-    --color-muted: hsl(60, 10%, 95%);
-    --color-muted-foreground: hsl(150, 5%, 45%);
-    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --radius: 0.75rem;
-    --radius-lg: 1rem;
-}
-
+/* Editor-specific adjustments */
 .editor-styles-wrapper {
-    font-family: var(--font-body);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: var(--color-foreground);
-    background-color: var(--color-background);
+    color: #333;
+    background: white;
+    padding: 20px;
 }
 
+/* Make editor width match front-end */
+.editor-styles-wrapper .block-editor-block-list__layout {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Container width matching */
+.editor-styles-wrapper .wp-block {
+    max-width: 1200px;
+}
+
+/* Typography matching front-end */
 .editor-styles-wrapper h1,
 .editor-styles-wrapper h2,
 .editor-styles-wrapper h3,
 .editor-styles-wrapper h4,
 .editor-styles-wrapper h5,
 .editor-styles-wrapper h6 {
-    font-family: var(--font-heading);
+    color: #2d5016;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.3;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 
-/* ACF Block Preview Styles */
-.acf-block-preview {
-    padding: 0;
+.editor-styles-wrapper h1 { font-size: 2.5rem; }
+.editor-styles-wrapper h2 { font-size: 2rem; }
+.editor-styles-wrapper h3 { font-size: 1.75rem; }
+.editor-styles-wrapper h4 { font-size: 1.5rem; }
+.editor-styles-wrapper h5 { font-size: 1.25rem; }
+.editor-styles-wrapper h6 { font-size: 1rem; }
+
+/* Links */
+.editor-styles-wrapper a {
+    color: #2d5016;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.acf-block-preview .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
+.editor-styles-wrapper a:hover {
+    color: #1f3810;
+    text-decoration: underline;
 }
 
-.acf-block-preview .section-header h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.acf-block-preview .section-header p {
-    color: var(--color-muted-foreground);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.acf-block-preview .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.acf-block-preview .section-padding {
-    padding: 4rem 0;
-}
-
-/* Block placeholder styles */
-.acf-block-preview .btn {
+/* Buttons in editor */
+.editor-styles-wrapper .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius);
-    font-weight: 500;
-    font-size: 0.875rem;
-    cursor: pointer;
+    gap: 8px;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
     transition: all 0.3s ease;
+    cursor: pointer;
     border: none;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-.acf-block-preview .btn-primary {
-    background-color: var(--color-primary);
+.editor-styles-wrapper .btn-primary {
+    background: #2d5016;
     color: white;
 }
 
-.acf-block-preview .btn-outline {
-    background-color: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
+.editor-styles-wrapper .btn-secondary {
+    background: white;
+    color: #2d5016;
+    border: 2px solid #2d5016;
 }
 
-.acf-block-preview .btn svg {
-    width: 1rem;
-    height: 1rem;
+.editor-styles-wrapper .btn-outline {
+    background: transparent;
+    color: #2d5016;
+    border: 2px solid #2d5016;
+}
+
+/* Section padding preview */
+.editor-styles-wrapper .section-padding {
+    padding: 40px 20px;
+    background: #f8f9fa;
+    border: 1px dashed #dee2e6;
+    margin: 20px 0;
+}
+
+/* Container preview */
+.editor-styles-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ACF Block boundaries in editor */
+.editor-styles-wrapper [data-type^="acf/"] {
+    border: 2px dashed rgba(45, 80, 22, 0.2);
+    margin: 20px 0;
+    position: relative;
+}
+
+.editor-styles-wrapper [data-type^="acf/"]::before {
+    content: attr(data-title);
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: #2d5016;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+/* Image blocks */
+.editor-styles-wrapper .wp-block-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Quote blocks */
+.editor-styles-wrapper .wp-block-quote {
+    border-left: 4px solid #2d5016;
+    padding-left: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Table blocks */
+.editor-styles-wrapper .wp-block-table td,
+.editor-styles-wrapper .wp-block-table th {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+}
+
+.editor-styles-wrapper .wp-block-table th {
+    background: #2d5016;
+    color: white;
+    font-weight: 600;
+}
+
+/* Columns */
+.editor-styles-wrapper .wp-block-columns {
+    display: flex;
+    gap: 20px;
+}
+
+/* Separator */
+.editor-styles-wrapper .wp-block-separator {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 2rem 0;
 }
