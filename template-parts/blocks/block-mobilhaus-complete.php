@@ -1,124 +1,121 @@
 <?php
 /**
  * Block: Complete Mobilhaus Presentation
- * All-in-one block for individual mobilhaus pages (Nature, Pure, etc.)
- * Inspired by Hosekra design - NO HARDCODED CONTENT
+ * NEW DESIGN: Hero with background + Color buttons + Banner + Text/Image sections
  */
 
 // Get all field data
 $hero_title = get_field('mobilhaus_hero_title') ?: get_the_title();
 $hero_subtitle = get_field('mobilhaus_hero_subtitle');
-
-// Color variants (exterior images)
 $color_variants = get_field('mobilhaus_color_variants');
-
-// Description section with image
 $description_title = get_field('mobilhaus_description_title');
 $description_text = get_field('mobilhaus_description_text');
 $description_image = get_field('mobilhaus_description_image');
-
-// Floor plan - normal and reversed (not mirrored CSS, but two different images)
+$specifications = get_field('mobilhaus_specifications');
 $floor_plan_normal = get_field('mobilhaus_floor_plan_normal');
 $floor_plan_reversed = get_field('mobilhaus_floor_plan_reversed');
-
-// Technical specifications
-$specifications = get_field('mobilhaus_specifications');
-
-// Interior color schemes (like Hosekra)
 $interior_schemes = get_field('mobilhaus_interior_schemes');
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'mobilhaus-' . $block['id'];
+
+// Get hero background image (use first color variant's image or featured image)
+$hero_bg_image = '';
+if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
+    $hero_bg_image = $color_variants[0]['exterior_image']['url'];
+} elseif (has_post_thumbnail()) {
+    $hero_bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+}
 ?>
 
 <article class="mobilhaus-complete-page" id="<?php echo esc_attr($block_id); ?>">
 
-    <!-- Hero Section with Color Selector -->
-    <?php if ($hero_title || $color_variants): ?>
-    <section class="mobilhaus-hero">
+    <!-- HERO SECTION: Background Image + Green Filter + Centered Headline -->
+    <section class="mobilhaus-hero-new" style="background-image: url('<?php echo esc_url($hero_bg_image); ?>');">
+        <div class="hero-overlay"></div>
         <div class="container">
-            <div class="mobilhaus-hero-content">
-                <div class="mobilhaus-hero-text">
-                    <?php if ($hero_title): ?>
-                        <h1 class="mobilhaus-title"><?php echo esc_html($hero_title); ?></h1>
-                    <?php endif; ?>
-
-                    <?php if ($hero_subtitle): ?>
-                        <p class="mobilhaus-subtitle"><?php echo esc_html($hero_subtitle); ?></p>
-                    <?php endif; ?>
-
-                    <!-- Color Selector Buttons -->
-                    <?php if ($color_variants && is_array($color_variants)): ?>
-                        <div class="mobilhaus-color-selector">
-                            <p class="color-selector-label">Wählen Sie Ihre Farbe:</p>
-                            <div class="color-buttons">
-                                <?php foreach ($color_variants as $index => $variant): ?>
-                                    <button
-                                        class="color-btn <?php echo $index === 0 ? 'active' : ''; ?>"
-                                        data-color-index="<?php echo $index; ?>"
-                                        style="background-color: <?php echo esc_attr($variant['color_code']); ?>;"
-                                        aria-label="<?php echo esc_attr($variant['color_name']); ?>">
-                                        <span class="color-name"><?php echo esc_html($variant['color_name']); ?></span>
-                                    </button>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-                </div>
-
-                <!-- Hero Image (changes with color selection) -->
-                <?php if ($color_variants && is_array($color_variants)): ?>
-                <div class="mobilhaus-hero-image">
-                    <?php foreach ($color_variants as $index => $variant): ?>
-                        <img
-                            class="mobilhaus-exterior-img <?php echo $index === 0 ? 'active' : ''; ?>"
-                            data-color-index="<?php echo $index; ?>"
-                            src="<?php echo esc_url($variant['exterior_image']['url']); ?>"
-                            alt="<?php echo esc_attr($hero_title . ' - ' . $variant['color_name']); ?>"
-                            loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
-                    <?php endforeach; ?>
-                </div>
+            <div class="hero-content-center">
+                <?php if ($hero_title): ?>
+                    <h1 class="hero-headline"><?php echo esc_html($hero_title); ?></h1>
                 <?php endif; ?>
+                <?php if ($hero_subtitle): ?>
+                    <p class="hero-subtitle-text"><?php echo esc_html($hero_subtitle); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLOR SELECTION BUTTONS + EXTERIOR IMAGE -->
+    <?php if ($color_variants && is_array($color_variants)): ?>
+    <section class="color-selection-section section-padding">
+        <div class="container">
+            <h2 class="section-title">Wählen Sie Ihre Farbvariante</h2>
+
+            <!-- Big Color Buttons -->
+            <div class="big-color-buttons">
+                <?php foreach ($color_variants as $index => $variant): ?>
+                    <button
+                        class="big-color-btn <?php echo $index === 0 ? 'active' : ''; ?>"
+                        data-color-index="<?php echo $index; ?>"
+                        onclick="switchExteriorColor(<?php echo $index; ?>)">
+                        <span class="color-btn-text"><?php echo esc_html($variant['color_name']); ?></span>
+                    </button>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Exterior Image Display -->
+            <div class="exterior-image-display">
+                <?php foreach ($color_variants as $index => $variant): ?>
+                    <img
+                        class="exterior-img <?php echo $index === 0 ? 'active' : ''; ?>"
+                        data-color-index="<?php echo $index; ?>"
+                        src="<?php echo esc_url($variant['exterior_image']['url']); ?>"
+                        alt="<?php echo esc_attr($hero_title . ' - ' . $variant['color_name']); ?>"
+                        loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
     <?php endif; ?>
 
-    <!-- Description Section: Text LEFT, Image RIGHT -->
-    <?php if ($description_title || $description_text || $description_image): ?>
-    <section class="mobilhaus-description-section section-padding">
+    <!-- DESCRIPTION BANNER: Full Width with Text -->
+    <?php if ($description_title || $description_text): ?>
+    <section class="description-banner">
         <div class="container">
-            <div class="description-grid">
-                <!-- Left: Text -->
-                <div class="description-text">
-                    <?php if ($description_title): ?>
-                        <h2><?php echo esc_html($description_title); ?></h2>
-                    <?php endif; ?>
+            <?php if ($description_title): ?>
+                <h2 class="banner-title"><?php echo esc_html($description_title); ?></h2>
+            <?php endif; ?>
+            <?php if ($description_text): ?>
+                <div class="banner-text">
+                    <?php echo wp_kses_post($description_text); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <?php endif; ?>
 
-                    <?php if ($description_text): ?>
-                        <div class="description-content">
-                            <?php echo wp_kses_post($description_text); ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- Technical Specifications -->
+    <!-- DETAILS SECTION: Text LEFT, Image RIGHT -->
+    <?php if ($specifications || $description_image): ?>
+    <section class="details-section section-padding">
+        <div class="container">
+            <div class="details-grid">
+                <!-- Left: Specifications Text -->
+                <div class="details-text">
                     <?php if ($specifications && is_array($specifications)): ?>
-                        <div class="mobilhaus-specs">
-                            <h3>Technische Daten</h3>
-                            <dl class="specs-list">
-                                <?php foreach ($specifications as $spec): ?>
-                                    <div class="spec-item">
-                                        <dt><?php echo esc_html($spec['label']); ?></dt>
-                                        <dd><?php echo esc_html($spec['value']); ?></dd>
-                                    </div>
-                                <?php endforeach; ?>
-                            </dl>
-                        </div>
+                        <h3>Technische Daten</h3>
+                        <dl class="specs-list">
+                            <?php foreach ($specifications as $spec): ?>
+                                <div class="spec-row">
+                                    <dt><?php echo esc_html($spec['label']); ?></dt>
+                                    <dd><?php echo esc_html($spec['value']); ?></dd>
+                                </div>
+                            <?php endforeach; ?>
+                        </dl>
                     <?php endif; ?>
                 </div>
 
                 <!-- Right: Image -->
                 <?php if ($description_image): ?>
-                <div class="description-image">
+                <div class="details-image">
                     <img src="<?php echo esc_url($description_image['url']); ?>"
                          alt="<?php echo esc_attr($description_image['alt'] ?: $hero_title); ?>"
                          loading="lazy">
@@ -129,11 +126,11 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'mobilhaus-' . $block['
     </section>
     <?php endif; ?>
 
-    <!-- Grundriss Section - Full Width with Toggle -->
+    <!-- GRUNDRISS SECTION -->
     <?php if ($floor_plan_normal): ?>
-    <section class="mobilhaus-grundriss-section section-padding">
+    <section class="grundriss-section section-padding">
         <div class="container">
-            <h2>Grundriss</h2>
+            <h2 class="section-title">Grundriss</h2>
 
             <div class="grundriss-viewer">
                 <div class="grundriss-image-wrapper">
@@ -149,9 +146,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'mobilhaus-' . $block['
                 <div class="grundriss-controls">
                     <button
                         class="btn btn-outline grundriss-toggle"
-                        data-normal="<?php echo esc_url($floor_plan_normal['url']); ?>"
-                        data-reversed="<?php echo esc_url($floor_plan_reversed['url']); ?>"
-                        data-target="grundriss-img-<?php echo esc_attr($block_id); ?>">
+                        onclick="toggleGrundriss('<?php echo esc_js($block_id); ?>', '<?php echo esc_url($floor_plan_normal['url']); ?>', '<?php echo esc_url($floor_plan_reversed['url']); ?>')">
                         <span class="toggle-text">Reversed Version anzeigen</span>
                     </button>
                 </div>
@@ -161,43 +156,41 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'mobilhaus-' . $block['
     </section>
     <?php endif; ?>
 
-    <!-- Interior Color Schemes Section -->
+    <!-- INTERIOR COLOR SCHEMES -->
     <?php if ($interior_schemes && is_array($interior_schemes)): ?>
-    <section class="mobilhaus-interior-section section-padding">
+    <section class="interior-schemes-section section-padding">
         <div class="container">
-            <div class="section-header">
-                <h2>Innenausstattung & Farbvarianten</h2>
-                <p>Wählen Sie aus verschiedenen hochwertigen Material- und Farbkombinationen</p>
-            </div>
+            <h2 class="section-title">Innenausstattung & Farbschemata</h2>
+            <p class="section-subtitle">Wählen Sie aus verschiedenen hochwertigen Material- und Farbkombinationen</p>
 
             <?php foreach ($interior_schemes as $scheme_index => $scheme): ?>
-                <div class="interior-scheme-block">
+                <div class="scheme-block">
                     <div class="scheme-header">
-                        <h3 class="scheme-title"><?php echo esc_html($scheme['scheme_name']); ?></h3>
+                        <h3><?php echo esc_html($scheme['scheme_name']); ?></h3>
 
                         <?php if (isset($scheme['color_palette_image']['url'])): ?>
-                            <div class="scheme-palette-preview">
+                            <div class="palette-preview">
                                 <img src="<?php echo esc_url($scheme['color_palette_image']['url']); ?>"
-                                     alt="Farbpalette <?php echo esc_attr($scheme['scheme_name']); ?>"
+                                     alt="Palette <?php echo esc_attr($scheme['scheme_name']); ?>"
                                      loading="lazy">
                             </div>
                         <?php endif; ?>
 
                         <?php if (isset($scheme['scheme_description'])): ?>
-                            <p class="scheme-description"><?php echo esc_html($scheme['scheme_description']); ?></p>
+                            <p class="scheme-desc"><?php echo esc_html($scheme['scheme_description']); ?></p>
                         <?php endif; ?>
                     </div>
 
-                    <!-- Gallery Grid with proper gaps and rounded edges -->
-                    <div class="interior-gallery-grid">
+                    <!-- Gallery Grid -->
+                    <div class="interior-gallery">
                         <?php foreach ($scheme['gallery'] as $img_index => $image): ?>
                             <div class="gallery-item"
-                                 onclick="openInteriorLightbox('<?php echo esc_js($block_id); ?>', <?php echo $scheme_index; ?>, <?php echo $img_index; ?>)">
+                                 onclick="openLightbox(<?php echo $scheme_index; ?>, <?php echo $img_index; ?>)">
                                 <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
                                      alt="<?php echo esc_attr($scheme['scheme_name'] . ' - Ansicht ' . ($img_index + 1)); ?>"
                                      loading="lazy">
                                 <div class="gallery-overlay">
-                                    <span class="gallery-icon">🔍</span>
+                                    <span class="zoom-icon">🔍</span>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -206,216 +199,149 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'mobilhaus-' . $block['
             <?php endforeach; ?>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- Lightbox for Interior Images -->
-    <div id="interior-lightbox-<?php echo esc_attr($block_id); ?>" class="interior-lightbox" onclick="closeInteriorLightbox('<?php echo esc_attr($block_id); ?>')">
-        <button class="lightbox-close" onclick="closeInteriorLightbox('<?php echo esc_attr($block_id); ?>')">&times;</button>
-        <button class="lightbox-prev" onclick="event.stopPropagation(); navigateInteriorLightbox('<?php echo esc_attr($block_id); ?>', -1)">‹</button>
-        <img class="lightbox-content" id="interior-lightbox-img-<?php echo esc_attr($block_id); ?>" src="" alt="">
-        <button class="lightbox-next" onclick="event.stopPropagation(); navigateInteriorLightbox('<?php echo esc_attr($block_id); ?>', 1)">›</button>
-        <div class="lightbox-counter" id="interior-lightbox-counter-<?php echo esc_attr($block_id); ?>"></div>
+    <!-- Lightbox -->
+    <div id="lightbox-<?php echo esc_attr($block_id); ?>" class="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">‹</button>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+        <button class="lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">›</button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
     </div>
+    <?php endif; ?>
 
 </article>
 
-<script>
-// Store gallery data
-window.mobilhausGalleries = window.mobilhausGalleries || {};
-window.mobilhausGalleries['<?php echo esc_js($block_id); ?>'] = {
-    interiorSchemes: <?php echo json_encode(array_map(function($scheme) {
-        return array_map(function($img) {
-            return isset($img['url']) ? $img['url'] : '';
-        }, $scheme['gallery'] ?? []);
-    }, $interior_schemes ?? [])); ?>,
-    currentScheme: 0,
-    currentImage: 0
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Color selector functionality
-    const colorButtons = document.querySelectorAll('#<?php echo esc_js($block_id); ?> .color-btn');
-    const exteriorImages = document.querySelectorAll('#<?php echo esc_js($block_id); ?> .mobilhaus-exterior-img');
-
-    colorButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const colorIndex = this.dataset.colorIndex;
-
-            colorButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            exteriorImages.forEach(img => {
-                img.classList.toggle('active', img.dataset.colorIndex === colorIndex);
-            });
-        });
-    });
-
-    // Grundriss toggle (switches between two different images)
-    const grundrissToggle = document.querySelector('#<?php echo esc_js($block_id); ?> .grundriss-toggle');
-    if (grundrissToggle) {
-        const targetImg = document.getElementById(grundrissToggle.dataset.target);
-        const normalSrc = grundrissToggle.dataset.normal;
-        const reversedSrc = grundrissToggle.dataset.reversed;
-        let isReversed = false;
-
-        grundrissToggle.addEventListener('click', function() {
-            isReversed = !isReversed;
-            targetImg.style.opacity = '0';
-
-            setTimeout(() => {
-                targetImg.src = isReversed ? reversedSrc : normalSrc;
-                targetImg.style.opacity = '1';
-                this.querySelector('.toggle-text').textContent = isReversed ? 'Normal Version anzeigen' : 'Reversed Version anzeigen';
-            }, 200);
-        });
-    }
-});
-
-// Lightbox functions
-function openInteriorLightbox(blockId, schemeIndex, imageIndex) {
-    const gallery = window.mobilhausGalleries[blockId];
-    gallery.currentScheme = schemeIndex;
-    gallery.currentImage = imageIndex;
-
-    const lightbox = document.getElementById(`interior-lightbox-${blockId}`);
-    const img = document.getElementById(`interior-lightbox-img-${blockId}`);
-    const counter = document.getElementById(`interior-lightbox-counter-${blockId}`);
-
-    const schemeImages = gallery.interiorSchemes[schemeIndex];
-    img.src = schemeImages[imageIndex];
-    counter.textContent = `${imageIndex + 1} / ${schemeImages.length}`;
-
-    lightbox.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeInteriorLightbox(blockId) {
-    document.getElementById(`interior-lightbox-${blockId}`).style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-function navigateInteriorLightbox(blockId, direction) {
-    const gallery = window.mobilhausGalleries[blockId];
-    const schemeImages = gallery.interiorSchemes[gallery.currentScheme];
-
-    gallery.currentImage += direction;
-
-    if (gallery.currentImage < 0) {
-        gallery.currentImage = schemeImages.length - 1;
-    } else if (gallery.currentImage >= schemeImages.length) {
-        gallery.currentImage = 0;
-    }
-
-    const img = document.getElementById(`interior-lightbox-img-${blockId}`);
-    const counter = document.getElementById(`interior-lightbox-counter-${blockId}`);
-
-    img.src = schemeImages[gallery.currentImage];
-    counter.textContent = `${gallery.currentImage + 1} / ${schemeImages.length}`;
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-    const openLightbox = document.querySelector('.interior-lightbox[style*="display: flex"]');
-    if (!openLightbox) return;
-
-    const blockId = openLightbox.id.replace('interior-lightbox-', '');
-
-    if (e.key === 'Escape') {
-        closeInteriorLightbox(blockId);
-    } else if (e.key === 'ArrowLeft') {
-        navigateInteriorLightbox(blockId, -1);
-    } else if (e.key === 'ArrowRight') {
-        navigateInteriorLightbox(blockId, 1);
-    }
-});
-</script>
-
 <style>
-/* Mobilhaus Complete Page Styles - PROFESSIONAL DESIGN */
-
-/* Hero Section */
-.mobilhaus-hero {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    padding: 80px 20px;
+/* NEW PROFESSIONAL DESIGN */
+.mobilhaus-complete-page {
+    width: 100%;
 }
 
-.mobilhaus-hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
-    align-items: center;
+.section-padding {
+    padding: 80px 0;
+}
+
+.container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.mobilhaus-title {
-    font-size: 3.5rem;
+.section-title {
+    font-size: 2.5rem;
     color: var(--color-primary);
-    margin: 0 0 20px 0;
-    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
 }
 
-.mobilhaus-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-secondary);
-    margin: 0 0 40px 0;
-    line-height: 1.7;
-}
-
-/* Color Selector */
-.mobilhaus-color-selector {
-    margin-top: 40px;
-}
-
-.color-selector-label {
+.section-subtitle {
+    text-align: center;
     font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 16px;
+    color: var(--color-text-secondary);
+    margin-bottom: 60px;
 }
 
-.color-buttons {
+/* HERO SECTION: Background Image + Green Filter + Centered Text */
+.mobilhaus-hero-new {
+    position: relative;
+    min-height: 500px;
     display: flex;
-    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary);
+    opacity: 0.85;
+}
+
+.hero-content-center {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+.hero-headline {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle-text {
+    font-size: 1.5rem;
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* COLOR SELECTION SECTION */
+.color-selection-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.big-color-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 60px;
     flex-wrap: wrap;
 }
 
-.color-btn {
-    padding: 12px 24px;
-    border-radius: 12px;
-    border: 3px solid transparent;
+.big-color-btn {
+    padding: 24px 60px;
+    background: #ffffff;
+    border: 4px solid #e5e7eb;
+    border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 120px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    min-width: 200px;
 }
 
-.color-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.color-btn.active {
+.big-color-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
     border-color: var(--color-primary);
-    box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.3);
 }
 
-.color-name {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #333;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+.big-color-btn.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 40px rgba(var(--color-primary-rgb), 0.3);
 }
 
-/* Hero Image */
-.mobilhaus-hero-image {
+.big-color-btn.active .color-btn-text {
+    color: white;
+}
+
+.color-btn-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* Exterior Image Display */
+.exterior-image-display {
     position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
     aspect-ratio: 16 / 10;
 }
 
-.mobilhaus-exterior-img {
+.exterior-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -426,102 +352,97 @@ document.addEventListener('keydown', function(e) {
     transition: opacity 0.5s ease;
 }
 
-.mobilhaus-exterior-img.active {
+.exterior-img.active {
     opacity: 1;
     z-index: 1;
 }
 
-/* Description Section - Text LEFT, Image RIGHT */
-.mobilhaus-description-section {
-    background: #ffffff;
+/* DESCRIPTION BANNER: Full Width */
+.description-banner {
+    background: var(--color-primary);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
 }
 
-.description-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-}
-
-.description-text h2 {
-    color: var(--color-primary);
-    font-size: 2.5rem;
-    margin-bottom: 24px;
+.banner-title {
+    font-size: 3rem;
+    margin: 0 0 30px 0;
     font-weight: 700;
 }
 
-.description-content {
-    font-size: 1.125rem;
+.banner-text {
+    font-size: 1.25rem;
     line-height: 1.8;
-    color: var(--color-text-primary);
-    margin-bottom: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.description-content p {
+.banner-text p {
     margin-bottom: 20px;
 }
 
-.description-image {
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+/* DETAILS SECTION: Text LEFT, Image RIGHT */
+.details-section {
+    background: #ffffff;
 }
 
-.description-image img {
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.details-text h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 32px;
+    font-weight: 700;
+}
+
+.specs-list {
+    display: grid;
+    gap: 20px;
+}
+
+.spec-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    background: var(--color-background);
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+}
+
+.spec-row dt {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+}
+
+.spec-row dd {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-align: right;
+    font-size: 1.125rem;
+}
+
+.details-image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
+}
+
+.details-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Specifications */
-.mobilhaus-specs {
+/* GRUNDRISS SECTION */
+.grundriss-section {
     background: var(--color-background);
-    border-radius: 16px;
-    padding: 32px;
-    margin-top: 32px;
-}
-
-.mobilhaus-specs h3 {
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    margin-bottom: 24px;
-}
-
-.specs-list {
-    display: grid;
-    gap: 16px;
-}
-
-.spec-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 16px;
-    background: #ffffff;
-    border-radius: 12px;
-    border-left: 4px solid var(--color-primary);
-}
-
-.spec-item dt {
-    font-weight: 600;
-    color: var(--color-text-secondary);
-}
-
-.spec-item dd {
-    color: var(--color-text-primary);
-    font-weight: 600;
-    text-align: right;
-}
-
-/* Grundriss Section - Full Width */
-.mobilhaus-grundriss-section {
-    background: var(--color-background);
-}
-
-.mobilhaus-grundriss-section h2 {
-    color: var(--color-primary);
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    text-align: center;
 }
 
 .grundriss-viewer {
@@ -530,7 +451,7 @@ document.addEventListener('keydown', function(e) {
     background: #ffffff;
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
 }
 
 .grundriss-image-wrapper {
@@ -552,79 +473,85 @@ document.addEventListener('keydown', function(e) {
     justify-content: center;
 }
 
-.grundriss-toggle {
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 600;
     font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: inherit;
 }
 
-/* Interior Schemes - PROFESSIONAL STYLING */
-.mobilhaus-interior-section {
+.btn-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* INTERIOR SCHEMES */
+.interior-schemes-section {
     background: #ffffff;
 }
 
-.mobilhaus-interior-section .section-header {
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-.mobilhaus-interior-section .section-header h2 {
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: 16px;
-}
-
-.mobilhaus-interior-section .section-header p {
-    font-size: 1.125rem;
-    color: var(--color-text-secondary);
-}
-
-.interior-scheme-block {
-    margin-bottom: 60px;
-    padding: 40px;
+.scheme-block {
+    margin-bottom: 80px;
+    padding: 60px;
     background: var(--color-background);
     border-radius: 24px;
 }
 
 .scheme-header {
-    margin-bottom: 40px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
-.scheme-title {
-    font-size: 2rem;
+.scheme-header h3 {
+    font-size: 2.5rem;
     color: var(--color-primary);
     margin-bottom: 24px;
+    font-weight: 700;
 }
 
-.scheme-palette-preview {
+.palette-preview {
     max-width: 600px;
     margin: 0 auto 24px;
     border-radius: 16px;
     overflow: hidden;
 }
 
-.scheme-palette-preview img {
+.palette-preview img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.scheme-description {
+.scheme-desc {
     font-size: 1.125rem;
     color: var(--color-text-secondary);
 }
 
-/* Interior Gallery Grid - PROPER GAPS & ROUNDED EDGES */
-.interior-gallery-grid {
+.interior-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px; /* Proper gap between images */
+    gap: 24px;
 }
 
 .gallery-item {
     position: relative;
     aspect-ratio: 4 / 3;
-    border-radius: 16px; /* Rounded edges */
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     background: #f8f9fa;
@@ -650,10 +577,7 @@ document.addEventListener('keydown', function(e) {
 
 .gallery-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(var(--color-primary-rgb), 0.9);
     display: flex;
     align-items: center;
@@ -666,19 +590,16 @@ document.addEventListener('keydown', function(e) {
     opacity: 1;
 }
 
-.gallery-icon {
+.zoom-icon {
     font-size: 3rem;
     color: white;
 }
 
 /* Lightbox */
-.interior-lightbox {
+.lightbox {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.95);
     z-index: 10000;
     align-items: center;
@@ -742,50 +663,148 @@ document.addEventListener('keydown', function(e) {
 
 /* Responsive Design */
 @media (max-width: 1023px) {
-    .mobilhaus-hero-content,
-    .description-grid {
+    .details-grid,
+    .interior-gallery {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .interior-gallery-grid {
+    .interior-gallery {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 }
 
 @media (max-width: 767px) {
-    .mobilhaus-title {
+    .hero-headline {
         font-size: 2.5rem;
     }
 
-    .interior-gallery-grid {
+    .banner-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .interior-gallery {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 
-    .gallery-item {
-        border-radius: 12px;
+    .big-color-buttons {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .big-color-btn {
+        width: 100%;
+    }
+
+    .scheme-block {
+        padding: 30px;
     }
 }
 
 @media (max-width: 479px) {
-    .mobilhaus-title {
+    .hero-headline {
         font-size: 2rem;
     }
 
-    .interior-gallery-grid {
+    .interior-gallery {
         grid-template-columns: 1fr;
     }
 }
-
-.section-padding {
-    padding: 80px 0;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
 </style>
+
+<script>
+// Store gallery data
+window.interiorGallery = <?php echo json_encode(array_map(function($scheme) {
+    return array_map(function($img) {
+        return isset($img['url']) ? $img['url'] : '';
+    }, $scheme['gallery'] ?? []);
+}, $interior_schemes ?? [])); ?>;
+
+window.currentScheme = 0;
+window.currentImage = 0;
+
+// Color selection
+function switchExteriorColor(colorIndex) {
+    const buttons = document.querySelectorAll('.big-color-btn');
+    const images = document.querySelectorAll('.exterior-img');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    buttons[colorIndex].classList.add('active');
+
+    images.forEach(img => {
+        img.classList.toggle('active', img.dataset.colorIndex == colorIndex);
+    });
+}
+
+// Grundriss toggle
+let isReversed = false;
+function toggleGrundriss(blockId, normalUrl, reversedUrl) {
+    const img = document.getElementById('grundriss-img-' + blockId);
+    const btn = event.target.closest('.grundriss-toggle');
+
+    isReversed = !isReversed;
+    img.style.opacity = '0';
+
+    setTimeout(() => {
+        img.src = isReversed ? reversedUrl : normalUrl;
+        img.style.opacity = '1';
+        btn.querySelector('.toggle-text').textContent = isReversed ? 'Normal Version anzeigen' : 'Reversed Version anzeigen';
+    }, 200);
+}
+
+// Lightbox
+function openLightbox(schemeIndex, imageIndex) {
+    window.currentScheme = schemeIndex;
+    window.currentImage = imageIndex;
+
+    const lightbox = document.getElementById('lightbox-<?php echo esc_js($block_id); ?>');
+    const img = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+
+    const schemeImages = window.interiorGallery[schemeIndex];
+    img.src = schemeImages[imageIndex];
+    counter.textContent = `${imageIndex + 1} / ${schemeImages.length}`;
+
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox-<?php echo esc_js($block_id); ?>').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function navigateLightbox(direction) {
+    const schemeImages = window.interiorGallery[window.currentScheme];
+
+    window.currentImage += direction;
+
+    if (window.currentImage < 0) {
+        window.currentImage = schemeImages.length - 1;
+    } else if (window.currentImage >= schemeImages.length) {
+        window.currentImage = 0;
+    }
+
+    const img = document.getElementById('lightbox-img');
+    const counter = document.getElementById('lightbox-counter');
+
+    img.src = schemeImages[window.currentImage];
+    counter.textContent = `${window.currentImage + 1} / ${schemeImages.length}`;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('lightbox-<?php echo esc_js($block_id); ?>');
+    if (lightbox && lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        else if (e.key === 'ArrowRight') navigateLightbox(1);
+    }
+});
+</script>
