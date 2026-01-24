@@ -7,9 +7,9 @@
 get_header();
 
 // Get custom 404 content from theme options (optional)
-$error_title = wohnegruen_get_option('404_title', 'Seite nicht gefunden');
-$error_subtitle = wohnegruen_get_option('404_subtitle', 'Die gesuchte Seite konnte leider nicht gefunden werden.');
-$error_description = wohnegruen_get_option('404_description', 'Die Seite, die Sie suchen, existiert möglicherweise nicht mehr oder wurde verschoben. Bitte verwenden Sie die Navigation oder kehren Sie zur Startseite zurück.');
+$error_title = wohnegruen_get_option('404_title') ?: 'Seite nicht gefunden';
+$error_subtitle = wohnegruen_get_option('404_subtitle') ?: 'Die gesuchte Seite konnte leider nicht gefunden werden.';
+$error_description = wohnegruen_get_option('404_description') ?: 'Die Seite, die Sie suchen, existiert möglicherweise nicht mehr oder wurde verschoben. Bitte verwenden Sie die Navigation oder kehren Sie zur Startseite zurück.';
 ?>
 
 <section class="error-404-section">
@@ -76,7 +76,7 @@ $error_description = wohnegruen_get_option('404_description', 'Die Seite, die Si
                         <span>Unsere Modelle</span>
                     </a>
                     <a href="<?php echo esc_url(home_url('/kontakt/')); ?>" class="quick-link-card">
-                        <?php echo wohnegruen_get_icon('mail'); ?>
+                        <?php echo wohnegruen_get_icon('email'); ?>
                         <span>Kontakt</span>
                     </a>
                     <a href="<?php echo esc_url(home_url('/about/')); ?>" class="quick-link-card">

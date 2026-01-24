@@ -20,11 +20,15 @@
     $site_name = get_bloginfo('name');
     ?>
 
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- SEO Meta Tags -->
     <?php if ($meta_description): ?>
         <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
     <?php endif; ?>
-    <meta name="author" content="WohneGruen">
     <link rel="canonical" href="<?php echo esc_url($canonical_url); ?>">
 
     <!-- Open Graph / Facebook -->
@@ -60,9 +64,9 @@
 
     <!-- Structured Data - Organization -->
     <?php
-    $schema_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
-    $schema_email = wohnegruen_get_option('contact_email', 'info@wohnegrün.at');
-    $schema_address = wohnegruen_get_option('contact_address', '');
+    $schema_phone = wohnegruen_get_option('contact_phone');
+    $schema_email = wohnegruen_get_option('contact_email');
+    $schema_address = wohnegruen_get_option('contact_address');
     ?>
     <script type="application/ld+json">
     {
@@ -123,21 +127,21 @@
 <?php
 // Get navigation ACF fields
 $nav_logo = wohnegruen_get_option('nav_logo');
-$nav_cta_text = wohnegruen_get_option('nav_cta_text', 'Beratung anfragen');
+$nav_cta_text = wohnegruen_get_option('nav_cta_text');
 $nav_cta_link = wohnegruen_get_option('nav_cta_link', '#kontakt');
-$contact_phone = wohnegruen_get_option('contact_phone', '+43 123 456 789');
+$contact_phone = wohnegruen_get_option('contact_phone');
 ?>
 
 <!-- Navigation -->
 <nav class="site-navigation">
     <div class="nav-container">
         <!-- Logo -->
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo" aria-label="<?php echo esc_attr(get_bloginfo('name') . ' - Startseite'); ?>">
             <?php if ($nav_logo && isset($nav_logo['url'])) : ?>
                 <img src="<?php echo esc_url($nav_logo['url']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
             <?php else : ?>
-                <div class="logo-icon">W</div>
-                <span class="logo-text">Wohne<span>Grün</span></span>
+                <div class="logo-icon"><?php echo esc_html(substr(get_bloginfo('name'), 0, 1)); ?></div>
+                <span class="logo-text"><?php echo esc_html(get_bloginfo('name')); ?></span>
             <?php endif; ?>
         </a>
 
