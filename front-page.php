@@ -3,21 +3,16 @@
  * Front Page Template (Gutenberg Block-based)
  *
  * This template renders Gutenberg blocks from the page content.
- * Blocks are managed via the WordPress Block Editor (Gutenberg).
+ * Uses all-in-one "Komplett" blocks for each page type.
  *
- * Available ACF Blocks:
- * - Hero-Bereich (wohnegruen-hero)
- * - Vorteile (wohnegruen-features)
- * - Modelle (wohnegruen-models)
- * - Über uns (wohnegruen-about)
- * - Kontakt (wohnegruen-contact)
- * - Kontaktformular (wohnegruen-contact-form)
- * - CTA-Bereich (wohnegruen-cta)
- * - Werte-Raster (wohnegruen-values-grid)
- * - Seiten-Hero (wohnegruen-page-hero)
- * - Modell-Details (wohnegruen-model-details)
- * - Modell-Showcase (wohnegruen-model-showcase)
- * - 3D Grundrisse (wohnegruen-3d-floorplans)
+ * Available ACF Complete Blocks:
+ * - Homepage Komplett (wohnegruen-home-complete)
+ * - Über uns Komplett (wohnegruen-about-complete)
+ * - Kontakt Komplett (wohnegruen-contact-complete)
+ * - Galerie Komplett (wohnegruen-gallery-complete)
+ * - Modelle Komplett (wohnegruen-models-complete) - Nature/Pure toggle
+ * - 3D Grundrisse Komplett (wohnegruen-3d-complete)
+ * - Mobilhaus Komplett (wohnegruen-mobilhaus-complete)
  */
 
 get_header();

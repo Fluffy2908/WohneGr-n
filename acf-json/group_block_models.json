@@ -483,8 +483,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
-    "description": "",
+    "active": false,
+    "description": "DEPRECATED - Use Modelle Komplett Block instead",
     "show_in_rest": 0,
     "modified": 1737199080
 }
