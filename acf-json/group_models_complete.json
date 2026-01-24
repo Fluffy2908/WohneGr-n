@@ -46,9 +46,12 @@
             "instructions": "Wählen Sie das Mobilhaus für \"Nature\"",
             "required": 0,
             "post_type": ["mobilhaus"],
+            "post_status": ["publish", "draft", "pending"],
+            "taxonomy": [],
             "allow_null": 1,
             "multiple": 0,
-            "return_format": "object"
+            "return_format": "object",
+            "ui": 1
         },
         {
             "key": "field_models_pure_model",
@@ -58,9 +61,12 @@
             "instructions": "Wählen Sie das Mobilhaus für \"Pure\"",
             "required": 0,
             "post_type": ["mobilhaus"],
+            "post_status": ["publish", "draft", "pending"],
+            "taxonomy": [],
             "allow_null": 1,
             "multiple": 0,
-            "return_format": "object"
+            "return_format": "object",
+            "ui": 1
         }
     ],
     "location": [

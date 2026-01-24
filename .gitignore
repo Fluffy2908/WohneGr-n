@@ -38,6 +38,11 @@ package-lock.json
 *.temp
 .cache/
 
+# Backups
+.backups/
+*.backup
+*.bak
+
 # PHP
 composer.lock
 vendor/
