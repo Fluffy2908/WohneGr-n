@@ -9,7 +9,7 @@
             "type": "text",
             "instructions": "Haupttitel (leer lassen für Post-Titel)",
             "required": 0,
-            "placeholder": "z.B. Nussbaum Nature"
+            "placeholder": ""
         },
         {
             "key": "field_mobilhaus_hero_subtitle",
@@ -38,7 +38,7 @@
                     "name": "color_name",
                     "type": "text",
                     "required": 1,
-                    "placeholder": "z.B. Weiß, Schwarz, Anthrazit"
+                    "placeholder": ""
                 },
                 {
                     "key": "field_color_code",
@@ -65,7 +65,7 @@
             "name": "mobilhaus_description_title",
             "type": "text",
             "instructions": "Titel für den Beschreibungsbereich",
-            "default_value": "Über dieses Modell"
+            "default_value": ""
         },
         {
             "key": "field_mobilhaus_description_text",
@@ -104,7 +104,7 @@
                     "name": "label",
                     "type": "text",
                     "required": 1,
-                    "placeholder": "z.B. Größe"
+                    "placeholder": ""
                 },
                 {
                     "key": "field_spec_value",
@@ -112,7 +112,7 @@
                     "name": "value",
                     "type": "text",
                     "required": 1,
-                    "placeholder": "z.B. 8 x 3 m"
+                    "placeholder": ""
                 }
             ]
         },
@@ -153,7 +153,7 @@
                     "name": "scheme_name",
                     "type": "text",
                     "required": 1,
-                    "placeholder": "z.B. Holz - Hell, Beton - Dunkel"
+                    "placeholder": ""
                 },
                 {
                     "key": "field_scheme_description",
@@ -161,7 +161,7 @@
                     "name": "scheme_description",
                     "type": "textarea",
                     "rows": 2,
-                    "placeholder": "Kurze Beschreibung"
+                    "placeholder": ""
                 },
                 {
                     "key": "field_color_palette_image",

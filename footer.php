@@ -1,18 +1,18 @@
 <?php
 // Get footer ACF fields
 $nav_logo_alt = wohnegruen_get_option('nav_logo_alt');
-$footer_description = wohnegruen_get_option('footer_description', 'Ihr Partner für hochwertige Mobilhäuser in Österreich. Qualität, Nachhaltigkeit und modernes Design.');
-$footer_col2_title = wohnegruen_get_option('footer_col2_title', 'Schnelllinks');
+$footer_description = wohnegruen_get_option('footer_description');
+$footer_col2_title = wohnegruen_get_option('footer_col2_title');
 $footer_col2_links = wohnegruen_get_option('footer_col2_links');
-$footer_col3_title = wohnegruen_get_option('footer_col3_title', 'Modelle');
+$footer_col3_title = wohnegruen_get_option('footer_col3_title');
 $footer_col3_links = wohnegruen_get_option('footer_col3_links');
-$footer_copyright = wohnegruen_get_option('footer_copyright', 'WohneGrün. Alle Rechte vorbehalten.');
+$footer_copyright = wohnegruen_get_option('footer_copyright');
 $footer_legal_links = wohnegruen_get_option('footer_legal_links');
 
 // Contact info
-$contact_phone = wohnegruen_get_option('contact_phone', '+43 316 123 456');
-$contact_email = wohnegruen_get_option('contact_email', 'info@wohnegrün.at');
-$contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 8071 Hausmannstätten, Austria');
+$contact_phone = wohnegruen_get_option('contact_phone');
+$contact_email = wohnegruen_get_option('contact_email');
+$contact_address = wohnegruen_get_option('contact_address');
 ?>
 
 <!-- Footer -->
@@ -26,117 +26,87 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                         <img src="<?php echo esc_url($nav_logo_alt['url']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
                     <?php else : ?>
                         <div class="logo-icon">W</div>
-                        <span class="logo-text">Wohne<span>Grün</span></span>
+                        <span class="logo-text"><?php echo esc_html(get_bloginfo('name')); ?></span>
                     <?php endif; ?>
                 </div>
-                <p><?php echo esc_html($footer_description); ?></p>
+                <?php if ($footer_description): ?>
+                    <p><?php echo esc_html($footer_description); ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- Column 2 - Quick Links -->
+            <?php if ($footer_col2_title || $footer_col2_links): ?>
             <div class="footer-column">
-                <h4><?php echo esc_html($footer_col2_title); ?></h4>
-                <div class="footer-links">
-                    <?php if ($footer_col2_links) :
-                        foreach ($footer_col2_links as $link) : ?>
+                <?php if ($footer_col2_title): ?>
+                    <h4><?php echo esc_html($footer_col2_title); ?></h4>
+                <?php endif; ?>
+                <?php if ($footer_col2_links): ?>
+                    <div class="footer-links">
+                        <?php foreach ($footer_col2_links as $link) : ?>
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
-                        <?php endforeach;
-                    else :
-                        // Only show links to pages that actually exist
-                        ?>
-                        <a href="<?php echo home_url('/'); ?>">Startseite</a>
-                        <?php
-                        $galerie_page = get_page_by_path('galerie');
-                        if ($galerie_page) : ?>
-                            <a href="<?php echo get_permalink($galerie_page); ?>">Galerie</a>
-                        <?php endif;
-
-                        $kontakt_page = get_page_by_path('kontakt');
-                        if ($kontakt_page) : ?>
-                            <a href="<?php echo get_permalink($kontakt_page); ?>">Kontakt</a>
-                        <?php else : ?>
-                            <a href="<?php echo home_url('/#kontakt'); ?>">Kontakt</a>
-                        <?php endif;
-                    endif; ?>
-                </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
+            <?php endif; ?>
 
             <!-- Column 3 - Models -->
+            <?php if ($footer_col3_title || $footer_col3_links): ?>
             <div class="footer-column">
-                <h4><?php echo esc_html($footer_col3_title); ?></h4>
-                <div class="footer-links">
-                    <?php if ($footer_col3_links) :
-                        foreach ($footer_col3_links as $link) : ?>
+                <?php if ($footer_col3_title): ?>
+                    <h4><?php echo esc_html($footer_col3_title); ?></h4>
+                <?php endif; ?>
+                <?php if ($footer_col3_links): ?>
+                    <div class="footer-links">
+                        <?php foreach ($footer_col3_links as $link) : ?>
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
-                        <?php endforeach;
-                    else :
-                        // Get actual mobilhaus posts
-                        $mobilhaus_posts = get_posts(array(
-                            'post_type' => 'mobilhaus',
-                            'posts_per_page' => -1,
-                            'post_status' => 'publish',
-                            'orderby' => 'title',
-                            'order' => 'ASC'
-                        ));
-
-                        if ($mobilhaus_posts) :
-                            foreach ($mobilhaus_posts as $mobilhaus_post) : ?>
-                                <a href="<?php echo get_permalink($mobilhaus_post->ID); ?>"><?php echo esc_html(get_the_title($mobilhaus_post->ID)); ?></a>
-                            <?php endforeach;
-                        else :
-                            // Fallback to Modelle page
-                            $modelle_page = get_page_by_path('modelle');
-                            if ($modelle_page) : ?>
-                                <a href="<?php echo get_permalink($modelle_page); ?>">Modelle</a>
-                            <?php endif;
-                        endif;
-                    endif; ?>
-                </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
+            <?php endif; ?>
 
             <!-- Column 4 - Contact -->
+            <?php if ($contact_phone || $contact_email || $contact_address): ?>
             <div class="footer-column">
-                <h4>Kontakt</h4>
-                <div class="footer-contact-item">
-                    <?php echo wohnegruen_get_icon('phone'); ?>
-                    <span><?php echo esc_html($contact_phone); ?></span>
-                </div>
-                <div class="footer-contact-item">
-                    <?php echo wohnegruen_get_icon('email'); ?>
-                    <span><?php echo esc_html($contact_email); ?></span>
-                </div>
-                <div class="footer-contact-item">
-                    <?php echo wohnegruen_get_icon('location'); ?>
-                    <span><?php echo nl2br(esc_html($contact_address)); ?></span>
-                </div>
+                <h4><?php _e('Kontakt', 'wohnegruen'); ?></h4>
+                <?php if ($contact_phone): ?>
+                    <div class="footer-contact-item">
+                        <?php echo wohnegruen_get_icon('phone'); ?>
+                        <span><?php echo esc_html($contact_phone); ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if ($contact_email): ?>
+                    <div class="footer-contact-item">
+                        <?php echo wohnegruen_get_icon('email'); ?>
+                        <span><?php echo esc_html($contact_email); ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if ($contact_address): ?>
+                    <div class="footer-contact-item">
+                        <?php echo wohnegruen_get_icon('location'); ?>
+                        <span><?php echo nl2br(esc_html($contact_address)); ?></span>
+                    </div>
+                <?php endif; ?>
             </div>
+            <?php endif; ?>
         </div>
 
         <span class="footer-divider"></span>
 
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> <?php echo esc_html($footer_copyright); ?></p>
-            <div class="footer-legal">
-                <?php if ($footer_legal_links) :
-                    foreach ($footer_legal_links as $link) : ?>
+            <?php if ($footer_copyright): ?>
+                <p>&copy; <?php echo date('Y'); ?> <?php echo esc_html($footer_copyright); ?></p>
+            <?php else: ?>
+                <p>&copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?></p>
+            <?php endif; ?>
+            <?php if ($footer_legal_links): ?>
+                <div class="footer-legal">
+                    <?php foreach ($footer_legal_links as $link) : ?>
                         <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
-                    <?php endforeach;
-                else :
-                    // Get legal page URLs
-                    $impressum_page = get_page_by_path('impressum');
-                    $datenschutz_page = get_page_by_path('datenschutz');
-                    $agb_page = get_page_by_path('agb');
-                    ?>
-                    <?php if ($impressum_page) : ?>
-                        <a href="<?php echo get_permalink($impressum_page); ?>">Impressum</a>
-                    <?php endif; ?>
-                    <?php if ($datenschutz_page) : ?>
-                        <a href="<?php echo get_permalink($datenschutz_page); ?>">Datenschutz</a>
-                    <?php endif; ?>
-                    <?php if ($agb_page) : ?>
-                        <a href="<?php echo get_permalink($agb_page); ?>">AGB</a>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </footer>

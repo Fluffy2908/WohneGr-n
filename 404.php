@@ -36,7 +36,7 @@ $error_description = wohnegruen_get_option('404_description', 'Die Seite, die Si
             <div class="error-404-actions">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="btn btn-primary btn-lg">
                     <?php echo wohnegruen_get_icon('home'); ?>
-                    Zurück zur Startseite
+                    <?php echo esc_html(get_bloginfo('name')); ?>
                 </a>
                 <button onclick="history.back()" class="btn btn-outline btn-lg">
                     <?php echo wohnegruen_get_icon('arrow-left'); ?>

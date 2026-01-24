@@ -188,8 +188,6 @@ get_header();
     <section class="cta-section cta-bg-primary">
         <div class="container">
             <div class="cta-content">
-                <h2>Haben Sie Fragen zu unseren Modellen?</h2>
-                <p>Kontaktieren Sie uns für eine persönliche Beratung oder vereinbaren Sie einen Besichtigungstermin.</p>
                 <a href="<?php echo esc_url(home_url('/#kontakt')); ?>" class="btn btn-white btn-lg">
                     Beratung anfragen
                     <?php echo wohnegruen_get_icon('arrow-right'); ?>
