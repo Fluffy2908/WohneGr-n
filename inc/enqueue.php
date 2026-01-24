@@ -24,8 +24,14 @@ function wohnegruen_scripts() {
     // CRITICAL RESPONSIVE FIXES - Load last to override everything
     wp_enqueue_style('wohnegruen-critical-fixes', get_template_directory_uri() . '/assets/css/critical-responsive-fixes.css', array(), '1.0.0');
 
+    // COMPLETE FIXES - Important & Minor issues (load after critical)
+    wp_enqueue_style('wohnegruen-complete-fixes', get_template_directory_uri() . '/assets/css/complete-fixes.css', array('wohnegruen-critical-fixes'), '1.0.0');
+
     // Block Utilities (load first, no dependencies)
     wp_enqueue_script('wohnegruen-block-utilities', get_template_directory_uri() . '/assets/js/block-utilities.js', array(), '1.0.0', true);
+
+    // Lightbox Keyboard Accessibility Fix
+    wp_enqueue_script('wohnegruen-lightbox-keyboard', get_template_directory_uri() . '/assets/js/lightbox-keyboard-fix.js', array(), '1.0.0', true);
 
     // Main JavaScript
     wp_enqueue_script('wohnegruen-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.4', true);
