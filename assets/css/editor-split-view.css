@@ -1,0 +1,187 @@
+/**
+ * ACF Block Split View - Editor Only
+ * Creates a 40/60 split: Fields on left, Live preview on right
+ */
+
+/* Target ACF block body (where fields are rendered) */
+.acf-block-body {
+    display: flex !important;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* ACF Fields Form - Left 40% */
+.acf-block-body .acf-block-fields {
+    width: 40%;
+    min-width: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    position: sticky;
+    top: 100px;
+}
+
+/* If ACF doesn't use .acf-block-fields, target the form itself */
+.acf-block-body > .acf-fields {
+    width: 40%;
+    min-width: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    position: sticky;
+    top: 100px;
+}
+
+/* Preview area - Right 60% */
+.acf-block-body .acf-block-preview {
+    flex: 1;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    min-height: 500px;
+}
+
+/* Alternative: If ACF renders preview separately */
+.acf-block-preview-container {
+    flex: 1;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    min-height: 500px;
+}
+
+/* Style individual ACF fields */
+.acf-block-body .acf-field {
+    margin-bottom: 20px;
+}
+
+.acf-block-body .acf-label label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #1d2327;
+    font-size: 13px;
+}
+
+.acf-block-body .acf-input {
+    width: 100%;
+}
+
+/* Input fields styling */
+.acf-block-body input[type="text"],
+.acf-block-body input[type="url"],
+.acf-block-body input[type="email"],
+.acf-block-body textarea,
+.acf-block-body select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.acf-block-body textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Repeater fields */
+.acf-block-body .acf-repeater {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.acf-block-body .acf-repeater .acf-row {
+    background: #fff;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Image uploader */
+.acf-block-body .acf-image-uploader img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Add preview label if we can */
+.acf-block-preview::before,
+.acf-block-preview-container::before {
+    content: "📱 Live Preview";
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2271b1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2271b1;
+}
+
+/* Scrollbar for fields panel */
+.acf-block-body > .acf-fields::-webkit-scrollbar,
+.acf-block-body .acf-block-fields::-webkit-scrollbar {
+    width: 8px;
+}
+
+.acf-block-body > .acf-fields::-webkit-scrollbar-track,
+.acf-block-body .acf-block-fields::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.acf-block-body > .acf-fields::-webkit-scrollbar-thumb,
+.acf-block-body .acf-block-fields::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.acf-block-body > .acf-fields::-webkit-scrollbar-thumb:hover,
+.acf-block-body .acf-block-fields::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Mobile - stack vertically on smaller screens */
+@media (max-width: 1400px) {
+    .acf-block-body {
+        flex-direction: column !important;
+    }
+
+    .acf-block-body > .acf-fields,
+    .acf-block-body .acf-block-fields {
+        width: 100%;
+        min-width: auto;
+        max-height: none;
+        position: relative;
+    }
+
+    .acf-block-body .acf-block-preview,
+    .acf-block-preview-container {
+        width: 100%;
+    }
+}
+
+/* Compact field labels for better space usage */
+.acf-block-body .acf-field .acf-label {
+    margin-bottom: 4px;
+}
+
+/* Buttons styling */
+.acf-block-body .acf-button,
+.acf-block-body button {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 3px;
+}
