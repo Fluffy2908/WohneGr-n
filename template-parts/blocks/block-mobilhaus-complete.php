@@ -396,7 +396,7 @@ document.addEventListener('keydown', function(e) {
 
 .color-btn.active {
     border-color: var(--color-primary);
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .color-name {
@@ -654,7 +654,7 @@ document.addEventListener('keydown', function(e) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(16, 185, 129, 0.9);
+    background: rgba(var(--color-primary-rgb), 0.9);
     display: flex;
     align-items: center;
     justify-content: center;

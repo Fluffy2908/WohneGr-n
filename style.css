@@ -11,32 +11,33 @@ Text Domain: wohnegruen
    ========================================================================== */
 
 :root {
-    /* Brand Colors - Corrected to match actual usage */
-    --color-primary: #2d5016;           /* Main green */
-    --color-primary-dark: #1f3810;      /* Dark green */
-    --color-primary-light: #7ba05b;     /* Light green */
-    --color-primary-rgb: 45, 80, 22;    /* RGB for opacity usage */
+    /* Brand Colors - Modern Neutral Palette */
+    --color-primary: #7c9c5e;           /* Soft sage green */
+    --color-primary-dark: #5d7a45;      /* Deeper sage */
+    --color-primary-light: #a4bd8b;     /* Light sage */
+    --color-primary-rgb: 124, 156, 94;  /* RGB for opacity usage */
 
     /* Additional Colors */
     --color-white: #ffffff;
-    --color-black: #000000;
-    --color-background: #f8f9fa;        /* Light gray background */
+    --color-black: #1a1a1a;
+    --color-background: #fcfbf8;        /* Cream/off-white background */
     --color-background-light: #ffffff;
-    --color-foreground: #333333;        /* Main text color */
+    --color-foreground: #2c2c2c;        /* Main text color */
 
-    --color-text-primary: #333333;
+    --color-text-primary: #2c2c2c;
     --color-text-secondary: #666666;
     --color-text-muted: #999999;
     --color-text-light: #555555;
+    --color-muted-foreground: #6b7280; /* For inactive nav items */
 
-    --color-border: #e0e0e0;            /* Standard border */
-    --color-border-light: #dee2e6;
+    --color-border: #e8e5df;            /* Warm border */
+    --color-border-light: #f0ede8;
 
     --color-card: #ffffff;
     --color-muted: #f8f9fa;
 
-    --color-secondary: #b8d4a8;         /* Light green for hovers */
-    --color-accent: #d4a574;            /* Accent beige */
+    --color-secondary: #d4a574;         /* Warm beige accent */
+    --color-accent: #b89968;            /* Deeper beige */
 
     /* Typography */
     --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -234,12 +235,13 @@ ul {
 .btn-primary {
     background-color: var(--color-primary);
     color: var(--color-white);
+    box-shadow: 0 2px 8px rgba(124, 156, 94, 0.15);
 }
 
 .btn-primary:hover {
     background-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 4px 16px rgba(124, 156, 94, 0.25);
 }
 
 .btn-outline {
@@ -376,11 +378,44 @@ ul {
     font-weight: 500;
     color: var(--color-muted-foreground);
     transition: var(--transition);
+    position: relative;
+    padding-bottom: 4px;
+    text-decoration: none;
 }
 
-.nav-menu a:hover,
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-primary);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* Active page state */
+.nav-menu a.current-menu-item,
+.nav-menu a.current_page_item,
+.nav-menu a.current-menu-ancestor,
 .nav-menu a.active {
     color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nav-menu a.current-menu-item::after,
+.nav-menu a.current_page_item::after,
+.nav-menu a.current-menu-ancestor::after,
+.nav-menu a.active::after {
+    width: 100%;
 }
 
 .nav-right {
@@ -498,10 +533,44 @@ ul {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-foreground);
+    position: relative;
+    padding-left: 1rem;
+    transition: var(--transition);
+}
+
+.mobile-menu-items a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
 }
 
 .mobile-menu-items a:hover {
     color: var(--color-primary);
+    padding-left: 1.5rem;
+}
+
+.mobile-menu-items a:hover::before {
+    width: 0.75rem;
+}
+
+/* Active page state in mobile menu */
+.mobile-menu-items a.current-menu-item,
+.mobile-menu-items a.current_page_item,
+.mobile-menu-items a.current-menu-ancestor {
+    color: var(--color-primary);
+    padding-left: 1.5rem;
+}
+
+.mobile-menu-items a.current-menu-item::before,
+.mobile-menu-items a.current_page_item::before,
+.mobile-menu-items a.current-menu-ancestor::before {
+    width: 0.75rem;
 }
 
 /* ==========================================================================

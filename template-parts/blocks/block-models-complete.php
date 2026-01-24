@@ -432,7 +432,7 @@ function render_mobilhaus_content($data, $content_id) {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     border-color: var(--color-primary);
     color: white;
-    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 12px 40px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .toggle-icon {
@@ -530,7 +530,7 @@ function render_mobilhaus_content($data, $content_id) {
 
 .color-btn.active {
     border-color: var(--color-primary);
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .color-name {
@@ -713,7 +713,7 @@ function render_mobilhaus_content($data, $content_id) {
     background: var(--color-primary);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
 }
 
 /* Interior Schemes - PROFESSIONAL STYLING */
@@ -813,7 +813,7 @@ function render_mobilhaus_content($data, $content_id) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(16, 185, 129, 0.9);
+    background: rgba(var(--color-primary-rgb), 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
