@@ -1,0 +1,157 @@
+{
+    "key": "group_home_complete",
+    "title": "Homepage Komplett Block",
+    "fields": [
+        {
+            "key": "field_home_hero_title",
+            "label": "Hero Titel",
+            "name": "home_hero_title",
+            "type": "text",
+            "instructions": "Hauptüberschrift im Hero-Bereich",
+            "required": 1
+        },
+        {
+            "key": "field_home_hero_subtitle",
+            "label": "Hero Untertitel",
+            "name": "home_hero_subtitle",
+            "type": "textarea",
+            "instructions": "Beschreibungstext unter dem Titel",
+            "rows": 3
+        },
+        {
+            "key": "field_home_hero_button_text",
+            "label": "Hero Button Text",
+            "name": "home_hero_button_text",
+            "type": "text",
+            "placeholder": "z.B. Modelle ansehen"
+        },
+        {
+            "key": "field_home_hero_button_link",
+            "label": "Hero Button Link",
+            "name": "home_hero_button_link",
+            "type": "url"
+        },
+        {
+            "key": "field_home_hero_background",
+            "label": "Hero Hintergrundbild",
+            "name": "home_hero_background",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_home_features_title",
+            "label": "Features Titel",
+            "name": "home_features_title",
+            "type": "text"
+        },
+        {
+            "key": "field_home_features_subtitle",
+            "label": "Features Untertitel",
+            "name": "home_features_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_home_features",
+            "label": "Features",
+            "name": "home_features",
+            "type": "repeater",
+            "min": 3,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Feature hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_home_feature_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "select",
+                    "choices": {
+                        "home": "Home",
+                        "leaf": "Blatt (Nachhaltigkeit)",
+                        "shield": "Schild (Sicherheit)",
+                        "heart": "Herz",
+                        "star": "Stern",
+                        "check": "Häkchen"
+                    }
+                },
+                {
+                    "key": "field_home_feature_title",
+                    "label": "Titel",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_home_feature_description",
+                    "label": "Beschreibung",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3
+                }
+            ]
+        },
+        {
+            "key": "field_home_models_title",
+            "label": "Modelle Sektion Titel",
+            "name": "home_models_title",
+            "type": "text"
+        },
+        {
+            "key": "field_home_models_subtitle",
+            "label": "Modelle Sektion Untertitel",
+            "name": "home_models_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_home_selected_models",
+            "label": "Ausgewählte Modelle",
+            "name": "home_selected_models",
+            "type": "relationship",
+            "post_type": ["mobilhaus"],
+            "filters": ["search"],
+            "min": 2,
+            "max": 6,
+            "return_format": "object"
+        },
+        {
+            "key": "field_home_cta_title",
+            "label": "CTA Titel",
+            "name": "home_cta_title",
+            "type": "text"
+        },
+        {
+            "key": "field_home_cta_subtitle",
+            "label": "CTA Untertitel",
+            "name": "home_cta_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_home_cta_button_text",
+            "label": "CTA Button Text",
+            "name": "home_cta_button_text",
+            "type": "text"
+        },
+        {
+            "key": "field_home_cta_button_link",
+            "label": "CTA Button Link",
+            "name": "home_cta_button_link",
+            "type": "url"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-home-complete"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

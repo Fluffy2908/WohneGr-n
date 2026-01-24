@@ -1,0 +1,146 @@
+{
+    "key": "group_contact_complete",
+    "title": "Kontakt Komplett Block",
+    "fields": [
+        {
+            "key": "field_contact_hero_title",
+            "label": "Hero Titel",
+            "name": "contact_hero_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_contact_hero_subtitle",
+            "label": "Hero Untertitel",
+            "name": "contact_hero_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_contact_form_title",
+            "label": "Formular Titel",
+            "name": "contact_form_title",
+            "type": "text"
+        },
+        {
+            "key": "field_contact_form_subtitle",
+            "label": "Formular Untertitel",
+            "name": "contact_form_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_contact_show_phone",
+            "label": "Telefon-Feld im Formular anzeigen",
+            "name": "contact_show_phone",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_contact_show_email",
+            "label": "E-Mail in Kontaktinfo anzeigen",
+            "name": "contact_show_email",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_contact_show_address",
+            "label": "Adresse in Kontaktinfo anzeigen",
+            "name": "contact_show_address",
+            "type": "true_false",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_contact_info_title",
+            "label": "Kontaktinfo Titel",
+            "name": "contact_info_title",
+            "type": "text"
+        },
+        {
+            "key": "field_contact_phone",
+            "label": "Telefon",
+            "name": "contact_phone",
+            "type": "text",
+            "placeholder": "+43 123 456789"
+        },
+        {
+            "key": "field_contact_email",
+            "label": "E-Mail",
+            "name": "contact_email",
+            "type": "email",
+            "placeholder": "info@wohnegruen.at"
+        },
+        {
+            "key": "field_contact_address",
+            "label": "Adresse",
+            "name": "contact_address",
+            "type": "textarea",
+            "rows": 3,
+            "placeholder": "Straße 123\n1234 Stadt\nÖsterreich"
+        },
+        {
+            "key": "field_contact_hours",
+            "label": "Öffnungszeiten",
+            "name": "contact_hours",
+            "type": "textarea",
+            "rows": 3,
+            "placeholder": "Mo-Fr: 9:00 - 17:00\nSa: 10:00 - 14:00"
+        },
+        {
+            "key": "field_contact_map_enabled",
+            "label": "Karte aktivieren",
+            "name": "contact_map_enabled",
+            "type": "true_false",
+            "default_value": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_contact_map_address",
+            "label": "Karten Adresse",
+            "name": "contact_map_address",
+            "type": "text",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_contact_map_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_contact_map_embed",
+            "label": "Google Maps Embed Code",
+            "name": "contact_map_embed",
+            "type": "textarea",
+            "instructions": "Fügen Sie den iframe-Code von Google Maps ein",
+            "rows": 5,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_contact_map_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-contact-complete"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

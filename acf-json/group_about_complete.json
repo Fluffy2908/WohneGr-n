@@ -1,0 +1,179 @@
+{
+    "key": "group_about_complete",
+    "title": "Über uns Komplett Block",
+    "fields": [
+        {
+            "key": "field_about_hero_title",
+            "label": "Hero Titel",
+            "name": "about_hero_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_about_hero_subtitle",
+            "label": "Hero Untertitel",
+            "name": "about_hero_subtitle",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_about_hero_image",
+            "label": "Hero Bild",
+            "name": "about_hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_about_story_title",
+            "label": "Geschichte Titel",
+            "name": "about_story_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_story_content",
+            "label": "Geschichte Inhalt",
+            "name": "about_story_content",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0
+        },
+        {
+            "key": "field_about_story_image",
+            "label": "Geschichte Bild",
+            "name": "about_story_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_about_reverse_story",
+            "label": "Geschichte Layout umkehren",
+            "name": "about_reverse_story",
+            "type": "true_false",
+            "message": "Bild links anzeigen",
+            "default_value": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_about_values_title",
+            "label": "Werte Titel",
+            "name": "about_values_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_values_subtitle",
+            "label": "Werte Untertitel",
+            "name": "about_values_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_about_values",
+            "label": "Werte",
+            "name": "about_values",
+            "type": "repeater",
+            "min": 3,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Wert hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_about_value_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "select",
+                    "choices": {
+                        "heart": "Herz",
+                        "star": "Stern",
+                        "shield": "Schild",
+                        "leaf": "Blatt",
+                        "users": "Personen",
+                        "check": "Häkchen"
+                    }
+                },
+                {
+                    "key": "field_about_value_title",
+                    "label": "Titel",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_value_description",
+                    "label": "Beschreibung",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3
+                }
+            ]
+        },
+        {
+            "key": "field_about_team_title",
+            "label": "Team Titel",
+            "name": "about_team_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_team_subtitle",
+            "label": "Team Untertitel",
+            "name": "about_team_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_about_team_members",
+            "label": "Team Mitglieder",
+            "name": "about_team_members",
+            "type": "repeater",
+            "min": 1,
+            "max": 10,
+            "layout": "block",
+            "button_label": "Mitglied hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_about_member_photo",
+                    "label": "Foto",
+                    "name": "photo",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "thumbnail"
+                },
+                {
+                    "key": "field_about_member_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_member_position",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "text"
+                },
+                {
+                    "key": "field_about_member_bio",
+                    "label": "Bio",
+                    "name": "bio",
+                    "type": "textarea",
+                    "rows": 3
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-about-complete"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

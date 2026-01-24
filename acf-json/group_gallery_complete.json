@@ -1,0 +1,73 @@
+{
+    "key": "group_gallery_complete",
+    "title": "Galerie Komplett Block",
+    "fields": [
+        {
+            "key": "field_gallery_hero_title",
+            "label": "Hero Titel",
+            "name": "gallery_hero_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_gallery_hero_subtitle",
+            "label": "Hero Untertitel",
+            "name": "gallery_hero_subtitle",
+            "type": "text"
+        },
+        {
+            "key": "field_gallery_show_filters",
+            "label": "Filter anzeigen",
+            "name": "gallery_show_filters",
+            "type": "true_false",
+            "message": "Kategorien-Filter aktivieren",
+            "default_value": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_gallery_categories",
+            "label": "Galerie Kategorien",
+            "name": "gallery_categories",
+            "type": "repeater",
+            "min": 1,
+            "max": 10,
+            "layout": "block",
+            "button_label": "Kategorie hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_gallery_category_name",
+                    "label": "Kategorie Name",
+                    "name": "category_name",
+                    "type": "text",
+                    "required": 1,
+                    "placeholder": "z.B. Außenansichten, Innenausstattung"
+                },
+                {
+                    "key": "field_gallery_category_images",
+                    "label": "Bilder",
+                    "name": "images",
+                    "type": "gallery",
+                    "min": 4,
+                    "max": 50,
+                    "insert": "append",
+                    "library": "all"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/wohnegruen-gallery-complete"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}
