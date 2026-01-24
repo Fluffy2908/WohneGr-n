@@ -234,7 +234,7 @@ document.addEventListener('keydown', function(e) {
 
 .section-header h2 {
     font-size: 2.5rem;
-    color: #2d5016;
+    color: var(--color-primary);
     margin: 0 0 15px 0;
 }
 
@@ -267,19 +267,19 @@ document.addEventListener('keydown', function(e) {
 }
 
 .floor-tab:hover {
-    border-color: #2d5016;
+    border-color: var(--color-primary);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .floor-tab.active {
-    background: #2d5016;
-    border-color: #2d5016;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
     color: white;
 }
 
 .tab-icon svg {
-    color: #2d5016;
+    color: var(--color-primary);
 }
 
 .floor-tab.active .tab-icon svg {
@@ -315,7 +315,7 @@ document.addEventListener('keydown', function(e) {
 .config-details h3 {
     margin: 0 0 20px 0;
     font-size: 2rem;
-    color: #2d5016;
+    color: var(--color-primary);
 }
 
 .config-specs {
@@ -333,12 +333,12 @@ document.addEventListener('keydown', function(e) {
     background: #f0f7f0;
     border-radius: 50px;
     font-size: 0.95rem;
-    color: #2d5016;
+    color: var(--color-primary);
     font-weight: 500;
 }
 
 .spec-badge svg {
-    color: #2d5016;
+    color: var(--color-primary);
 }
 
 .config-description {
@@ -359,7 +359,7 @@ document.addEventListener('keydown', function(e) {
 .floorplan-3d-section h4,
 .floorplan-exterior-section h4 {
     font-size: 1.5rem;
-    color: #2d5016;
+    color: var(--color-primary);
     margin: 0 0 20px 0;
 }
 
@@ -388,7 +388,7 @@ document.addEventListener('keydown', function(e) {
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    background: #2d5016;
+    background: var(--color-primary);
     color: white;
     border-radius: 8px;
     text-decoration: none;
@@ -398,7 +398,7 @@ document.addEventListener('keydown', function(e) {
 }
 
 .pdf-download-btn:hover {
-    background: #1f3810;
+    background: var(--color-primary-dark);
 }
 
 /* 3D Views Grid */
@@ -431,7 +431,7 @@ document.addEventListener('keydown', function(e) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(45, 80, 22, 0.85);
+    background: rgba(var(--color-primary-rgb), 0.85);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -481,7 +481,7 @@ document.addEventListener('keydown', function(e) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(45, 80, 22, 0.85);
+    background: rgba(var(--color-primary-rgb), 0.85);
     display: flex;
     align-items: center;
     justify-content: center;

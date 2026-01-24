@@ -40,7 +40,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'page-hero-' . uniqid()
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #2d5016;
+    background-color: var(--color-primary);
     padding: 100px 20px;
 }
 
@@ -50,7 +50,7 @@ $block_id = isset($block['anchor']) ? $block['anchor'] : 'page-hero-' . uniqid()
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(45, 80, 22, 0.85) 0%, rgba(61, 107, 31, 0.75) 100%);
+    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.85) 0%, rgba(var(--color-primary-rgb), 0.75) 100%);
     z-index: 1;
 }
 
