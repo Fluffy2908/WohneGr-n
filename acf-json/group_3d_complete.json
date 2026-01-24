@@ -46,7 +46,7 @@
                     "name": "title",
                     "type": "text",
                     "required": 1,
-                    "placeholder": "z.B. Modell Nature - 8x3m"
+                    "placeholder": ""
                 },
                 {
                     "key": "field_3d_plan_description",
@@ -88,14 +88,14 @@
                             "label": "Bezeichnung",
                             "name": "label",
                             "type": "text",
-                            "placeholder": "z.B. Größe, Gewicht"
+                            "placeholder": ""
                         },
                         {
                             "key": "field_3d_spec_value",
                             "label": "Wert",
                             "name": "value",
                             "type": "text",
-                            "placeholder": "z.B. 8 x 3 m"
+                            "placeholder": ""
                         }
                     ]
                 }

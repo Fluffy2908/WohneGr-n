@@ -10,10 +10,12 @@
             "required": 1
         },
         {
-            "key": "field_gallery_hero_subtitle",
-            "label": "Hero Untertitel",
-            "name": "gallery_hero_subtitle",
-            "type": "text"
+            "key": "field_gallery_hero_image",
+            "label": "Hero Hintergrundbild",
+            "name": "gallery_hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
         },
         {
             "key": "field_gallery_show_filters",
@@ -40,7 +42,15 @@
                     "name": "category_name",
                     "type": "text",
                     "required": 1,
-                    "placeholder": "z.B. Außenansichten, Innenausstattung"
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_gallery_category_icon",
+                    "label": "Kategorie Icon",
+                    "name": "category_icon",
+                    "type": "text",
+                    "instructions": "Emoji oder Icon-Code (z.B. 🏡, 🛏️, 🍳)",
+                    "placeholder": "🏡"
                 },
                 {
                     "key": "field_gallery_category_images",
