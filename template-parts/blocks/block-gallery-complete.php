@@ -1,13 +1,17 @@
 <?php
 /**
  * Block: Gallery Complete (All-in-One for Galerie page)
- * Hero with background image + Filter buttons with custom icons + Grid (6 images) + Slider (rest)
+ * Hero + Toggle Buttons (Bilder / 3D Grundrisse) + Gallery Grid + Slider + 3D Floor Plans
  */
 
 $hero_title = get_field('gallery_hero_title');
 $hero_image = get_field('gallery_hero_image');
 $show_filters = get_field('gallery_show_filters');
 $categories = get_field('gallery_categories');
+
+$intro_3d_title = get_field('gallery_3d_intro_title');
+$intro_3d_content = get_field('gallery_3d_intro_content');
+$floorplans = get_field('gallery_3d_floorplans');
 
 $block_id = 'gallery-' . $block['id'];
 ?>
@@ -26,23 +30,33 @@ $block_id = 'gallery-' . $block['id'];
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Toggle Buttons Section -->
+    <section class="gallery-toggle-section section-padding">
+        <div class="container">
+            <div class="big-toggle-buttons">
+                <button class="big-toggle-btn active" data-section="bilder" onclick="switchGallerySection('bilder')">
+                    <span class="toggle-btn-text">Bilder</span>
+                </button>
+                <button class="big-toggle-btn" data-section="3d-grundrisse" onclick="switchGallerySection('3d-grundrisse')">
+                    <span class="toggle-btn-text">3D & Grundrisse</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: BILDER (Gallery) -->
     <?php if ($categories && is_array($categories)): ?>
-    <section class="gallery-section section-padding">
+    <section class="bilder-section section-content active" data-content-section="bilder">
         <div class="container">
 
-            <!-- Filter Buttons with Custom Icons -->
+            <!-- Filter Buttons (Simple Text Only) -->
             <?php if ($show_filters && count($categories) > 1): ?>
             <div class="gallery-filters">
                 <button class="filter-btn active" data-filter="all">
-                    <span class="filter-icon">🖼️</span>
                     <span class="filter-label">Alle</span>
                 </button>
                 <?php foreach ($categories as $index => $category): ?>
                     <button class="filter-btn" data-filter="cat-<?php echo $index; ?>">
-                        <?php if (isset($category['category_icon']) && $category['category_icon']): ?>
-                            <span class="filter-icon"><?php echo esc_html($category['category_icon']); ?></span>
-                        <?php endif; ?>
                         <span class="filter-label"><?php echo esc_html($category['category_name']); ?></span>
                     </button>
                 <?php endforeach; ?>
@@ -113,6 +127,85 @@ $block_id = 'gallery-' . $block['id'];
     </section>
     <?php endif; ?>
 
+    <!-- SECTION 2: 3D & GRUNDRISSE (Floor Plans) -->
+    <section class="threed-section section-content section-padding" data-content-section="3d-grundrisse">
+        <div class="container">
+
+            <!-- Intro -->
+            <?php if ($intro_3d_title || $intro_3d_content): ?>
+            <div class="threed-intro text-center">
+                <?php if ($intro_3d_title): ?>
+                    <h2><?php echo esc_html($intro_3d_title); ?></h2>
+                <?php endif; ?>
+                <?php if ($intro_3d_content): ?>
+                    <div class="intro-text">
+                        <?php echo wp_kses_post($intro_3d_content); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
+            <!-- Floor Plans Grid -->
+            <?php if ($floorplans && is_array($floorplans)): ?>
+            <div class="floorplans-grid">
+
+                <?php foreach ($floorplans as $index => $plan): ?>
+                <div class="floorplan-card">
+                    <!-- Card Header -->
+                    <div class="card-header">
+                        <?php if (isset($plan['title'])): ?>
+                            <h3><?php echo esc_html($plan['title']); ?></h3>
+                        <?php endif; ?>
+                        <?php if (isset($plan['description'])): ?>
+                            <p class="card-description"><?php echo esc_html($plan['description']); ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Card Content: Tech Data LEFT, Image RIGHT -->
+                    <div class="card-content-grid">
+                        <!-- LEFT: Technical Data -->
+                        <?php if (isset($plan['specifications']) && is_array($plan['specifications']) && !empty($plan['specifications'])): ?>
+                        <div class="tech-data">
+                            <h4>Technische Daten</h4>
+                            <dl class="specs-list">
+                                <?php foreach ($plan['specifications'] as $spec): ?>
+                                    <div class="spec-row">
+                                        <dt><?php echo esc_html($spec['label']); ?></dt>
+                                        <dd><?php echo esc_html($spec['value']); ?></dd>
+                                    </div>
+                                <?php endforeach; ?>
+                            </dl>
+                        </div>
+                        <?php endif; ?>
+
+                        <!-- RIGHT: Plan Image -->
+                        <div class="plan-preview">
+                            <?php if (isset($plan['normal_plan'])): ?>
+                                <img src="<?php echo esc_url($plan['normal_plan']['url']); ?>"
+                                     alt="<?php echo esc_attr($plan['title']); ?>"
+                                     loading="lazy">
+                            <?php endif; ?>
+
+                            <!-- Toggle Button for Mirrored Version -->
+                            <?php if (isset($plan['mirrored_plan'])): ?>
+                            <button class="toggle-mirror-btn"
+                                    data-normal="<?php echo esc_url($plan['normal_plan']['url']); ?>"
+                                    data-mirrored="<?php echo esc_url($plan['mirrored_plan']['url']); ?>"
+                                    onclick="togglePlanView(this)">
+                                <span class="toggle-text">Gespiegelt anzeigen</span>
+                            </button>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+
+            </div>
+            <?php endif; ?>
+
+        </div>
+    </section>
+
     <!-- Lightbox -->
     <div id="gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
         <button class="lightbox-close" onclick="closeGalleryLightbox()">&times;</button>
@@ -125,7 +218,7 @@ $block_id = 'gallery-' . $block['id'];
 </div>
 
 <style>
-/* GALLERY COMPLETE - PROFESSIONAL DESIGN */
+/* GALLERY COMPLETE - PROFESSIONAL TOGGLE DESIGN */
 .gallery-complete-page {
     width: 100%;
 }
@@ -138,6 +231,10 @@ $block_id = 'gallery-' . $block['id'];
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
 }
 
 /* Hero with Background Image */
@@ -173,7 +270,67 @@ $block_id = 'gallery-' . $block['id'];
     font-weight: 800;
 }
 
-/* Gallery Filters with Custom Icons */
+/* Toggle Buttons Section (Like Models Page) */
+.gallery-toggle-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 60px 0;
+}
+
+.big-toggle-buttons {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.big-toggle-btn {
+    padding: 24px 80px;
+    background: #ffffff;
+    border: 4px solid #e5e7eb;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    min-width: 280px;
+}
+
+.big-toggle-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-primary);
+}
+
+.big-toggle-btn.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 40px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.big-toggle-btn.active .toggle-btn-text {
+    color: white;
+}
+
+.toggle-btn-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* Section Content Toggle */
+.section-content {
+    display: none;
+}
+
+.section-content.active {
+    display: block;
+}
+
+/* BILDER SECTION - Gallery Filters (Simple Text, No Icons) */
+.bilder-section {
+    background: #ffffff;
+    padding: 80px 0;
+}
+
 .gallery-filters {
     display: flex;
     gap: 16px;
@@ -185,8 +342,7 @@ $block_id = 'gallery-' . $block['id'];
 .filter-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
+    padding: 14px 32px;
     background: #ffffff;
     border: 2px solid #e5e7eb;
     border-radius: 50px;
@@ -207,10 +363,6 @@ $block_id = 'gallery-' . $block['id'];
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: white;
-}
-
-.filter-icon {
-    font-size: 1.25rem;
 }
 
 /* Gallery Grid - First 6 Images */
@@ -359,6 +511,140 @@ $block_id = 'gallery-' . $block['id'];
     transform: translateY(-50%) scale(1.1);
 }
 
+/* 3D GRUNDRISSE SECTION */
+.threed-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.threed-intro {
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+}
+
+.threed-intro h2 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.intro-text {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.floorplans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.floorplan-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.floorplan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    padding: 24px;
+    background: var(--color-background);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.card-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 24px;
+}
+
+.tech-data h4 {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin: 0 0 16px 0;
+    font-weight: 600;
+}
+
+.specs-list {
+    display: grid;
+    gap: 12px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--color-background);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-primary);
+}
+
+.spec-row dt {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.spec-row dd {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+}
+
+.plan-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.plan-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background: var(--color-background);
+    transition: opacity 0.3s ease;
+}
+
+.toggle-mirror-btn {
+    padding: 10px 16px;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-mirror-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
 /* Lightbox */
 .gallery-lightbox {
     display: none;
@@ -428,6 +714,13 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .floorplans-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
 @media (max-width: 1023px) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -442,6 +735,20 @@ $block_id = 'gallery-' . $block['id'];
 @media (max-width: 767px) {
     .hero-content h1 {
         font-size: 2.5rem;
+    }
+
+    .big-toggle-buttons {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .big-toggle-btn {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .toggle-btn-text {
+        font-size: 1.5rem;
     }
 
     .gallery-grid {
@@ -463,6 +770,24 @@ $block_id = 'gallery-' . $block['id'];
         height: 40px;
         font-size: 1.5rem;
     }
+
+    .floorplans-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .card-content-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .threed-intro h2 {
+        font-size: 2rem;
+    }
 }
 </style>
 
@@ -470,10 +795,25 @@ $block_id = 'gallery-' . $block['id'];
 // Store all images for lightbox
 window.galleryImages = <?php echo json_encode(array_map(function($item) {
     return $item['image']['url'];
-}, $all_images)); ?>;
+}, $all_images ?? [])); ?>;
 
 window.currentGalleryIndex = 0;
 window.sliderPosition = 0;
+
+// Toggle between Bilder and 3D & Grundrisse
+function switchGallerySection(section) {
+    // Toggle buttons
+    const buttons = document.querySelectorAll('.big-toggle-btn');
+    buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.section === section);
+    });
+
+    // Toggle sections
+    const sections = document.querySelectorAll('.section-content');
+    sections.forEach(sec => {
+        sec.classList.toggle('active', sec.dataset.contentSection === section);
+    });
+}
 
 // Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -501,7 +841,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Slider navigation
 function moveGallerySlider(direction) {
     const track = document.querySelector('.slider-track');
-    const itemWidth = track.querySelector('.slider-item').offsetWidth + 24;
+    if (!track) return;
+
+    const itemWidth = track.querySelector('.slider-item')?.offsetWidth + 24 || 0;
     const maxScroll = track.scrollWidth - track.offsetWidth;
 
     window.sliderPosition += direction * itemWidth * 3;
@@ -557,4 +899,28 @@ document.addEventListener('keydown', function(e) {
         else if (e.key === 'ArrowRight') navigateGalleryLightbox(1);
     }
 });
+
+// Toggle between normal and mirrored plan
+let isReversedStates = {};
+
+function togglePlanView(button) {
+    const normalUrl = button.dataset.normal;
+    const mirroredUrl = button.dataset.mirrored;
+    const img = button.previousElementSibling;
+    const buttonId = button.dataset.normal + button.dataset.mirrored;
+
+    if (!isReversedStates[buttonId]) {
+        isReversedStates[buttonId] = false;
+    }
+
+    isReversedStates[buttonId] = !isReversedStates[buttonId];
+
+    img.style.opacity = '0';
+
+    setTimeout(() => {
+        img.src = isReversedStates[buttonId] ? mirroredUrl : normalUrl;
+        img.style.opacity = '1';
+        button.querySelector('.toggle-text').textContent = isReversedStates[buttonId] ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
+    }, 200);
+}
 </script>
