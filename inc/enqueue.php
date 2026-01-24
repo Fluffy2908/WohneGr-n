@@ -21,6 +21,9 @@ function wohnegruen_scripts() {
     wp_enqueue_style('wohnegruen-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), '1.0.5');
     wp_enqueue_style('wohnegruen-spacing-fixes', get_template_directory_uri() . '/assets/css/spacing-fixes.css', array(), '1.0.6');
 
+    // CRITICAL RESPONSIVE FIXES - Load last to override everything
+    wp_enqueue_style('wohnegruen-critical-fixes', get_template_directory_uri() . '/assets/css/critical-responsive-fixes.css', array(), '1.0.0');
+
     // Block Utilities (load first, no dependencies)
     wp_enqueue_script('wohnegruen-block-utilities', get_template_directory_uri() . '/assets/js/block-utilities.js', array(), '1.0.0', true);
 
@@ -53,8 +56,5 @@ function wohnegruen_block_editor_assets() {
     wp_enqueue_style('wohnegruen-main-editor', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.4');
     wp_enqueue_style('wohnegruen-model-pages-editor', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.4');
     wp_enqueue_style('wohnegruen-model-interactive-editor', get_template_directory_uri() . '/assets/css/model-interactive-blocks.css', array(), '1.0.7');
-
-    // ACF Block Split View - Fields on left 40%, Preview on right 60%
-    wp_enqueue_style('wohnegruen-split-view', get_template_directory_uri() . '/assets/css/editor-split-view.css', array(), '1.0.0');
 }
 add_action('enqueue_block_editor_assets', 'wohnegruen_block_editor_assets');
