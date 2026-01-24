@@ -166,7 +166,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/wohnegruen-about-complete"
+                "value": "acf/wohnegruen-about-complete"
             }
         ]
     ],
@@ -175,5 +175,7 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Alles-in-einem Block für Über uns Seite: Hero, Geschichte, Werte, Team - mit Live-Vorschau"
 }

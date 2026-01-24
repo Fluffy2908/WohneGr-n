@@ -60,7 +60,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/wohnegruen-gallery-complete"
+                "value": "acf/wohnegruen-gallery-complete"
             }
         ]
     ],
@@ -69,5 +69,7 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Alles-in-einem Block für Galerie Seite: Hero, Filter, Lightbox - mit Live-Vorschau"
 }

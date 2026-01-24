@@ -133,7 +133,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/wohnegruen-contact-complete"
+                "value": "acf/wohnegruen-contact-complete"
             }
         ]
     ],
@@ -142,5 +142,7 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Alles-in-einem Block für Kontakt Seite: Hero, Formular, Info, Karte - mit Live-Vorschau"
 }

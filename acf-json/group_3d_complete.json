@@ -107,7 +107,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/wohnegruen-3d-complete"
+                "value": "acf/wohnegruen-3d-complete"
             }
         ]
     ],
@@ -116,5 +116,7 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Alles-in-einem Block für 3D Grundrisse Seite: Hero, interaktive Grundrisse - mit Live-Vorschau"
 }

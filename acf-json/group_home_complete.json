@@ -144,7 +144,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/wohnegruen-home-complete"
+                "value": "acf/wohnegruen-home-complete"
             }
         ]
     ],
@@ -153,5 +153,7 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "active": true
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Alles-in-einem Block für Homepage: Hero, Features, Modelle, CTA - mit Live-Vorschau"
 }
