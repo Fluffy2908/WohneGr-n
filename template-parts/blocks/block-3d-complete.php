@@ -1,25 +1,22 @@
 <?php
 /**
  * Block: 3D Complete (All-in-One for 3D Grundrisse page)
- * Complete 3D floor plans page with interactive viewer with LIVE PREVIEW
+ * Smaller calling cards (2-3 per row) + Tech data side-by-side with image
  */
 
-// Get all fields
 $hero_title = get_field('3d_hero_title');
 $hero_subtitle = get_field('3d_hero_subtitle');
-
 $intro_title = get_field('3d_intro_title');
 $intro_content = get_field('3d_intro_content');
-
 $floorplans = get_field('3d_floorplans');
 
 $block_id = '3d-complete-' . $block['id'];
 ?>
 
-<div class="3d-complete-page" id="<?php echo esc_attr($block_id); ?>">
+<div class="threed-complete-page" id="<?php echo esc_attr($block_id); ?>">
 
     <!-- Hero Section -->
-    <section class="3d-hero">
+    <section class="threed-hero">
         <div class="container">
             <div class="hero-content text-center">
                 <?php if ($hero_title): ?>
@@ -34,7 +31,7 @@ $block_id = '3d-complete-' . $block['id'];
 
     <!-- Intro Section -->
     <?php if ($intro_title || $intro_content): ?>
-    <section class="3d-intro section-padding">
+    <section class="threed-intro section-padding">
         <div class="container">
             <div class="intro-content text-center">
                 <?php if ($intro_title): ?>
@@ -50,74 +47,64 @@ $block_id = '3d-complete-' . $block['id'];
     </section>
     <?php endif; ?>
 
-    <!-- 3D Floor Plans Section -->
+    <!-- Floor Plans Grid - Small Calling Cards -->
     <?php if ($floorplans && is_array($floorplans)): ?>
-    <section class="3d-floorplans section-padding bg-light">
+    <section class="floorplans-grid-section section-padding">
         <div class="container">
+            <div class="floorplans-grid">
 
-            <?php foreach ($floorplans as $index => $plan): ?>
-                <div class="floorplan-item">
-
-                    <div class="floorplan-header">
+                <?php foreach ($floorplans as $index => $plan): ?>
+                <div class="floorplan-card">
+                    <!-- Card Header -->
+                    <div class="card-header">
                         <?php if (isset($plan['title'])): ?>
                             <h3><?php echo esc_html($plan['title']); ?></h3>
                         <?php endif; ?>
                         <?php if (isset($plan['description'])): ?>
-                            <p><?php echo esc_html($plan['description']); ?></p>
+                            <p class="card-description"><?php echo esc_html($plan['description']); ?></p>
                         <?php endif; ?>
                     </div>
 
-                    <div class="floorplan-viewer">
-
-                        <!-- Plan Selector -->
-                        <?php if (isset($plan['normal_plan']) && isset($plan['mirrored_plan'])): ?>
-                        <div class="plan-controls">
-                            <button class="plan-btn active" data-plan="normal" data-index="<?php echo $index; ?>">
-                                Normal
-                            </button>
-                            <button class="plan-btn" data-plan="mirrored" data-index="<?php echo $index; ?>">
-                                Gespiegelt
-                            </button>
-                        </div>
-                        <?php endif; ?>
-
-                        <!-- Plan Images -->
-                        <div class="plan-images">
-                            <?php if (isset($plan['normal_plan'])): ?>
-                                <div class="plan-image active" data-plan="normal">
-                                    <img src="<?php echo esc_url($plan['normal_plan']['url']); ?>"
-                                         alt="<?php echo esc_attr($plan['title'] . ' - Normal'); ?>">
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if (isset($plan['mirrored_plan'])): ?>
-                                <div class="plan-image" data-plan="mirrored">
-                                    <img src="<?php echo esc_url($plan['mirrored_plan']['url']); ?>"
-                                         alt="<?php echo esc_attr($plan['title'] . ' - Gespiegelt'); ?>">
-                                </div>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- Specifications -->
-                        <?php if (isset($plan['specifications']) && is_array($plan['specifications'])): ?>
-                        <div class="plan-specifications">
+                    <!-- Card Content: Tech Data LEFT, Image RIGHT -->
+                    <div class="card-content-grid">
+                        <!-- LEFT: Technical Data -->
+                        <?php if (isset($plan['specifications']) && is_array($plan['specifications']) && !empty($plan['specifications'])): ?>
+                        <div class="tech-data">
                             <h4>Technische Daten</h4>
-                            <ul class="specs-list">
+                            <dl class="specs-list">
                                 <?php foreach ($plan['specifications'] as $spec): ?>
-                                    <li>
-                                        <strong><?php echo esc_html($spec['label']); ?>:</strong>
-                                        <?php echo esc_html($spec['value']); ?>
-                                    </li>
+                                    <div class="spec-row">
+                                        <dt><?php echo esc_html($spec['label']); ?></dt>
+                                        <dd><?php echo esc_html($spec['value']); ?></dd>
+                                    </div>
                                 <?php endforeach; ?>
-                            </ul>
+                            </dl>
                         </div>
                         <?php endif; ?>
 
+                        <!-- RIGHT: Plan Image -->
+                        <div class="plan-preview">
+                            <?php if (isset($plan['normal_plan'])): ?>
+                                <img src="<?php echo esc_url($plan['normal_plan']['url']); ?>"
+                                     alt="<?php echo esc_attr($plan['title']); ?>"
+                                     loading="lazy">
+                            <?php endif; ?>
+
+                            <!-- Toggle Button for Mirrored Version -->
+                            <?php if (isset($plan['mirrored_plan'])): ?>
+                            <button class="toggle-mirror-btn"
+                                    data-normal="<?php echo esc_url($plan['normal_plan']['url']); ?>"
+                                    data-mirrored="<?php echo esc_url($plan['mirrored_plan']['url']); ?>"
+                                    onclick="togglePlanView(this)">
+                                <span class="toggle-text">Gespiegelt anzeigen</span>
+                            </button>
+                            <?php endif; ?>
+                        </div>
                     </div>
-
                 </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
+            </div>
         </div>
     </section>
     <?php endif; ?>
@@ -125,232 +112,245 @@ $block_id = '3d-complete-' . $block['id'];
 </div>
 
 <style>
-/* 3D Complete Styles */
-.3d-complete-page {
+/* 3D GRUNDRISSE - SMALL CALLING CARDS DESIGN */
+.threed-complete-page {
     width: 100%;
 }
 
 .section-padding {
-    padding: var(--spacing-3xl) 0;
+    padding: 80px 0;
 }
 
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 20px;
 }
 
 /* Hero */
-.3d-hero {
-    padding: var(--spacing-3xl) 0;
+.threed-hero {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--color-white);
+    color: white;
+    padding: 80px 20px;
 }
 
-.hero-content.text-center {
+.hero-content {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .hero-content h1 {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-lg);
+    font-size: 3.5rem;
+    margin: 0 0 20px 0;
+    font-weight: 800;
 }
 
 .hero-subtitle {
-    font-size: var(--font-size-xl);
+    font-size: 1.25rem;
+    margin: 0;
+    opacity: 0.95;
 }
 
 /* Intro */
+.threed-intro {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
 .intro-content {
     max-width: 900px;
     margin: 0 auto;
-}
-
-.intro-content.text-center {
     text-align: center;
 }
 
 .intro-content h2 {
-    font-size: var(--font-size-3xl);
+    font-size: 2.5rem;
     color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 24px;
+    font-weight: 700;
 }
 
 .intro-text {
-    font-size: var(--font-size-lg);
+    font-size: 1.125rem;
     color: var(--color-text-secondary);
     line-height: 1.8;
 }
 
-/* Floor Plans */
-.floorplan-item {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-3xl);
-    margin-bottom: var(--spacing-3xl);
-    box-shadow: var(--shadow-card);
+/* Floor Plans Grid - 2-3 Cards Per Row */
+.floorplans-grid-section {
+    background: #ffffff;
 }
 
-.floorplan-item:last-child {
-    margin-bottom: 0;
+.floorplans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
 
-.floorplan-header {
-    text-align: center;
-    margin-bottom: var(--spacing-2xl);
+.floorplan-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
-.floorplan-header h3 {
-    font-size: var(--font-size-2xl);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+.floorplan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
-.floorplan-header p {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-}
-
-/* Plan Controls */
-.plan-controls {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-2xl);
-}
-
-.plan-btn {
-    padding: var(--spacing-sm) var(--spacing-xl);
-    border: 2px solid var(--color-border);
-    background: var(--color-white);
-    color: var(--color-text-primary);
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    font-family: inherit;
-    font-size: var(--font-size-md);
-}
-
-.plan-btn:hover,
-.plan-btn.active {
-    border-color: var(--color-primary);
-    background: var(--color-primary);
-    color: var(--color-white);
-}
-
-/* Plan Images */
-.plan-images {
-    position: relative;
-    margin-bottom: var(--spacing-2xl);
-}
-
-.plan-image {
-    display: none;
-    text-align: center;
-}
-
-.plan-image.active {
-    display: block;
-}
-
-.plan-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
-}
-
-/* Specifications */
-.plan-specifications {
+/* Card Header */
+.card-header {
+    padding: 24px;
     background: var(--color-background);
-    padding: var(--spacing-xl);
-    border-radius: var(--radius-md);
+    border-bottom: 3px solid var(--color-primary);
 }
 
-.plan-specifications h4 {
-    font-size: var(--font-size-lg);
+.card-header h3 {
+    font-size: 1.5rem;
     color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Card Content Grid: Tech Data LEFT, Image RIGHT */
+.card-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 24px;
+}
+
+/* Technical Data (LEFT) */
+.tech-data h4 {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin: 0 0 16px 0;
+    font-weight: 600;
 }
 
 .specs-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+    gap: 12px;
 }
 
-.specs-list li {
-    padding: var(--spacing-sm);
-    color: var(--color-text-secondary);
-}
-
-.specs-list strong {
-    color: var(--color-text-primary);
-}
-
-.bg-light {
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
     background: var(--color-background);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-primary);
 }
 
-/* Responsive */
-@media (max-width: 767px) {
-    .container {
-        padding: 0 var(--spacing-md);
-    }
+.spec-row dt {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
 
+.spec-row dd {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+}
+
+/* Plan Preview (RIGHT) */
+.plan-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.plan-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background: var(--color-background);
+    transition: opacity 0.3s ease;
+}
+
+.toggle-mirror-btn {
+    padding: 10px 16px;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-mirror-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .floorplans-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
     .hero-content h1 {
-        font-size: var(--font-size-2xl);
+        font-size: 2.5rem;
     }
 
-    .floorplan-item {
-        padding: var(--spacing-xl);
+    .intro-content h2 {
+        font-size: 2rem;
     }
 
-    .specs-list {
+    .floorplans-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
     }
 
-    .section-padding {
-        padding: var(--spacing-2xl) 0;
+    .card-content-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card-header h3 {
+        font-size: 1.25rem;
     }
 }
 </style>
 
 <script>
-(function() {
-    document.addEventListener('DOMContentLoaded', function() {
-        const block3d = document.getElementById('<?php echo esc_js($block_id); ?>');
-        if (!block3d) return;
+// Toggle between normal and mirrored plan
+let isReversedStates = {};
 
-        const planBtns = block3d.querySelectorAll('.plan-btn');
+function togglePlanView(button) {
+    const normalUrl = button.dataset.normal;
+    const mirroredUrl = button.dataset.mirrored;
+    const img = button.previousElementSibling;
+    const buttonId = button.dataset.normal + button.dataset.mirrored;
 
-        planBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const planType = this.dataset.plan;
-                const index = this.dataset.index;
-                const container = this.closest('.floorplan-item');
+    if (!isReversedStates[buttonId]) {
+        isReversedStates[buttonId] = false;
+    }
 
-                // Update active button
-                container.querySelectorAll('.plan-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+    isReversedStates[buttonId] = !isReversedStates[buttonId];
 
-                // Show corresponding plan image
-                container.querySelectorAll('.plan-image').forEach(img => {
-                    if (img.dataset.plan === planType) {
-                        img.classList.add('active');
-                    } else {
-                        img.classList.remove('active');
-                    }
-                });
-            });
-        });
-    });
-})();
+    img.style.opacity = '0';
+
+    setTimeout(() => {
+        img.src = isReversedStates[buttonId] ? mirroredUrl : normalUrl;
+        img.style.opacity = '1';
+        button.querySelector('.toggle-text').textContent = isReversedStates[buttonId] ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
+    }, 200);
+}
 </script>
