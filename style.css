@@ -11,11 +11,12 @@ Text Domain: wohnegruen
    ========================================================================== */
 
 :root {
-    /* Brand Colors - Exact Lovable Green from Console */
-    --color-primary: #2c8c4f;           /* Lovable green: rgb(44, 140, 79) */
-    --color-primary-dark: #1f6838;      /* Darker shade */
-    --color-primary-light: #3da862;     /* Lighter shade */
-    --color-primary-rgb: 44, 140, 79;   /* RGB for opacity usage */
+    /* Brand Colors - Exact Lovable Green: rgba(44, 140, 79, 0.9) */
+    --color-primary: rgba(44, 140, 79, 0.9);
+    --color-primary-solid: rgb(44, 140, 79);
+    --color-primary-dark: rgba(31, 104, 56, 0.9);
+    --color-primary-light: rgba(61, 168, 98, 0.9);
+    --color-primary-rgb: 44, 140, 79;
 
     /* Additional Colors */
     --color-white: #ffffff;
@@ -2188,6 +2189,139 @@ body.menu-open {
 }
 
 /* ==========================================================================
+   WORDPRESS ADMIN BAR STYLING
+   ========================================================================== */
+
+#wpadminbar {
+    background: var(--color-primary-solid) !important;
+}
+
+#wpadminbar .ab-item,
+#wpadminbar a.ab-item,
+#wpadminbar > #wp-toolbar span.ab-label,
+#wpadminbar > #wp-toolbar span.noticon {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+#wpadminbar .ab-top-menu > li.hover > .ab-item,
+#wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus,
+#wpadminbar:not(.mobile) .ab-top-menu > li:hover > .ab-item,
+#wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item:focus {
+    background: var(--color-primary-dark) !important;
+    color: #fff !important;
+}
+
+#wpadminbar .ab-submenu {
+    background: var(--color-primary-dark) !important;
+}
+
+#wpadminbar .ab-submenu .ab-item {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+#wpadminbar .ab-submenu .ab-item:hover {
+    background: rgba(0, 0, 0, 0.2) !important;
+    color: #fff !important;
+}
+
+#wpadminbar #wp-admin-bar-site-name > .ab-item:before,
+#wpadminbar #wp-admin-bar-my-sites > .ab-item:before {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ==========================================================================
+   WORDPRESS LOGIN PAGE STYLING
+   ========================================================================== */
+
+body.login {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.login h1 a {
+    background-image: none !important;
+    background-color: var(--color-primary);
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.login h1 a::before {
+    content: "W";
+}
+
+.login form {
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.login label {
+    color: #333;
+    font-weight: 600;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+    border-color: var(--color-primary-solid);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(44, 140, 79, 0.1);
+}
+
+.login .button-primary {
+    background: var(--color-primary-solid) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    box-shadow: 0 2px 8px rgba(44, 140, 79, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+.login .button-primary:hover,
+.login .button-primary:focus {
+    background: rgba(31, 104, 56, 0.9) !important;
+    box-shadow: 0 4px 16px rgba(44, 140, 79, 0.3) !important;
+    transform: translateY(-2px);
+}
+
+.login #backtoblog a,
+.login #nav a {
+    color: var(--color-primary-solid) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.login #backtoblog a:hover,
+.login #nav a:hover {
+    color: rgba(31, 104, 56, 0.9) !important;
+}
+
+.login .message,
+.login .success {
+    border-left: 4px solid var(--color-primary-solid);
+    background: rgba(44, 140, 79, 0.05);
+}
+
+/* ==========================================================================
    PRINT STYLES
    ========================================================================== */
 
@@ -2197,7 +2331,8 @@ body.menu-open {
     .hamburger,
     .notification,
     .image-modal,
-    .gallery-lightbox {
+    .gallery-lightbox,
+    #wpadminbar {
         display: none !important;
     }
 
