@@ -12,58 +12,20 @@ function wohnegruen_scripts() {
     // Google Fonts - Outfit + DM Sans
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap', array(), null);
 
-    // Main stylesheet
-    wp_enqueue_style('wohnegruen-style', get_stylesheet_uri(), array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-main', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-blocks', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-model-pages', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-model-interactive', get_template_directory_uri() . '/assets/css/model-interactive-blocks.css', array(), '1.0.7');
-    wp_enqueue_style('wohnegruen-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), '1.0.5');
-    wp_enqueue_style('wohnegruen-spacing-fixes', get_template_directory_uri() . '/assets/css/spacing-fixes.css', array(), '1.0.6');
+    // Main stylesheet - ONLY ONE, CLEAN, NO OVERRIDES
+    wp_enqueue_style('wohnegruen-style', get_stylesheet_uri(), array(), '2.0.0');
 
-    // CRITICAL RESPONSIVE FIXES - Load last to override everything
-    wp_enqueue_style('wohnegruen-critical-fixes', get_template_directory_uri() . '/assets/css/critical-responsive-fixes.css', array(), '1.0.0');
-
-    // COMPLETE FIXES - Important & Minor issues (load after critical)
-    wp_enqueue_style('wohnegruen-complete-fixes', get_template_directory_uri() . '/assets/css/complete-fixes.css', array('wohnegruen-critical-fixes'), '1.0.0');
-
-    // DESIGN UPDATES - Modern green color scheme & fixes (load last)
-    wp_enqueue_style('wohnegruen-design-updates', get_template_directory_uri() . '/assets/css/design-updates.css', array('wohnegruen-complete-fixes'), '1.0.0');
-
-    // Block Utilities (load first, no dependencies)
-    wp_enqueue_script('wohnegruen-block-utilities', get_template_directory_uri() . '/assets/js/block-utilities.js', array(), '1.0.0', true);
-
-    // Lightbox Keyboard Accessibility Fix
-    wp_enqueue_script('wohnegruen-lightbox-keyboard', get_template_directory_uri() . '/assets/js/lightbox-keyboard-fix.js', array(), '1.0.0', true);
-
-    // Main JavaScript
-    wp_enqueue_script('wohnegruen-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.4', true);
-
-    // Localize script with theme data
-    wp_localize_script('wohnegruen-main', 'wohnegruenData', array(
-        'ajaxUrl' => admin_url('admin-ajax.php'),
-        'themeUrl' => get_template_directory_uri(),
-        'homeUrl'  => home_url('/'),
-    ));
+    // Main JavaScript - CLEAN, NO DEPENDENCIES
+    wp_enqueue_script('wohnegruen-main', get_template_directory_uri() . '/assets/js/main.js', array(), '2.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'wohnegruen_scripts');
 
-/**
- * Enqueue editor styles for Gutenberg
- */
-function wohnegruen_editor_styles() {
-    add_editor_style('assets/css/editor-style.css');
-}
-add_action('after_setup_theme', 'wohnegruen_editor_styles');
+// Editor uses main stylesheet via enqueue_block_editor_assets
 
 /**
  * Enqueue block editor assets
  */
 function wohnegruen_block_editor_assets() {
-    wp_enqueue_style('wohnegruen-editor', get_template_directory_uri() . '/assets/css/editor-style.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-blocks-editor', get_template_directory_uri() . '/assets/css/blocks.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-main-editor', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-model-pages-editor', get_template_directory_uri() . '/assets/css/model-pages.css', array(), '1.0.4');
-    wp_enqueue_style('wohnegruen-model-interactive-editor', get_template_directory_uri() . '/assets/css/model-interactive-blocks.css', array(), '1.0.7');
+    wp_enqueue_style('wohnegruen-editor', get_stylesheet_uri(), array(), '2.0.0');
 }
 add_action('enqueue_block_editor_assets', 'wohnegruen_block_editor_assets');
