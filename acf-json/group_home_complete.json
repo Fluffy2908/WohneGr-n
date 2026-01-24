@@ -22,8 +22,7 @@
             "key": "field_home_hero_button_text",
             "label": "Hero Button Text",
             "name": "home_hero_button_text",
-            "type": "text",
-            "placeholder": "z.B. Modelle ansehen"
+            "type": "text"
         },
         {
             "key": "field_home_hero_button_link",

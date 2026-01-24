@@ -61,31 +61,27 @@
             "key": "field_contact_phone",
             "label": "Telefon",
             "name": "contact_phone",
-            "type": "text",
-            "placeholder": "+43 123 456789"
+            "type": "text"
         },
         {
             "key": "field_contact_email",
             "label": "E-Mail",
             "name": "contact_email",
-            "type": "email",
-            "placeholder": "info@wohnegruen.at"
+            "type": "email"
         },
         {
             "key": "field_contact_address",
             "label": "Adresse",
             "name": "contact_address",
             "type": "textarea",
-            "rows": 3,
-            "placeholder": "Straße 123\n1234 Stadt\nÖsterreich"
+            "rows": 3
         },
         {
             "key": "field_contact_hours",
             "label": "Öffnungszeiten",
             "name": "contact_hours",
             "type": "textarea",
-            "rows": 3,
-            "placeholder": "Mo-Fr: 9:00 - 17:00\nSa: 10:00 - 14:00"
+            "rows": 3
         },
         {
             "key": "field_contact_map_enabled",
