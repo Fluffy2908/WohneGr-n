@@ -351,6 +351,20 @@ document.addEventListener('keydown', function(e) {
     margin-bottom: var(--spacing-3xl);
 }
 
+/* Section Padding Utility */
+.section-padding {
+    padding: var(--spacing-3xl) 0;
+}
+
+/* Container Utility */
+.mobilhaus-complete-page .container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+}
+
 .mobilhaus-hero-content {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -457,7 +471,7 @@ document.addEventListener('keydown', function(e) {
 
 .mobilhaus-exterior-img.active {
     opacity: 1;
-    position: relative;
+    z-index: 1;
 }
 
 /* Details Section */
@@ -588,6 +602,24 @@ document.addEventListener('keydown', function(e) {
 /* Interior Schemes Section */
 .mobilhaus-interior-section {
     background: var(--color-background);
+}
+
+.mobilhaus-interior-section .section-header {
+    margin-bottom: var(--spacing-3xl);
+    text-align: center;
+}
+
+.mobilhaus-interior-section .section-header h2 {
+    font-size: var(--font-size-3xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.mobilhaus-interior-section .section-header p {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .interior-scheme-block {
@@ -771,7 +803,7 @@ document.addEventListener('keydown', function(e) {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .mobilhaus-hero-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
@@ -786,7 +818,16 @@ document.addEventListener('keydown', function(e) {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+    .section-padding {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .mobilhaus-complete-page .container {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+
     .mobilhaus-title {
         font-size: var(--font-size-3xl);
     }
@@ -823,7 +864,7 @@ document.addEventListener('keydown', function(e) {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
     .mobilhaus-hero {
         padding: var(--spacing-2xl) var(--spacing-md);
     }
