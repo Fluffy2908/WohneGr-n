@@ -40,12 +40,23 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                         foreach ($footer_col2_links as $link) : ?>
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                         <?php endforeach;
-                    else : ?>
+                    else :
+                        // Only show links to pages that actually exist
+                        ?>
                         <a href="<?php echo home_url('/'); ?>">Startseite</a>
-                        <a href="<?php echo home_url('/modelle'); ?>">Modelle</a>
-                        <a href="<?php echo home_url('/galerie'); ?>">Galerie</a>
-                        <a href="<?php echo home_url('/#kontakt'); ?>">Kontakt</a>
-                    <?php endif; ?>
+                        <?php
+                        $galerie_page = get_page_by_path('galerie');
+                        if ($galerie_page) : ?>
+                            <a href="<?php echo get_permalink($galerie_page); ?>">Galerie</a>
+                        <?php endif;
+
+                        $kontakt_page = get_page_by_path('kontakt');
+                        if ($kontakt_page) : ?>
+                            <a href="<?php echo get_permalink($kontakt_page); ?>">Kontakt</a>
+                        <?php else : ?>
+                            <a href="<?php echo home_url('/#kontakt'); ?>">Kontakt</a>
+                        <?php endif;
+                    endif; ?>
                 </div>
             </div>
 

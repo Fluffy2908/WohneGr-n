@@ -9,7 +9,6 @@
             "type": "text",
             "instructions": "Haupttitel (leer lassen für Post-Titel)",
             "required": 0,
-            "default_value": "",
             "placeholder": "z.B. Nussbaum Nature"
         },
         {
@@ -26,7 +25,7 @@
             "label": "Farbvarianten (Außenansicht)",
             "name": "mobilhaus_color_variants",
             "type": "repeater",
-            "instructions": "Fügen Sie verschiedene Farboptionen hinzu (z.B. Weiß, Schwarz)",
+            "instructions": "Fügen Sie verschiedene Farboptionen hinzu",
             "required": 1,
             "min": 1,
             "max": 6,
@@ -43,7 +42,7 @@
                 },
                 {
                     "key": "field_color_code",
-                    "label": "Farbcode (für Button)",
+                    "label": "Farbcode",
                     "name": "color_code",
                     "type": "color_picker",
                     "required": 1,
@@ -61,15 +60,6 @@
             ]
         },
         {
-            "key": "field_mobilhaus_reverse_hero",
-            "label": "Hero Layout umkehren",
-            "name": "mobilhaus_reverse_hero",
-            "type": "true_false",
-            "instructions": "Bild links, Text rechts anzeigen",
-            "default_value": 0,
-            "ui": 1
-        },
-        {
             "key": "field_mobilhaus_description_title",
             "label": "Beschreibung Titel",
             "name": "mobilhaus_description_title",
@@ -79,7 +69,7 @@
         },
         {
             "key": "field_mobilhaus_description_text",
-            "label": "Beschreibung",
+            "label": "Beschreibung Text",
             "name": "mobilhaus_description_text",
             "type": "wysiwyg",
             "instructions": "Detaillierte Beschreibung des Mobilhauses",
@@ -89,11 +79,21 @@
             "media_upload": 1
         },
         {
+            "key": "field_mobilhaus_description_image",
+            "label": "Beschreibung Bild",
+            "name": "mobilhaus_description_image",
+            "type": "image",
+            "instructions": "Bild rechts neben dem Beschreibungstext",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_mobilhaus_specifications",
             "label": "Technische Daten",
             "name": "mobilhaus_specifications",
             "type": "repeater",
-            "instructions": "Technische Spezifikationen (z.B. Größe, Gewicht, Material)",
+            "instructions": "Technische Spezifikationen",
             "min": 0,
             "layout": "table",
             "button_label": "Daten hinzufügen",
@@ -117,40 +117,31 @@
             ]
         },
         {
-            "key": "field_mobilhaus_floor_plan",
+            "key": "field_mobilhaus_floor_plan_normal",
             "label": "Grundriss (Normal)",
-            "name": "mobilhaus_floor_plan",
+            "name": "mobilhaus_floor_plan_normal",
             "type": "image",
-            "instructions": "Grundriss von oben (Top-Down-Ansicht)",
+            "instructions": "Normaler Grundriss",
             "required": 1,
             "return_format": "array",
             "preview_size": "medium"
         },
         {
-            "key": "field_mobilhaus_floor_plan_mirrored",
-            "label": "Grundriss (Gespiegelt)",
-            "name": "mobilhaus_floor_plan_mirrored",
+            "key": "field_mobilhaus_floor_plan_reversed",
+            "label": "Grundriss (Reversed)",
+            "name": "mobilhaus_floor_plan_reversed",
             "type": "image",
-            "instructions": "Optional: Gespiegelter Grundriss",
+            "instructions": "Reversed Grundriss (anderes Bild, nicht gespiegelt)",
             "required": 0,
             "return_format": "array",
             "preview_size": "medium"
-        },
-        {
-            "key": "field_mobilhaus_reverse_details",
-            "label": "Details Layout umkehren",
-            "name": "mobilhaus_reverse_details",
-            "type": "true_false",
-            "instructions": "Grundriss links, Beschreibung rechts anzeigen",
-            "default_value": 0,
-            "ui": 1
         },
         {
             "key": "field_mobilhaus_interior_schemes",
             "label": "Innenausstattung Farbschemata",
             "name": "mobilhaus_interior_schemes",
             "type": "repeater",
-            "instructions": "Verschiedene Innenausstattungs-Optionen (Hosekra-Stil: Holz, Beton, Marmor, etc.)",
+            "instructions": "Verschiedene Innenausstattungs-Optionen",
             "min": 0,
             "max": 6,
             "layout": "block",
@@ -170,14 +161,14 @@
                     "name": "scheme_description",
                     "type": "textarea",
                     "rows": 2,
-                    "placeholder": "Kurze Beschreibung der Material-/Farbkombination"
+                    "placeholder": "Kurze Beschreibung"
                 },
                 {
                     "key": "field_color_palette_image",
-                    "label": "Farbpalette/Material-Vorschau",
+                    "label": "Farbpalette Bild",
                     "name": "color_palette_image",
                     "type": "image",
-                    "instructions": "Bild mit Farbpalette/Materialien (wie bei Hosekra)",
+                    "instructions": "Bild mit Farbpalette/Materialien",
                     "return_format": "array",
                     "preview_size": "thumbnail"
                 },
@@ -186,7 +177,7 @@
                     "label": "Innenansichten Galerie",
                     "name": "gallery",
                     "type": "gallery",
-                    "instructions": "4-8 Bilder: Küche, Schlafzimmer, Bad, Wohnzimmer, etc.",
+                    "instructions": "4-8 Bilder von verschiedenen Räumen",
                     "required": 1,
                     "min": 4,
                     "max": 8,
@@ -213,5 +204,5 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Umfassender Block für Mobilhaus-Präsentationen mit Hero, Farbauswahl, Grundrissen und Innenausstattung im Hosekra-Stil"
+    "description": "Block für Mobilhaus-Seiten (Nature, Pure, etc.) - KEINE HARDCODED INHALTE"
 }

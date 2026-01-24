@@ -1,0 +1,443 @@
+/**
+ * DESIGN UPDATES - Modern Color Scheme & Fixes
+ * January 24, 2026
+ * - New vibrant green color scheme
+ * - Fixed button hover readability
+ * - Fixed admin bar positioning
+ * - Improved hero sections
+ */
+
+/* ============================================
+   1. UPDATED COLOR SCHEME - Modern Vibrant Green
+   ============================================ */
+
+:root {
+    /* Updated Brand Colors - Modern vibrant green palette */
+    --color-primary: #10b981 !important;           /* Emerald green */
+    --color-primary-dark: #059669 !important;      /* Dark emerald */
+    --color-primary-light: #34d399 !important;     /* Light emerald */
+    --color-primary-rgb: 16, 185, 129 !important;  /* RGB for opacity */
+
+    /* Ensure contrast colors */
+    --color-on-primary: #ffffff !important;        /* Text on primary color */
+}
+
+/* Override all primary color usages */
+.btn-primary,
+.cta-banner,
+.feature-icon,
+.value-icon,
+.gallery-expand,
+button[class*="primary"] {
+    background: var(--color-primary) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+button[class*="primary"]:hover {
+    background: var(--color-primary-dark) !important;
+}
+
+/* Links and accents */
+a,
+.text-primary,
+[class*="text-primary"] {
+    color: var(--color-primary) !important;
+}
+
+a:hover {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Borders and outlines */
+.btn-outline,
+.value-card:hover,
+.interior-scheme-card:hover,
+[class*="border-primary"] {
+    border-color: var(--color-primary) !important;
+}
+
+/* Gradients */
+.hero-overlay,
+.cta-overlay,
+[class*="gradient"] {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)) !important;
+}
+
+/* ============================================
+   2. BUTTON HOVER READABILITY FIX
+   ============================================ */
+
+/* Ensure text is ALWAYS readable on hover */
+.btn-primary {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    border: 2px solid var(--color-primary) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--color-primary-dark) !important;
+    color: #ffffff !important;
+    border-color: var(--color-primary-dark) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+.btn-outline {
+    background: transparent !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary) !important;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* Filter buttons */
+.filter-btn,
+.plan-btn,
+.color-btn {
+    background: var(--color-background, #f8f9fa) !important;
+    color: var(--color-text-primary, #333) !important;
+    border: 2px solid var(--color-border, #e0e0e0) !important;
+}
+
+.filter-btn:hover,
+.plan-btn:hover,
+.color-btn:hover,
+.filter-btn.active,
+.plan-btn.active,
+.color-btn.active {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    border-color: var(--color-primary) !important;
+}
+
+/* Gallery expand button */
+.gallery-expand {
+    background: rgba(16, 185, 129, 0.9) !important;
+    color: #ffffff !important;
+}
+
+.gallery-expand:hover {
+    background: var(--color-primary-dark) !important;
+    color: #ffffff !important;
+}
+
+/* ============================================
+   3. ADMIN BAR POSITIONING FIX
+   ============================================ */
+
+/* Remove conflicting admin-bar body padding */
+.admin-bar body {
+    padding-top: 0 !important;
+}
+
+/* Fix admin bar with sticky navigation */
+body.admin-bar {
+    margin-top: 32px !important;
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar {
+        margin-top: 46px !important;
+    }
+}
+
+/* Ensure navigation works correctly with admin bar */
+.admin-bar .site-navigation {
+    top: 32px !important;
+}
+
+@media screen and (max-width: 782px) {
+    .admin-bar .site-navigation {
+        top: 46px !important;
+    }
+}
+
+.admin-bar .mobile-menu {
+    top: 32px !important;
+}
+
+@media screen and (max-width: 782px) {
+    .admin-bar .mobile-menu {
+        top: 46px !important;
+    }
+}
+
+/* ============================================
+   4. IMPROVED HERO SECTIONS - Clean Modern Design
+   ============================================ */
+
+/* Hero section - modern clean design */
+.home-hero,
+.about-hero,
+.contact-hero,
+.gallery-hero,
+.models-hero,
+.3d-hero,
+.mobilhaus-hero {
+    position: relative !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Hero overlay for better text readability */
+.home-hero::before,
+.about-hero::before,
+.contact-hero::before,
+.gallery-hero::before,
+.models-hero::before,
+.3d-hero::before,
+.mobilhaus-hero::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(
+        135deg,
+        rgba(16, 185, 129, 0.7) 0%,
+        rgba(5, 150, 105, 0.8) 100%
+    ) !important;
+    z-index: 1 !important;
+}
+
+/* Hero content positioning */
+.hero-content {
+    position: relative !important;
+    z-index: 2 !important;
+    text-align: center !important;
+    color: #ffffff !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+}
+
+.hero-content h1 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    margin-bottom: 1rem !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hero-content .hero-subtitle {
+    color: #ffffff !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 2rem !important;
+    opacity: 0.95 !important;
+    line-height: 1.6 !important;
+}
+
+/* Hero buttons - white on primary background */
+.hero-content .btn-primary {
+    background: #ffffff !important;
+    color: var(--color-primary) !important;
+    border: 2px solid #ffffff !important;
+}
+
+.hero-content .btn-primary:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.hero-content .btn-outline {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+.hero-content .btn-outline:hover {
+    background: #ffffff !important;
+    color: var(--color-primary) !important;
+}
+
+/* ============================================
+   5. LOGIN ADMIN PANEL STYLING
+   ============================================ */
+
+/* WordPress login page customization */
+body.login {
+    background: var(--color-background, #f8f9fa) !important;
+}
+
+.login h1 a {
+    background-image: none !important;
+    background-size: contain !important;
+    width: auto !important;
+    height: auto !important;
+    text-indent: 0 !important;
+    color: var(--color-primary) !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+}
+
+.login form {
+    border: 1px solid var(--color-border, #e0e0e0) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.login form .button-primary {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.login form .button-primary:hover,
+.login form .button-primary:focus {
+    background: var(--color-primary-dark) !important;
+    border-color: var(--color-primary-dark) !important;
+}
+
+.login #backtoblog a,
+.login #nav a {
+    color: var(--color-primary) !important;
+}
+
+.login #backtoblog a:hover,
+.login #nav a:hover {
+    color: var(--color-primary-dark) !important;
+}
+
+/* ============================================
+   6. CARD HOVER IMPROVEMENTS
+   ============================================ */
+
+.feature-card,
+.model-card,
+.value-card,
+.gallery-item {
+    transition: all 0.3s ease !important;
+}
+
+.feature-card:hover,
+.model-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.15) !important;
+}
+
+.value-card:hover {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2) !important;
+    transform: translateY(-4px) !important;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* ============================================
+   7. ICON COLORS
+   ============================================ */
+
+.feature-icon,
+.value-icon,
+.icon-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)) !important;
+    color: #ffffff !important;
+}
+
+svg.icon,
+.svg-icon {
+    fill: var(--color-primary) !important;
+}
+
+/* ============================================
+   8. FORM FOCUS STATES WITH NEW GREEN
+   ============================================ */
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-primary) !important;
+    outline: 2px solid var(--color-primary) !important;
+    outline-offset: 0 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* ============================================
+   9. LOADING SPINNER WITH NEW GREEN
+   ============================================ */
+
+.loading::after,
+.is-loading::after {
+    border: 4px solid rgba(16, 185, 129, 0.2) !important;
+    border-top-color: var(--color-primary) !important;
+}
+
+/* ============================================
+   10. SOCIAL ICONS WITH NEW GREEN
+   ============================================ */
+
+.footer-social-links a,
+.social-links a,
+.team-member-social a {
+    background: var(--color-primary) !important;
+}
+
+.footer-social-links a:hover,
+.social-links a:hover,
+.team-member-social a:hover {
+    background: var(--color-primary-dark) !important;
+}
+
+/* ============================================
+   11. LIGHTBOX WITH NEW GREEN
+   ============================================ */
+
+.lightbox-close:focus,
+.lightbox-prev:focus,
+.lightbox-next:focus {
+    outline: 3px solid var(--color-primary) !important;
+    background: var(--color-primary) !important;
+}
+
+/* ============================================
+   12. CTA BANNER WITH NEW GREEN
+   ============================================ */
+
+.cta-banner {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+    color: #ffffff !important;
+}
+
+.cta-banner h2,
+.cta-banner h3,
+.cta-banner p {
+    color: #ffffff !important;
+}
+
+.cta-banner .btn-primary {
+    background: #ffffff !important;
+    color: var(--color-primary) !important;
+}
+
+.cta-banner .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ============================================
+   13. SECTION HEADERS WITH NEW GREEN
+   ============================================ */
+
+.section-header h2::after,
+.section-title::after {
+    background: var(--color-primary) !important;
+}
+
+/* ============================================
+   END OF DESIGN UPDATES
+   ============================================ */

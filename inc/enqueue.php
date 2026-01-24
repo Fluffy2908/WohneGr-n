@@ -27,6 +27,9 @@ function wohnegruen_scripts() {
     // COMPLETE FIXES - Important & Minor issues (load after critical)
     wp_enqueue_style('wohnegruen-complete-fixes', get_template_directory_uri() . '/assets/css/complete-fixes.css', array('wohnegruen-critical-fixes'), '1.0.0');
 
+    // DESIGN UPDATES - Modern green color scheme & fixes (load last)
+    wp_enqueue_style('wohnegruen-design-updates', get_template_directory_uri() . '/assets/css/design-updates.css', array('wohnegruen-complete-fixes'), '1.0.0');
+
     // Block Utilities (load first, no dependencies)
     wp_enqueue_script('wohnegruen-block-utilities', get_template_directory_uri() . '/assets/js/block-utilities.js', array(), '1.0.0', true);
 

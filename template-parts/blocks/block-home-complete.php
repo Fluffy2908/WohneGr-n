@@ -30,6 +30,7 @@ $block_id = 'home-complete-' . $block['id'];
 <div class="home-complete-page" id="<?php echo esc_attr($block_id); ?>">
 
     <!-- Hero Section -->
+    <?php if ($hero_title || $hero_subtitle || $hero_button_text): ?>
     <section class="home-hero" style="background-image: url('<?php echo esc_url($hero_background['url'] ?? ''); ?>');">
         <div class="container">
             <div class="hero-content">
@@ -49,6 +50,7 @@ $block_id = 'home-complete-' . $block['id'];
             </div>
         </div>
     </section>
+    <?php endif; ?>
 
     <!-- Features Section -->
     <?php if ($features && is_array($features)): ?>
