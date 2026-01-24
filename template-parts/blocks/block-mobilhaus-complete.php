@@ -165,8 +165,14 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 
             <?php foreach ($interior_schemes as $scheme_index => $scheme): ?>
                 <div class="scheme-block">
-                    <div class="scheme-header">
-                        <h3><?php echo esc_html($scheme['scheme_name']); ?></h3>
+                    <!-- Scheme Header: Text LEFT, Color Palette RIGHT -->
+                    <div class="scheme-header-grid">
+                        <div class="scheme-text">
+                            <h3><?php echo esc_html($scheme['scheme_name']); ?></h3>
+                            <?php if (isset($scheme['scheme_description'])): ?>
+                                <p class="scheme-desc"><?php echo esc_html($scheme['scheme_description']); ?></p>
+                            <?php endif; ?>
+                        </div>
 
                         <?php if (isset($scheme['color_palette_image']['url'])): ?>
                             <div class="palette-preview">
@@ -174,10 +180,6 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
                                      alt="Palette <?php echo esc_attr($scheme['scheme_name']); ?>"
                                      loading="lazy">
                             </div>
-                        <?php endif; ?>
-
-                        <?php if (isset($scheme['scheme_description'])): ?>
-                            <p class="scheme-desc"><?php echo esc_html($scheme['scheme_description']); ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -512,34 +514,38 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     border-radius: 24px;
 }
 
-.scheme-header {
-    text-align: center;
+/* Scheme Header Grid: Text LEFT, Color Palette RIGHT */
+.scheme-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
     margin-bottom: 50px;
 }
 
-.scheme-header h3 {
+.scheme-text h3 {
     font-size: 2.5rem;
     color: var(--color-primary);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 700;
 }
 
+.scheme-desc {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
 .palette-preview {
-    max-width: 600px;
-    margin: 0 auto 24px;
     border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .palette-preview img {
     width: 100%;
     height: auto;
     display: block;
-}
-
-.scheme-desc {
-    font-size: 1.125rem;
-    color: var(--color-text-secondary);
 }
 
 .interior-gallery {
@@ -619,8 +625,10 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 }
 
 .lightbox-content {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 95%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: 8px;
 }
@@ -664,6 +672,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 /* Responsive Design */
 @media (max-width: 1023px) {
     .details-grid,
+    .scheme-header-grid,
     .interior-gallery {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -672,6 +681,10 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     .interior-gallery {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+    }
+
+    .scheme-text {
+        text-align: center;
     }
 }
 
@@ -719,9 +732,10 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 </style>
 
 <script>
-// Store gallery data
+// Store gallery data with FULL SIZE images for lightbox
 window.interiorGallery = <?php echo json_encode(array_map(function($scheme) {
     return array_map(function($img) {
+        // Use full size for lightbox quality
         return isset($img['url']) ? $img['url'] : '';
     }, $scheme['gallery'] ?? []);
 }, $interior_schemes ?? [])); ?>;

@@ -68,10 +68,28 @@ $contact_address = wohnegruen_get_option('contact_address', 'Grazer Str. 30, 807
                         foreach ($footer_col3_links as $link) : ?>
                             <a href="<?php echo esc_url($link['url']); ?>"><?php echo esc_html($link['text']); ?></a>
                         <?php endforeach;
-                    else : ?>
-                        <a href="<?php echo home_url('/modelle'); ?>">Nature</a>
-                        <a href="<?php echo home_url('/modelle'); ?>">Pure</a>
-                    <?php endif; ?>
+                    else :
+                        // Get actual mobilhaus posts
+                        $mobilhaus_posts = get_posts(array(
+                            'post_type' => 'mobilhaus',
+                            'posts_per_page' => -1,
+                            'post_status' => 'publish',
+                            'orderby' => 'title',
+                            'order' => 'ASC'
+                        ));
+
+                        if ($mobilhaus_posts) :
+                            foreach ($mobilhaus_posts as $mobilhaus_post) : ?>
+                                <a href="<?php echo get_permalink($mobilhaus_post->ID); ?>"><?php echo esc_html(get_the_title($mobilhaus_post->ID)); ?></a>
+                            <?php endforeach;
+                        else :
+                            // Fallback to Modelle page
+                            $modelle_page = get_page_by_path('modelle');
+                            if ($modelle_page) : ?>
+                                <a href="<?php echo get_permalink($modelle_page); ?>">Modelle</a>
+                            <?php endif;
+                        endif;
+                    endif; ?>
                 </div>
             </div>
 
