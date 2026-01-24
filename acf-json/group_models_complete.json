@@ -39,34 +39,28 @@
             "media_upload": 0
         },
         {
-            "key": "field_models_show_filters",
-            "label": "Filter anzeigen",
-            "name": "models_show_filters",
-            "type": "true_false",
-            "message": "Größen-Filter aktivieren",
-            "default_value": 1,
-            "ui": 1
+            "key": "field_models_nature_model",
+            "label": "Nature Modell",
+            "name": "models_nature_model",
+            "type": "post_object",
+            "instructions": "Wählen Sie das Mobilhaus für \"Nature\"",
+            "required": 0,
+            "post_type": ["mobilhaus"],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object"
         },
         {
-            "key": "field_models_filter_by",
-            "label": "Filtern nach",
-            "name": "models_filter_by",
-            "type": "select",
-            "choices": {
-                "none": "Keine Filter",
-                "size": "Größe",
-                "category": "Kategorie"
-            },
-            "default_value": "size",
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_models_show_filters",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ]
+            "key": "field_models_pure_model",
+            "label": "Pure Modell",
+            "name": "models_pure_model",
+            "type": "post_object",
+            "instructions": "Wählen Sie das Mobilhaus für \"Pure\"",
+            "required": 0,
+            "post_type": ["mobilhaus"],
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object"
         }
     ],
     "location": [
@@ -85,5 +79,5 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Alles-in-einem Block für Modelle Seite: Hero, Filter, Modellkarten - mit Live-Vorschau"
+    "description": "Alles-in-einem Block für Modelle Seite mit Nature/Pure Toggle - KEINE HARDCODED INHALTE"
 }
