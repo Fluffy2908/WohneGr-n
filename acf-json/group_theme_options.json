@@ -7,10 +7,8 @@
             "label": "Kontakt E-Mail",
             "name": "contact_email",
             "type": "email",
-            "instructions": "Hauptkontakt E-Mail-Adresse (z.B. info@wohnegrün.at)",
-            "required": 1,
-            "default_value": "info@wohnegrün.at",
-            "placeholder": "info@wohnegrün.at"
+            "instructions": "Hauptkontakt E-Mail-Adresse",
+            "required": 1
         },
         {
             "key": "field_contact_phone_option",
@@ -18,8 +16,7 @@
             "name": "contact_phone",
             "type": "text",
             "instructions": "Haupttelefonnummer",
-            "required": 0,
-            "placeholder": "+43 123 456 789"
+            "required": 0
         },
         {
             "key": "field_contact_address_option",
@@ -36,8 +33,7 @@
             "name": "contact_hours",
             "type": "text",
             "instructions": "Geschäftszeiten",
-            "required": 0,
-            "default_value": "Mo - Fr: 8:00 - 17:00"
+            "required": 0
         },
         {
             "key": "field_social_facebook",

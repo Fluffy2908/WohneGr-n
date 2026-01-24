@@ -27,9 +27,8 @@
             "label": "Sektion ID",
             "name": "section_id",
             "type": "text",
-            "instructions": "Optional: HTML ID für Anker-Links (z.B. 'about-us')",
-            "required": 0,
-            "placeholder": "z.B. ueber-uns"
+            "instructions": "Optional: HTML ID für Anker-Links",
+            "required": 0
         },
         {
             "key": "field_section_class",
@@ -37,8 +36,7 @@
             "name": "section_class",
             "type": "text",
             "instructions": "Optional: Zusätzliche CSS-Klassen für erweiterte Styles",
-            "required": 0,
-            "placeholder": "z.B. custom-style"
+            "required": 0
         },
         {
             "key": "field_background_color",
@@ -165,9 +163,8 @@
                     "label": "Icon",
                     "name": "icon",
                     "type": "text",
-                    "instructions": "Icon-Name (z.B. check, home, star)",
-                    "required": 0,
-                    "placeholder": "z.B. check"
+                    "instructions": "Icon-Name",
+                    "required": 0
                 },
                 {
                     "key": "field_feature_title",
@@ -212,9 +209,8 @@
                     "label": "Icon",
                     "name": "icon",
                     "type": "text",
-                    "instructions": "Icon-Name (z.B. heart, leaf, users)",
-                    "required": 0,
-                    "placeholder": "z.B. heart"
+                    "instructions": "Icon-Name",
+                    "required": 0
                 },
                 {
                     "key": "field_value_title",
@@ -240,7 +236,6 @@
             "type": "text",
             "instructions": "Text für den CTA-Button",
             "required": 0,
-            "placeholder": "z.B. Jetzt kontaktieren",
             "conditional_logic": [
                 [
                     {
