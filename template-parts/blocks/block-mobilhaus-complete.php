@@ -672,8 +672,8 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 
 .interior-gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
 }
 
 .gallery-item {
@@ -794,15 +794,14 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 /* Responsive Design */
 @media (max-width: 1023px) {
     .details-grid,
-    .scheme-header-grid,
-    .interior-gallery {
+    .scheme-header-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
     .interior-gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 
     .scheme-text {
@@ -824,8 +823,8 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     }
 
     .interior-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .big-color-buttons {
