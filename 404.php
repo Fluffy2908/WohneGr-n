@@ -79,7 +79,7 @@ $error_description = wohnegruen_get_option('404_description') ?: 'Die Seite, die
                         <?php echo wohnegruen_get_icon('email'); ?>
                         <span>Kontakt</span>
                     </a>
-                    <a href="<?php echo esc_url(home_url('/about/')); ?>" class="quick-link-card">
+                    <a href="<?php echo esc_url(home_url('/uber-uns/')); ?>" class="quick-link-card">
                         <?php echo wohnegruen_get_icon('info'); ?>
                         <span>Über uns</span>
                     </a>
