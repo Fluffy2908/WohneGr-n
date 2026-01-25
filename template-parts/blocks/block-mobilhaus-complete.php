@@ -1096,20 +1096,20 @@ function switchExteriorColor(colorIndex) {
 const floorPlanStates = {};
 
 function selectFloorPlan(index, blockId) {
-    // Update active state on gallery options
-    const options = document.querySelectorAll('.floor-plan-option');
-    options.forEach((opt, idx) => {
+    // Update active state on selector buttons
+    const buttons = document.querySelectorAll('.floor-plan-selector-btn');
+    buttons.forEach((btn, idx) => {
         if (idx === index) {
-            opt.classList.add('active');
+            btn.classList.add('active');
         } else {
-            opt.classList.remove('active');
+            btn.classList.remove('active');
         }
     });
 
-    // Show selected floor plan view
-    const views = document.querySelectorAll('.floor-plan-view');
-    views.forEach((view, idx) => {
-        view.style.display = idx === index ? 'block' : 'none';
+    // Show selected floor plan display
+    const displays = document.querySelectorAll('.floor-plan-display');
+    displays.forEach((display, idx) => {
+        display.style.display = idx === index ? 'block' : 'none';
     });
 
     // Reset mirrored state for new selection

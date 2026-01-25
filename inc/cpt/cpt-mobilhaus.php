@@ -31,7 +31,7 @@ function wohnegruen_register_mobilhaus_cpt() {
         'show_ui'             => true,
         'show_in_menu'        => true,
         'query_var'           => true,
-        'rewrite'             => array('slug' => 'mobilhaus'),
+        'rewrite'             => array('slug' => 'modelle'),
         'capability_type'     => 'post',
         'has_archive'         => false,
         'hierarchical'        => false,
