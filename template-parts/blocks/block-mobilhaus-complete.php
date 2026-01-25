@@ -12,8 +12,7 @@ $description_title = get_field('mobilhaus_description_title');
 $description_text = get_field('mobilhaus_description_text');
 $description_image = get_field('mobilhaus_description_image');
 $specifications = get_field('mobilhaus_specifications');
-$floor_plan_normal = get_field('mobilhaus_floor_plan_normal');
-$floor_plan_reversed = get_field('mobilhaus_floor_plan_reversed');
+$floor_plans = get_field('mobilhaus_floor_plans');
 $interior_schemes = get_field('mobilhaus_interior_schemes');
 
 $block_id = isset($block['anchor']) ? $block['anchor'] : 'mobilhaus-' . $block['id'];
@@ -126,31 +125,73 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     </section>
     <?php endif; ?>
 
-    <!-- GRUNDRISS SECTION -->
-    <?php if ($floor_plan_normal): ?>
+    <!-- GRUNDRISS GALLERY SECTION -->
+    <?php if ($floor_plans && is_array($floor_plans) && count($floor_plans) > 0): ?>
     <section class="grundriss-section section-padding">
         <div class="container">
-            <h2 class="section-title">Grundriss</h2>
+            <h2 class="section-title">Grundrisse</h2>
+            <p class="section-subtitle">Wählen Sie Ihre gewünschte Größe und Variante</p>
 
+            <!-- Floor Plan Gallery Selector -->
+            <div class="floor-plan-gallery">
+                <?php foreach ($floor_plans as $index => $plan): ?>
+                    <div class="floor-plan-option <?php echo $index === 0 ? 'active' : ''; ?>"
+                         onclick="selectFloorPlan(<?php echo $index; ?>, '<?php echo esc_js($block_id); ?>')">
+                        <div class="floor-plan-thumbnail">
+                            <?php if (isset($plan['normal_plan']['sizes']['medium'])): ?>
+                                <img src="<?php echo esc_url($plan['normal_plan']['sizes']['medium']); ?>"
+                                     alt="<?php echo esc_attr($plan['title']); ?>">
+                            <?php elseif (isset($plan['normal_plan']['url'])): ?>
+                                <img src="<?php echo esc_url($plan['normal_plan']['url']); ?>"
+                                     alt="<?php echo esc_attr($plan['title']); ?>">
+                            <?php endif; ?>
+                        </div>
+                        <div class="floor-plan-option-info">
+                            <h4><?php echo esc_html($plan['title']); ?></h4>
+                            <?php if (!empty($plan['description'])): ?>
+                                <p><?php echo esc_html($plan['description']); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Floor Plan Viewer -->
             <div class="grundriss-viewer">
-                <div class="grundriss-image-wrapper">
-                    <img
-                        id="grundriss-img-<?php echo esc_attr($block_id); ?>"
-                        class="grundriss-img"
-                        src="<?php echo esc_url($floor_plan_normal['url']); ?>"
-                        alt="Grundriss"
-                        loading="lazy">
-                </div>
+                <?php foreach ($floor_plans as $index => $plan): ?>
+                    <div class="floor-plan-view" id="floor-plan-<?php echo esc_attr($block_id); ?>-<?php echo $index; ?>"
+                         style="<?php echo $index === 0 ? '' : 'display: none;'; ?>">
 
-                <?php if ($floor_plan_reversed): ?>
-                <div class="grundriss-controls">
-                    <button
-                        class="btn btn-outline grundriss-toggle"
-                        onclick="toggleGrundriss('<?php echo esc_js($block_id); ?>', '<?php echo esc_url($floor_plan_normal['url']); ?>', '<?php echo esc_url($floor_plan_reversed['url']); ?>')">
-                        <span class="toggle-text">Reversed Version anzeigen</span>
-                    </button>
-                </div>
-                <?php endif; ?>
+                        <div class="floor-plan-header">
+                            <div class="floor-plan-title-section">
+                                <h3><?php echo esc_html($plan['title']); ?></h3>
+                                <?php if (!empty($plan['description'])): ?>
+                                    <p><?php echo esc_html($plan['description']); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="grundriss-image-wrapper">
+                            <img
+                                id="grundriss-img-<?php echo esc_attr($block_id); ?>-<?php echo $index; ?>"
+                                class="grundriss-img"
+                                src="<?php echo esc_url($plan['normal_plan']['url']); ?>"
+                                alt="<?php echo esc_attr($plan['title']); ?> - Grundriss"
+                                loading="lazy">
+                        </div>
+
+                        <?php if (isset($plan['mirrored_plan']['url'])): ?>
+                        <div class="grundriss-controls">
+                            <button
+                                class="btn btn-outline grundriss-toggle"
+                                onclick="toggleGrundrissView('<?php echo esc_js($block_id); ?>', <?php echo $index; ?>, '<?php echo esc_url($plan['normal_plan']['url']); ?>', '<?php echo esc_url($plan['mirrored_plan']['url']); ?>')">
+                                <span class="toggle-icon">↔</span>
+                                <span class="toggle-text">Gespiegelt anzeigen</span>
+                            </button>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -447,13 +488,94 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     background: var(--color-background);
 }
 
+/* Floor Plan Gallery Selector */
+.floor-plan-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.floor-plan-option {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.floor-plan-option:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.floor-plan-option.active {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 32px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.floor-plan-thumbnail {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.floor-plan-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+}
+
+.floor-plan-option-info {
+    padding: 16px;
+    background: #ffffff;
+}
+
+.floor-plan-option-info h4 {
+    color: var(--color-primary);
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.floor-plan-option-info p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Floor Plan Viewer */
 .grundriss-viewer {
     max-width: 1000px;
     margin: 0 auto;
+}
+
+.floor-plan-view {
     background: #ffffff;
     border-radius: 24px;
-    padding: 40px;
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.floor-plan-header {
+    margin-bottom: 24px;
+}
+
+.floor-plan-title-section h3 {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.floor-plan-title-section p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: 1rem;
 }
 
 .grundriss-image-wrapper {
@@ -470,7 +592,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 }
 
 .grundriss-controls {
-    margin-top: 32px;
+    margin-top: 24px;
     display: flex;
     justify-content: center;
 }
@@ -718,6 +840,20 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     .scheme-block {
         padding: 30px;
     }
+
+    .floor-plan-gallery {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .floor-plan-view {
+        padding: 20px;
+    }
+
+    .floor-plan-title-section h3 {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 479px) {
@@ -756,19 +892,52 @@ function switchExteriorColor(colorIndex) {
     });
 }
 
-// Grundriss toggle
-let isReversed = false;
-function toggleGrundriss(blockId, normalUrl, reversedUrl) {
-    const img = document.getElementById('grundriss-img-' + blockId);
+// Floor plan gallery selector
+const floorPlanStates = {};
+
+function selectFloorPlan(index, blockId) {
+    // Update active state on gallery options
+    const options = document.querySelectorAll('.floor-plan-option');
+    options.forEach((opt, idx) => {
+        if (idx === index) {
+            opt.classList.add('active');
+        } else {
+            opt.classList.remove('active');
+        }
+    });
+
+    // Show selected floor plan view
+    const views = document.querySelectorAll('.floor-plan-view');
+    views.forEach((view, idx) => {
+        view.style.display = idx === index ? 'block' : 'none';
+    });
+
+    // Reset mirrored state for new selection
+    if (!floorPlanStates[blockId]) {
+        floorPlanStates[blockId] = {};
+    }
+    floorPlanStates[blockId][index] = false;
+}
+
+// Floor plan toggle (normal <-> mirrored)
+function toggleGrundrissView(blockId, planIndex, normalUrl, mirroredUrl) {
+    if (!floorPlanStates[blockId]) {
+        floorPlanStates[blockId] = {};
+    }
+
+    const img = document.getElementById('grundriss-img-' + blockId + '-' + planIndex);
     const btn = event.target.closest('.grundriss-toggle');
 
-    isReversed = !isReversed;
+    const currentState = floorPlanStates[blockId][planIndex] || false;
+    const newState = !currentState;
+    floorPlanStates[blockId][planIndex] = newState;
+
     img.style.opacity = '0';
 
     setTimeout(() => {
-        img.src = isReversed ? reversedUrl : normalUrl;
+        img.src = newState ? mirroredUrl : normalUrl;
         img.style.opacity = '1';
-        btn.querySelector('.toggle-text').textContent = isReversed ? 'Normal Version anzeigen' : 'Reversed Version anzeigen';
+        btn.querySelector('.toggle-text').textContent = newState ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
     }, 200);
 }
 
