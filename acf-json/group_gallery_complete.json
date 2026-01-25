@@ -54,89 +54,6 @@
                     "library": "all"
                 }
             ]
-        },
-        {
-            "key": "field_gallery_3d_intro_title",
-            "label": "3D Einleitungs Titel",
-            "name": "gallery_3d_intro_title",
-            "type": "text"
-        },
-        {
-            "key": "field_gallery_3d_intro_content",
-            "label": "3D Einleitungs Text",
-            "name": "gallery_3d_intro_content",
-            "type": "wysiwyg",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0
-        },
-        {
-            "key": "field_gallery_3d_floorplans",
-            "label": "3D Grundrisse",
-            "name": "gallery_3d_floorplans",
-            "type": "repeater",
-            "min": 1,
-            "max": 10,
-            "layout": "block",
-            "button_label": "Grundriss hinzufügen",
-            "sub_fields": [
-                {
-                    "key": "field_gallery_3d_plan_title",
-                    "label": "Titel",
-                    "name": "title",
-                    "type": "text",
-                    "required": 1
-                },
-                {
-                    "key": "field_gallery_3d_plan_description",
-                    "label": "Beschreibung",
-                    "name": "description",
-                    "type": "textarea",
-                    "rows": 3
-                },
-                {
-                    "key": "field_gallery_3d_plan_normal",
-                    "label": "Grundriss Normal",
-                    "name": "normal_plan",
-                    "type": "image",
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "required": 1
-                },
-                {
-                    "key": "field_gallery_3d_plan_mirrored",
-                    "label": "Grundriss Gespiegelt",
-                    "name": "mirrored_plan",
-                    "type": "image",
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "instructions": "Optional: Gespiegelter Grundriss"
-                },
-                {
-                    "key": "field_gallery_3d_plan_specifications",
-                    "label": "Technische Daten",
-                    "name": "specifications",
-                    "type": "repeater",
-                    "min": 0,
-                    "max": 10,
-                    "layout": "table",
-                    "button_label": "Daten hinzufügen",
-                    "sub_fields": [
-                        {
-                            "key": "field_gallery_3d_spec_label",
-                            "label": "Bezeichnung",
-                            "name": "label",
-                            "type": "text"
-                        },
-                        {
-                            "key": "field_gallery_3d_spec_value",
-                            "label": "Wert",
-                            "name": "value",
-                            "type": "text"
-                        }
-                    ]
-                }
-            ]
         }
     ],
     "location": [
@@ -155,5 +72,5 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Alles-in-einem Block für Galerie Seite: Bilder + 3D Grundrisse mit Toggle - mit Live-Vorschau"
+    "description": "Galerie Block für Foto-Galerie mit Kategorien und Filtern"
 }

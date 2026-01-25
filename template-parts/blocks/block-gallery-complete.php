@@ -9,10 +9,6 @@ $hero_image = get_field('gallery_hero_image');
 $show_filters = get_field('gallery_show_filters');
 $categories = get_field('gallery_categories');
 
-$intro_3d_title = get_field('gallery_3d_intro_title');
-$intro_3d_content = get_field('gallery_3d_intro_content');
-$floorplans = get_field('gallery_3d_floorplans');
-
 $block_id = 'gallery-' . $block['id'];
 ?>
 
@@ -30,23 +26,9 @@ $block_id = 'gallery-' . $block['id'];
         </div>
     </section>
 
-    <!-- Toggle Buttons Section -->
-    <section class="gallery-toggle-section section-padding">
-        <div class="container">
-            <div class="big-toggle-buttons">
-                <button class="big-toggle-btn active" data-section="bilder" onclick="switchGallerySection('bilder')">
-                    <span class="toggle-btn-text">Bilder</span>
-                </button>
-                <button class="big-toggle-btn" data-section="3d-grundrisse" onclick="switchGallerySection('3d-grundrisse')">
-                    <span class="toggle-btn-text">3D & Grundrisse</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 1: BILDER (Gallery) -->
+    <!-- GALLERY SECTION -->
     <?php if ($categories && is_array($categories)): ?>
-    <section class="bilder-section section-content active" data-content-section="bilder">
+    <section class="gallery-section section-padding">
         <div class="container">
 
             <!-- Filter Buttons (Simple Text Only) -->
@@ -126,85 +108,6 @@ $block_id = 'gallery-' . $block['id'];
         </div>
     </section>
     <?php endif; ?>
-
-    <!-- SECTION 2: 3D & GRUNDRISSE (Floor Plans) -->
-    <section class="threed-section section-content section-padding" data-content-section="3d-grundrisse">
-        <div class="container">
-
-            <!-- Intro -->
-            <?php if ($intro_3d_title || $intro_3d_content): ?>
-            <div class="threed-intro text-center">
-                <?php if ($intro_3d_title): ?>
-                    <h2><?php echo esc_html($intro_3d_title); ?></h2>
-                <?php endif; ?>
-                <?php if ($intro_3d_content): ?>
-                    <div class="intro-text">
-                        <?php echo wp_kses_post($intro_3d_content); ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <?php endif; ?>
-
-            <!-- Floor Plans Grid -->
-            <?php if ($floorplans && is_array($floorplans)): ?>
-            <div class="floorplans-grid">
-
-                <?php foreach ($floorplans as $index => $plan): ?>
-                <div class="floorplan-card">
-                    <!-- Card Header -->
-                    <div class="card-header">
-                        <?php if (isset($plan['title'])): ?>
-                            <h3><?php echo esc_html($plan['title']); ?></h3>
-                        <?php endif; ?>
-                        <?php if (isset($plan['description'])): ?>
-                            <p class="card-description"><?php echo esc_html($plan['description']); ?></p>
-                        <?php endif; ?>
-                    </div>
-
-                    <!-- Card Content: Tech Data LEFT, Image RIGHT -->
-                    <div class="card-content-grid">
-                        <!-- LEFT: Technical Data -->
-                        <?php if (isset($plan['specifications']) && is_array($plan['specifications']) && !empty($plan['specifications'])): ?>
-                        <div class="tech-data">
-                            <h4>Technische Daten</h4>
-                            <dl class="specs-list">
-                                <?php foreach ($plan['specifications'] as $spec): ?>
-                                    <div class="spec-row">
-                                        <dt><?php echo esc_html($spec['label']); ?></dt>
-                                        <dd><?php echo esc_html($spec['value']); ?></dd>
-                                    </div>
-                                <?php endforeach; ?>
-                            </dl>
-                        </div>
-                        <?php endif; ?>
-
-                        <!-- RIGHT: Plan Image -->
-                        <div class="plan-preview">
-                            <?php if (isset($plan['normal_plan'])): ?>
-                                <img src="<?php echo esc_url($plan['normal_plan']['url']); ?>"
-                                     alt="<?php echo esc_attr($plan['title']); ?>"
-                                     loading="lazy">
-                            <?php endif; ?>
-
-                            <!-- Toggle Button for Mirrored Version -->
-                            <?php if (isset($plan['mirrored_plan'])): ?>
-                            <button class="toggle-mirror-btn"
-                                    data-normal="<?php echo esc_url($plan['normal_plan']['url']); ?>"
-                                    data-mirrored="<?php echo esc_url($plan['mirrored_plan']['url']); ?>"
-                                    onclick="togglePlanView(this)">
-                                <span class="toggle-text">Gespiegelt anzeigen</span>
-                            </button>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-
-            </div>
-            <?php endif; ?>
-
-        </div>
-    </section>
 
     <!-- Lightbox -->
     <div id="gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
