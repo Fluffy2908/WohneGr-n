@@ -94,16 +94,34 @@
             "key": "field_home_about_title",
             "label": "Über uns Titel",
             "name": "home_about_title",
-            "type": "text"
+            "type": "text",
+            "instructions": "z.B. 'Ihr Partner für modernes Wohnen in Österreich'"
         },
         {
-            "key": "field_home_about_text",
-            "label": "Über uns Text",
-            "name": "home_about_text",
-            "type": "wysiwyg",
-            "tabs": "visual",
-            "toolbar": "basic",
-            "media_upload": 0
+            "key": "field_home_about_subtitle",
+            "label": "Über uns Untertitel",
+            "name": "home_about_subtitle",
+            "type": "text",
+            "instructions": "Kurzer Beschreibungstext unter dem Titel"
+        },
+        {
+            "key": "field_home_about_features",
+            "label": "Über uns Features",
+            "name": "home_about_features",
+            "type": "repeater",
+            "min": 3,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Feature hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_about_feature_text",
+                    "label": "Feature Text",
+                    "name": "text",
+                    "type": "text",
+                    "required": 1
+                }
+            ]
         },
         {
             "key": "field_home_about_image",
@@ -114,12 +132,20 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_home_about_badge_number",
+            "label": "Badge Nummer",
+            "name": "home_about_badge_number",
+            "type": "text",
+            "default_value": "15+",
+            "instructions": "z.B. '15+' oder '10+'"
+        },
+        {
             "key": "field_home_about_badge_text",
-            "label": "Über uns Badge Text",
+            "label": "Badge Text",
             "name": "home_about_badge_text",
             "type": "text",
-            "default_value": "Qualität seit 2020",
-            "instructions": "Text für das Badge-Element auf dem Bild"
+            "default_value": "Jahre Erfahrung",
+            "instructions": "z.B. 'Jahre Erfahrung' oder 'Projekte'"
         },
         {
             "key": "field_home_models_title",

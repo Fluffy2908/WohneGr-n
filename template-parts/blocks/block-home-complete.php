@@ -16,8 +16,10 @@ $features_subtitle = get_field('home_features_subtitle');
 $features = get_field('home_features');
 
 $about_title = get_field('home_about_title');
-$about_text = get_field('home_about_text');
+$about_subtitle = get_field('home_about_subtitle');
+$about_features = get_field('home_about_features');
 $about_image = get_field('home_about_image');
+$about_badge_number = get_field('home_about_badge_number');
 $about_badge_text = get_field('home_about_badge_text');
 
 $models_title = get_field('home_models_title');
@@ -90,33 +92,41 @@ $block_id = 'home-complete-' . $block['id'];
     <?php endif; ?>
 
     <!-- About Section -->
-    <?php if ($about_title || $about_text || $about_image): ?>
+    <?php if ($about_title || $about_subtitle || $about_features || $about_image): ?>
     <section class="home-about section-padding">
         <div class="container">
             <div class="about-grid">
-                <!-- Image with Badge (70%) -->
+                <!-- Image with Badge (Left - 55%) -->
                 <div class="about-image-wrapper">
                     <?php if ($about_image): ?>
                         <img src="<?php echo esc_url($about_image['url']); ?>"
                              alt="<?php echo esc_attr($about_image['alt'] ?: 'Über WohneGrün'); ?>">
-                        <?php if ($about_badge_text): ?>
+                        <?php if ($about_badge_number || $about_badge_text): ?>
                             <div class="about-badge">
-                                <?php echo wohnegruen_get_icon('star'); ?>
-                                <span><?php echo esc_html($about_badge_text); ?></span>
+                                <div class="badge-number"><?php echo esc_html($about_badge_number ?: '15+'); ?></div>
+                                <div class="badge-text"><?php echo esc_html($about_badge_text ?: 'Jahre Erfahrung'); ?></div>
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
 
-                <!-- Text Content (30%) -->
+                <!-- Text Content (Right - 45%) -->
                 <div class="about-content">
                     <?php if ($about_title): ?>
                         <h2><?php echo esc_html($about_title); ?></h2>
                     <?php endif; ?>
-                    <?php if ($about_text): ?>
-                        <div class="about-text">
-                            <?php echo wp_kses_post($about_text); ?>
-                        </div>
+                    <?php if ($about_subtitle): ?>
+                        <p class="about-subtitle"><?php echo esc_html($about_subtitle); ?></p>
+                    <?php endif; ?>
+                    <?php if ($about_features && is_array($about_features)): ?>
+                        <ul class="about-features-list">
+                            <?php foreach ($about_features as $feature): ?>
+                                <li>
+                                    <span class="feature-check"><?php echo wohnegruen_get_icon('check'); ?></span>
+                                    <span><?php echo esc_html($feature['text']); ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
                     <?php endif; ?>
                 </div>
             </div>
@@ -279,12 +289,12 @@ $block_id = 'home-complete-' . $block['id'];
 
 /* About Section */
 .home-about {
-    background: var(--color-white);
+    background: var(--color-background);
 }
 
 .about-grid {
     display: grid;
-    grid-template-columns: 70fr 30fr;
+    grid-template-columns: 55fr 45fr;
     gap: var(--spacing-3xl);
     align-items: center;
 }
@@ -293,7 +303,7 @@ $block_id = 'home-complete-' . $block['id'];
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .about-image-wrapper img {
@@ -304,43 +314,76 @@ $block_id = 'home-complete-' . $block['id'];
 
 .about-badge {
     position: absolute;
-    top: 24px;
-    right: 24px;
+    bottom: 24px;
+    left: 24px;
     background: var(--color-primary);
     color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 16px 24px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.about-badge svg {
-    width: 18px;
-    height: 18px;
+.badge-number {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.badge-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.95;
+    line-height: 1.2;
 }
 
 .about-content h2 {
     font-size: var(--font-size-3xl);
     color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
-}
-
-.about-text {
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    font-size: var(--font-size-md);
-}
-
-.about-text p {
     margin-bottom: var(--spacing-md);
+    line-height: 1.3;
 }
 
-.about-text p:last-child {
-    margin-bottom: 0;
+.about-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+}
+
+.about-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.feature-check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 2px;
+}
+
+.feature-check svg {
+    width: 14px;
+    height: 14px;
 }
 
 /* Models */
@@ -507,21 +550,37 @@ $block_id = 'home-complete-' . $block['id'];
 
     .about-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+
+    .about-image-wrapper {
+        order: 2;
     }
 
     .about-content {
-        order: -1;
+        order: 1;
     }
 
     .about-badge {
-        top: 16px;
-        right: 16px;
-        padding: 10px 16px;
-        font-size: 0.85rem;
+        bottom: 16px;
+        left: 16px;
+        padding: 12px 16px;
+    }
+
+    .badge-number {
+        font-size: 1.5rem;
+    }
+
+    .badge-text {
+        font-size: 0.75rem;
     }
 
     .about-content h2 {
         font-size: var(--font-size-2xl);
+    }
+
+    .about-subtitle {
+        font-size: var(--font-size-md);
     }
 
     .section-padding {
