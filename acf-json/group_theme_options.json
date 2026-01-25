@@ -58,6 +58,34 @@
             "type": "url",
             "instructions": "Vollständige LinkedIn-Unternehmens-URL",
             "required": 0
+        },
+        {
+            "key": "field_404_title",
+            "label": "404 Seite - Titel",
+            "name": "404_title",
+            "type": "text",
+            "instructions": "Titel für die 404 Fehlerseite (optional)",
+            "default_value": "Seite nicht gefunden",
+            "required": 0
+        },
+        {
+            "key": "field_404_subtitle",
+            "label": "404 Seite - Untertitel",
+            "name": "404_subtitle",
+            "type": "text",
+            "instructions": "Untertitel für die 404 Fehlerseite (optional)",
+            "default_value": "Die gesuchte Seite konnte leider nicht gefunden werden.",
+            "required": 0
+        },
+        {
+            "key": "field_404_description",
+            "label": "404 Seite - Beschreibung",
+            "name": "404_description",
+            "type": "textarea",
+            "instructions": "Beschreibungstext für die 404 Fehlerseite (optional)",
+            "default_value": "Die Seite, die Sie suchen, existiert möglicherweise nicht mehr oder wurde verschoben. Bitte verwenden Sie die Navigation oder kehren Sie zur Startseite zurück.",
+            "rows": 3,
+            "required": 0
         }
     ],
     "location": [

@@ -4,13 +4,24 @@
     "fields": [
         {
             "key": "field_nav_logo",
-            "label": "Logo",
+            "label": "Logo (Header)",
             "name": "nav_logo",
             "type": "image",
             "instructions": "Hauptlogo für die Navigation (empfohlen: PNG mit transparentem Hintergrund)",
             "return_format": "array",
             "preview_size": "medium",
             "library": "all"
+        },
+        {
+            "key": "field_nav_logo_alt",
+            "label": "Logo (Footer - Optional)",
+            "name": "nav_logo_alt",
+            "type": "image",
+            "instructions": "Alternatives Logo für den Footer (optional, nutzt Header-Logo wenn leer)",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 0
         },
         {
             "key": "field_nav_cta_text",

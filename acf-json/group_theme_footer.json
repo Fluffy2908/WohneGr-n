@@ -89,6 +89,32 @@
             "instructions": "Copyright-Text im Footer",
             "default_value": "© 2026 WohneGrün. Alle Rechte vorbehalten.",
             "maxlength": 100
+        },
+        {
+            "key": "field_footer_legal_links",
+            "label": "Footer Legal Links",
+            "name": "footer_legal_links",
+            "type": "repeater",
+            "instructions": "Rechtliche Links im Footer-Bottom (Impressum, Datenschutz, AGB)",
+            "layout": "table",
+            "button_label": "Link hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_footer_legal_text",
+                    "label": "Link Text",
+                    "name": "text",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_footer_legal_url",
+                    "label": "Link URL",
+                    "name": "url",
+                    "type": "text",
+                    "required": 1,
+                    "placeholder": "/impressum"
+                }
+            ]
         }
     ],
     "location": [
