@@ -15,6 +15,11 @@ $features_title = get_field('home_features_title');
 $features_subtitle = get_field('home_features_subtitle');
 $features = get_field('home_features');
 
+$about_title = get_field('home_about_title');
+$about_text = get_field('home_about_text');
+$about_image = get_field('home_about_image');
+$about_badge_text = get_field('home_about_badge_text');
+
 $models_title = get_field('home_models_title');
 $models_subtitle = get_field('home_models_subtitle');
 $selected_models = get_field('home_selected_models');
@@ -79,6 +84,41 @@ $block_id = 'home-complete-' . $block['id'];
                         <p><?php echo esc_html($feature['description']); ?></p>
                     </div>
                 <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <!-- About Section -->
+    <?php if ($about_title || $about_text || $about_image): ?>
+    <section class="home-about section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Image with Badge (70%) -->
+                <div class="about-image-wrapper">
+                    <?php if ($about_image): ?>
+                        <img src="<?php echo esc_url($about_image['url']); ?>"
+                             alt="<?php echo esc_attr($about_image['alt'] ?: 'Über WohneGrün'); ?>">
+                        <?php if ($about_badge_text): ?>
+                            <div class="about-badge">
+                                <?php echo wohnegruen_get_icon('star'); ?>
+                                <span><?php echo esc_html($about_badge_text); ?></span>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Text Content (30%) -->
+                <div class="about-content">
+                    <?php if ($about_title): ?>
+                        <h2><?php echo esc_html($about_title); ?></h2>
+                    <?php endif; ?>
+                    <?php if ($about_text): ?>
+                        <div class="about-text">
+                            <?php echo wp_kses_post($about_text); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </section>
@@ -235,6 +275,72 @@ $block_id = 'home-complete-' . $block['id'];
 .feature-card h3 {
     color: var(--color-primary);
     margin-bottom: var(--spacing-md);
+}
+
+/* About Section */
+.home-about {
+    background: var(--color-white);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 70fr 30fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+}
+
+.about-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: var(--color-primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.about-badge svg {
+    width: 18px;
+    height: 18px;
+}
+
+.about-content h2 {
+    font-size: var(--font-size-3xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-text {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    font-size: var(--font-size-md);
+}
+
+.about-text p {
+    margin-bottom: var(--spacing-md);
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
 }
 
 /* Models */
@@ -397,6 +503,25 @@ $block_id = 'home-complete-' . $block['id'];
     .features-grid,
     .models-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
+        order: -1;
+    }
+
+    .about-badge {
+        top: 16px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+
+    .about-content h2 {
+        font-size: var(--font-size-2xl);
     }
 
     .section-padding {

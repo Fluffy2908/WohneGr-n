@@ -16,24 +16,33 @@ function wohnegruen_handle_contact_form() {
     }
 
     // Sanitize and validate input
-    $name = sanitize_text_field($_POST['name']);
-    $email = sanitize_email($_POST['email']);
-    $phone = sanitize_text_field($_POST['phone']);
-    $subject = sanitize_text_field($_POST['subject']);
-    $message = sanitize_textarea_field($_POST['message']);
+    $vorname = sanitize_text_field($_POST['vorname'] ?? '');
+    $nachname = sanitize_text_field($_POST['nachname'] ?? '');
+    $email = sanitize_email($_POST['email'] ?? '');
+    $phone = sanitize_text_field($_POST['phone'] ?? '');
+    $betreff = sanitize_text_field($_POST['betreff'] ?? '');
+    $nachricht = sanitize_textarea_field($_POST['nachricht'] ?? '');
 
     // Validation
     $errors = array();
 
-    if (empty($name)) {
-        $errors[] = 'Name ist erforderlich.';
+    if (empty($vorname)) {
+        $errors[] = 'Vorname ist erforderlich.';
+    }
+
+    if (empty($nachname)) {
+        $errors[] = 'Nachname ist erforderlich.';
     }
 
     if (empty($email) || !is_email($email)) {
         $errors[] = 'Gültige E-Mail-Adresse ist erforderlich.';
     }
 
-    if (empty($message)) {
+    if (empty($betreff)) {
+        $errors[] = 'Betreff ist erforderlich.';
+    }
+
+    if (empty($nachricht)) {
         $errors[] = 'Nachricht ist erforderlich.';
     }
 
@@ -48,30 +57,26 @@ function wohnegruen_handle_contact_form() {
     if (empty($to)) {
         $to = 'info@wohnegrün.at';
     }
-    $subject_labels = array(
-        'angebot' => 'Angebot anfragen',
-        'besichtigung' => 'Besichtigung vereinbaren',
-        'frage' => 'Allgemeine Frage',
-        'sonstiges' => 'Sonstiges'
-    );
-    $subject_text = isset($subject_labels[$subject]) ? $subject_labels[$subject] : 'Kontaktanfrage';
-    $email_subject = 'WohneGruen Kontaktformular: ' . $subject_text;
+
+    $full_name = trim($vorname . ' ' . $nachname);
+    $email_subject = 'WohneGrün Kontaktformular: ' . $betreff;
 
     // Email body
-    $email_body = "Neue Kontaktanfrage von der WohneGruen Website\n\n";
-    $email_body .= "Name: " . $name . "\n";
+    $email_body = "Neue Kontaktanfrage von der WohneGrün Website\n\n";
+    $email_body .= "Vorname: " . $vorname . "\n";
+    $email_body .= "Nachname: " . $nachname . "\n";
     $email_body .= "E-Mail: " . $email . "\n";
     $email_body .= "Telefon: " . ($phone ? $phone : 'Nicht angegeben') . "\n";
-    $email_body .= "Betreff: " . $subject_text . "\n\n";
-    $email_body .= "Nachricht:\n" . $message . "\n\n";
+    $email_body .= "Betreff: " . $betreff . "\n\n";
+    $email_body .= "Nachricht:\n" . $nachricht . "\n\n";
     $email_body .= "---\n";
     $email_body .= "Diese Nachricht wurde über das Kontaktformular auf " . home_url() . " gesendet.";
 
     // Email headers
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
-        'From: WohneGruen Website <noreply@wohnegruen.at>',
-        'Reply-To: ' . $name . ' <' . $email . '>'
+        'From: WohneGrün Website <noreply@wohnegruen.at>',
+        'Reply-To: ' . $full_name . ' <' . $email . '>'
     );
 
     // Send email

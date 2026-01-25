@@ -62,10 +62,17 @@ $block_id = 'contact-complete-' . $block['id'];
                     </div>
                     <?php endif; ?>
 
-                    <form class="contact-form" method="post" action="">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
+                    <form class="contact-form" id="contact-form" method="post" action="">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vorname">Vorname *</label>
+                                <input type="text" id="vorname" name="vorname" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nachname">Nachname *</label>
+                                <input type="text" id="nachname" name="nachname" required>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -81,16 +88,18 @@ $block_id = 'contact-complete-' . $block['id'];
                         <?php endif; ?>
 
                         <div class="form-group">
-                            <label for="subject">Betreff *</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <label for="betreff">Betreff *</label>
+                            <input type="text" id="betreff" name="betreff" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Nachricht *</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <label for="nachricht">Nachricht *</label>
+                            <textarea id="nachricht" name="nachricht" rows="6" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <div id="form-message" class="form-message" style="display: none;"></div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">
                             Nachricht senden
                         </button>
                     </form>
@@ -264,6 +273,13 @@ $block_id = 'contact-complete-' . $block['id'];
     box-shadow: var(--shadow-card);
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
 .form-group {
     margin-bottom: var(--spacing-lg);
 }
@@ -273,6 +289,25 @@ $block_id = 'contact-complete-' . $block['id'];
     margin-bottom: var(--spacing-sm);
     font-weight: 600;
     color: var(--color-text-primary);
+}
+
+.form-message {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 500;
+}
+
+.form-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .form-group input,
@@ -421,5 +456,66 @@ $block_id = 'contact-complete-' . $block['id'];
     .contact-form {
         padding: var(--spacing-lg);
     }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('submit-btn');
+        const messageDiv = document.getElementById('form-message');
+        const formData = new FormData(form);
+
+        // Add AJAX action
+        formData.append('action', 'wohnegruen_contact_form');
+        formData.append('nonce', '<?php echo wp_create_nonce('wohnegruen_contact_form'); ?>');
+
+        // Disable button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet...';
+
+        // Send AJAX request
+        fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            messageDiv.style.display = 'block';
+
+            if (data.success) {
+                messageDiv.className = 'form-message success';
+                messageDiv.textContent = data.data.message;
+                form.reset();
+            } else {
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = data.data.message || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
+            }
+
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Nachricht senden';
+
+            // Scroll to message
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        })
+        .catch(error => {
+            messageDiv.style.display = 'block';
+            messageDiv.className = 'form-message error';
+            messageDiv.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Nachricht senden';
+        });
+    });
+});
+</script>

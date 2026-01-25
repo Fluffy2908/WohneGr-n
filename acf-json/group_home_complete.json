@@ -91,6 +91,37 @@
             ]
         },
         {
+            "key": "field_home_about_title",
+            "label": "Über uns Titel",
+            "name": "home_about_title",
+            "type": "text"
+        },
+        {
+            "key": "field_home_about_text",
+            "label": "Über uns Text",
+            "name": "home_about_text",
+            "type": "wysiwyg",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0
+        },
+        {
+            "key": "field_home_about_image",
+            "label": "Über uns Bild",
+            "name": "home_about_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_home_about_badge_text",
+            "label": "Über uns Badge Text",
+            "name": "home_about_badge_text",
+            "type": "text",
+            "default_value": "Qualität seit 2020",
+            "instructions": "Text für das Badge-Element auf dem Bild"
+        },
+        {
             "key": "field_home_models_title",
             "label": "Modelle Sektion Titel",
             "name": "home_models_title",
