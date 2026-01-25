@@ -10,7 +10,7 @@ $hero_subtitle = get_field('mobilhaus_hero_subtitle');
 $color_variants = get_field('mobilhaus_color_variants');
 $description_title = get_field('mobilhaus_description_title');
 $description_text = get_field('mobilhaus_description_text');
-$description_image = get_field('mobilhaus_description_image');
+$description_layouts = get_field('mobilhaus_description_layouts');
 $specifications = get_field('mobilhaus_specifications');
 $floor_plans = get_field('mobilhaus_floor_plans');
 $interior_schemes = get_field('mobilhaus_interior_schemes');
@@ -112,12 +112,51 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
                     <?php endif; ?>
                 </div>
 
-                <!-- Right: Image -->
-                <?php if ($description_image): ?>
-                <div class="details-image">
-                    <img src="<?php echo esc_url($description_image['url']); ?>"
-                         alt="<?php echo esc_attr($description_image['alt'] ?: $hero_title); ?>"
-                         loading="lazy">
+                <!-- Right: Layout Image Carousel -->
+                <?php if ($description_layouts && is_array($description_layouts) && count($description_layouts) > 0): ?>
+                <div class="details-image-carousel">
+                    <?php if (count($description_layouts) > 1): ?>
+                        <button class="layout-nav layout-prev" onclick="navigateLayout('<?php echo esc_js($block_id); ?>', -1)" aria-label="Vorheriges Layout">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                    <?php endif; ?>
+
+                    <div class="layout-images-container">
+                        <?php foreach ($description_layouts as $idx => $layout): ?>
+                            <div class="layout-image-wrapper"
+                                 id="layout-<?php echo esc_attr($block_id); ?>-<?php echo $idx; ?>"
+                                 style="<?php echo $idx === 0 ? '' : 'display: none;'; ?>">
+                                <img class="layout-image"
+                                     src="<?php echo esc_url($layout['normal_image']['url']); ?>"
+                                     alt="<?php echo esc_attr($layout['layout_name'] ?: 'Layout ' . ($idx + 1)); ?>"
+                                     loading="lazy">
+
+                                <?php if (isset($layout['layout_name']) && !empty($layout['layout_name'])): ?>
+                                    <div class="layout-label"><?php echo esc_html($layout['layout_name']); ?></div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <?php if (count($description_layouts) > 1): ?>
+                        <button class="layout-nav layout-next" onclick="navigateLayout('<?php echo esc_js($block_id); ?>', 1)" aria-label="Nächstes Layout">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    <?php endif; ?>
+
+                    <!-- Reverse Button -->
+                    <button class="layout-reverse-btn" onclick="toggleLayoutReverse('<?php echo esc_js($block_id); ?>')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <polyline points="23 20 23 14 17 14"></polyline>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                        </svg>
+                        <span class="reverse-text">Gespiegelt anzeigen</span>
+                    </button>
                 </div>
                 <?php endif; ?>
             </div>
@@ -471,6 +510,105 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     font-size: 1.125rem;
 }
 
+/* Layout Image Carousel */
+.details-image-carousel {
+    position: relative;
+    border-radius: 24px;
+    overflow: visible;
+}
+
+.layout-images-container {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+}
+
+.layout-image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.layout-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.layout-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(var(--color-primary-rgb), 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.layout-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.layout-nav:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.layout-prev {
+    left: -20px;
+}
+
+.layout-next {
+    right: -20px;
+}
+
+.layout-reverse-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.layout-reverse-btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.layout-reverse-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Legacy support */
 .details-image {
     border-radius: 24px;
     overflow: hidden;
@@ -897,8 +1035,19 @@ window.interiorGallery = <?php echo json_encode(array_map(function($scheme) {
     }, $scheme['gallery'] ?? []);
 }, $interior_schemes ?? [])); ?>;
 
+// Store description layout images
+window.descriptionLayouts = <?php echo json_encode(array_map(function($layout) {
+    return array(
+        'normal' => $layout['normal_image']['url'] ?? '',
+        'mirrored' => $layout['mirrored_image']['url'] ?? '',
+        'name' => $layout['layout_name'] ?? ''
+    );
+}, $description_layouts ?? [])); ?>;
+
 window.currentScheme = 0;
 window.currentImage = 0;
+window.currentLayoutIndex = 0;
+window.layoutReversed = false;
 
 // Color selection
 function switchExteriorColor(colorIndex) {
@@ -960,6 +1109,65 @@ function toggleGrundrissView(blockId, planIndex, normalUrl, mirroredUrl) {
         img.style.opacity = '1';
         btn.querySelector('.toggle-text').textContent = newState ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
     }, 200);
+}
+
+// Description Layout Navigation
+function navigateLayout(blockId, direction) {
+    const layouts = window.descriptionLayouts;
+    if (!layouts || layouts.length <= 1) return;
+
+    // Update index
+    window.currentLayoutIndex += direction;
+    if (window.currentLayoutIndex < 0) {
+        window.currentLayoutIndex = layouts.length - 1;
+    } else if (window.currentLayoutIndex >= layouts.length) {
+        window.currentLayoutIndex = 0;
+    }
+
+    // Hide all layouts
+    const allWrappers = document.querySelectorAll(`[id^="layout-${blockId}-"]`);
+    allWrappers.forEach(wrapper => wrapper.style.display = 'none');
+
+    // Show current layout
+    const currentWrapper = document.getElementById(`layout-${blockId}-${window.currentLayoutIndex}`);
+    if (currentWrapper) {
+        currentWrapper.style.display = 'block';
+
+        // Update image based on reversed state
+        const img = currentWrapper.querySelector('.layout-image');
+        const layout = layouts[window.currentLayoutIndex];
+        img.src = window.layoutReversed ? layout.mirrored : layout.normal;
+    }
+}
+
+// Toggle Layout Reverse (Normal <-> Mirrored)
+function toggleLayoutReverse(blockId) {
+    const layouts = window.descriptionLayouts;
+    if (!layouts || layouts.length === 0) return;
+
+    window.layoutReversed = !window.layoutReversed;
+
+    // Get current layout wrapper and image
+    const currentWrapper = document.getElementById(`layout-${blockId}-${window.currentLayoutIndex}`);
+    if (!currentWrapper) return;
+
+    const img = currentWrapper.querySelector('.layout-image');
+    const btn = event.target.closest('.layout-reverse-btn');
+    const layout = layouts[window.currentLayoutIndex];
+
+    // Fade out
+    img.style.opacity = '0';
+
+    setTimeout(() => {
+        // Switch image
+        img.src = window.layoutReversed ? layout.mirrored : layout.normal;
+
+        // Fade in
+        img.style.opacity = '1';
+
+        // Update button text
+        btn.querySelector('.reverse-text').textContent = window.layoutReversed ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
+    }, 300);
 }
 
 // Lightbox

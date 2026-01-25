@@ -79,14 +79,44 @@
             "media_upload": 1
         },
         {
-            "key": "field_mobilhaus_description_image",
-            "label": "Beschreibung Bild",
-            "name": "mobilhaus_description_image",
-            "type": "image",
-            "instructions": "Bild rechts neben dem Beschreibungstext",
+            "key": "field_mobilhaus_description_layouts",
+            "label": "Beschreibung Bilder (Layout-Optionen)",
+            "name": "mobilhaus_description_layouts",
+            "type": "repeater",
+            "instructions": "Fügen Sie verschiedene Layout-Optionen hinzu. Jede Option hat ein normales und ein gespiegeltes Bild.",
             "required": 0,
-            "return_format": "array",
-            "preview_size": "medium"
+            "min": 1,
+            "max": 6,
+            "layout": "block",
+            "button_label": "Layout hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_layout_name",
+                    "label": "Layout Name (optional)",
+                    "name": "layout_name",
+                    "type": "text",
+                    "placeholder": "z.B. 'Option 1', 'Variante A'",
+                    "required": 0
+                },
+                {
+                    "key": "field_layout_normal",
+                    "label": "Bild (Normal)",
+                    "name": "normal_image",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "array",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_layout_mirrored",
+                    "label": "Bild (Gespiegelt)",
+                    "name": "mirrored_image",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "array",
+                    "preview_size": "medium"
+                }
+            ]
         },
         {
             "key": "field_mobilhaus_specifications",
