@@ -159,7 +159,7 @@ $block_id = 'home-complete-' . $block['id'];
 }
 
 .section-padding {
-    padding: var(--spacing-3xl) 0;
+    padding: 60px 0;
 }
 
 .container {
@@ -257,6 +257,9 @@ $block_id = 'home-complete-' . $block['id'];
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
+    display: flex;
+    flex-direction: row;
+    min-height: 280px;
 }
 
 .model-card:hover {
@@ -266,7 +269,7 @@ $block_id = 'home-complete-' . $block['id'];
 
 .model-image {
     position: relative;
-    aspect-ratio: 4 / 3;
+    flex: 0 0 55%;
     overflow: hidden;
     background: var(--color-background);
 }
@@ -284,7 +287,11 @@ $block_id = 'home-complete-' . $block['id'];
 
 .model-content {
     padding: 24px;
-    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
 }
 
 .model-content h3 {
@@ -297,32 +304,32 @@ $block_id = 'home-complete-' . $block['id'];
 /* CTA */
 .cta-banner {
     text-align: center;
-    padding: 50px 30px;
+    padding: 40px 30px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     border-radius: 20px;
     color: var(--color-white);
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .cta-banner h2 {
     color: var(--color-white);
-    font-size: 2rem;
-    margin-bottom: 16px;
+    font-size: 1.75rem;
+    margin-bottom: 12px;
     font-weight: 700;
 }
 
 .cta-banner p {
-    font-size: 1.125rem;
-    margin-bottom: 24px;
+    font-size: 1rem;
+    margin-bottom: 20px;
     opacity: 0.95;
 }
 
 .cta-banner .btn {
     background: var(--color-white);
     color: var(--color-primary);
-    padding: 12px 32px !important;
-    font-size: 1rem !important;
+    padding: 10px 24px !important;
+    font-size: 0.95rem !important;
 }
 
 .cta-banner .btn:hover {
@@ -400,6 +407,20 @@ $block_id = 'home-complete-' . $block['id'];
     .features-grid,
     .models-grid {
         grid-template-columns: 1fr;
+    }
+
+    .model-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .model-image {
+        flex: 0 0 auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .model-content {
+        text-align: center;
     }
 
     .section-padding {
