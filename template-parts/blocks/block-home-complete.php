@@ -258,8 +258,7 @@ $block_id = 'home-complete-' . $block['id'];
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
     display: flex;
-    flex-direction: row;
-    min-height: 280px;
+    flex-direction: column;
 }
 
 .model-card:hover {
@@ -269,7 +268,7 @@ $block_id = 'home-complete-' . $block['id'];
 
 .model-image {
     position: relative;
-    flex: 0 0 55%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--color-background);
 }
@@ -287,11 +286,7 @@ $block_id = 'home-complete-' . $block['id'];
 
 .model-content {
     padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
+    text-align: center;
 }
 
 .model-content h3 {
@@ -328,8 +323,8 @@ $block_id = 'home-complete-' . $block['id'];
 .cta-banner .btn {
     background: var(--color-white);
     color: var(--color-primary);
-    padding: 10px 24px !important;
-    font-size: 0.95rem !important;
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
 }
 
 .cta-banner .btn:hover {
@@ -407,20 +402,6 @@ $block_id = 'home-complete-' . $block['id'];
     .features-grid,
     .models-grid {
         grid-template-columns: 1fr;
-    }
-
-    .model-card {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    .model-image {
-        flex: 0 0 auto;
-        aspect-ratio: 4 / 3;
-    }
-
-    .model-content {
-        text-align: center;
     }
 
     .section-padding {

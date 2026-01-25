@@ -124,7 +124,17 @@ $block_id = 'contact-complete-' . $block['id'];
                             <div class="info-content">
                                 <h4>E-Mail</h4>
                                 <a href="mailto:<?php echo esc_attr($email); ?>">
-                                    <?php echo esc_html($email); ?>
+                                    <?php
+                                        // Decode punycode for display (e.g., xn--wohnegrn-d6a.at → wohnegrün.at)
+                                        $display_email = $email;
+                                        if (function_exists('idn_to_utf8')) {
+                                            $parts = explode('@', $email);
+                                            if (count($parts) === 2) {
+                                                $display_email = $parts[0] . '@' . idn_to_utf8($parts[1], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+                                            }
+                                        }
+                                        echo esc_html($display_email);
+                                    ?>
                                 </a>
                             </div>
                         </div>

@@ -79,7 +79,17 @@ $contact_address = wohnegruen_get_option('contact_address');
                 <?php if ($contact_email): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('email'); ?>
-                        <span><?php echo esc_html($contact_email); ?></span>
+                        <span><?php
+                            // Decode punycode for display (e.g., xn--wohnegrn-d6a.at → wohnegrün.at)
+                            $display_email = $contact_email;
+                            if (function_exists('idn_to_utf8')) {
+                                $parts = explode('@', $contact_email);
+                                if (count($parts) === 2) {
+                                    $display_email = $parts[0] . '@' . idn_to_utf8($parts[1], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+                                }
+                            }
+                            echo esc_html($display_email);
+                        ?></span>
                     </div>
                 <?php endif; ?>
                 <?php if ($contact_address): ?>
