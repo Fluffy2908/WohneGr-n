@@ -672,8 +672,8 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 
 .interior-gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
 .gallery-item {
@@ -747,8 +747,8 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 }
 
 .lightbox-content {
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 90vw;
+    max-height: 90vh;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -794,14 +794,15 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 /* Responsive Design */
 @media (max-width: 1023px) {
     .details-grid,
-    .scheme-header-grid {
+    .scheme-header-grid,
+    .interior-gallery {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
     .interior-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 
     .scheme-text {
@@ -823,8 +824,8 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     }
 
     .interior-gallery {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
     .big-color-buttons {
@@ -862,6 +863,27 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 
     .interior-gallery {
         grid-template-columns: 1fr;
+    }
+
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        font-size: 35px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
     }
 }
 </style>
