@@ -61,9 +61,8 @@ $block_id = 'gallery-' . $block['id'];
                     endif;
                 endforeach;
 
-                // Show first 6 images in grid
-                $grid_images = array_slice($all_images, 0, 6);
-                $slider_images = array_slice($all_images, 6);
+                // Show first 9 images in grid
+                $grid_images = array_slice($all_images, 0, 9);
 
                 foreach ($grid_images as $img_index => $item):
                     $image = $item['image'];
@@ -79,29 +78,11 @@ $block_id = 'gallery-' . $block['id'];
                 <?php endforeach; ?>
             </div>
 
-            <!-- Slider for Remaining Images -->
-            <?php if (!empty($slider_images)): ?>
-            <div class="gallery-slider-section">
-                <h2 class="slider-title">Weitere Bilder</h2>
-                <div class="gallery-slider">
-                    <button class="slider-prev" onclick="moveGallerySlider(-1)">‹</button>
-                    <div class="slider-track">
-                        <?php foreach ($slider_images as $slider_index => $item):
-                            $image = $item['image'];
-                            $global_index = 6 + $slider_index;
-                        ?>
-                            <div class="slider-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $global_index; ?>)">
-                                <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
-                                     alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
-                                     loading="lazy">
-                                <div class="gallery-overlay">
-                                    <span class="zoom-icon">🔍</span>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <button class="slider-next" onclick="moveGallerySlider(1)">›</button>
-                </div>
+            <!-- Show indicator for more images -->
+            <?php if (count($all_images) > 9): ?>
+            <div class="gallery-more-indicator">
+                <p>+<?php echo count($all_images) - 9; ?> weitere Bilder in der Galerie</p>
+                <p class="hint-text">Klicken Sie auf ein Bild, um die gesamte Galerie zu durchsuchen</p>
             </div>
             <?php endif; ?>
 
@@ -259,8 +240,7 @@ $block_id = 'gallery-' . $block['id'];
     transition: opacity 0.3s ease;
 }
 
-.gallery-item:hover .gallery-overlay,
-.slider-item:hover .gallery-overlay {
+.gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
@@ -269,94 +249,27 @@ $block_id = 'gallery-' . $block['id'];
     color: white;
 }
 
-/* Slider Section */
-.gallery-slider-section {
-    margin-top: 60px;
-}
-
-.slider-title {
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin-bottom: 40px;
+/* More Images Indicator */
+.gallery-more-indicator {
     text-align: center;
-    font-weight: 700;
+    margin-top: 40px;
+    padding: 24px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 12px;
+    border: 2px dashed var(--color-primary);
 }
 
-.gallery-slider {
-    position: relative;
-    overflow: hidden;
-    padding: 0 60px;
+.gallery-more-indicator p {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0 0 8px 0;
 }
 
-.slider-track {
-    display: flex;
-    gap: 24px;
-    transition: transform 0.4s ease;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.slider-track::-webkit-scrollbar {
-    display: none;
-}
-
-.slider-item {
-    flex: 0 0 calc(33.333% - 16px);
-    aspect-ratio: 4 / 3;
-    border-radius: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    background: #f8f9fa;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.slider-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-}
-
-.slider-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slider-prev,
-.slider-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: all 0.3s ease;
-}
-
-.slider-prev {
-    left: 0;
-}
-
-.slider-next {
-    right: 0;
-}
-
-.slider-prev:hover,
-.slider-next:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-50%) scale(1.1);
+.gallery-more-indicator .hint-text {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
 }
 
 /* 3D GRUNDRISSE SECTION */
@@ -574,10 +487,6 @@ $block_id = 'gallery-' . $block['id'];
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-
-    .slider-item {
-        flex: 0 0 calc(50% - 12px);
-    }
 }
 
 @media (max-width: 767px) {
@@ -602,21 +511,6 @@ $block_id = 'gallery-' . $block['id'];
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 16px;
-    }
-
-    .slider-item {
-        flex: 0 0 100%;
-    }
-
-    .gallery-slider {
-        padding: 0 50px;
-    }
-
-    .slider-prev,
-    .slider-next {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
     }
 
     .floorplans-grid {
@@ -646,12 +540,11 @@ window.galleryImages = <?php echo json_encode(array_map(function($item) {
 }, $all_images ?? [])); ?>;
 
 window.currentGalleryIndex = 0;
-window.sliderPosition = 0;
 
 // Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item, .slider-item');
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -670,23 +563,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Slider navigation
-function moveGallerySlider(direction) {
-    const track = document.querySelector('.slider-track');
-    if (!track) return;
-
-    const itemWidth = track.querySelector('.slider-item')?.offsetWidth + 24 || 0;
-    const maxScroll = track.scrollWidth - track.offsetWidth;
-
-    window.sliderPosition += direction * itemWidth * 3;
-    window.sliderPosition = Math.max(0, Math.min(window.sliderPosition, maxScroll));
-
-    track.scrollTo({
-        left: window.sliderPosition,
-        behavior: 'smooth'
-    });
-}
 
 // Lightbox functions
 function openGalleryLightbox(index) {
