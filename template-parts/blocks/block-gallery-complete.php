@@ -80,9 +80,9 @@ $block_id = 'gallery-' . $block['id'];
 
             <!-- Show indicator for more images -->
             <?php if (count($all_images) > 9): ?>
-            <div class="gallery-more-indicator">
+            <div class="gallery-more-indicator" onclick="openGalleryLightbox(9)" role="button" tabindex="0" onkeypress="if(event.key==='Enter') openGalleryLightbox(9)">
                 <p>+<?php echo count($all_images) - 9; ?> weitere Bilder in der Galerie</p>
-                <p class="hint-text">Klicken Sie auf ein Bild, um die gesamte Galerie zu durchsuchen</p>
+                <p class="hint-text">Klicken Sie hier, um alle Bilder in der Galerie anzuzeigen</p>
             </div>
             <?php endif; ?>
 
@@ -257,6 +257,20 @@ $block_id = 'gallery-' . $block['id'];
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border-radius: 12px;
     border: 2px dashed var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-more-indicator:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.gallery-more-indicator:hover p,
+.gallery-more-indicator:hover .hint-text {
+    color: white;
 }
 
 .gallery-more-indicator p {
@@ -264,12 +278,14 @@ $block_id = 'gallery-' . $block['id'];
     color: var(--color-primary);
     font-weight: 600;
     margin: 0 0 8px 0;
+    transition: color 0.3s ease;
 }
 
 .gallery-more-indicator .hint-text {
     font-size: 0.95rem;
     color: var(--color-text-secondary);
     font-weight: 400;
+    transition: color 0.3s ease;
 }
 
 /* 3D GRUNDRISSE SECTION */
