@@ -63,6 +63,7 @@ $block_id = 'gallery-' . $block['id'];
 
                 // Show first 9 images in grid
                 $grid_images = array_slice($all_images, 0, 9);
+                $slider_images = array_slice($all_images, 9);
 
                 foreach ($grid_images as $img_index => $item):
                     $image = $item['image'];
@@ -78,11 +79,41 @@ $block_id = 'gallery-' . $block['id'];
                 <?php endforeach; ?>
             </div>
 
-            <!-- Show indicator for more images -->
-            <?php if (count($all_images) > 9): ?>
-            <div class="gallery-more-indicator" onclick="openGalleryLightbox(9)" role="button" tabindex="0" onkeypress="if(event.key==='Enter') openGalleryLightbox(9)">
-                <p>+<?php echo count($all_images) - 9; ?> weitere Bilder in der Galerie</p>
-                <p class="hint-text">Klicken Sie hier, um alle Bilder in der Galerie anzuzeigen</p>
+            <!-- Slider for Remaining Images -->
+            <?php if (!empty($slider_images)): ?>
+            <div class="gallery-slider-section" id="gallery-slider-section">
+                <h3 class="slider-title">Weitere Bilder</h3>
+                <div class="gallery-slider-wrapper">
+                    <button class="slider-nav slider-prev" onclick="moveGallerySlider(-1)" aria-label="Vorherige Bilder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="slider-track-container">
+                        <div class="slider-track">
+                            <?php foreach ($slider_images as $slider_index => $item):
+                                $image = $item['image'];
+                                $global_index = 9 + $slider_index;
+                            ?>
+                                <div class="slider-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $global_index; ?>)">
+                                    <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
+                                         alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
+                                         loading="lazy">
+                                    <div class="gallery-overlay">
+                                        <span class="zoom-icon">🔍</span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <button class="slider-nav slider-next" onclick="moveGallerySlider(1)" aria-label="Nächste Bilder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <?php endif; ?>
 
@@ -249,43 +280,101 @@ $block_id = 'gallery-' . $block['id'];
     color: white;
 }
 
-/* More Images Indicator */
-.gallery-more-indicator {
-    text-align: center;
-    margin-top: 40px;
-    padding: 24px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-radius: 12px;
-    border: 2px dashed var(--color-primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* Gallery Slider Section */
+.gallery-slider-section {
+    margin-top: 60px;
 }
 
-.gallery-more-indicator:hover {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-color: var(--color-primary-dark);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.3);
-}
-
-.gallery-more-indicator:hover p,
-.gallery-more-indicator:hover .hint-text {
-    color: white;
-}
-
-.gallery-more-indicator p {
-    font-size: 1.125rem;
+.slider-title {
+    font-size: 1.75rem;
     color: var(--color-primary);
-    font-weight: 600;
-    margin: 0 0 8px 0;
-    transition: color 0.3s ease;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
 }
 
-.gallery-more-indicator .hint-text {
-    font-size: 0.95rem;
-    color: var(--color-text-secondary);
-    font-weight: 400;
-    transition: color 0.3s ease;
+.gallery-slider-wrapper {
+    position: relative;
+    padding: 0 60px;
+}
+
+.slider-track-container {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.slider-track::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-item {
+    flex: 0 0 calc(33.333% - 14px);
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.slider-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--color-primary);
+}
+
+.slider-nav:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-prev {
+    left: 0;
+}
+
+.slider-next {
+    right: 0;
 }
 
 /* 3D GRUNDRISSE SECTION */
@@ -503,6 +592,19 @@ $block_id = 'gallery-' . $block['id'];
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
+
+    .slider-item {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    .gallery-slider-wrapper {
+        padding: 0 50px;
+    }
+
+    .slider-nav {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -546,6 +648,28 @@ $block_id = 'gallery-' . $block['id'];
     .threed-intro h2 {
         font-size: 2rem;
     }
+
+    .slider-item {
+        flex: 0 0 calc(100% - 10px);
+    }
+
+    .gallery-slider-wrapper {
+        padding: 0 45px;
+    }
+
+    .slider-nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .slider-nav svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .slider-title {
+        font-size: 1.5rem;
+    }
 }
 </style>
 
@@ -556,11 +680,14 @@ window.galleryImages = <?php echo json_encode(array_map(function($item) {
 }, $all_images ?? [])); ?>;
 
 window.currentGalleryIndex = 0;
+window.sliderPosition = 0;
 
 // Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const sliderItems = document.querySelectorAll('.slider-item');
+    const sliderSection = document.getElementById('gallery-slider-section');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -569,6 +696,7 @@ document.addEventListener('DOMContentLoaded', function() {
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
+            // Filter gallery grid items
             galleryItems.forEach(item => {
                 if (filter === 'all' || item.dataset.category === filter) {
                     item.style.display = '';
@@ -576,9 +704,59 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.style.display = 'none';
                 }
             });
+
+            // Filter slider items
+            let visibleSliderCount = 0;
+            sliderItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = '';
+                    visibleSliderCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide slider section based on visible items
+            if (sliderSection) {
+                if (visibleSliderCount > 0) {
+                    sliderSection.style.display = 'block';
+                } else {
+                    sliderSection.style.display = 'none';
+                }
+            }
+
+            // Reset slider position
+            window.sliderPosition = 0;
+            const track = document.querySelector('.slider-track');
+            if (track) {
+                track.scrollLeft = 0;
+            }
         });
     });
 });
+
+// Slider navigation
+function moveGallerySlider(direction) {
+    const track = document.querySelector('.slider-track');
+    if (!track) return;
+
+    const visibleItems = Array.from(document.querySelectorAll('.slider-item')).filter(item => item.style.display !== 'none');
+    if (visibleItems.length === 0) return;
+
+    const itemWidth = visibleItems[0].offsetWidth + 20;
+    const containerWidth = track.parentElement.offsetWidth;
+    const scrollAmount = Math.floor(containerWidth / itemWidth) * itemWidth;
+
+    window.sliderPosition += direction * scrollAmount;
+
+    const maxScroll = track.scrollWidth - track.offsetWidth;
+    window.sliderPosition = Math.max(0, Math.min(window.sliderPosition, maxScroll));
+
+    track.scrollTo({
+        left: window.sliderPosition,
+        behavior: 'smooth'
+    });
+}
 
 // Lightbox functions
 function openGalleryLightbox(index) {
