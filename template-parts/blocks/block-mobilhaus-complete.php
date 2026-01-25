@@ -340,7 +340,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(44, 140, 79, 0.3);
+    background: rgba(44, 140, 79, 0.5);
 }
 
 .hero-content-center {
@@ -357,12 +357,14 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     font-weight: 800;
     margin: 0 0 20px 0;
     letter-spacing: -0.02em;
+    color: var(--color-white);
 }
 
 .hero-subtitle-text {
     font-size: 1.5rem;
     margin: 0;
     opacity: 0.95;
+    color: var(--color-white);
 }
 
 /* COLOR SELECTION SECTION */

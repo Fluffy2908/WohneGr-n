@@ -213,7 +213,7 @@ $block_id = 'contact-complete-' . $block['id'];
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(44, 140, 79, 0.3);
+    background: rgba(44, 140, 79, 0.5);
 }
 
 .hero-content.text-center {

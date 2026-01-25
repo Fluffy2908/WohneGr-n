@@ -214,7 +214,7 @@ $block_id = 'models-complete-' . $block['id'];
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(44, 140, 79, 0.3);
+    background: rgba(44, 140, 79, 0.5);
 }
 
 .hero-content {
@@ -230,11 +230,13 @@ $block_id = 'models-complete-' . $block['id'];
     font-size: 3.5rem;
     margin-bottom: 20px;
     font-weight: 800;
+    color: var(--color-white);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
     opacity: 0.95;
+    color: var(--color-white);
 }
 
 /* Intro Section */

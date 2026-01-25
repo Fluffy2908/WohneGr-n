@@ -190,11 +190,13 @@ $block_id = 'home-complete-' . $block['id'];
 .hero-content h1 {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--spacing-lg);
+    color: var(--color-white);
 }
 
 .hero-subtitle {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-2xl);
+    color: var(--color-white);
 }
 
 /* Features */
