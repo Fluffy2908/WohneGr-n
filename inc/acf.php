@@ -123,27 +123,7 @@ function wohnegruen_register_acf_blocks() {
         'enqueue_assets'    => function() {},
     ));
 
-    // 6. 3D FLOOR PLANS PAGE COMPLETE BLOCK
-    acf_register_block_type(array(
-        'name'              => 'wohnegruen-3d-complete',
-        'title'             => __('3D Grundrisse Komplett', 'wohnegruen'),
-        'description'       => __('Alles-in-einem Block für 3D Grundrisse Seite: Hero, interaktive Grundrisse - mit Live-Vorschau.', 'wohnegruen'),
-        'render_template'   => 'template-parts/blocks/block-3d-complete.php',
-        'category'          => $category,
-        'icon'              => 'layout',
-        'keywords'          => array('3d', 'grundrisse', 'floor plans', 'komplett', 'complete', 'live'),
-        'supports'          => array(
-            'align' => array('full', 'wide'),
-            'anchor' => true,
-            'jsx' => true,
-            'mode' => false,
-        ),
-        'mode'              => 'auto',
-        'post_types'        => array('page'),
-        'enqueue_assets'    => function() {},
-    ));
-
-    // 7. MOBILHAUS COMPLETE BLOCK (For individual mobilhaus posts)
+    // 6. MOBILHAUS COMPLETE BLOCK (For individual mobilhaus posts)
     acf_register_block_type(array(
         'name'              => 'wohnegruen-mobilhaus-complete',
         'title'             => __('Mobilhaus Komplett', 'wohnegruen'),
@@ -164,7 +144,7 @@ function wohnegruen_register_acf_blocks() {
         'enqueue_assets'    => function() {},
     ));
 
-    error_log('WohneGrün: Successfully registered 7 all-in-one ACF blocks with live preview');
+    error_log('WohneGrün: Successfully registered 6 all-in-one ACF blocks with live preview');
 }
 add_action('acf/init', 'wohnegruen_register_acf_blocks', 5);
 add_action('init', 'wohnegruen_register_acf_blocks', 20);

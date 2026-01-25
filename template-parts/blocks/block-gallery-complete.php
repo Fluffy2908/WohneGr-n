@@ -173,61 +173,6 @@ $block_id = 'gallery-' . $block['id'];
     font-weight: 800;
 }
 
-/* Toggle Buttons Section (Like Models Page) */
-.gallery-toggle-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    padding: 60px 0;
-}
-
-.big-toggle-buttons {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.big-toggle-btn {
-    padding: 24px 80px;
-    background: #ffffff;
-    border: 4px solid #e5e7eb;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    min-width: 280px;
-}
-
-.big-toggle-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-    border-color: var(--color-primary);
-}
-
-.big-toggle-btn.active {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-color: var(--color-primary);
-    box-shadow: 0 12px 40px rgba(var(--color-primary-rgb), 0.3);
-}
-
-.big-toggle-btn.active .toggle-btn-text {
-    color: white;
-}
-
-.toggle-btn-text {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-}
-
-/* Section Content Toggle */
-.section-content {
-    display: none;
-}
-
-.section-content.active {
-    display: block;
-}
-
 /* BILDER SECTION - Gallery Filters (Simple Text, No Icons) */
 .bilder-section {
     background: #ffffff;
@@ -703,21 +648,6 @@ window.galleryImages = <?php echo json_encode(array_map(function($item) {
 window.currentGalleryIndex = 0;
 window.sliderPosition = 0;
 
-// Toggle between Bilder and 3D & Grundrisse
-function switchGallerySection(section) {
-    // Toggle buttons
-    const buttons = document.querySelectorAll('.big-toggle-btn');
-    buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.section === section);
-    });
-
-    // Toggle sections
-    const sections = document.querySelectorAll('.section-content');
-    sections.forEach(sec => {
-        sec.classList.toggle('active', sec.dataset.contentSection === section);
-    });
-}
-
 // Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -802,28 +732,4 @@ document.addEventListener('keydown', function(e) {
         else if (e.key === 'ArrowRight') navigateGalleryLightbox(1);
     }
 });
-
-// Toggle between normal and mirrored plan
-let isReversedStates = {};
-
-function togglePlanView(button) {
-    const normalUrl = button.dataset.normal;
-    const mirroredUrl = button.dataset.mirrored;
-    const img = button.previousElementSibling;
-    const buttonId = button.dataset.normal + button.dataset.mirrored;
-
-    if (!isReversedStates[buttonId]) {
-        isReversedStates[buttonId] = false;
-    }
-
-    isReversedStates[buttonId] = !isReversedStates[buttonId];
-
-    img.style.opacity = '0';
-
-    setTimeout(() => {
-        img.src = isReversedStates[buttonId] ? mirroredUrl : normalUrl;
-        img.style.opacity = '1';
-        button.querySelector('.toggle-text').textContent = isReversedStates[buttonId] ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
-    }, 200);
-}
 </script>
