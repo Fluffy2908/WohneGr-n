@@ -181,7 +181,7 @@ function wohnegruen_register_acf_options_pages() {
     acf_add_options_page(array(
         'page_title' => 'Navigation',
         'menu_title' => 'Navigation',
-        'menu_slug' => 'acf-options-navigacija',
+        'menu_slug' => 'acf-options-navigation',
         'capability' => 'edit_posts',
         'parent_slug' => 'themes.php',
         'position' => false,

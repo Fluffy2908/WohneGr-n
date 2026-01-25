@@ -1,0 +1,110 @@
+{
+    "key": "group_theme_footer",
+    "title": "Footer Einstellungen",
+    "fields": [
+        {
+            "key": "field_footer_description",
+            "label": "Footer Beschreibung",
+            "name": "footer_description",
+            "type": "textarea",
+            "instructions": "Kurze Unternehmensbeschreibung für den Footer",
+            "rows": 3,
+            "maxlength": 200
+        },
+        {
+            "key": "field_footer_col2_title",
+            "label": "Spalte 2 Titel",
+            "name": "footer_col2_title",
+            "type": "text",
+            "instructions": "Titel für die zweite Footer-Spalte",
+            "default_value": "Schnelllinks",
+            "maxlength": 50
+        },
+        {
+            "key": "field_footer_col2_links",
+            "label": "Spalte 2 Links",
+            "name": "footer_col2_links",
+            "type": "repeater",
+            "instructions": "Links für die zweite Footer-Spalte",
+            "layout": "table",
+            "button_label": "Link hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_footer_link_text",
+                    "label": "Link Text",
+                    "name": "text",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_footer_link_url",
+                    "label": "Link URL",
+                    "name": "url",
+                    "type": "text",
+                    "required": 1,
+                    "placeholder": "/seite"
+                }
+            ]
+        },
+        {
+            "key": "field_footer_col3_title",
+            "label": "Spalte 3 Titel",
+            "name": "footer_col3_title",
+            "type": "text",
+            "instructions": "Titel für die dritte Footer-Spalte",
+            "default_value": "Rechtliches",
+            "maxlength": 50
+        },
+        {
+            "key": "field_footer_col3_links",
+            "label": "Spalte 3 Links",
+            "name": "footer_col3_links",
+            "type": "repeater",
+            "instructions": "Links für die dritte Footer-Spalte",
+            "layout": "table",
+            "button_label": "Link hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_footer_link3_text",
+                    "label": "Link Text",
+                    "name": "text",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_footer_link3_url",
+                    "label": "Link URL",
+                    "name": "url",
+                    "type": "text",
+                    "required": 1,
+                    "placeholder": "/seite"
+                }
+            ]
+        },
+        {
+            "key": "field_footer_copyright",
+            "label": "Copyright Text",
+            "name": "footer_copyright",
+            "type": "text",
+            "instructions": "Copyright-Text im Footer",
+            "default_value": "© 2026 WohneGrün. Alle Rechte vorbehalten.",
+            "maxlength": 100
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-footer"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Einstellungen für den Website-Footer"
+}
