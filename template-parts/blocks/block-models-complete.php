@@ -183,7 +183,7 @@ $block_id = 'models-complete-' . $block['id'];
 }
 
 .section-padding {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .container {

@@ -127,7 +127,7 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 .section-padding {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .container {
@@ -176,7 +176,7 @@ $block_id = 'gallery-' . $block['id'];
 /* BILDER SECTION - Gallery Filters (Simple Text, No Icons) */
 .bilder-section {
     background: #ffffff;
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .gallery-filters {

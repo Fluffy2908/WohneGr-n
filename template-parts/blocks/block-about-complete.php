@@ -154,7 +154,7 @@ $block_id = 'about-complete-' . $block['id'];
 }
 
 .section-padding {
-    padding: var(--spacing-3xl) 0;
+    padding: 60px 0;
 }
 
 .container {

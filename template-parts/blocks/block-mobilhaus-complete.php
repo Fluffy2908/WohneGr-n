@@ -262,7 +262,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 }
 
 .section-padding {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .container {
