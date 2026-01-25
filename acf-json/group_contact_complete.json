@@ -16,6 +16,15 @@
             "type": "text"
         },
         {
+            "key": "field_contact_hero_background",
+            "label": "Hero Hintergrundbild",
+            "name": "contact_hero_background",
+            "type": "image",
+            "instructions": "Hintergrundbild für Hero-Bereich (mit grünem Overlay)",
+            "return_format": "array",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_contact_form_title",
             "label": "Formular Titel",
             "name": "contact_form_title",

@@ -22,7 +22,6 @@ $block_id = 'models-complete-' . $block['id'];
 
     <!-- Hero Section -->
     <section class="models-hero" <?php if ($hero_image): ?>style="background-image: url('<?php echo esc_url($hero_image['url']); ?>');"<?php endif; ?>>
-        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <?php if ($hero_title): ?>
@@ -211,11 +210,11 @@ $block_id = 'models-complete-' . $block['id'];
     background-color: var(--color-primary);
 }
 
-.hero-overlay {
+.models-hero::before {
+    content: '';
     position: absolute;
     inset: 0;
-    background: var(--color-primary);
-    opacity: 0.85;
+    background: rgba(44, 140, 79, 0.3);
 }
 
 .hero-content {

@@ -30,7 +30,6 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 
     <!-- HERO SECTION: Background Image + Green Filter + Centered Headline -->
     <section class="mobilhaus-hero-new" style="background-image: url('<?php echo esc_url($hero_bg_image); ?>');">
-        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content-center">
                 <?php if ($hero_title): ?>
@@ -337,11 +336,11 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     background-repeat: no-repeat;
 }
 
-.hero-overlay {
+.mobilhaus-hero-new::before {
+    content: '';
     position: absolute;
     inset: 0;
-    background: var(--color-primary);
-    opacity: 0.85;
+    background: rgba(44, 140, 79, 0.3);
 }
 
 .hero-content-center {

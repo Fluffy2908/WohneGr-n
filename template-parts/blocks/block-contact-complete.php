@@ -7,6 +7,7 @@
 // Get all fields
 $hero_title = get_field('contact_hero_title');
 $hero_subtitle = get_field('contact_hero_subtitle');
+$hero_background = get_field('contact_hero_background');
 
 $form_title = get_field('contact_form_title');
 $form_subtitle = get_field('contact_form_subtitle');
@@ -30,7 +31,7 @@ $block_id = 'contact-complete-' . $block['id'];
 <div class="contact-complete-page" id="<?php echo esc_attr($block_id); ?>">
 
     <!-- Hero Section -->
-    <section class="contact-hero">
+    <section class="contact-hero" style="background-image: url('<?php echo esc_url($hero_background['url'] ?? ''); ?>');">
         <div class="container">
             <div class="hero-content text-center">
                 <?php if ($hero_title): ?>
@@ -199,25 +200,39 @@ $block_id = 'contact-complete-' . $block['id'];
 
 /* Hero */
 .contact-hero {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
     padding: var(--spacing-3xl) 0;
-    background: var(--color-background);
+}
+
+.contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 140, 79, 0.3);
 }
 
 .hero-content.text-center {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
     font-size: var(--font-size-4xl);
-    color: var(--color-primary);
+    color: var(--color-white);
     margin-bottom: var(--spacing-lg);
 }
 
 .hero-subtitle {
     font-size: var(--font-size-xl);
-    color: var(--color-text-secondary);
+    color: var(--color-white);
 }
 
 /* Contact Grid */

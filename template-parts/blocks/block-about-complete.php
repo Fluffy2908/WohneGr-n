@@ -28,22 +28,14 @@ $block_id = 'about-complete-' . $block['id'];
 <div class="about-complete-page" id="<?php echo esc_attr($block_id); ?>">
 
     <!-- Hero Section -->
-    <section class="about-hero">
+    <section class="about-hero" style="background-image: url('<?php echo esc_url($hero_image['url'] ?? ''); ?>');">
         <div class="container">
-            <div class="about-hero-grid">
-                <div class="hero-content">
-                    <?php if ($hero_title): ?>
-                        <h1><?php echo esc_html($hero_title); ?></h1>
-                    <?php endif; ?>
-                    <?php if ($hero_subtitle): ?>
-                        <p class="hero-subtitle"><?php echo wp_kses_post($hero_subtitle); ?></p>
-                    <?php endif; ?>
-                </div>
-                <?php if ($hero_image): ?>
-                    <div class="hero-image">
-                        <img src="<?php echo esc_url($hero_image['url']); ?>"
-                             alt="<?php echo esc_attr($hero_image['alt'] ?: $hero_title); ?>">
-                    </div>
+            <div class="hero-content text-center">
+                <?php if ($hero_title): ?>
+                    <h1><?php echo esc_html($hero_title); ?></h1>
+                <?php endif; ?>
+                <?php if ($hero_subtitle): ?>
+                    <p class="hero-subtitle"><?php echo wp_kses_post($hero_subtitle); ?></p>
                 <?php endif; ?>
             </div>
         </div>
@@ -165,33 +157,43 @@ $block_id = 'about-complete-' . $block['id'];
 
 /* Hero */
 .about-hero {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
     padding: var(--spacing-3xl) 0;
 }
 
-.about-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
-    align-items: center;
+.about-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 140, 79, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content.text-center {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-content h1 {
     font-size: var(--font-size-4xl);
-    color: var(--color-primary);
+    color: var(--color-white);
     margin-bottom: var(--spacing-lg);
 }
 
 .hero-subtitle {
     font-size: var(--font-size-xl);
-    color: var(--color-text-secondary);
+    color: var(--color-white);
     line-height: 1.8;
-}
-
-.hero-image img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
 }
 
 /* Story */
@@ -357,9 +359,12 @@ $block_id = 'about-complete-' . $block['id'];
         padding: 0 var(--spacing-md);
     }
 
-    .about-hero-grid,
     .story-grid {
         grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-2xl);
     }
 
     .story-grid .story-content,

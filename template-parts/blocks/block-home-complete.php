@@ -178,13 +178,6 @@ $block_id = 'home-complete-' . $block['id'];
     position: relative;
 }
 
-.home-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-}
-
 .hero-content {
     position: relative;
     z-index: 1;
