@@ -270,29 +270,29 @@ $block_id = 'models-complete-' . $block['id'];
 .calling-cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
-    max-width: 1200px;
+    gap: 40px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .calling-card {
     background: #ffffff;
-    border-radius: 24px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .calling-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 .card-image {
     position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     background: var(--color-background);
 }
@@ -301,60 +301,61 @@ $block_id = 'models-complete-' . $block['id'];
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .calling-card:hover .card-image img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .card-badge {
     position: absolute;
-    top: 24px;
-    right: 24px;
+    top: 16px;
+    right: 16px;
     background: var(--color-primary);
     color: white;
-    padding: 8px 20px;
+    padding: 6px 16px;
     border-radius: 50px;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .card-content {
-    padding: 40px;
+    padding: 24px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .card-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color-primary);
-    margin: 0 0 16px 0;
+    margin: 0 0 12px 0;
     font-weight: 700;
 }
 
 .card-subtitle {
-    font-size: 1.125rem;
+    font-size: 0.95rem;
     color: var(--color-text-secondary);
-    margin: 0 0 32px 0;
+    margin: 0 0 20px 0;
     line-height: 1.6;
 }
 
 .card-specs {
-    margin-bottom: 32px;
-    padding: 24px;
+    margin-bottom: 20px;
+    padding: 16px;
     background: var(--color-background);
-    border-radius: 16px;
-    border-left: 4px solid var(--color-primary);
+    border-radius: 12px;
+    border-left: 3px solid var(--color-primary);
 }
 
 .spec-item {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 6px 0;
+    font-size: 0.9rem;
 }
 
 .spec-item:not(:last-child) {
@@ -364,44 +365,42 @@ $block_id = 'models-complete-' . $block['id'];
 .spec-label {
     font-weight: 600;
     color: var(--color-text-secondary);
-    font-size: 1rem;
 }
 
 .spec-value {
     font-weight: 700;
     color: var(--color-text-primary);
-    font-size: 1rem;
 }
 
 .card-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 16px 32px;
+    gap: 8px;
+    padding: 12px 24px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: white;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
     margin-top: auto;
-    box-shadow: 0 4px 16px rgba(var(--color-primary-rgb), 0.2);
+    box-shadow: 0 3px 12px rgba(var(--color-primary-rgb), 0.2);
 }
 
 .card-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.3);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.3);
 }
 
 .button-arrow {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: transform 0.3s ease;
 }
 
 .card-button:hover .button-arrow {
-    transform: translateX(6px);
+    transform: translateX(4px);
 }
 
 /* Responsive Design */
@@ -425,12 +424,24 @@ $block_id = 'models-complete-' . $block['id'];
         font-size: 2rem;
     }
 
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .calling-cards-grid {
+        gap: 30px;
+    }
+
     .card-content {
-        padding: 30px;
+        padding: 20px;
     }
 
     .card-title {
-        font-size: 1.75rem;
+        font-size: 1.35rem;
+    }
+
+    .card-subtitle {
+        font-size: 0.9rem;
     }
 }
 
@@ -439,17 +450,29 @@ $block_id = 'models-complete-' . $block['id'];
         font-size: 2rem;
     }
 
+    .section-padding {
+        padding: 40px 0;
+    }
+
     .card-content {
-        padding: 24px;
+        padding: 16px;
     }
 
     .card-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .card-button {
-        padding: 14px 24px;
-        font-size: 1rem;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .card-specs {
+        padding: 12px;
+    }
+
+    .spec-item {
+        font-size: 0.85rem;
     }
 }
 </style>

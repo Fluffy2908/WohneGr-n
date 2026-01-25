@@ -100,16 +100,27 @@ $block_id = 'home-complete-' . $block['id'];
             <?php endif; ?>
 
             <div class="models-grid">
-                <?php foreach ($selected_models as $model): ?>
+                <?php foreach ($selected_models as $model):
+                    $featured_image = get_the_post_thumbnail_url($model->ID, 'large');
+                    if (!$featured_image) {
+                        // Fallback to first color variant exterior image
+                        $colors = get_field('mobilhaus_color_variants', $model->ID);
+                        if ($colors && isset($colors[0]['exterior_image']['url'])) {
+                            $featured_image = $colors[0]['exterior_image']['url'];
+                        }
+                    }
+                ?>
                     <div class="model-card">
-                        <?php if (has_post_thumbnail($model->ID)): ?>
+                        <?php if ($featured_image): ?>
                             <div class="model-image">
-                                <?php echo get_the_post_thumbnail($model->ID, 'large'); ?>
+                                <img src="<?php echo esc_url($featured_image); ?>"
+                                     alt="<?php echo esc_attr($model->post_title); ?>"
+                                     loading="lazy">
                             </div>
                         <?php endif; ?>
                         <div class="model-content">
                             <h3><?php echo esc_html($model->post_title); ?></h3>
-                            <a href="<?php echo get_permalink($model->ID); ?>" class="btn btn-primary">
+                            <a href="<?php echo get_permalink($model->ID); ?>" class="btn btn-primary btn-compact">
                                 Mehr erfahren
                             </a>
                         </div>
@@ -234,66 +245,89 @@ $block_id = 'home-complete-' . $block['id'];
 /* Models */
 .models-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .model-card {
     background: var(--color-white);
-    border-radius: var(--radius-lg);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
 }
 
 .model-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.model-image {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-background);
 }
 
 .model-image img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.model-card:hover .model-image img {
+    transform: scale(1.05);
 }
 
 .model-content {
-    padding: var(--spacing-xl);
+    padding: 24px;
     text-align: center;
 }
 
 .model-content h3 {
     color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 /* CTA */
 .cta-banner {
     text-align: center;
-    padding: var(--spacing-3xl);
+    padding: 50px 30px;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-radius: var(--radius-xl);
+    border-radius: 20px;
     color: var(--color-white);
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .cta-banner h2 {
     color: var(--color-white);
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--spacing-md);
+    font-size: 2rem;
+    margin-bottom: 16px;
+    font-weight: 700;
 }
 
 .cta-banner p {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-2xl);
+    font-size: 1.125rem;
+    margin-bottom: 24px;
+    opacity: 0.95;
 }
 
 .cta-banner .btn {
     background: var(--color-white);
     color: var(--color-primary);
+    padding: 12px 32px !important;
+    font-size: 1rem !important;
 }
 
 .cta-banner .btn:hover {
     background: var(--color-background);
+    transform: translateY(-2px);
 }
 
 /* Button */
@@ -371,5 +405,11 @@ $block_id = 'home-complete-' . $block['id'];
     .section-padding {
         padding: var(--spacing-2xl) 0;
     }
+}
+
+/* Compact button style */
+.btn-compact {
+    padding: 12px 24px !important;
+    font-size: 0.95rem !important;
 }
 </style>
