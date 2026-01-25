@@ -1,0 +1,102 @@
+{
+    "key": "group_legal_impressum",
+    "title": "Impressum Felder",
+    "fields": [
+        {
+            "key": "field_impressum_company_name",
+            "label": "Firmenname",
+            "name": "impressum_company_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_impressum_address",
+            "label": "Adresse",
+            "name": "impressum_address",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_impressum_phone",
+            "label": "Telefon",
+            "name": "impressum_phone",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_impressum_email",
+            "label": "E-Mail",
+            "name": "impressum_email",
+            "type": "email",
+            "required": 1
+        },
+        {
+            "key": "field_impressum_website",
+            "label": "Website",
+            "name": "impressum_website",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_impressum_register",
+            "label": "Firmenbuchnummer",
+            "name": "impressum_register",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_impressum_uid",
+            "label": "UID-Nummer",
+            "name": "impressum_uid",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_impressum_tax_number",
+            "label": "Steuernummer",
+            "name": "impressum_tax_number",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_impressum_directors",
+            "label": "Geschäftsführer",
+            "name": "impressum_directors",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_impressum_chamber",
+            "label": "Kammer / Berufsverband",
+            "name": "impressum_chamber",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_impressum_additional_content",
+            "label": "Zusätzliche Inhalte",
+            "name": "impressum_additional_content",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-impressum.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Felder für die Impressum-Seite"
+}

@@ -8,7 +8,7 @@
 get_header();
 ?>
 
-<main class="archive-mobilhaus">
+<main id="main-content" class="archive-mobilhaus">
 
     <!-- Archive Hero Section -->
     <section class="archive-hero">

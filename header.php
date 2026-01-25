@@ -29,6 +29,9 @@
     <?php if ($meta_description): ?>
         <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
     <?php endif; ?>
+    <?php if (is_404() || is_search()): ?>
+        <meta name="robots" content="noindex, follow">
+    <?php endif; ?>
     <link rel="canonical" href="<?php echo esc_url($canonical_url); ?>">
 
     <!-- Open Graph / Facebook -->
@@ -119,10 +122,38 @@
     }
     </script>
 
+    <?php if (!is_front_page() && !is_404()): ?>
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "<?php echo esc_url(home_url('/')); ?>"
+        }<?php if (is_singular()): ?>,
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "<?php echo esc_js(get_the_title()); ?>",
+          "item": "<?php echo esc_url(get_permalink()); ?>"
+        }
+        <?php endif; ?>
+      ]
+    }
+    </script>
+    <?php endif; ?>
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
+<!-- Skip to Content Link (Accessibility) -->
+<a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
 
 <?php
 // Get navigation ACF fields

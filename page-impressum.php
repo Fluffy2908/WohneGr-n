@@ -8,7 +8,7 @@ get_header();
 ?>
 
 <!-- Impressum Hero Section -->
-<section class="hero-section hero-small" id="impressum-hero">
+<section id="main-content" class="hero-section hero-small">
     <div class="hero-background">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-2.jpg" alt="WohneGruen Impressum" loading="eager">
         <div class="hero-overlay"></div>
@@ -29,42 +29,47 @@ get_header();
 
             <h3>Firmierung</h3>
             <p>
-                <strong>WohneGrün</strong><br>
-                Grazer Str. 30<br>
-                8071 Hausmannstätten<br>
-                Österreich
+                <strong><?php echo esc_html(get_field('impressum_company_name')); ?></strong><br>
+                <?php echo nl2br(esc_html(get_field('impressum_address'))); ?>
             </p>
 
             <h3>Kontakt</h3>
             <p>
-                Telefon: +43 316 123 456<br>
-                E-Mail: info@wohnegrün.at<br>
-                Website: <a href="<?php echo home_url(); ?>"><?php echo home_url(); ?></a>
+                Telefon: <?php echo esc_html(get_field('impressum_phone')); ?><br>
+                E-Mail: <a href="mailto:<?php echo esc_attr(get_field('impressum_email')); ?>"><?php echo esc_html(get_field('impressum_email')); ?></a><br>
+                <?php if (get_field('impressum_website')) : ?>
+                    Website: <a href="<?php echo esc_url(get_field('impressum_website')); ?>" target="_blank" rel="noopener"><?php echo esc_html(get_field('impressum_website')); ?></a>
+                <?php endif; ?>
             </p>
 
+            <?php if (get_field('impressum_directors')) : ?>
             <h3>Vertretungsberechtigte Person</h3>
             <p>
-                Geschäftsführer: [Name einfügen]
+                Geschäftsführer: <?php echo esc_html(get_field('impressum_directors')); ?>
             </p>
+            <?php endif; ?>
 
+            <?php if (get_field('impressum_register') || get_field('impressum_uid') || get_field('impressum_tax_number')) : ?>
             <h3>Registereintrag</h3>
             <p>
-                Firmenbuchnummer: [FN einfügen]<br>
-                Registergericht: [Gericht einfügen]<br>
-                UID-Nummer: [UID einfügen]
+                <?php if (get_field('impressum_register')) : ?>
+                    Firmenbuchnummer: <?php echo esc_html(get_field('impressum_register')); ?><br>
+                <?php endif; ?>
+                <?php if (get_field('impressum_uid')) : ?>
+                    UID-Nummer: <?php echo esc_html(get_field('impressum_uid')); ?><br>
+                <?php endif; ?>
+                <?php if (get_field('impressum_tax_number')) : ?>
+                    Steuernummer: <?php echo esc_html(get_field('impressum_tax_number')); ?>
+                <?php endif; ?>
             </p>
+            <?php endif; ?>
 
+            <?php if (get_field('impressum_chamber')) : ?>
             <h3>Aufsichtsbehörde</h3>
             <p>
-                Gewerbebehörde: [Behörde einfügen]<br>
-                Kammer: Wirtschaftskammer Steiermark
+                Kammer: <?php echo esc_html(get_field('impressum_chamber')); ?>
             </p>
-
-            <h3>Berufsbezeichnung</h3>
-            <p>
-                Mobilhausbau und -vertrieb<br>
-                Verliehen in: Österreich
-            </p>
+            <?php endif; ?>
 
             <h3>Haftungsausschluss</h3>
 
@@ -89,6 +94,12 @@ get_header();
                 <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a><br>
                 Unsere E-Mail-Adresse finden Sie oben im Impressum.
             </p>
+
+            <?php if (get_field('impressum_additional_content')) : ?>
+            <div class="additional-content">
+                <?php echo wp_kses_post(get_field('impressum_additional_content')); ?>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

@@ -1,0 +1,75 @@
+{
+    "key": "group_legal_datenschutz",
+    "title": "Datenschutz Felder",
+    "fields": [
+        {
+            "key": "field_datenschutz_controller_name",
+            "label": "Verantwortlicher (Name)",
+            "name": "datenschutz_controller_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_datenschutz_controller_address",
+            "label": "Verantwortlicher (Adresse)",
+            "name": "datenschutz_controller_address",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_datenschutz_controller_phone",
+            "label": "Verantwortlicher (Telefon)",
+            "name": "datenschutz_controller_phone",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_datenschutz_controller_email",
+            "label": "Verantwortlicher (E-Mail)",
+            "name": "datenschutz_controller_email",
+            "type": "email",
+            "required": 1
+        },
+        {
+            "key": "field_datenschutz_dpo_name",
+            "label": "Datenschutzbeauftragter (optional)",
+            "name": "datenschutz_dpo_name",
+            "type": "text",
+            "required": 0
+        },
+        {
+            "key": "field_datenschutz_dpo_email",
+            "label": "Datenschutzbeauftragter E-Mail",
+            "name": "datenschutz_dpo_email",
+            "type": "email",
+            "required": 0
+        },
+        {
+            "key": "field_datenschutz_custom_content",
+            "label": "Zusätzliche Datenschutz-Inhalte",
+            "name": "datenschutz_custom_content",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "instructions": "Optional: Eigene Datenschutzbestimmungen hinzufügen"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-datenschutz.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Felder für die Datenschutzerklärung"
+}

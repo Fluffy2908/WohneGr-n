@@ -12,7 +12,7 @@ $error_subtitle = wohnegruen_get_option('404_subtitle') ?: 'Die gesuchte Seite k
 $error_description = wohnegruen_get_option('404_description') ?: 'Die Seite, die Sie suchen, existiert möglicherweise nicht mehr oder wurde verschoben. Bitte verwenden Sie die Navigation oder kehren Sie zur Startseite zurück.';
 ?>
 
-<section class="error-404-section">
+<section id="main-content" class="error-404-section">
     <div class="container">
         <div class="error-404-content">
             <!-- Large 404 Number -->

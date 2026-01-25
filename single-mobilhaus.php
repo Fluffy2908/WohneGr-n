@@ -7,7 +7,7 @@
 get_header();
 ?>
 
-<main class="single-mobilhaus-page">
+<main id="main-content" class="single-mobilhaus-page">
     <?php
     while (have_posts()) :
         the_post();

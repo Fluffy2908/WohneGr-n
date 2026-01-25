@@ -8,7 +8,7 @@ get_header();
 ?>
 
 <!-- Privacy Hero Section -->
-<section class="hero-section hero-small" id="privacy-hero">
+<section id="main-content" class="hero-section hero-small">
     <div class="hero-background">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-3.jpg" alt="WohneGruen Datenschutz" loading="eager">
         <div class="hero-overlay"></div>
@@ -57,15 +57,25 @@ get_header();
                 Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
             </p>
             <p>
-                <strong>WohneGrün</strong><br>
-                Grazer Str. 30<br>
-                8071 Hausmannstätten<br>
-                Österreich
+                <strong><?php echo esc_html(get_field('datenschutz_controller_name')); ?></strong><br>
+                <?php echo nl2br(esc_html(get_field('datenschutz_controller_address'))); ?>
             </p>
             <p>
-                Telefon: +43 316 123 456<br>
-                E-Mail: info@wohnegrün.at
+                Telefon: <?php echo esc_html(get_field('datenschutz_controller_phone')); ?><br>
+                E-Mail: <a href="mailto:<?php echo esc_attr(get_field('datenschutz_controller_email')); ?>"><?php echo esc_html(get_field('datenschutz_controller_email')); ?></a>
             </p>
+
+            <?php if (get_field('datenschutz_dpo_name') || get_field('datenschutz_dpo_email')) : ?>
+            <h4>Datenschutzbeauftragter</h4>
+            <p>
+                <?php if (get_field('datenschutz_dpo_name')) : ?>
+                    Name: <?php echo esc_html(get_field('datenschutz_dpo_name')); ?><br>
+                <?php endif; ?>
+                <?php if (get_field('datenschutz_dpo_email')) : ?>
+                    E-Mail: <a href="mailto:<?php echo esc_attr(get_field('datenschutz_dpo_email')); ?>"><?php echo esc_html(get_field('datenschutz_dpo_email')); ?></a>
+                <?php endif; ?>
+            </p>
+            <?php endif; ?>
 
             <h3>4. Datenerfassung auf dieser Website</h3>
 
@@ -104,6 +114,12 @@ get_header();
             <p>
                 Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung.
             </p>
+
+            <?php if (get_field('datenschutz_custom_content')) : ?>
+            <div class="additional-content">
+                <?php echo wp_kses_post(get_field('datenschutz_custom_content')); ?>
+            </div>
+            <?php endif; ?>
 
             <p class="legal-update">
                 <small>Stand dieser Datenschutzerklärung: <?php echo date('d.m.Y'); ?></small>

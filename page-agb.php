@@ -8,7 +8,7 @@ get_header();
 ?>
 
 <!-- AGB Hero Section -->
-<section class="hero-section hero-small" id="agb-hero">
+<section id="main-content" class="hero-section hero-small">
     <div class="hero-background">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/wohnegruen-mobilhaus-exterior-4.jpg" alt="WohneGruen AGB" loading="eager">
         <div class="hero-overlay"></div>
@@ -27,10 +27,14 @@ get_header();
         <div class="legal-content">
             <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
 
+            <?php if (get_field('agb_custom_content')) : ?>
+                <?php echo wp_kses_post(get_field('agb_custom_content')); ?>
+            <?php else : ?>
             <h3>§ 1 Geltungsbereich</h3>
             <p>
-                Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen WohneGrün (nachfolgend "Anbieter") und dem Kunden über die Lieferung und Montage von Mobilhäusern.
+                Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen <?php echo esc_html(get_field('agb_company_name')); ?> (nachfolgend "Anbieter") und dem Kunden über die Lieferung und Montage von Mobilhäusern.
             </p>
+            <?php endif; ?>
 
             <h3>§ 2 Vertragsschluss</h3>
             <p>
@@ -94,10 +98,10 @@ get_header();
 
             <p class="legal-update">
                 <strong>Kontakt für Rückfragen:</strong><br>
-                WohneGrün<br>
-                Grazer Str. 30, 8071 Hausmannstätten<br>
-                Telefon: +43 316 123 456<br>
-                E-Mail: info@wohnegrün.at
+                <?php echo esc_html(get_field('agb_company_name')); ?><br>
+                <?php echo nl2br(esc_html(get_field('agb_address'))); ?><br>
+                Telefon: <?php echo esc_html(get_field('agb_phone')); ?><br>
+                E-Mail: <a href="mailto:<?php echo esc_attr(get_field('agb_email')); ?>"><?php echo esc_html(get_field('agb_email')); ?></a>
             </p>
 
             <p class="legal-update">

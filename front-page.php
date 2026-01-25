@@ -18,7 +18,7 @@
 get_header();
 ?>
 
-<main class="front-page">
+<main id="main-content" class="front-page">
     <?php
     if (have_posts()) :
         while (have_posts()) :
