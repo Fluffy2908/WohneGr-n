@@ -44,7 +44,7 @@ $block_id = 'gallery-' . $block['id'];
             </div>
             <?php endif; ?>
 
-            <!-- Gallery Grid (First 6 images) -->
+            <!-- Gallery Grid (First 9 images) -->
             <div class="gallery-grid">
                 <?php
                 $all_images = [];
@@ -120,13 +120,13 @@ $block_id = 'gallery-' . $block['id'];
     </section>
     <?php endif; ?>
 
-    <!-- Simple Lightbox -->
-    <div id="gallery-lightbox" class="simple-lightbox">
-        <span class="lightbox-close" onclick="window.WGGalleryBlock.close()">&times;</span>
-        <span class="lightbox-prev" onclick="window.WGGalleryBlock.navigate(-1)">&#10094;</span>
-        <span class="lightbox-next" onclick="window.WGGalleryBlock.navigate(1)">&#10095;</span>
-        <img class="lightbox-image" id="lightbox-image" src="" alt="">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
+    <!-- Lightbox (Full Screen Slider) -->
+    <div id="gallery-lightbox-<?php echo esc_attr($block_id); ?>" class="gallery-lightbox" onclick="closeGalleryLightbox()">
+        <button class="lightbox-close" onclick="closeGalleryLightbox()">&times;</button>
+        <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)">‹</button>
+        <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="">
+        <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)">›</button>
+        <div class="lightbox-counter" id="gallery-lightbox-counter"></div>
     </div>
 
 </div>
@@ -225,7 +225,7 @@ $block_id = 'gallery-' . $block['id'];
     color: white;
 }
 
-/* Gallery Grid - First 6 Images */
+/* Gallery Grid - First 9 Images */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -511,83 +511,84 @@ $block_id = 'gallery-' . $block['id'];
     transform: translateY(-2px);
 }
 
-/* Simple Lightbox */
-.simple-lightbox {
+/* Lightbox (Full Screen Slider) - Clean Design Like Interior Schemes */
+.gallery-lightbox {
     display: none;
     position: fixed;
-    z-index: 999999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.lightbox-image {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 1200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
 }
 
 .lightbox-close {
     position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 60px;
-    font-weight: bold;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    color: white;
+    background: none;
+    border: none;
     cursor: pointer;
-    user-select: none;
+    z-index: 10001;
+    transition: color 0.3s ease;
 }
 
 .lightbox-close:hover {
     color: #bbb;
 }
 
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
 .lightbox-prev,
 .lightbox-next {
-    cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: auto;
-    padding: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
     color: white;
-    font-weight: bold;
-    font-size: 40px;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+    transition: all 0.3s ease;
 }
 
 .lightbox-prev:hover,
 .lightbox-next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .lightbox-prev {
-    left: 0;
+    left: 40px;
 }
 
 .lightbox-next {
-    right: 0;
+    right: 40px;
 }
 
-.lightbox-caption {
+.lightbox-counter {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
-    color: #ccc;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 5px;
-    font-size: 18px;
+    color: white;
+    font-size: 1.125rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 24px;
+    border-radius: 50px;
 }
 
 /* Responsive Design */
@@ -616,6 +617,21 @@ $block_id = 'gallery-' . $block['id'];
         width: 40px;
         height: 40px;
     }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -634,8 +650,9 @@ $block_id = 'gallery-' . $block['id'];
     }
 
     /* Mobile Lightbox */
-    .lightbox-image {
-        width: 95%;
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 85vh;
     }
 
     .lightbox-close {
@@ -646,13 +663,23 @@ $block_id = 'gallery-' . $block['id'];
 
     .lightbox-prev,
     .lightbox-next {
-        font-size: 30px;
-        padding: 10px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
     }
 
-    .lightbox-caption {
-        font-size: 14px;
-        bottom: 10px;
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-counter {
+        font-size: 1rem;
+        bottom: 20px;
+        padding: 6px 18px;
     }
 
     .toggle-btn-text {
@@ -712,7 +739,7 @@ window.galleryImages = <?php echo json_encode(array_map(function($item) {
     return $item['image']['url'];
 }, $all_images ?? [])); ?>;
 
-window.currentGalleryIndex = 0;
+window.currentGalleryImage = 0;
 window.sliderPosition = 0;
 
 // Filter functionality
@@ -791,119 +818,56 @@ function moveGallerySlider(direction) {
     });
 }
 
-// Gallery Block Lightbox - Namespace to avoid conflicts
-window.WGGalleryBlock = window.WGGalleryBlock || {};
+// Lightbox functions - Clean and simple like interior schemes
+function openGalleryLightbox(imageIndex) {
+    window.currentGalleryImage = imageIndex;
 
-window.WGGalleryBlock.open = function(index) {
-    window.WGGalleryBlock.currentIndex = index;
-    var lightbox = document.getElementById('gallery-lightbox');
-    var img = document.getElementById('lightbox-image');
-    var caption = document.getElementById('lightbox-caption');
+    const lightbox = document.getElementById('gallery-lightbox-<?php echo esc_js($block_id); ?>');
+    const img = document.getElementById('gallery-lightbox-img');
+    const counter = document.getElementById('gallery-lightbox-counter');
 
-    if (!lightbox || !img || !caption) {
-        console.error('Lightbox elements not found');
-        return;
-    }
+    if (!lightbox || !img || !counter) return;
 
-    img.src = window.galleryImages[index];
-    caption.textContent = (index + 1) + ' / ' + window.galleryImages.length;
-    lightbox.style.display = 'block';
+    img.src = window.galleryImages[imageIndex];
+    counter.textContent = `${imageIndex + 1} / ${window.galleryImages.length}`;
+
+    lightbox.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-};
-
-window.WGGalleryBlock.close = function() {
-    var lightbox = document.getElementById('gallery-lightbox');
-    if (lightbox) {
-        lightbox.style.display = 'none';
-    }
-    document.body.style.overflow = '';
-};
-
-window.WGGalleryBlock.navigate = function(direction) {
-    var currentIndex = window.WGGalleryBlock.currentIndex || 0;
-    currentIndex += direction;
-
-    if (currentIndex >= window.galleryImages.length) {
-        currentIndex = 0;
-    }
-    if (currentIndex < 0) {
-        currentIndex = window.galleryImages.length - 1;
-    }
-
-    window.WGGalleryBlock.currentIndex = currentIndex;
-
-    var img = document.getElementById('lightbox-image');
-    var caption = document.getElementById('lightbox-caption');
-
-    if (img && caption) {
-        img.src = window.galleryImages[currentIndex];
-        caption.textContent = (currentIndex + 1) + ' / ' + window.galleryImages.length;
-    }
-};
-
-// Legacy function names for compatibility
-function openGalleryLightbox(index) {
-    window.WGGalleryBlock.open(index);
 }
 
 function closeGalleryLightbox() {
-    window.WGGalleryBlock.close();
+    const lightbox = document.getElementById('gallery-lightbox-<?php echo esc_js($block_id); ?>');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
 function navigateGalleryLightbox(direction) {
-    window.WGGalleryBlock.navigate(direction);
+    window.currentGalleryImage += direction;
+
+    if (window.currentGalleryImage < 0) {
+        window.currentGalleryImage = window.galleryImages.length - 1;
+    } else if (window.currentGalleryImage >= window.galleryImages.length) {
+        window.currentGalleryImage = 0;
+    }
+
+    const img = document.getElementById('gallery-lightbox-img');
+    const counter = document.getElementById('gallery-lightbox-counter');
+
+    if (img && counter) {
+        img.src = window.galleryImages[window.currentGalleryImage];
+        counter.textContent = `${window.currentGalleryImage + 1} / ${window.galleryImages.length}`;
+    }
 }
 
-// Keyboard support
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
-    var lightbox = document.getElementById('gallery-lightbox');
-    if (lightbox && lightbox.style.display === 'block') {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-            window.WGGalleryBlock.close();
-        } else if (e.key === 'ArrowLeft') {
-            window.WGGalleryBlock.navigate(-1);
-        } else if (e.key === 'ArrowRight') {
-            window.WGGalleryBlock.navigate(1);
-        }
+    const lightbox = document.getElementById('gallery-lightbox-<?php echo esc_js($block_id); ?>');
+    if (lightbox && lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') closeGalleryLightbox();
+        else if (e.key === 'ArrowLeft') navigateGalleryLightbox(-1);
+        else if (e.key === 'ArrowRight') navigateGalleryLightbox(1);
     }
 });
-
-// Click background to close
-var galleryLightbox = document.getElementById('gallery-lightbox');
-if (galleryLightbox) {
-    galleryLightbox.addEventListener('click', function(e) {
-        if (e.target === this) {
-            window.WGGalleryBlock.close();
-        }
-    });
-}
-
-// Touch swipe support
-(function() {
-    var touchStartX = 0;
-    var touchEndX = 0;
-    var lightbox = document.getElementById('gallery-lightbox');
-
-    if (lightbox) {
-        lightbox.addEventListener('touchstart', function(e) {
-            if (lightbox.style.display === 'block') {
-                touchStartX = e.changedTouches[0].screenX;
-            }
-        });
-
-        lightbox.addEventListener('touchend', function(e) {
-            if (lightbox.style.display === 'block') {
-                touchEndX = e.changedTouches[0].screenX;
-                var diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        window.WGGalleryBlock.navigate(1); // Swipe left
-                    } else {
-                        window.WGGalleryBlock.navigate(-1); // Swipe right
-                    }
-                }
-            }
-        });
-    }
-})();
 </script>
