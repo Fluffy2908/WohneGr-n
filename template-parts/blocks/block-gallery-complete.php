@@ -554,14 +554,17 @@ $block_id = 'gallery-' . $block['id'];
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-    height: auto;
+    min-width: 200px;
+    min-height: 200px;
     max-width: 90vw;
     max-height: 90vh;
 }
 
 .lightbox-spinner {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
     border: 4px solid rgba(255, 255, 255, 0.3);
@@ -569,15 +572,15 @@ $block_id = 'gallery-' . $block['id'];
     border-radius: 50%;
     animation: lightbox-spin 1s linear infinite;
     display: none;
-    z-index: 2;
+    z-index: 10001;
 }
 
 @keyframes lightbox-spin {
-    to { transform: rotate(360deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .lightbox-content {
-    display: block;
+    display: block !important;
     max-width: 90vw;
     max-height: 90vh;
     width: auto;
@@ -585,8 +588,7 @@ $block_id = 'gallery-' . $block['id'];
     object-fit: contain;
     border-radius: 8px;
     transition: opacity 0.3s ease;
-    position: relative;
-    z-index: 1;
+    z-index: 10000;
 }
 
 .lightbox-prev,

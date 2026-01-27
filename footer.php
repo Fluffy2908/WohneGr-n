@@ -73,13 +73,13 @@ $contact_address = wohnegruen_get_option('contact_address');
                 <?php if ($contact_phone): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('phone'); ?>
-                        <span><?php echo esc_html($contact_phone); ?></span>
+                        <a href="tel:<?php echo esc_attr(str_replace(' ', '', $contact_phone)); ?>"><?php echo esc_html($contact_phone); ?></a>
                     </div>
                 <?php endif; ?>
                 <?php if ($contact_email): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('email'); ?>
-                        <span><?php
+                        <a href="mailto:<?php echo esc_attr($contact_email); ?>"><?php
                             // Decode punycode for display (e.g., xn--wohnegrn-d6a.at → wohnegrün.at)
                             $display_email = $contact_email;
                             if (function_exists('idn_to_utf8')) {
@@ -89,7 +89,7 @@ $contact_address = wohnegruen_get_option('contact_address');
                                 }
                             }
                             echo esc_html($display_email);
-                        ?></span>
+                        ?></a>
                     </div>
                 <?php endif; ?>
                 <?php if ($contact_address): ?>
