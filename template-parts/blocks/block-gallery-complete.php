@@ -734,7 +734,7 @@ $block_id = 'gallery-' . $block['id'];
 </style>
 
 <script>
-// Store all images for lightbox with FULL SIZE images
+// Store all images for lightbox - using full original size
 window.galleryImages = <?php echo json_encode(array_map(function($item) {
     return $item['image']['url'];
 }, $all_images ?? [])); ?>;

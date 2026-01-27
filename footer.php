@@ -79,8 +79,8 @@ $contact_address = wohnegruen_get_option('contact_address');
                 <?php if ($contact_email): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('email'); ?>
-                        <a href="mailto:<?php echo $contact_email; ?>" class="email-link">
-                            <?php echo $contact_email; ?>
+                        <a href="mailto:<?php echo htmlspecialchars($contact_email, ENT_QUOTES, 'UTF-8'); ?>" class="email-link" title="Send us an email">
+                            <?php echo htmlspecialchars($contact_email, ENT_QUOTES, 'UTF-8'); ?>
                         </a>
                     </div>
                 <?php endif; ?>
