@@ -122,9 +122,9 @@ $block_id = 'gallery-' . $block['id'];
 
     <!-- Simple Lightbox -->
     <div id="gallery-lightbox" class="simple-lightbox">
-        <span class="lightbox-close" onclick="closeGalleryLightbox()">&times;</span>
-        <span class="lightbox-prev" onclick="navigateGalleryLightbox(-1)">&#10094;</span>
-        <span class="lightbox-next" onclick="navigateGalleryLightbox(1)">&#10095;</span>
+        <span class="lightbox-close" onclick="window.WGGalleryBlock.close()">&times;</span>
+        <span class="lightbox-prev" onclick="window.WGGalleryBlock.navigate(-1)">&#10094;</span>
+        <span class="lightbox-next" onclick="window.WGGalleryBlock.navigate(1)">&#10095;</span>
         <img class="lightbox-image" id="lightbox-image" src="" alt="">
         <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
@@ -791,40 +791,67 @@ function moveGallerySlider(direction) {
     });
 }
 
-// Simple Lightbox Functions
-function openGalleryLightbox(index) {
-    window.currentGalleryIndex = index;
+// Gallery Block Lightbox - Namespace to avoid conflicts
+window.WGGalleryBlock = window.WGGalleryBlock || {};
+
+window.WGGalleryBlock.open = function(index) {
+    window.WGGalleryBlock.currentIndex = index;
     var lightbox = document.getElementById('gallery-lightbox');
     var img = document.getElementById('lightbox-image');
     var caption = document.getElementById('lightbox-caption');
+
+    if (!lightbox || !img || !caption) {
+        console.error('Lightbox elements not found');
+        return;
+    }
 
     img.src = window.galleryImages[index];
     caption.textContent = (index + 1) + ' / ' + window.galleryImages.length;
     lightbox.style.display = 'block';
     document.body.style.overflow = 'hidden';
-}
+};
 
-function closeGalleryLightbox() {
+window.WGGalleryBlock.close = function() {
     var lightbox = document.getElementById('gallery-lightbox');
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-function navigateGalleryLightbox(direction) {
-    window.currentGalleryIndex += direction;
-
-    if (window.currentGalleryIndex >= window.galleryImages.length) {
-        window.currentGalleryIndex = 0;
+    if (lightbox) {
+        lightbox.style.display = 'none';
     }
-    if (window.currentGalleryIndex < 0) {
-        window.currentGalleryIndex = window.galleryImages.length - 1;
+    document.body.style.overflow = '';
+};
+
+window.WGGalleryBlock.navigate = function(direction) {
+    var currentIndex = window.WGGalleryBlock.currentIndex || 0;
+    currentIndex += direction;
+
+    if (currentIndex >= window.galleryImages.length) {
+        currentIndex = 0;
     }
+    if (currentIndex < 0) {
+        currentIndex = window.galleryImages.length - 1;
+    }
+
+    window.WGGalleryBlock.currentIndex = currentIndex;
 
     var img = document.getElementById('lightbox-image');
     var caption = document.getElementById('lightbox-caption');
 
-    img.src = window.galleryImages[window.currentGalleryIndex];
-    caption.textContent = (window.currentGalleryIndex + 1) + ' / ' + window.galleryImages.length;
+    if (img && caption) {
+        img.src = window.galleryImages[currentIndex];
+        caption.textContent = (currentIndex + 1) + ' / ' + window.galleryImages.length;
+    }
+};
+
+// Legacy function names for compatibility
+function openGalleryLightbox(index) {
+    window.WGGalleryBlock.open(index);
+}
+
+function closeGalleryLightbox() {
+    window.WGGalleryBlock.close();
+}
+
+function navigateGalleryLightbox(direction) {
+    window.WGGalleryBlock.navigate(direction);
 }
 
 // Keyboard support
@@ -832,21 +859,24 @@ document.addEventListener('keydown', function(e) {
     var lightbox = document.getElementById('gallery-lightbox');
     if (lightbox && lightbox.style.display === 'block') {
         if (e.key === 'Escape' || e.key === 'Esc') {
-            closeGalleryLightbox();
+            window.WGGalleryBlock.close();
         } else if (e.key === 'ArrowLeft') {
-            navigateGalleryLightbox(-1);
+            window.WGGalleryBlock.navigate(-1);
         } else if (e.key === 'ArrowRight') {
-            navigateGalleryLightbox(1);
+            window.WGGalleryBlock.navigate(1);
         }
     }
 });
 
 // Click background to close
-document.getElementById('gallery-lightbox').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeGalleryLightbox();
-    }
-});
+var galleryLightbox = document.getElementById('gallery-lightbox');
+if (galleryLightbox) {
+    galleryLightbox.addEventListener('click', function(e) {
+        if (e.target === this) {
+            window.WGGalleryBlock.close();
+        }
+    });
+}
 
 // Touch swipe support
 (function() {
@@ -867,9 +897,9 @@ document.getElementById('gallery-lightbox').addEventListener('click', function(e
                 var diff = touchStartX - touchEndX;
                 if (Math.abs(diff) > 50) {
                     if (diff > 0) {
-                        navigateGalleryLightbox(1); // Swipe left
+                        window.WGGalleryBlock.navigate(1); // Swipe left
                     } else {
-                        navigateGalleryLightbox(-1); // Swipe right
+                        window.WGGalleryBlock.navigate(-1); // Swipe right
                     }
                 }
             }

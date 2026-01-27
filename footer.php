@@ -79,28 +79,9 @@ $contact_address = wohnegruen_get_option('contact_address');
                 <?php if ($contact_email): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('email'); ?>
-                        <?php
-                            // Prepare email for mailto (encode domain if needed)
-                            $mailto_email = $contact_email;
-                            $display_email = $contact_email;
-
-                            // If email contains umlaut, encode domain for mailto
-                            if (function_exists('idn_to_ascii') && strpos($contact_email, 'ü') !== false) {
-                                $parts = explode('@', $contact_email);
-                                if (count($parts) === 2) {
-                                    $mailto_email = $parts[0] . '@' . idn_to_ascii($parts[1], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
-                                }
-                            }
-
-                            // Display decoded version
-                            if (function_exists('idn_to_utf8')) {
-                                $parts = explode('@', $contact_email);
-                                if (count($parts) === 2) {
-                                    $display_email = $parts[0] . '@' . idn_to_utf8($parts[1], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
-                                }
-                            }
-                        ?>
-                        <a href="mailto:<?php echo esc_attr($mailto_email); ?>"><?php echo esc_html($display_email); ?></a>
+                        <a href="mailto:<?php echo esc_attr($contact_email); ?>" class="email-link">
+                            <?php echo esc_html($contact_email); ?>
+                        </a>
                     </div>
                 <?php endif; ?>
                 <?php if ($contact_address): ?>

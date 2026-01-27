@@ -166,59 +166,58 @@
                             "preview_size": "medium"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "key": "field_mobilhaus_floor_plans",
-            "label": "Grundrisse (Alle Varianten)",
-            "name": "mobilhaus_floor_plans",
-            "type": "repeater",
-            "instructions": "Fügen Sie alle Grundriss-Varianten hinzu (z.B. Nature 3x8m, Nature 4x8m, etc.)",
-            "required": 0,
-            "min": 1,
-            "max": 10,
-            "layout": "block",
-            "button_label": "Grundriss hinzufügen",
-            "sub_fields": [
-                {
-                    "key": "field_floorplan_title",
-                    "label": "Titel",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "z.B. 'Nature 3 x 8 m' oder 'Nature Komfort 4 x 8 m'",
-                    "required": 1,
-                    "placeholder": "Nature 3 x 8 m"
                 },
                 {
-                    "key": "field_floorplan_description",
-                    "label": "Beschreibung",
-                    "name": "description",
-                    "type": "textarea",
-                    "instructions": "Kurze Beschreibung dieser Variante (optional)",
+                    "key": "field_variant_floor_plans",
+                    "label": "Grundrisse",
+                    "name": "floor_plans",
+                    "type": "repeater",
+                    "instructions": "Grundrisse für diese Variante (mit Normal und Gespiegelt)",
                     "required": 0,
-                    "rows": 2,
-                    "placeholder": "Unser Standard-Modell mit..."
-                },
-                {
-                    "key": "field_floorplan_normal",
-                    "label": "Grundriss (Normal)",
-                    "name": "normal_plan",
-                    "type": "image",
-                    "instructions": "Normaler Grundriss",
-                    "required": 1,
-                    "return_format": "array",
-                    "preview_size": "medium"
-                },
-                {
-                    "key": "field_floorplan_mirrored",
-                    "label": "Grundriss (Gespiegelt)",
-                    "name": "mirrored_plan",
-                    "type": "image",
-                    "instructions": "Gespiegelter Grundriss",
-                    "required": 1,
-                    "return_format": "array",
-                    "preview_size": "medium"
+                    "min": 1,
+                    "max": 4,
+                    "layout": "block",
+                    "button_label": "Grundriss hinzufügen",
+                    "sub_fields": [
+                        {
+                            "key": "field_variant_floorplan_title",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "z.B. 'Grundriss Option 1'",
+                            "required": 0,
+                            "placeholder": "Optional"
+                        },
+                        {
+                            "key": "field_variant_floorplan_description",
+                            "label": "Beschreibung",
+                            "name": "description",
+                            "type": "textarea",
+                            "instructions": "Kurze Beschreibung (optional)",
+                            "required": 0,
+                            "rows": 2
+                        },
+                        {
+                            "key": "field_variant_floorplan_normal",
+                            "label": "Grundriss (Normal)",
+                            "name": "normal_plan",
+                            "type": "image",
+                            "instructions": "Normaler Grundriss",
+                            "required": 1,
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_variant_floorplan_mirrored",
+                            "label": "Grundriss (Gespiegelt)",
+                            "name": "mirrored_plan",
+                            "type": "image",
+                            "instructions": "Gespiegelter Grundriss",
+                            "required": 1,
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        }
+                    ]
                 }
             ]
         },
