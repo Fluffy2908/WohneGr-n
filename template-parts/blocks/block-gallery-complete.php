@@ -554,8 +554,10 @@ $block_id = 'gallery-' . $block['id'];
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 95%;
-    max-height: 95%;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
 }
 
 .lightbox-spinner {
@@ -567,6 +569,7 @@ $block_id = 'gallery-' . $block['id'];
     border-radius: 50%;
     animation: lightbox-spin 1s linear infinite;
     display: none;
+    z-index: 1;
 }
 
 .lightbox-spinner.active {
@@ -578,8 +581,9 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 .lightbox-content {
-    max-width: 100%;
-    max-height: 95vh;
+    display: block;
+    max-width: 90vw;
+    max-height: 90vh;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -709,12 +713,13 @@ $block_id = 'gallery-' . $block['id'];
     }
 
     .lightbox-image-container {
-        max-width: 100%;
-        max-height: 90vh;
+        max-width: 95vw;
+        max-height: 85vh;
     }
 
     .lightbox-content {
-        max-height: 90vh;
+        max-width: 95vw;
+        max-height: 85vh;
     }
 
     .toggle-btn-text {
@@ -865,7 +870,7 @@ function openGalleryLightbox(index) {
     spinner.classList.add('active');
     img.classList.remove('loaded');
 
-    // Set up image load handler
+    // Set up image load handler BEFORE setting src
     img.onload = function() {
         spinner.classList.remove('active');
         img.classList.add('loaded');
@@ -876,7 +881,15 @@ function openGalleryLightbox(index) {
         img.classList.add('loaded');
     };
 
+    // Set image source
     img.src = window.galleryImages[index];
+
+    // Check if image is already loaded (cached)
+    if (img.complete) {
+        spinner.classList.remove('active');
+        img.classList.add('loaded');
+    }
+
     counter.textContent = `${index + 1} / ${window.galleryImages.length}`;
 
     lightbox.style.display = 'flex';
@@ -912,7 +925,7 @@ function navigateGalleryLightbox(direction) {
     spinner.classList.add('active');
     img.classList.remove('loaded');
 
-    // Set up image load handler
+    // Set up image load handler BEFORE setting src
     img.onload = function() {
         spinner.classList.remove('active');
         img.classList.add('loaded');
@@ -923,7 +936,15 @@ function navigateGalleryLightbox(direction) {
         img.classList.add('loaded');
     };
 
+    // Set image source
     img.src = window.galleryImages[window.currentGalleryIndex];
+
+    // Check if image is already loaded (cached)
+    if (img.complete) {
+        spinner.classList.remove('active');
+        img.classList.add('loaded');
+    }
+
     counter.textContent = `${window.currentGalleryIndex + 1} / ${window.galleryImages.length}`;
 }
 
