@@ -120,14 +120,11 @@ $block_id = 'gallery-' . $block['id'];
     </section>
     <?php endif; ?>
 
-    <!-- Lightbox -->
-    <div id="gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
+    <!-- Lightbox - SIMPLIFIED -->
+    <div id="gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()" style="display: none;">
         <button class="lightbox-close" onclick="event.stopPropagation(); closeGalleryLightbox()" aria-label="Schließen">&times;</button>
         <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)" aria-label="Vorheriges Bild">‹</button>
-        <div class="lightbox-image-container">
-            <div class="lightbox-spinner" id="gallery-lightbox-spinner" style="display: none;"></div>
-            <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="" style="opacity: 0;" onclick="event.stopPropagation()">
-        </div>
+        <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="" onclick="event.stopPropagation()">
         <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)" aria-label="Nächstes Bild">›</button>
         <div class="lightbox-counter" id="gallery-lightbox-counter"></div>
     </div>
@@ -514,19 +511,31 @@ $block_id = 'gallery-' . $block['id'];
     transform: translateY(-2px);
 }
 
-/* Lightbox */
+/* Lightbox - SIMPLIFIED */
 .gallery-lightbox {
-    display: none;
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.95);
-    z-index: 10000;
+    z-index: 99999;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
 .lightbox-close {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     font-size: 50px;
@@ -535,65 +544,22 @@ $block_id = 'gallery-' . $block['id'];
     background: rgba(255, 255, 255, 0.1);
     border: none;
     cursor: pointer;
-    z-index: 10002;
+    z-index: 100001;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
 }
 
 .lightbox-close:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
-.lightbox-image-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 200px;
-    min-height: 200px;
-    max-width: 90vw;
-    max-height: 90vh;
-}
-
-.lightbox-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: lightbox-spin 1s linear infinite;
-    display: none;
-    z-index: 10001;
-}
-
-@keyframes lightbox-spin {
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-.lightbox-content {
-    display: block !important;
-    max-width: 90vw;
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    transition: opacity 0.3s ease;
-    z-index: 10000;
-}
-
 .lightbox-prev,
 .lightbox-next {
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.2);
@@ -604,8 +570,7 @@ $block_id = 'gallery-' . $block['id'];
     cursor: pointer;
     font-size: 2rem;
     color: white;
-    z-index: 10001;
-    transition: background 0.3s ease;
+    z-index: 100001;
 }
 
 .lightbox-prev:hover,
@@ -622,7 +587,7 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 .lightbox-counter {
-    position: absolute;
+    position: fixed;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
@@ -631,7 +596,7 @@ $block_id = 'gallery-' . $block['id'];
     background: rgba(0, 0, 0, 0.5);
     padding: 8px 24px;
     border-radius: 50px;
-    z-index: 10001;
+    z-index: 100001;
 }
 
 /* Responsive Design */
@@ -677,7 +642,7 @@ $block_id = 'gallery-' . $block['id'];
         padding: 20px;
     }
 
-    /* Mobile Lightbox Improvements */
+    /* Mobile Lightbox */
     .lightbox-close {
         top: 10px;
         right: 10px;
@@ -707,14 +672,9 @@ $block_id = 'gallery-' . $block['id'];
         padding: 6px 16px;
     }
 
-    .lightbox-image-container {
-        max-width: 95vw;
-        max-height: 85vh;
-    }
-
     .lightbox-content {
-        max-width: 95vw;
-        max-height: 85vh;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
     }
 
     .toggle-btn-text {
@@ -853,65 +813,46 @@ function moveGallerySlider(direction) {
     });
 }
 
-// Lightbox functions - SIMPLIFIED AND FIXED
+// Lightbox - ULTRA SIMPLIFIED
 function openGalleryLightbox(index) {
-    console.log('Opening lightbox for image:', index);
-
-    if (!window.galleryImages || window.galleryImages.length === 0) {
-        console.error('No gallery images available');
-        return;
-    }
+    console.log('=== OPENING LIGHTBOX ===');
+    console.log('Index:', index);
+    console.log('Total images:', window.galleryImages ? window.galleryImages.length : 0);
 
     window.currentGalleryIndex = index;
+
     const lightbox = document.getElementById('gallery-lightbox');
     const img = document.getElementById('gallery-lightbox-img');
-    const spinner = document.getElementById('gallery-lightbox-spinner');
     const counter = document.getElementById('gallery-lightbox-counter');
 
-    if (!lightbox || !img || !spinner || !counter) {
-        console.error('Lightbox elements not found');
+    if (!lightbox || !img || !counter) {
+        console.error('MISSING ELEMENTS:', { lightbox: !!lightbox, img: !!img, counter: !!counter });
         return;
     }
 
-    // Reset and show spinner
-    img.style.opacity = '0';
-    spinner.style.display = 'block';
-
-    // Load image
     const imageUrl = window.galleryImages[index];
-    console.log('Loading image:', imageUrl);
+    console.log('Image URL:', imageUrl);
 
-    // Create new image to preload
-    const tempImg = new Image();
-
-    tempImg.onload = function() {
-        console.log('Image loaded successfully');
-        img.src = imageUrl;
-        spinner.style.display = 'none';
-        img.style.opacity = '1';
-    };
-
-    tempImg.onerror = function() {
-        console.error('Image failed to load:', imageUrl);
-        spinner.style.display = 'none';
-        img.style.opacity = '1';
-    };
-
-    tempImg.src = imageUrl;
+    // Set image source
+    img.src = imageUrl;
 
     // Update counter
-    counter.textContent = `${index + 1} / ${window.galleryImages.length}`;
+    counter.textContent = (index + 1) + ' / ' + window.galleryImages.length;
 
     // Show lightbox
     lightbox.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+
+    console.log('Lightbox display:', lightbox.style.display);
+    console.log('Image src set to:', img.src);
+    console.log('Image computed style:', window.getComputedStyle(img).display);
 }
 
 function closeGalleryLightbox() {
-    console.log('Closing lightbox');
+    console.log('=== CLOSING LIGHTBOX ===');
+
     const lightbox = document.getElementById('gallery-lightbox');
     const img = document.getElementById('gallery-lightbox-img');
-    const spinner = document.getElementById('gallery-lightbox-spinner');
 
     if (lightbox) {
         lightbox.style.display = 'none';
@@ -919,17 +860,14 @@ function closeGalleryLightbox() {
 
     if (img) {
         img.src = '';
-        img.style.opacity = '0';
-    }
-
-    if (spinner) {
-        spinner.style.display = 'none';
     }
 
     document.body.style.overflow = '';
 }
 
 function navigateGalleryLightbox(direction) {
+    console.log('=== NAVIGATING ===', direction > 0 ? 'NEXT' : 'PREV');
+
     window.currentGalleryIndex += direction;
 
     if (window.currentGalleryIndex < 0) {
@@ -939,36 +877,15 @@ function navigateGalleryLightbox(direction) {
     }
 
     const img = document.getElementById('gallery-lightbox-img');
-    const spinner = document.getElementById('gallery-lightbox-spinner');
     const counter = document.getElementById('gallery-lightbox-counter');
 
-    if (!img || !spinner || !counter) return;
+    if (!img || !counter) return;
 
-    // Reset and show spinner
-    img.style.opacity = '0';
-    spinner.style.display = 'block';
-
-    // Load image
     const imageUrl = window.galleryImages[window.currentGalleryIndex];
+    console.log('New image URL:', imageUrl);
 
-    // Create new image to preload
-    const tempImg = new Image();
-
-    tempImg.onload = function() {
-        img.src = imageUrl;
-        spinner.style.display = 'none';
-        img.style.opacity = '1';
-    };
-
-    tempImg.onerror = function() {
-        spinner.style.display = 'none';
-        img.style.opacity = '1';
-    };
-
-    tempImg.src = imageUrl;
-
-    // Update counter
-    counter.textContent = `${window.currentGalleryIndex + 1} / ${window.galleryImages.length}`;
+    img.src = imageUrl;
+    counter.textContent = (window.currentGalleryIndex + 1) + ' / ' + window.galleryImages.length;
 }
 
 // Keyboard navigation
