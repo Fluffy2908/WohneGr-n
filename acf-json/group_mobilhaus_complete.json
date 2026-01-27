@@ -79,70 +79,93 @@
             "media_upload": 1
         },
         {
-            "key": "field_mobilhaus_description_layouts",
-            "label": "Beschreibung Bilder (Layout-Optionen)",
-            "name": "mobilhaus_description_layouts",
+            "key": "field_mobilhaus_size_variants",
+            "label": "Größenvarianten (Nature 3x8m, Nature Komfort 4x8m, etc.)",
+            "name": "mobilhaus_size_variants",
             "type": "repeater",
-            "instructions": "Fügen Sie verschiedene Layout-Optionen hinzu. Jede Option hat ein normales und ein gespiegeltes Bild.",
+            "instructions": "Fügen Sie Größenvarianten hinzu. Jede Variante hat eigene Technische Daten und Layout-Bilder.",
             "required": 0,
             "min": 1,
-            "max": 6,
+            "max": 4,
             "layout": "block",
-            "button_label": "Layout hinzufügen",
+            "button_label": "Variante hinzufügen",
             "sub_fields": [
                 {
-                    "key": "field_layout_name",
-                    "label": "Layout Name (optional)",
-                    "name": "layout_name",
+                    "key": "field_variant_name",
+                    "label": "Varianten Name",
+                    "name": "variant_name",
                     "type": "text",
-                    "placeholder": "z.B. 'Option 1', 'Variante A'",
-                    "required": 0
+                    "instructions": "z.B. 'Nature 3 x 8m' oder 'Nature Komfort 4 x 8m'",
+                    "required": 1,
+                    "placeholder": "Nature 3 x 8m"
                 },
                 {
-                    "key": "field_layout_normal",
-                    "label": "Bild (Normal)",
-                    "name": "normal_image",
-                    "type": "image",
-                    "required": 1,
-                    "return_format": "array",
-                    "preview_size": "medium"
+                    "key": "field_variant_specifications",
+                    "label": "Technische Daten",
+                    "name": "specifications",
+                    "type": "repeater",
+                    "instructions": "Technische Spezifikationen für diese Variante",
+                    "min": 0,
+                    "layout": "table",
+                    "button_label": "Daten hinzufügen",
+                    "sub_fields": [
+                        {
+                            "key": "field_variant_spec_label",
+                            "label": "Bezeichnung",
+                            "name": "label",
+                            "type": "text",
+                            "required": 1,
+                            "placeholder": "z.B. Länge"
+                        },
+                        {
+                            "key": "field_variant_spec_value",
+                            "label": "Wert",
+                            "name": "value",
+                            "type": "text",
+                            "required": 1,
+                            "placeholder": "z.B. 8 m"
+                        }
+                    ]
                 },
                 {
-                    "key": "field_layout_mirrored",
-                    "label": "Bild (Gespiegelt)",
-                    "name": "mirrored_image",
-                    "type": "image",
-                    "required": 1,
-                    "return_format": "array",
-                    "preview_size": "medium"
-                }
-            ]
-        },
-        {
-            "key": "field_mobilhaus_specifications",
-            "label": "Technische Daten",
-            "name": "mobilhaus_specifications",
-            "type": "repeater",
-            "instructions": "Technische Spezifikationen",
-            "min": 0,
-            "layout": "table",
-            "button_label": "Daten hinzufügen",
-            "sub_fields": [
-                {
-                    "key": "field_spec_label",
-                    "label": "Bezeichnung",
-                    "name": "label",
-                    "type": "text",
-                    "required": 1,
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_spec_value",
-                    "label": "Wert",
-                    "name": "value",
-                    "type": "text",
-                    "required": 1,
-                    "placeholder": ""
+                    "key": "field_variant_description_layouts",
+                    "label": "Beschreibung Bilder (Layout-Optionen)",
+                    "name": "description_layouts",
+                    "type": "repeater",
+                    "instructions": "Layout-Optionen für diese Variante. Jede Option hat ein normales und ein gespiegeltes Bild.",
+                    "required": 0,
+                    "min": 1,
+                    "max": 6,
+                    "layout": "block",
+                    "button_label": "Layout hinzufügen",
+                    "sub_fields": [
+                        {
+                            "key": "field_variant_layout_name",
+                            "label": "Layout Name (optional)",
+                            "name": "layout_name",
+                            "type": "text",
+                            "placeholder": "z.B. 'Option 1', 'Variante A'",
+                            "required": 0
+                        },
+                        {
+                            "key": "field_variant_layout_normal",
+                            "label": "Bild (Normal)",
+                            "name": "normal_image",
+                            "type": "image",
+                            "required": 1,
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_variant_layout_mirrored",
+                            "label": "Bild (Gespiegelt)",
+                            "name": "mirrored_image",
+                            "type": "image",
+                            "required": 1,
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        }
+                    ]
                 }
             ]
         },

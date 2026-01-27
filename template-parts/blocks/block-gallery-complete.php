@@ -122,10 +122,13 @@ $block_id = 'gallery-' . $block['id'];
 
     <!-- Lightbox -->
     <div id="gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
-        <button class="lightbox-close" onclick="closeGalleryLightbox()">&times;</button>
-        <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)">‹</button>
-        <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="">
-        <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)">›</button>
+        <button class="lightbox-close" onclick="event.stopPropagation(); closeGalleryLightbox()" aria-label="Schließen">&times;</button>
+        <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)" aria-label="Vorheriges Bild">‹</button>
+        <div class="lightbox-image-container">
+            <div class="lightbox-spinner" id="gallery-lightbox-spinner"></div>
+            <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+        </div>
+        <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)" aria-label="Nächstes Bild">›</button>
         <div class="lightbox-counter" id="gallery-lightbox-counter"></div>
     </div>
 
@@ -524,23 +527,69 @@ $block_id = 'gallery-' . $block['id'];
 
 .lightbox-close {
     position: absolute;
-    top: 30px;
-    right: 40px;
+    top: 20px;
+    right: 20px;
     font-size: 50px;
+    line-height: 1;
     color: white;
-    background: none;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     cursor: pointer;
-    z-index: 10001;
+    z-index: 10002;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 95%;
+    max-height: 95%;
+}
+
+.lightbox-spinner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: lightbox-spin 1s linear infinite;
+    display: none;
+}
+
+.lightbox-spinner.active {
+    display: block;
+}
+
+@keyframes lightbox-spin {
+    to { transform: rotate(360deg); }
 }
 
 .lightbox-content {
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 100%;
+    max-height: 95vh;
     width: auto;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-content.loaded {
+    opacity: 1;
 }
 
 .lightbox-prev,
@@ -557,6 +606,12 @@ $block_id = 'gallery-' . $block['id'];
     font-size: 2rem;
     color: white;
     z-index: 10001;
+    transition: background 0.3s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .lightbox-prev {
@@ -577,6 +632,7 @@ $block_id = 'gallery-' . $block['id'];
     background: rgba(0, 0, 0, 0.5);
     padding: 8px 24px;
     border-radius: 50px;
+    z-index: 10001;
 }
 
 /* Responsive Design */
@@ -620,6 +676,45 @@ $block_id = 'gallery-' . $block['id'];
     .big-toggle-btn {
         width: 100%;
         padding: 20px;
+    }
+
+    /* Mobile Lightbox Improvements */
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-counter {
+        bottom: 20px;
+        font-size: 1rem;
+        padding: 6px 16px;
+    }
+
+    .lightbox-image-container {
+        max-width: 100%;
+        max-height: 90vh;
+    }
+
+    .lightbox-content {
+        max-height: 90vh;
     }
 
     .toggle-btn-text {
@@ -763,7 +858,23 @@ function openGalleryLightbox(index) {
     window.currentGalleryIndex = index;
     const lightbox = document.getElementById('gallery-lightbox');
     const img = document.getElementById('gallery-lightbox-img');
+    const spinner = document.getElementById('gallery-lightbox-spinner');
     const counter = document.getElementById('gallery-lightbox-counter');
+
+    // Show spinner, hide image
+    spinner.classList.add('active');
+    img.classList.remove('loaded');
+
+    // Set up image load handler
+    img.onload = function() {
+        spinner.classList.remove('active');
+        img.classList.add('loaded');
+    };
+
+    img.onerror = function() {
+        spinner.classList.remove('active');
+        img.classList.add('loaded');
+    };
 
     img.src = window.galleryImages[index];
     counter.textContent = `${index + 1} / ${window.galleryImages.length}`;
@@ -773,8 +884,15 @@ function openGalleryLightbox(index) {
 }
 
 function closeGalleryLightbox() {
-    document.getElementById('gallery-lightbox').style.display = 'none';
-    document.body.style.overflow = 'auto';
+    const lightbox = document.getElementById('gallery-lightbox');
+    const img = document.getElementById('gallery-lightbox-img');
+
+    lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+
+    // Reset image
+    img.classList.remove('loaded');
+    img.src = '';
 }
 
 function navigateGalleryLightbox(direction) {
@@ -787,7 +905,23 @@ function navigateGalleryLightbox(direction) {
     }
 
     const img = document.getElementById('gallery-lightbox-img');
+    const spinner = document.getElementById('gallery-lightbox-spinner');
     const counter = document.getElementById('gallery-lightbox-counter');
+
+    // Show spinner, hide image
+    spinner.classList.add('active');
+    img.classList.remove('loaded');
+
+    // Set up image load handler
+    img.onload = function() {
+        spinner.classList.remove('active');
+        img.classList.add('loaded');
+    };
+
+    img.onerror = function() {
+        spinner.classList.remove('active');
+        img.classList.add('loaded');
+    };
 
     img.src = window.galleryImages[window.currentGalleryIndex];
     counter.textContent = `${window.currentGalleryIndex + 1} / ${window.galleryImages.length}`;
@@ -802,4 +936,41 @@ document.addEventListener('keydown', function(e) {
         else if (e.key === 'ArrowRight') navigateGalleryLightbox(1);
     }
 });
+
+// Touch swipe support for mobile
+(function() {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const lightbox = document.getElementById('gallery-lightbox');
+
+    if (lightbox) {
+        lightbox.addEventListener('touchstart', function(e) {
+            if (lightbox.style.display === 'flex') {
+                touchStartX = e.changedTouches[0].screenX;
+            }
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', function(e) {
+            if (lightbox.style.display === 'flex') {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swiped left - next image
+                    navigateGalleryLightbox(1);
+                } else {
+                    // Swiped right - previous image
+                    navigateGalleryLightbox(-1);
+                }
+            }
+        }
+    }
+})();
 </script>

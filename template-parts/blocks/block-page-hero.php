@@ -10,7 +10,7 @@ $title = get_field('page_hero_title');
 $subtitle = get_field('page_hero_subtitle');
 
 if (empty($title)) {
-    echo '<div class="acf-block-placeholder">Add a title in the block settings</div>';
+    echo '<div class="acf-block-placeholder">Fügen Sie einen Titel in den Block-Einstellungen hinzu</div>';
     return;
 }
 

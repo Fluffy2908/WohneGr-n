@@ -10,8 +10,7 @@ $hero_subtitle = get_field('mobilhaus_hero_subtitle');
 $color_variants = get_field('mobilhaus_color_variants');
 $description_title = get_field('mobilhaus_description_title');
 $description_text = get_field('mobilhaus_description_text');
-$description_layouts = get_field('mobilhaus_description_layouts');
-$specifications = get_field('mobilhaus_specifications');
+$size_variants = get_field('mobilhaus_size_variants');
 $floor_plans = get_field('mobilhaus_floor_plans');
 $interior_schemes = get_field('mobilhaus_interior_schemes');
 
@@ -91,74 +90,103 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     </section>
     <?php endif; ?>
 
-    <!-- DETAILS SECTION: Text LEFT, Image RIGHT -->
-    <?php if ($specifications || $description_image): ?>
-    <section class="details-section section-padding">
+    <!-- SIZE VARIANTS SECTION: Tabbed Design with Specs + Images -->
+    <?php if ($size_variants && is_array($size_variants) && count($size_variants) > 0): ?>
+    <section class="size-variants-section section-padding">
         <div class="container">
-            <div class="details-grid">
-                <!-- Left: Specifications Text -->
-                <div class="details-text">
-                    <?php if ($specifications && is_array($specifications)): ?>
-                        <h3>Technische Daten</h3>
-                        <dl class="specs-list">
-                            <?php foreach ($specifications as $spec): ?>
-                                <div class="spec-row">
-                                    <dt><?php echo esc_html($spec['label']); ?></dt>
-                                    <dd><?php echo esc_html($spec['value']); ?></dd>
-                                </div>
-                            <?php endforeach; ?>
-                        </dl>
-                    <?php endif; ?>
-                </div>
+            <h2 class="section-title">Technische Daten & Layout-Optionen</h2>
 
-                <!-- Right: Layout Image Carousel -->
-                <?php if ($description_layouts && is_array($description_layouts) && count($description_layouts) > 0): ?>
-                <div class="details-image-carousel">
-                    <?php if (count($description_layouts) > 1): ?>
-                        <button class="layout-nav layout-prev" onclick="navigateLayout('<?php echo esc_js($block_id); ?>', -1)" aria-label="Vorheriges Layout">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg>
-                        </button>
-                    <?php endif; ?>
+            <!-- Size Variant Tabs -->
+            <?php if (count($size_variants) > 1): ?>
+            <div class="size-variant-tabs">
+                <?php foreach ($size_variants as $index => $variant): ?>
+                    <button
+                        class="size-variant-tab <?php echo $index === 0 ? 'active' : ''; ?>"
+                        onclick="switchSizeVariant(<?php echo $index; ?>, '<?php echo esc_js($block_id); ?>')">
+                        <?php echo esc_html($variant['variant_name']); ?>
+                    </button>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
 
-                    <div class="layout-images-container">
-                        <?php foreach ($description_layouts as $idx => $layout): ?>
-                            <div class="layout-image-wrapper"
-                                 id="layout-<?php echo esc_attr($block_id); ?>-<?php echo $idx; ?>"
-                                 style="<?php echo $idx === 0 ? '' : 'display: none;'; ?>">
-                                <img class="layout-image"
-                                     src="<?php echo esc_url($layout['normal_image']['url']); ?>"
-                                     alt="<?php echo esc_attr($layout['layout_name'] ?: 'Layout ' . ($idx + 1)); ?>"
-                                     loading="lazy">
+            <!-- Size Variant Content -->
+            <?php foreach ($size_variants as $var_index => $variant): ?>
+            <div class="size-variant-content"
+                 id="variant-<?php echo esc_attr($block_id); ?>-<?php echo $var_index; ?>"
+                 style="<?php echo $var_index === 0 ? '' : 'display: none;'; ?>">
 
-                                <?php if (isset($layout['layout_name']) && !empty($layout['layout_name'])): ?>
-                                    <div class="layout-label"><?php echo esc_html($layout['layout_name']); ?></div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endforeach; ?>
+                <div class="details-grid">
+                    <!-- Left: Specifications Text -->
+                    <div class="details-text">
+                        <?php if (!empty($variant['specifications']) && is_array($variant['specifications'])): ?>
+                            <h3>Technische Daten</h3>
+                            <dl class="specs-list">
+                                <?php foreach ($variant['specifications'] as $spec): ?>
+                                    <div class="spec-row">
+                                        <dt><?php echo esc_html($spec['label']); ?></dt>
+                                        <dd><?php echo esc_html($spec['value']); ?></dd>
+                                    </div>
+                                <?php endforeach; ?>
+                            </dl>
+                        <?php endif; ?>
                     </div>
 
-                    <?php if (count($description_layouts) > 1): ?>
-                        <button class="layout-nav layout-next" onclick="navigateLayout('<?php echo esc_js($block_id); ?>', 1)" aria-label="Nächstes Layout">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </button>
-                    <?php endif; ?>
+                    <!-- Right: Layout Image Carousel -->
+                    <?php if (!empty($variant['description_layouts']) && is_array($variant['description_layouts']) && count($variant['description_layouts']) > 0): ?>
+                    <div class="details-image-carousel">
+                        <?php if (count($variant['description_layouts']) > 1): ?>
+                            <button class="layout-nav layout-prev"
+                                    onclick="navigateLayout('<?php echo esc_js($block_id); ?>', <?php echo $var_index; ?>, -1)"
+                                    aria-label="Vorheriges Layout">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                        <?php endif; ?>
 
-                    <!-- Reverse Button -->
-                    <button class="layout-reverse-btn" onclick="toggleLayoutReverse('<?php echo esc_js($block_id); ?>')">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="1 4 1 10 7 10"></polyline>
-                            <polyline points="23 20 23 14 17 14"></polyline>
-                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
-                        </svg>
-                        <span class="reverse-text">Gespiegelt anzeigen</span>
-                    </button>
+                        <div class="layout-images-container">
+                            <?php foreach ($variant['description_layouts'] as $idx => $layout): ?>
+                                <div class="layout-image-wrapper"
+                                     id="layout-<?php echo esc_attr($block_id); ?>-<?php echo $var_index; ?>-<?php echo $idx; ?>"
+                                     style="<?php echo $idx === 0 ? '' : 'display: none;'; ?>">
+                                    <img class="layout-image"
+                                         src="<?php echo esc_url($layout['normal_image']['url']); ?>"
+                                         alt="<?php echo esc_attr($layout['layout_name'] ?: 'Layout ' . ($idx + 1)); ?>"
+                                         loading="lazy">
+
+                                    <?php if (isset($layout['layout_name']) && !empty($layout['layout_name'])): ?>
+                                        <div class="layout-label"><?php echo esc_html($layout['layout_name']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <?php if (count($variant['description_layouts']) > 1): ?>
+                            <button class="layout-nav layout-next"
+                                    onclick="navigateLayout('<?php echo esc_js($block_id); ?>', <?php echo $var_index; ?>, 1)"
+                                    aria-label="Nächstes Layout">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        <?php endif; ?>
+
+                        <!-- Reverse Button -->
+                        <button class="layout-reverse-btn"
+                                onclick="toggleLayoutReverse('<?php echo esc_js($block_id); ?>', <?php echo $var_index; ?>)">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="1 4 1 10 7 10"></polyline>
+                                <polyline points="23 20 23 14 17 14"></polyline>
+                                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                            </svg>
+                            <span class="reverse-text">Gespiegelt anzeigen</span>
+                        </button>
+                    </div>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
+
             </div>
+            <?php endforeach; ?>
         </div>
     </section>
     <?php endif; ?>
@@ -454,8 +482,63 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     margin-bottom: 20px;
 }
 
-/* DETAILS SECTION: Text LEFT, Image RIGHT */
-.details-section {
+/* SIZE VARIANTS SECTION: Tabbed Design */
+.size-variants-section {
+    background: #ffffff;
+}
+
+.size-variant-tabs {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.size-variant-tab {
+    padding: 18px 40px;
+    background: #ffffff;
+    border: 3px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.size-variant-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-primary);
+}
+
+.size-variant-tab.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.size-variant-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* DETAILS GRID: Text LEFT, Image RIGHT */
+.details-section,
+.size-variants-section {
     background: #ffffff;
 }
 
@@ -1065,19 +1148,24 @@ window.interiorGallery = <?php echo json_encode(array_map(function($scheme) {
     }, $scheme['gallery'] ?? []);
 }, $interior_schemes ?? [])); ?>;
 
-// Store description layout images
-window.descriptionLayouts = <?php echo json_encode(array_map(function($layout) {
+// Store size variant data
+window.sizeVariants = <?php echo json_encode(array_map(function($variant) {
     return array(
-        'normal' => $layout['normal_image']['url'] ?? '',
-        'mirrored' => $layout['mirrored_image']['url'] ?? '',
-        'name' => $layout['layout_name'] ?? ''
+        'name' => $variant['variant_name'] ?? '',
+        'layouts' => array_map(function($layout) {
+            return array(
+                'normal' => $layout['normal_image']['url'] ?? '',
+                'mirrored' => $layout['mirrored_image']['url'] ?? '',
+                'name' => $layout['layout_name'] ?? ''
+            );
+        }, $variant['description_layouts'] ?? [])
     );
-}, $description_layouts ?? [])); ?>;
+}, $size_variants ?? [])); ?>;
 
 window.currentScheme = 0;
 window.currentImage = 0;
-window.currentLayoutIndex = 0;
-window.layoutReversed = false;
+window.currentVariantIndex = 0;
+window.variantStates = {}; // Track layout index and reversed state per variant
 
 // Color selection
 function switchExteriorColor(colorIndex) {
@@ -1141,62 +1229,92 @@ function toggleGrundrissView(blockId, planIndex, normalUrl, mirroredUrl) {
     }, 200);
 }
 
-// Description Layout Navigation
-function navigateLayout(blockId, direction) {
-    const layouts = window.descriptionLayouts;
-    if (!layouts || layouts.length <= 1) return;
+// Size Variant Switching
+function switchSizeVariant(variantIndex, blockId) {
+    window.currentVariantIndex = variantIndex;
 
-    // Update index
-    window.currentLayoutIndex += direction;
-    if (window.currentLayoutIndex < 0) {
-        window.currentLayoutIndex = layouts.length - 1;
-    } else if (window.currentLayoutIndex >= layouts.length) {
-        window.currentLayoutIndex = 0;
+    // Update tab active states
+    const tabs = document.querySelectorAll('.size-variant-tab');
+    tabs.forEach((tab, idx) => {
+        tab.classList.toggle('active', idx === variantIndex);
+    });
+
+    // Update content visibility
+    const contents = document.querySelectorAll('.size-variant-content');
+    contents.forEach((content, idx) => {
+        content.style.display = idx === variantIndex ? 'block' : 'none';
+    });
+}
+
+// Description Layout Navigation (per variant)
+function navigateLayout(blockId, variantIndex, direction) {
+    const variant = window.sizeVariants[variantIndex];
+    if (!variant || !variant.layouts || variant.layouts.length <= 1) return;
+
+    // Initialize state for this variant if needed
+    if (!window.variantStates[variantIndex]) {
+        window.variantStates[variantIndex] = { layoutIndex: 0, reversed: false };
     }
 
-    // Hide all layouts
-    const allWrappers = document.querySelectorAll(`[id^="layout-${blockId}-"]`);
+    const state = window.variantStates[variantIndex];
+
+    // Update index
+    state.layoutIndex += direction;
+    if (state.layoutIndex < 0) {
+        state.layoutIndex = variant.layouts.length - 1;
+    } else if (state.layoutIndex >= variant.layouts.length) {
+        state.layoutIndex = 0;
+    }
+
+    // Hide all layouts for this variant
+    const allWrappers = document.querySelectorAll(`[id^="layout-${blockId}-${variantIndex}-"]`);
     allWrappers.forEach(wrapper => wrapper.style.display = 'none');
 
     // Show current layout
-    const currentWrapper = document.getElementById(`layout-${blockId}-${window.currentLayoutIndex}`);
+    const currentWrapper = document.getElementById(`layout-${blockId}-${variantIndex}-${state.layoutIndex}`);
     if (currentWrapper) {
         currentWrapper.style.display = 'block';
 
         // Update image based on reversed state
         const img = currentWrapper.querySelector('.layout-image');
-        const layout = layouts[window.currentLayoutIndex];
-        img.src = window.layoutReversed ? layout.mirrored : layout.normal;
+        const layout = variant.layouts[state.layoutIndex];
+        img.src = state.reversed ? layout.mirrored : layout.normal;
     }
 }
 
-// Toggle Layout Reverse (Normal <-> Mirrored)
-function toggleLayoutReverse(blockId) {
-    const layouts = window.descriptionLayouts;
-    if (!layouts || layouts.length === 0) return;
+// Toggle Layout Reverse (Normal <-> Mirrored) per variant
+function toggleLayoutReverse(blockId, variantIndex) {
+    const variant = window.sizeVariants[variantIndex];
+    if (!variant || !variant.layouts || variant.layouts.length === 0) return;
 
-    window.layoutReversed = !window.layoutReversed;
+    // Initialize state for this variant if needed
+    if (!window.variantStates[variantIndex]) {
+        window.variantStates[variantIndex] = { layoutIndex: 0, reversed: false };
+    }
+
+    const state = window.variantStates[variantIndex];
+    state.reversed = !state.reversed;
 
     // Get current layout wrapper and image
-    const currentWrapper = document.getElementById(`layout-${blockId}-${window.currentLayoutIndex}`);
+    const currentWrapper = document.getElementById(`layout-${blockId}-${variantIndex}-${state.layoutIndex}`);
     if (!currentWrapper) return;
 
     const img = currentWrapper.querySelector('.layout-image');
     const btn = event.target.closest('.layout-reverse-btn');
-    const layout = layouts[window.currentLayoutIndex];
+    const layout = variant.layouts[state.layoutIndex];
 
     // Fade out
     img.style.opacity = '0';
 
     setTimeout(() => {
         // Switch image
-        img.src = window.layoutReversed ? layout.mirrored : layout.normal;
+        img.src = state.reversed ? layout.mirrored : layout.normal;
 
         // Fade in
         img.style.opacity = '1';
 
         // Update button text
-        btn.querySelector('.reverse-text').textContent = window.layoutReversed ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
+        btn.querySelector('.reverse-text').textContent = state.reversed ? 'Normal anzeigen' : 'Gespiegelt anzeigen';
     }, 300);
 }
 
