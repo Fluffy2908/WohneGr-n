@@ -67,7 +67,7 @@ $block_id = 'gallery-' . $block['id'];
                 foreach ($grid_images as $img_index => $item):
                     $image = $item['image'];
                 ?>
-                    <div class="gallery-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $img_index; ?>)">
+                    <div class="wg-gallery-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $img_index; ?>)">
                         <img src="<?php echo esc_url($image['sizes']['large'] ?? $image['url']); ?>"
                              alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
                              loading="lazy">
@@ -95,7 +95,7 @@ $block_id = 'gallery-' . $block['id'];
                                 $image = $item['image'];
                                 $global_index = 9 + $slider_index;
                             ?>
-                                <div class="slider-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $global_index; ?>)">
+                                <div class="wg-slider-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $global_index; ?>)">
                                     <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
                                          alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
                                          loading="lazy">
@@ -121,12 +121,12 @@ $block_id = 'gallery-' . $block['id'];
     <?php endif; ?>
 
     <!-- Lightbox (Full Screen Slider) -->
-    <div id="gallery-lightbox-<?php echo esc_attr($block_id); ?>" class="gallery-lightbox" onclick="closeGalleryLightbox()">
+    <div id="wg-gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
         <button class="lightbox-close" onclick="closeGalleryLightbox()">&times;</button>
         <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)">‹</button>
-        <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="">
+        <img class="lightbox-content" id="wg-gallery-lightbox-img" src="" alt="">
         <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)">›</button>
-        <div class="lightbox-counter" id="gallery-lightbox-counter"></div>
+        <div class="lightbox-counter" id="wg-gallery-lightbox-counter"></div>
     </div>
 
 </div>
@@ -233,7 +233,7 @@ $block_id = 'gallery-' . $block['id'];
     margin-bottom: 80px;
 }
 
-.gallery-item {
+.wg-gallery-item {
     position: relative;
     aspect-ratio: 4 / 3;
     border-radius: 16px;
@@ -244,19 +244,19 @@ $block_id = 'gallery-' . $block['id'];
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.gallery-item:hover {
+.wg-gallery-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
-.gallery-item img {
+.wg-gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.gallery-item:hover img {
+.wg-gallery-item:hover img {
     transform: scale(1.1);
 }
 
@@ -271,7 +271,7 @@ $block_id = 'gallery-' . $block['id'];
     transition: opacity 0.3s ease;
 }
 
-.gallery-item:hover .gallery-overlay {
+.wg-gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
@@ -317,7 +317,7 @@ $block_id = 'gallery-' . $block['id'];
     display: none;
 }
 
-.slider-item {
+.wg-slider-item {
     flex: 0 0 calc(33.333% - 14px);
     aspect-ratio: 4 / 3;
     border-radius: 12px;
@@ -329,18 +329,18 @@ $block_id = 'gallery-' . $block['id'];
     position: relative;
 }
 
-.slider-item:hover {
+.wg-slider-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.slider-item img {
+.wg-slider-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.slider-item:hover .gallery-overlay {
+.wg-slider-item:hover .gallery-overlay {
     opacity: 1;
 }
 
@@ -605,7 +605,7 @@ $block_id = 'gallery-' . $block['id'];
         gap: 20px;
     }
 
-    .slider-item {
+    .wg-slider-item {
         flex: 0 0 calc(50% - 10px);
     }
 
@@ -709,7 +709,7 @@ $block_id = 'gallery-' . $block['id'];
         font-size: 2rem;
     }
 
-    .slider-item {
+    .wg-slider-item {
         flex: 0 0 calc(100% - 10px);
     }
 
@@ -745,8 +745,8 @@ window.sliderPosition = 0;
 // Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const sliderItems = document.querySelectorAll('.slider-item');
+    const galleryItems = document.querySelectorAll('.wg-gallery-item');
+    const sliderItems = document.querySelectorAll('.wg-slider-item');
     const sliderSection = document.getElementById('gallery-slider-section');
 
     filterBtns.forEach(btn => {
@@ -800,7 +800,7 @@ function moveGallerySlider(direction) {
     const track = document.querySelector('.slider-track');
     if (!track) return;
 
-    const visibleItems = Array.from(document.querySelectorAll('.slider-item')).filter(item => item.style.display !== 'none');
+    const visibleItems = Array.from(document.querySelectorAll('.wg-slider-item')).filter(item => item.style.display !== 'none');
     if (visibleItems.length === 0) return;
 
     const itemWidth = visibleItems[0].offsetWidth + 20;
@@ -820,23 +820,37 @@ function moveGallerySlider(direction) {
 
 // Lightbox functions - Clean and simple like interior schemes
 function openGalleryLightbox(imageIndex) {
+    console.log('Opening gallery lightbox, image index:', imageIndex);
     window.currentGalleryImage = imageIndex;
 
-    const lightbox = document.getElementById('gallery-lightbox-<?php echo esc_js($block_id); ?>');
-    const img = document.getElementById('gallery-lightbox-img');
-    const counter = document.getElementById('gallery-lightbox-counter');
+    const lightbox = document.getElementById('wg-gallery-lightbox');
+    const img = document.getElementById('wg-gallery-lightbox-img');
+    const counter = document.getElementById('wg-gallery-lightbox-counter');
 
-    if (!lightbox || !img || !counter) return;
+    console.log('Lightbox elements:', { lightbox, img, counter });
 
+    if (!lightbox || !img || !counter) {
+        console.error('Gallery lightbox elements not found!');
+        return;
+    }
+
+    if (!window.galleryImages || window.galleryImages.length === 0) {
+        console.error('No gallery images available!');
+        return;
+    }
+
+    console.log('Setting image:', window.galleryImages[imageIndex]);
     img.src = window.galleryImages[imageIndex];
     counter.textContent = `${imageIndex + 1} / ${window.galleryImages.length}`;
 
     lightbox.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    console.log('Lightbox opened successfully');
 }
 
 function closeGalleryLightbox() {
-    const lightbox = document.getElementById('gallery-lightbox-<?php echo esc_js($block_id); ?>');
+    console.log('Closing gallery lightbox');
+    const lightbox = document.getElementById('wg-gallery-lightbox');
     if (lightbox) {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto';
@@ -852,8 +866,8 @@ function navigateGalleryLightbox(direction) {
         window.currentGalleryImage = 0;
     }
 
-    const img = document.getElementById('gallery-lightbox-img');
-    const counter = document.getElementById('gallery-lightbox-counter');
+    const img = document.getElementById('wg-gallery-lightbox-img');
+    const counter = document.getElementById('wg-gallery-lightbox-counter');
 
     if (img && counter) {
         img.src = window.galleryImages[window.currentGalleryImage];
@@ -863,7 +877,7 @@ function navigateGalleryLightbox(direction) {
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
-    const lightbox = document.getElementById('gallery-lightbox-<?php echo esc_js($block_id); ?>');
+    const lightbox = document.getElementById('wg-gallery-lightbox');
     if (lightbox && lightbox.style.display === 'flex') {
         if (e.key === 'Escape') closeGalleryLightbox();
         else if (e.key === 'ArrowLeft') navigateGalleryLightbox(-1);

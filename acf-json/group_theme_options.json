@@ -6,9 +6,10 @@
             "key": "field_contact_email_option",
             "label": "Kontakt E-Mail",
             "name": "contact_email",
-            "type": "email",
-            "instructions": "Hauptkontakt E-Mail-Adresse",
-            "required": 1
+            "type": "text",
+            "instructions": "Hauptkontakt E-Mail-Adresse (z.B. info@wohnegrün.at)",
+            "required": 1,
+            "placeholder": "info@wohnegrün.at"
         },
         {
             "key": "field_contact_phone_option",
