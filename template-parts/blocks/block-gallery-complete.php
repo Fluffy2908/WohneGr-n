@@ -125,8 +125,8 @@ $block_id = 'gallery-' . $block['id'];
         <button class="lightbox-close" onclick="event.stopPropagation(); closeGalleryLightbox()" aria-label="Schließen">&times;</button>
         <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)" aria-label="Vorheriges Bild">‹</button>
         <div class="lightbox-image-container">
-            <div class="lightbox-spinner" id="gallery-lightbox-spinner"></div>
-            <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+            <div class="lightbox-spinner" id="gallery-lightbox-spinner" style="display: none;"></div>
+            <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="" style="opacity: 0;" onclick="event.stopPropagation()">
         </div>
         <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)" aria-label="Nächstes Bild">›</button>
         <div class="lightbox-counter" id="gallery-lightbox-counter"></div>
@@ -565,15 +565,11 @@ $block_id = 'gallery-' . $block['id'];
     width: 60px;
     height: 60px;
     border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top-color: var(--color-primary);
+    border-top-color: white;
     border-radius: 50%;
     animation: lightbox-spin 1s linear infinite;
     display: none;
-    z-index: 1;
-}
-
-.lightbox-spinner.active {
-    display: block;
+    z-index: 2;
 }
 
 @keyframes lightbox-spin {
@@ -588,12 +584,9 @@ $block_id = 'gallery-' . $block['id'];
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-    opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.lightbox-content.loaded {
-    opacity: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .lightbox-prev,
@@ -858,54 +851,80 @@ function moveGallerySlider(direction) {
     });
 }
 
-// Lightbox functions
+// Lightbox functions - SIMPLIFIED AND FIXED
 function openGalleryLightbox(index) {
+    console.log('Opening lightbox for image:', index);
+
+    if (!window.galleryImages || window.galleryImages.length === 0) {
+        console.error('No gallery images available');
+        return;
+    }
+
     window.currentGalleryIndex = index;
     const lightbox = document.getElementById('gallery-lightbox');
     const img = document.getElementById('gallery-lightbox-img');
     const spinner = document.getElementById('gallery-lightbox-spinner');
     const counter = document.getElementById('gallery-lightbox-counter');
 
-    // Show spinner, hide image
-    spinner.classList.add('active');
-    img.classList.remove('loaded');
-
-    // Set up image load handler BEFORE setting src
-    img.onload = function() {
-        spinner.classList.remove('active');
-        img.classList.add('loaded');
-    };
-
-    img.onerror = function() {
-        spinner.classList.remove('active');
-        img.classList.add('loaded');
-    };
-
-    // Set image source
-    img.src = window.galleryImages[index];
-
-    // Check if image is already loaded (cached)
-    if (img.complete) {
-        spinner.classList.remove('active');
-        img.classList.add('loaded');
+    if (!lightbox || !img || !spinner || !counter) {
+        console.error('Lightbox elements not found');
+        return;
     }
 
+    // Reset and show spinner
+    img.style.opacity = '0';
+    spinner.style.display = 'block';
+
+    // Load image
+    const imageUrl = window.galleryImages[index];
+    console.log('Loading image:', imageUrl);
+
+    // Create new image to preload
+    const tempImg = new Image();
+
+    tempImg.onload = function() {
+        console.log('Image loaded successfully');
+        img.src = imageUrl;
+        spinner.style.display = 'none';
+        img.style.opacity = '1';
+    };
+
+    tempImg.onerror = function() {
+        console.error('Image failed to load:', imageUrl);
+        spinner.style.display = 'none';
+        img.style.opacity = '1';
+    };
+
+    tempImg.src = imageUrl;
+
+    // Update counter
     counter.textContent = `${index + 1} / ${window.galleryImages.length}`;
 
+    // Show lightbox
     lightbox.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
 function closeGalleryLightbox() {
+    console.log('Closing lightbox');
     const lightbox = document.getElementById('gallery-lightbox');
     const img = document.getElementById('gallery-lightbox-img');
+    const spinner = document.getElementById('gallery-lightbox-spinner');
 
-    lightbox.style.display = 'none';
+    if (lightbox) {
+        lightbox.style.display = 'none';
+    }
+
+    if (img) {
+        img.src = '';
+        img.style.opacity = '0';
+    }
+
+    if (spinner) {
+        spinner.style.display = 'none';
+    }
+
     document.body.style.overflow = '';
-
-    // Reset image
-    img.classList.remove('loaded');
-    img.src = '';
 }
 
 function navigateGalleryLightbox(direction) {
@@ -921,30 +940,32 @@ function navigateGalleryLightbox(direction) {
     const spinner = document.getElementById('gallery-lightbox-spinner');
     const counter = document.getElementById('gallery-lightbox-counter');
 
-    // Show spinner, hide image
-    spinner.classList.add('active');
-    img.classList.remove('loaded');
+    if (!img || !spinner || !counter) return;
 
-    // Set up image load handler BEFORE setting src
-    img.onload = function() {
-        spinner.classList.remove('active');
-        img.classList.add('loaded');
+    // Reset and show spinner
+    img.style.opacity = '0';
+    spinner.style.display = 'block';
+
+    // Load image
+    const imageUrl = window.galleryImages[window.currentGalleryIndex];
+
+    // Create new image to preload
+    const tempImg = new Image();
+
+    tempImg.onload = function() {
+        img.src = imageUrl;
+        spinner.style.display = 'none';
+        img.style.opacity = '1';
     };
 
-    img.onerror = function() {
-        spinner.classList.remove('active');
-        img.classList.add('loaded');
+    tempImg.onerror = function() {
+        spinner.style.display = 'none';
+        img.style.opacity = '1';
     };
 
-    // Set image source
-    img.src = window.galleryImages[window.currentGalleryIndex];
+    tempImg.src = imageUrl;
 
-    // Check if image is already loaded (cached)
-    if (img.complete) {
-        spinner.classList.remove('active');
-        img.classList.add('loaded');
-    }
-
+    // Update counter
     counter.textContent = `${window.currentGalleryIndex + 1} / ${window.galleryImages.length}`;
 }
 
