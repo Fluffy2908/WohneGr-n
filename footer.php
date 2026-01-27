@@ -79,12 +79,8 @@ $contact_address = wohnegruen_get_option('contact_address');
                 <?php if ($contact_email): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('email'); ?>
-                        <a href="mailto:<?php echo esc_attr($contact_email); ?>" class="email-link">
-                            <?php
-                            // Display email with visible ü character
-                            // Browsers handle punycode automatically in mailto links
-                            echo esc_html($contact_email);
-                            ?>
+                        <a href="mailto:<?php echo $contact_email; ?>" class="email-link">
+                            <?php echo $contact_email; ?>
                         </a>
                     </div>
                 <?php endif; ?>

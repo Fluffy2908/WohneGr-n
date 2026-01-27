@@ -67,7 +67,7 @@ $block_id = 'gallery-' . $block['id'];
                 foreach ($grid_images as $img_index => $item):
                     $image = $item['image'];
                 ?>
-                    <div class="wg-gallery-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $img_index; ?>)">
+                    <div class="gallery-item" data-category="<?php echo esc_attr($item['category']); ?>" data-image-index="<?php echo $img_index; ?>">
                         <img src="<?php echo esc_url($image['sizes']['large'] ?? $image['url']); ?>"
                              alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
                              loading="lazy">
@@ -83,7 +83,7 @@ $block_id = 'gallery-' . $block['id'];
             <div class="gallery-slider-section" id="gallery-slider-section">
                 <h3 class="slider-title">Weitere Bilder</h3>
                 <div class="gallery-slider-wrapper">
-                    <button class="slider-nav slider-prev" onclick="moveGallerySlider(-1)" aria-label="Vorherige Bilder">
+                    <button class="slider-nav slider-prev" aria-label="Vorherige Bilder">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="15 18 9 12 15 6"></polyline>
                         </svg>
@@ -95,7 +95,7 @@ $block_id = 'gallery-' . $block['id'];
                                 $image = $item['image'];
                                 $global_index = 9 + $slider_index;
                             ?>
-                                <div class="wg-slider-item" data-category="<?php echo esc_attr($item['category']); ?>" onclick="openGalleryLightbox(<?php echo $global_index; ?>)">
+                                <div class="slider-item" data-category="<?php echo esc_attr($item['category']); ?>" data-image-index="<?php echo $global_index; ?>">
                                     <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
                                          alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
                                          loading="lazy">
@@ -107,7 +107,7 @@ $block_id = 'gallery-' . $block['id'];
                         </div>
                     </div>
 
-                    <button class="slider-nav slider-next" onclick="moveGallerySlider(1)" aria-label="Nächste Bilder">
+                    <button class="slider-nav slider-next" aria-label="Nächste Bilder">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
@@ -121,12 +121,12 @@ $block_id = 'gallery-' . $block['id'];
     <?php endif; ?>
 
     <!-- Lightbox (Full Screen Slider) -->
-    <div id="wg-gallery-lightbox" class="gallery-lightbox" onclick="closeGalleryLightbox()">
-        <button class="lightbox-close" onclick="closeGalleryLightbox()">&times;</button>
-        <button class="lightbox-prev" onclick="event.stopPropagation(); navigateGalleryLightbox(-1)">‹</button>
-        <img class="lightbox-content" id="wg-gallery-lightbox-img" src="" alt="">
-        <button class="lightbox-next" onclick="event.stopPropagation(); navigateGalleryLightbox(1)">›</button>
-        <div class="lightbox-counter" id="wg-gallery-lightbox-counter"></div>
+    <div id="gallery-lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">‹</button>
+        <img class="lightbox-content" id="gallery-lightbox-img" src="" alt="">
+        <button class="lightbox-next">›</button>
+        <div class="lightbox-counter" id="gallery-lightbox-counter"></div>
     </div>
 
 </div>
@@ -233,7 +233,7 @@ $block_id = 'gallery-' . $block['id'];
     margin-bottom: 80px;
 }
 
-.wg-gallery-item {
+.gallery-item {
     position: relative;
     aspect-ratio: 4 / 3;
     border-radius: 16px;
@@ -244,19 +244,19 @@ $block_id = 'gallery-' . $block['id'];
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.wg-gallery-item:hover {
+.gallery-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
-.wg-gallery-item img {
+.gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.wg-gallery-item:hover img {
+.gallery-item:hover img {
     transform: scale(1.1);
 }
 
@@ -271,7 +271,7 @@ $block_id = 'gallery-' . $block['id'];
     transition: opacity 0.3s ease;
 }
 
-.wg-gallery-item:hover .gallery-overlay {
+.gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
@@ -317,7 +317,7 @@ $block_id = 'gallery-' . $block['id'];
     display: none;
 }
 
-.wg-slider-item {
+.slider-item {
     flex: 0 0 calc(33.333% - 14px);
     aspect-ratio: 4 / 3;
     border-radius: 12px;
@@ -329,18 +329,18 @@ $block_id = 'gallery-' . $block['id'];
     position: relative;
 }
 
-.wg-slider-item:hover {
+.slider-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.wg-slider-item img {
+.slider-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.wg-slider-item:hover .gallery-overlay {
+.slider-item:hover .gallery-overlay {
     opacity: 1;
 }
 
@@ -512,7 +512,7 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 /* Lightbox (Full Screen Slider) - Clean Design Like Interior Schemes */
-.gallery-lightbox {
+.lightbox {
     display: none;
     position: fixed;
     inset: 0;
@@ -605,7 +605,7 @@ $block_id = 'gallery-' . $block['id'];
         gap: 20px;
     }
 
-    .wg-slider-item {
+    .slider-item {
         flex: 0 0 calc(50% - 10px);
     }
 
@@ -709,7 +709,7 @@ $block_id = 'gallery-' . $block['id'];
         font-size: 2rem;
     }
 
-    .wg-slider-item {
+    .slider-item {
         flex: 0 0 calc(100% - 10px);
     }
 
@@ -734,19 +734,20 @@ $block_id = 'gallery-' . $block['id'];
 </style>
 
 <script>
-// Store all images for lightbox
+// Store all images for lightbox with FULL SIZE images
 window.galleryImages = <?php echo json_encode(array_map(function($item) {
     return $item['image']['url'];
 }, $all_images ?? [])); ?>;
 
-window.currentGalleryImage = 0;
+window.currentImage = 0;
 window.sliderPosition = 0;
 
-// Filter functionality
+// DOMContentLoaded - Initialize all event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    // Filter functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.wg-gallery-item');
-    const sliderItems = document.querySelectorAll('.wg-slider-item');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const sliderItems = document.querySelectorAll('.slider-item');
     const sliderSection = document.getElementById('gallery-slider-section');
 
     filterBtns.forEach(btn => {
@@ -793,6 +794,66 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Attach lightbox click handlers to gallery items
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const imageIndex = parseInt(this.dataset.imageIndex);
+            openLightbox(imageIndex);
+        });
+    });
+
+    // Attach lightbox click handlers to slider items
+    sliderItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const imageIndex = parseInt(this.dataset.imageIndex);
+            openLightbox(imageIndex);
+        });
+    });
+
+    // Attach slider navigation handlers
+    const sliderPrevBtn = document.querySelector('.slider-prev');
+    const sliderNextBtn = document.querySelector('.slider-next');
+
+    if (sliderPrevBtn) {
+        sliderPrevBtn.addEventListener('click', function() {
+            moveGallerySlider(-1);
+        });
+    }
+
+    if (sliderNextBtn) {
+        sliderNextBtn.addEventListener('click', function() {
+            moveGallerySlider(1);
+        });
+    }
+
+    // Attach lightbox button handlers
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+    const lightboxNext = lightbox.querySelector('.lightbox-next');
+
+    if (lightbox) {
+        lightbox.addEventListener('click', closeLightbox);
+    }
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navigateLightbox(-1);
+        });
+    }
+
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navigateLightbox(1);
+        });
+    }
 });
 
 // Slider navigation
@@ -800,7 +861,7 @@ function moveGallerySlider(direction) {
     const track = document.querySelector('.slider-track');
     if (!track) return;
 
-    const visibleItems = Array.from(document.querySelectorAll('.wg-slider-item')).filter(item => item.style.display !== 'none');
+    const visibleItems = Array.from(document.querySelectorAll('.slider-item')).filter(item => item.style.display !== 'none');
     if (visibleItems.length === 0) return;
 
     const itemWidth = visibleItems[0].offsetWidth + 20;
@@ -818,70 +879,49 @@ function moveGallerySlider(direction) {
     });
 }
 
-// Lightbox functions - Clean and simple like interior schemes
-function openGalleryLightbox(imageIndex) {
-    console.log('Opening gallery lightbox, image index:', imageIndex);
-    window.currentGalleryImage = imageIndex;
+// Lightbox functions
+function openLightbox(imageIndex) {
+    window.currentImage = imageIndex;
 
-    const lightbox = document.getElementById('wg-gallery-lightbox');
-    const img = document.getElementById('wg-gallery-lightbox-img');
-    const counter = document.getElementById('wg-gallery-lightbox-counter');
+    const lightbox = document.getElementById('gallery-lightbox');
+    const img = document.getElementById('gallery-lightbox-img');
+    const counter = document.getElementById('gallery-lightbox-counter');
 
-    console.log('Lightbox elements:', { lightbox, img, counter });
-
-    if (!lightbox || !img || !counter) {
-        console.error('Gallery lightbox elements not found!');
-        return;
-    }
-
-    if (!window.galleryImages || window.galleryImages.length === 0) {
-        console.error('No gallery images available!');
-        return;
-    }
-
-    console.log('Setting image:', window.galleryImages[imageIndex]);
     img.src = window.galleryImages[imageIndex];
     counter.textContent = `${imageIndex + 1} / ${window.galleryImages.length}`;
 
     lightbox.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    console.log('Lightbox opened successfully');
 }
 
-function closeGalleryLightbox() {
-    console.log('Closing gallery lightbox');
-    const lightbox = document.getElementById('wg-gallery-lightbox');
-    if (lightbox) {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
+function closeLightbox() {
+    document.getElementById('gallery-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
-function navigateGalleryLightbox(direction) {
-    window.currentGalleryImage += direction;
+function navigateLightbox(direction) {
+    window.currentImage += direction;
 
-    if (window.currentGalleryImage < 0) {
-        window.currentGalleryImage = window.galleryImages.length - 1;
-    } else if (window.currentGalleryImage >= window.galleryImages.length) {
-        window.currentGalleryImage = 0;
+    if (window.currentImage < 0) {
+        window.currentImage = window.galleryImages.length - 1;
+    } else if (window.currentImage >= window.galleryImages.length) {
+        window.currentImage = 0;
     }
 
-    const img = document.getElementById('wg-gallery-lightbox-img');
-    const counter = document.getElementById('wg-gallery-lightbox-counter');
+    const img = document.getElementById('gallery-lightbox-img');
+    const counter = document.getElementById('gallery-lightbox-counter');
 
-    if (img && counter) {
-        img.src = window.galleryImages[window.currentGalleryImage];
-        counter.textContent = `${window.currentGalleryImage + 1} / ${window.galleryImages.length}`;
-    }
+    img.src = window.galleryImages[window.currentImage];
+    counter.textContent = `${window.currentImage + 1} / ${window.galleryImages.length}`;
 }
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
-    const lightbox = document.getElementById('wg-gallery-lightbox');
+    const lightbox = document.getElementById('gallery-lightbox');
     if (lightbox && lightbox.style.display === 'flex') {
-        if (e.key === 'Escape') closeGalleryLightbox();
-        else if (e.key === 'ArrowLeft') navigateGalleryLightbox(-1);
-        else if (e.key === 'ArrowRight') navigateGalleryLightbox(1);
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        else if (e.key === 'ArrowRight') navigateLightbox(1);
     }
 });
 </script>
