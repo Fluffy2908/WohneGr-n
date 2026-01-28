@@ -1519,6 +1519,35 @@ body.menu-open {
 }
 
 /* ==========================================================================
+   GLOBAL HERO DEFAULTS - Apply automatically to all hero sections
+   ========================================================================== */
+
+/* All hero sections get default height */
+.home-hero,
+.gallery-hero,
+.models-hero,
+.contact-hero,
+.mobilhaus-hero-new,
+[class*="-hero"] {
+    min-height: var(--hero-min-height);
+}
+
+/* All h1 inside hero content get default font size */
+.hero-content h1,
+.gallery-hero-content h1,
+[class*="-hero"] h1 {
+    font-size: var(--hero-title-size);
+}
+
+@media (max-width: 767px) {
+    .hero-content h1,
+    .gallery-hero-content h1,
+    [class*="-hero"] h1 {
+        font-size: var(--hero-title-size-mobile);
+    }
+}
+
+/* ==========================================================================
    GALLERY PAGE
    ========================================================================== */
 

@@ -867,32 +867,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     font-size: 1.25rem;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 32px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-family: inherit;
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-}
-
-.btn-outline:hover {
-    background: var(--color-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.2);
-}
+/* Button styles inherited from global style.css */
 
 /* INTERIOR SCHEMES */
 .interior-schemes-section {

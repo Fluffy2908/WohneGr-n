@@ -202,46 +202,7 @@ if ($reverse_layout) $section_classes .= ' reverse-layout';
     padding-right: var(--spacing-lg);
 }
 
-/* Button Styles (fallback if not defined globally) */
-.page-section .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition);
-    cursor: pointer;
-    border: 2px solid transparent;
-}
-
-.page-section .btn-primary {
-    background: var(--color-primary);
-    color: var(--color-white);
-}
-
-.page-section .btn-primary:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-card);
-}
-
-.page-section .btn-lg {
-    padding: var(--spacing-lg) var(--spacing-2xl);
-    font-size: var(--font-size-lg);
-}
-
-.page-section .btn-outline {
-    background: transparent;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-
-.page-section .btn-outline:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
-}
+/* Button styles inherited from global style.css */
 
 /* Background Colors */
 .bg-white {
