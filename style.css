@@ -228,7 +228,31 @@ main,
 .contact-hero,
 [class*="-hero"] {
     margin-top: 0;
+    margin-block-start: 0;
     padding-top: 0;
+    padding-block-start: 0;
+}
+
+/* Force hero sections as first visual element - remove ALL spacing */
+.gallery-complete-page > .gallery-hero:first-of-type,
+.models-complete-page > .models-hero:first-of-type,
+.home-complete-page > .home-hero:first-of-type,
+.contact-complete-page > .contact-hero:first-of-type {
+    margin-top: 0;
+    margin-block-start: 0;
+    padding-top: 0;
+    padding-block-start: 0;
+}
+
+/* Remove spacing from wrapper when it's first in main */
+main > .gallery-complete-page:first-child,
+main > .models-complete-page:first-child,
+main > .home-complete-page:first-child,
+main > .contact-complete-page:first-child {
+    margin-top: 0;
+    margin-block-start: 0;
+    padding-top: 0;
+    padding-block-start: 0;
 }
 
 /* WordPress Admin Bar Support */
