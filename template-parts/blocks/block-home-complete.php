@@ -215,7 +215,7 @@ $block_id = 'home-complete-' . $block['id'];
 }
 
 .home-hero {
-    min-height: 600px;
+    min-height: var(--hero-min-height);
 }
 
 .section-padding {
@@ -230,7 +230,7 @@ $block_id = 'home-complete-' . $block['id'];
 
 /* Hero */
 .home-hero {
-    min-height: 600px;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: center;
     background-size: cover;
@@ -526,10 +526,6 @@ $block_id = 'home-complete-' . $block['id'];
 @media (max-width: 767px) {
     .container {
         padding: 0 var(--spacing-md);
-    }
-
-    .home-hero {
-        min-height: 500px;
     }
 
     .hero-content h1 {

@@ -71,7 +71,8 @@ Text Domain: wohnegruen
     --nav-logo-height: 48px;
 
     /* Hero Sections */
-    --hero-min-height: 400px;
+    --hero-min-height: 550px;
+    --hero-min-height-mobile: 400px;
     --hero-title-size: 2.5rem;
     --hero-title-size-mobile: 2rem;
 
@@ -1580,6 +1581,17 @@ body.menu-open {
 }
 
 @media (max-width: 767px) {
+    /* Mobile hero heights */
+    .home-hero,
+    .gallery-hero,
+    .models-hero,
+    .contact-hero,
+    .mobilhaus-hero-new,
+    [class*="-hero"] {
+        min-height: var(--hero-min-height-mobile);
+    }
+
+    /* Mobile hero title sizes */
     .hero-content h1,
     .gallery-hero-content h1,
     [class*="-hero"] h1 {
