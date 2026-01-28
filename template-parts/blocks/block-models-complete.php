@@ -179,6 +179,12 @@ $block_id = 'models-complete-' . $block['id'];
 /* MODELS COMPLETE PAGE - PROFESSIONAL CALLING CARDS DESIGN */
 .models-complete-page {
     width: 100%;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.models-hero {
+    margin-top: 0 !important;
 }
 
 .section-padding {

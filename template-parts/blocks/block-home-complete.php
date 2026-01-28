@@ -212,6 +212,12 @@ $block_id = 'home-complete-' . $block['id'];
 /* Home Complete Styles */
 .home-complete-page {
     width: 100%;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.home-hero {
+    margin-top: 0 !important;
 }
 
 .section-padding {

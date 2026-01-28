@@ -195,6 +195,12 @@ $block_id = 'contact-complete-' . $block['id'];
 /* Contact Complete Styles */
 .contact-complete-page {
     width: 100%;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.contact-hero {
+    margin-top: 0 !important;
 }
 
 .section-padding {

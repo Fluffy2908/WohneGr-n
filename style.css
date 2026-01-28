@@ -155,13 +155,20 @@ body {
     background-color: var(--color-background);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding-top: 70px;
+    padding-top: 70px !important;
 }
 
 @media (max-width: 767px) {
     body {
-        padding-top: 60px;
+        padding-top: 60px !important;
     }
+}
+
+/* Remove WordPress default block spacing from all blocks */
+.wp-site-blocks > *:first-child,
+.wp-site-blocks > * {
+    margin-block-start: 0 !important;
+    margin-top: 0 !important;
 }
 
 /* WordPress Admin Bar Support */

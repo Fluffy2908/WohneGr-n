@@ -136,6 +136,12 @@ $block_id = 'gallery-' . $block['id'];
 /* GALLERY COMPLETE - PROFESSIONAL TOGGLE DESIGN */
 .gallery-complete-page {
     width: 100%;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.gallery-hero {
+    margin-top: 0 !important;
 }
 
 .section-padding {
