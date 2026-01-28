@@ -161,14 +161,34 @@
         },
         {
             "key": "field_home_selected_models",
-            "label": "Ausgewählte Modelle",
+            "label": "Ausgewählte Modelle (mit Beschreibungen)",
             "name": "home_selected_models",
-            "type": "relationship",
-            "post_type": ["mobilhaus"],
-            "filters": ["search"],
+            "type": "repeater",
             "min": 2,
             "max": 6,
-            "return_format": "object"
+            "layout": "block",
+            "button_label": "Modell hinzufügen",
+            "sub_fields": [
+                {
+                    "key": "field_home_model_select",
+                    "label": "Modell auswählen",
+                    "name": "model",
+                    "type": "post_object",
+                    "post_type": ["mobilhaus"],
+                    "return_format": "object",
+                    "required": 1
+                },
+                {
+                    "key": "field_home_model_description",
+                    "label": "Card Beschreibung",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "z.B. Kompakt und effizient - perfekt für moderne Wohnträume",
+                    "instructions": "Kurze Beschreibung für die Calling Card (nur auf der Startseite sichtbar)",
+                    "required": 0
+                }
+            ]
         },
         {
             "key": "field_home_cta_title",

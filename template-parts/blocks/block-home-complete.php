@@ -150,7 +150,10 @@ $block_id = 'home-complete-' . $block['id'];
             <?php endif; ?>
 
             <div class="models-grid">
-                <?php foreach ($selected_models as $model):
+                <?php foreach ($selected_models as $model_item):
+                    $model = $model_item['model'];
+                    $description = $model_item['description'];
+
                     $featured_image = get_the_post_thumbnail_url($model->ID, 'large');
                     if (!$featured_image) {
                         // Fallback to first color variant exterior image
@@ -170,10 +173,8 @@ $block_id = 'home-complete-' . $block['id'];
                         <?php endif; ?>
                         <div class="model-content">
                             <h3><?php echo esc_html($model->post_title); ?></h3>
-                            <?php
-                            $model_description = get_field('mobilhaus_hero_subtitle', $model->ID);
-                            if ($model_description): ?>
-                                <p class="model-description"><?php echo esc_html($model_description); ?></p>
+                            <?php if ($description): ?>
+                                <p class="model-description"><?php echo esc_html($description); ?></p>
                             <?php endif; ?>
                             <a href="<?php echo get_permalink($model->ID); ?>" class="btn btn-primary btn-compact">
                                 Mehr erfahren
