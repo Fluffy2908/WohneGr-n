@@ -54,6 +54,20 @@
                     "library": "all"
                 }
             ]
+        },
+        {
+            "key": "field_gallery_slider_images",
+            "label": "Weitere Bilder (Slider)",
+            "name": "gallery_slider_images",
+            "type": "gallery",
+            "instructions": "Zusätzliche Bilder die im Slider angezeigt werden (ohne Kategorien)",
+            "required": 0,
+            "min": 0,
+            "max": 50,
+            "insert": "append",
+            "library": "all",
+            "return_format": "array",
+            "preview_size": "medium"
         }
     ],
     "location": [

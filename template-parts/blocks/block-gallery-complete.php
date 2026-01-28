@@ -44,7 +44,7 @@ $block_id = 'gallery-' . $block['id'];
             </div>
             <?php endif; ?>
 
-            <!-- Gallery Grid (First 9 images) -->
+            <!-- Gallery Grid (ALL categorized images) -->
             <div class="gallery-grid">
                 <?php
                 $all_images = [];
@@ -60,11 +60,8 @@ $block_id = 'gallery-' . $block['id'];
                     endif;
                 endforeach;
 
-                // Show first 9 images in grid
-                $grid_images = array_slice($all_images, 0, 9);
-                $slider_images = array_slice($all_images, 9);
-
-                foreach ($grid_images as $img_index => $item):
+                // Show ALL images in grid (filterable by category)
+                foreach ($all_images as $img_index => $item):
                     $image = $item['image'];
                 ?>
                     <div class="gallery-item" data-category="<?php echo esc_attr($item['category']); ?>" data-image-index="<?php echo $img_index; ?>">
@@ -78,8 +75,11 @@ $block_id = 'gallery-' . $block['id'];
                 <?php endforeach; ?>
             </div>
 
-            <!-- Slider for Remaining Images -->
-            <?php if (!empty($slider_images)): ?>
+            <!-- Slider for Additional Uncategorized Images -->
+            <?php
+            $slider_images = get_field('gallery_slider_images');
+            if (!empty($slider_images)):
+            ?>
             <div class="gallery-slider-section" id="gallery-slider-section">
                 <h3 class="slider-title">Weitere Bilder</h3>
                 <div class="gallery-slider-wrapper">
@@ -91,13 +91,14 @@ $block_id = 'gallery-' . $block['id'];
 
                     <div class="slider-track-container">
                         <div class="slider-track">
-                            <?php foreach ($slider_images as $slider_index => $item):
-                                $image = $item['image'];
-                                $global_index = 9 + $slider_index;
+                            <?php
+                            $base_index = count($all_images);
+                            foreach ($slider_images as $slider_index => $image):
+                                $global_index = $base_index + $slider_index;
                             ?>
-                                <div class="slider-item" data-category="<?php echo esc_attr($item['category']); ?>" data-image-index="<?php echo $global_index; ?>">
+                                <div class="slider-item" data-image-index="<?php echo $global_index; ?>">
                                     <img src="<?php echo esc_url($image['sizes']['medium'] ?? $image['url']); ?>"
-                                         alt="<?php echo esc_attr($image['alt'] ?: $item['category_name']); ?>"
+                                         alt="<?php echo esc_attr($image['alt']); ?>"
                                          loading="lazy">
                                     <div class="gallery-overlay">
                                         <span class="zoom-icon">🔍</span>
@@ -735,10 +736,21 @@ $block_id = 'gallery-' . $block['id'];
 </style>
 
 <script>
-// Store all images for lightbox - using full original size
-window.galleryImages = <?php echo json_encode(array_map(function($item) {
-    return $item['image']['url'];
-}, $all_images ?? [])); ?>;
+// Store all images for lightbox - categorized images + slider images
+window.galleryImages = [
+    <?php
+    // Add all categorized images
+    foreach ($all_images as $item) {
+        echo '"' . esc_js($item['image']['url']) . '",';
+    }
+    // Add slider images
+    if (!empty($slider_images)) {
+        foreach ($slider_images as $image) {
+            echo '"' . esc_js($image['url']) . '",';
+        }
+    }
+    ?>
+];
 
 window.currentImage = 0;
 window.sliderPosition = 0;
@@ -758,7 +770,7 @@ document.addEventListener('DOMContentLoaded', function() {
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
-            // Filter gallery grid items
+            // Filter gallery grid items (categorized images)
             galleryItems.forEach(item => {
                 if (filter === 'all' || item.dataset.category === filter) {
                     item.style.display = '';
@@ -767,25 +779,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Filter slider items
-            let visibleSliderCount = 0;
-            sliderItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.style.display = '';
-                    visibleSliderCount++;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            // Show/hide slider section based on visible items
-            if (sliderSection) {
-                if (visibleSliderCount > 0) {
-                    sliderSection.style.display = 'block';
-                } else {
-                    sliderSection.style.display = 'none';
-                }
-            }
+            // Slider items are always visible (they're uncategorized)
+            // No filtering needed for slider items
 
             // Reset slider position
             window.sliderPosition = 0;

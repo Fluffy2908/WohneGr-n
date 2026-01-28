@@ -347,6 +347,13 @@ ul {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     overflow: visible;
+    height: 70px;
+}
+
+@media (max-width: 767px) {
+    .site-navigation {
+        height: 60px;
+    }
 }
 
 .nav-container {
@@ -355,20 +362,20 @@ ul {
     justify-content: space-between;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 12px 1rem;
+    padding: 0 1rem;
     overflow: visible;
-    min-height: 64px;
+    height: 100%;
 }
 
 @media (min-width: 640px) {
     .nav-container {
-        padding: 12px 1.5rem;
+        padding: 0 1.5rem;
     }
 }
 
 @media (min-width: 1024px) {
     .nav-container {
-        padding: 12px 2rem;
+        padding: 0 2rem;
     }
 }
 
@@ -405,7 +412,7 @@ ul {
 
 .site-logo svg,
 .site-logo img {
-    height: 40px;
+    height: 48px;
     width: auto;
 }
 
