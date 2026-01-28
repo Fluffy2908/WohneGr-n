@@ -195,12 +195,10 @@ $block_id = 'contact-complete-' . $block['id'];
 /* Contact Complete Styles */
 .contact-complete-page {
     width: 100%;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
 
 .contact-hero {
-    margin-top: 0 !important;
+    min-height: var(--hero-min-height);
 }
 
 .section-padding {
@@ -215,7 +213,7 @@ $block_id = 'contact-complete-' . $block['id'];
 
 /* Hero */
 .contact-hero {
-    min-height: 400px;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: center;
     background-size: cover;
@@ -240,7 +238,7 @@ $block_id = 'contact-complete-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: var(--font-size-4xl);
+    font-size: var(--hero-title-size);
     color: var(--color-white);
     margin-bottom: var(--spacing-lg);
 }
@@ -456,7 +454,7 @@ $block_id = 'contact-complete-' . $block['id'];
     }
 
     .hero-content h1 {
-        font-size: var(--font-size-2xl);
+        font-size: var(--hero-title-size-mobile);
     }
 
     .contact-form {

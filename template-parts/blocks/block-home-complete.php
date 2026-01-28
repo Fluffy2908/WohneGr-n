@@ -212,12 +212,10 @@ $block_id = 'home-complete-' . $block['id'];
 /* Home Complete Styles */
 .home-complete-page {
     width: 100%;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
 
 .home-hero {
-    margin-top: 0 !important;
+    min-height: 600px;
 }
 
 .section-padding {
@@ -250,7 +248,7 @@ $block_id = 'home-complete-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: 2.5rem !important;
+    font-size: var(--hero-title-size);
     margin-bottom: var(--spacing-lg);
     color: var(--color-white);
 }
@@ -562,7 +560,7 @@ $block_id = 'home-complete-' . $block['id'];
     }
 
     .hero-content h1 {
-        font-size: 2rem !important;
+        font-size: var(--hero-title-size-mobile);
     }
 
     .features-grid,

@@ -136,12 +136,10 @@ $block_id = 'gallery-' . $block['id'];
 /* GALLERY COMPLETE - PROFESSIONAL TOGGLE DESIGN */
 .gallery-complete-page {
     width: 100%;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
 
 .gallery-hero {
-    margin-top: 0 !important;
+    min-height: var(--hero-min-height);
 }
 
 .section-padding {
@@ -161,7 +159,7 @@ $block_id = 'gallery-' . $block['id'];
 /* Hero with Background Image */
 .gallery-hero {
     position: relative;
-    min-height: 400px;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: center;
     background-size: cover;
@@ -186,10 +184,16 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: 2.5rem !important;
+    font-size: var(--hero-title-size);
     margin: 0;
     font-weight: 800;
     color: var(--color-white);
+}
+
+@media (max-width: 767px) {
+    .hero-content h1 {
+        font-size: var(--hero-title-size-mobile);
+    }
 }
 
 /* BILDER SECTION - Gallery Filters (Simple Text, No Icons) */

@@ -179,12 +179,10 @@ $block_id = 'models-complete-' . $block['id'];
 /* MODELS COMPLETE PAGE - PROFESSIONAL CALLING CARDS DESIGN */
 .models-complete-page {
     width: 100%;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
 
 .models-hero {
-    margin-top: 0 !important;
+    min-height: var(--hero-min-height);
 }
 
 .section-padding {
@@ -208,7 +206,7 @@ $block_id = 'models-complete-' . $block['id'];
 /* Hero Section */
 .models-hero {
     position: relative;
-    min-height: 400px;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: center;
     background-size: cover;
@@ -233,10 +231,16 @@ $block_id = 'models-complete-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: 2.5rem !important;
+    font-size: var(--hero-title-size);
     margin-bottom: 20px;
     font-weight: 800;
     color: var(--color-white);
+}
+
+@media (max-width: 767px) {
+    .hero-content h1 {
+        font-size: var(--hero-title-size-mobile);
+    }
 }
 
 .hero-subtitle {
