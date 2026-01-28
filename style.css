@@ -120,10 +120,10 @@ Text Domain: wohnegruen
 
 /* Skip to Content Link - Accessibility (Only visible on keyboard focus) */
 .skip-to-content {
-    position: absolute !important;
-    top: -9999px !important;
-    left: -9999px !important;
-    z-index: -1 !important;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    z-index: -1;
     padding: 1rem 1.5rem;
     background: var(--color-primary);
     color: white;
@@ -188,6 +188,34 @@ body {
 .wp-site-blocks > * {
     margin-block-start: 0;
     margin-block-end: 0;
+}
+
+/* Remove spacing from WordPress ACF block wrappers */
+.wp-block-acf,
+[class*="wp-block-acf"] {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Remove spacing from all page wrapper divs */
+.gallery-complete-page,
+.models-complete-page,
+.home-complete-page,
+.contact-complete-page {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure hero sections touch the nav exactly */
+.gallery-hero,
+.models-hero,
+.home-hero,
+.contact-hero,
+[class*="-hero"] {
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* WordPress Admin Bar Support */
