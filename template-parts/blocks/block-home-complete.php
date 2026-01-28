@@ -299,7 +299,7 @@ $block_id = 'home-complete-' . $block['id'];
 
 /* About Section */
 .home-about {
-    background: var(--color-background);
+    background: var(--color-white);
 }
 
 .about-grid {
