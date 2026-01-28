@@ -139,6 +139,8 @@ Text Domain: wohnegruen
     white-space: nowrap !important;
     opacity: 0 !important;
     pointer-events: none !important;
+    margin: 0 !important;
+    display: block;
 }
 
 .skip-to-content:focus {
@@ -177,6 +179,16 @@ body {
     body {
         padding-top: var(--nav-height-mobile);
     }
+}
+
+/* Remove all spacing from main content wrapper */
+main,
+#main-content,
+.page-content,
+.front-page,
+.site-content {
+    margin: 0;
+    padding: 0;
 }
 
 /* Remove WordPress default block spacing */
