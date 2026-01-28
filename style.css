@@ -340,10 +340,11 @@ ul {
     left: 0;
     right: 0;
     z-index: 50;
-    background-color: hsla(0, 0%, 100%, 0.95);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     overflow: visible;
 }
 
@@ -1342,13 +1343,15 @@ ul {
     color: var(--color-primary);
 }
 
-.footer-contact-item a {
+.footer-contact-item a,
+.footer-contact-item .address-link {
     color: var(--color-primary);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer-contact-item a:hover {
+.footer-contact-item a:hover,
+.footer-contact-item .address-link:hover {
     color: var(--color-primary-light);
     text-decoration: underline;
 }

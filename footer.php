@@ -87,7 +87,14 @@ $contact_address = wohnegruen_get_option('contact_address');
                 <?php if ($contact_address): ?>
                     <div class="footer-contact-item">
                         <?php echo wohnegruen_get_icon('location'); ?>
-                        <span><?php echo nl2br(esc_html($contact_address)); ?></span>
+                        <?php
+                        // Create Google Maps link from address
+                        $maps_query = urlencode(str_replace("\n", ", ", $contact_address));
+                        $maps_link = 'https://www.google.com/maps/search/?api=1&query=' . $maps_query;
+                        ?>
+                        <a href="<?php echo $maps_link; ?>" target="_blank" rel="noopener" class="address-link" title="In Google Maps öffnen">
+                            <?php echo nl2br(esc_html($contact_address)); ?>
+                        </a>
                     </div>
                 <?php endif; ?>
             </div>
