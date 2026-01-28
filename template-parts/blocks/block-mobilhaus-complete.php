@@ -318,7 +318,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
 /* HERO SECTION: Background Image + Green Filter + Centered Text */
 .mobilhaus-hero-new {
     position: relative;
-    min-height: 500px;
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -982,6 +982,7 @@ if ($color_variants && isset($color_variants[0]['exterior_image']['url'])) {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .gallery-item:hover .gallery-overlay {

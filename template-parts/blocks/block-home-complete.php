@@ -170,6 +170,11 @@ $block_id = 'home-complete-' . $block['id'];
                         <?php endif; ?>
                         <div class="model-content">
                             <h3><?php echo esc_html($model->post_title); ?></h3>
+                            <?php
+                            $model_description = get_field('mobilhaus_hero_subtitle', $model->ID);
+                            if ($model_description): ?>
+                                <p class="model-description"><?php echo esc_html($model_description); ?></p>
+                            <?php endif; ?>
                             <a href="<?php echo get_permalink($model->ID); ?>" class="btn btn-primary btn-compact">
                                 Mehr erfahren
                             </a>
@@ -314,28 +319,31 @@ $block_id = 'home-complete-' . $block['id'];
 
 .about-badge {
     position: absolute;
-    bottom: 24px;
-    left: 24px;
+    bottom: 20px;
+    right: 20px;
     background: var(--color-primary);
     color: white;
-    padding: 16px 24px;
-    border-radius: 12px;
+    padding: 12px 20px;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    width: auto;
+    min-width: 120px;
 }
 
 .badge-number {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .badge-text {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     opacity: 0.95;
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .about-content h2 {
@@ -435,9 +443,16 @@ $block_id = 'home-complete-' . $block['id'];
 
 .model-content h3 {
     color: var(--color-primary);
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     font-size: 1.5rem;
     font-weight: 700;
+}
+
+.model-description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.5;
 }
 
 /* CTA */
@@ -562,17 +577,18 @@ $block_id = 'home-complete-' . $block['id'];
     }
 
     .about-badge {
-        bottom: 16px;
-        left: 16px;
-        padding: 12px 16px;
+        bottom: 12px;
+        right: 12px;
+        padding: 10px 16px;
+        min-width: 100px;
     }
 
     .badge-number {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .badge-text {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .about-content h2 {

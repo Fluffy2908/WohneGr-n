@@ -269,6 +269,7 @@ $block_id = 'gallery-' . $block['id'];
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .gallery-item:hover .gallery-overlay {

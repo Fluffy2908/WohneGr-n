@@ -53,17 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navigation background on scroll
-    const navigation = document.querySelector('.site-navigation');
-    if (navigation) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                navigation.classList.add('scrolled');
-            } else {
-                navigation.classList.remove('scrolled');
-            }
-        });
-    }
+    // Navigation background on scroll - REMOVED FOR CONSISTENCY
+    // const navigation = document.querySelector('.site-navigation');
+    // if (navigation) {
+    //     window.addEventListener('scroll', function() {
+    //         if (window.scrollY > 100) {
+    //             navigation.classList.add('scrolled');
+    //         } else {
+    //             navigation.classList.remove('scrolled');
+    //         }
+    //     });
+    // }
 
     // Animate elements on scroll
     const observerOptions = {
