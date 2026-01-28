@@ -227,7 +227,7 @@ $block_id = 'models-complete-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem !important;
     margin-bottom: 20px;
     font-weight: 800;
     color: var(--color-white);

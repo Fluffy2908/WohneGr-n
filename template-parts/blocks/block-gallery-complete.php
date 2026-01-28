@@ -180,7 +180,7 @@ $block_id = 'gallery-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem !important;
     margin: 0;
     font-weight: 800;
     color: var(--color-white);

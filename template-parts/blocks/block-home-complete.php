@@ -244,7 +244,7 @@ $block_id = 'home-complete-' . $block['id'];
 }
 
 .hero-content h1 {
-    font-size: var(--font-size-4xl);
+    font-size: 2.5rem !important;
     margin-bottom: var(--spacing-lg);
     color: var(--color-white);
 }
@@ -556,7 +556,7 @@ $block_id = 'home-complete-' . $block['id'];
     }
 
     .hero-content h1 {
-        font-size: var(--font-size-2xl);
+        font-size: 2rem !important;
     }
 
     .features-grid,
